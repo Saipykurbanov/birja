@@ -10,6 +10,12 @@
     width: 184px;
     font-size: 16px;
     border: 1px solid var(--black);
+    &.flex {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+    }
     &.full {
         width: 100%;
     }
@@ -43,5 +49,9 @@
     &.violet {
         background-color: var(--violet);
         border: 1px solid var(--violet);
+    }
+    &.lite {
+        color: var(--white);
+        border: 1px solid var(--white);
     }
 }
