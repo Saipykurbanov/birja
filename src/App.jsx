@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import useMain from './useMain';
 import SignIn from './pages/sigIn/SignIn';
 import Panel from './components/panel/Panel';
+import Header from './components/header/Header';
 
 
 function App() {
@@ -11,18 +12,26 @@ function App() {
   return (
     <>
       {main.auth ? 
-        <Router>
+        <div className="main_wrapper container">
+          <Router>
+            
+              <Header auth={main.auth}/>
+              <Panel />
 
-            <Panel />
+              <div className="main_container">
+                <Routes>
+                    <Route path='/' element={''}/>
+                </Routes>
+ 
+                {/* footer */}
+              </div>
 
-            <div className="main_container">
-              <Routes>
-                  <Route path='/' element={''}/>
-              </Routes>
-            </div>
-
-        </Router>
-      :<SignIn />}
+          </Router>
+        </div>
+      :<>
+        <Header auth={main.auth}/>
+        <SignIn />
+      </>}
     </>
   )
 }

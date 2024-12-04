@@ -82,3 +82,27 @@ img {
     -moz-user-select: none; /* для Firefox */
     -ms-user-select: none; /* для Internet Explorer/Edge */ /* стандартное свойство */
 }
+
+.container {
+    width: 100%;
+    max-width: 1432px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin: 0 auto;
+}
+
+.main_wrapper {
+    display: grid;
+    grid-template-columns: auto 5fr;
+    min-height: 100dvh;
+    @include mediaMaxWidth(960) {
+        grid-template-columns: auto;
+    }
+}
+
+.main_container {
+    padding-top: 65px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
