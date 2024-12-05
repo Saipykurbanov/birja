@@ -1,0 +1,24 @@
+@import './../../../style/common';
+
+.main_input {
+    width: 100%;
+    
+    & label {
+        color: var(--black2);
+        @include adaptiveFont(20, 16);
+        font-weight: 450;
+    }
+    
+    & input {
+        height: 44px;
+        padding: 0 10px;
+        width: 100%;
+        border: 1px solid var(--black);
+        @include adaptiveFont(16, 14);
+
+        &.grey {
+            border: 1px solid var(--grey);
+        }
+    }
+
+}

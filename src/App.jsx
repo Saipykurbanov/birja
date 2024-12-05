@@ -22,9 +22,11 @@ function App() {
             
             <Panel />
 
-            <Routes>
-              <Route path='/stock' element={<Stock />}/>
-            </Routes>
+            <div className="main_container">
+              <Routes>
+                <Route path='/stock' element={<Stock />}/>
+              </Routes>
+            </div>
 
           </Router>
         </div>
