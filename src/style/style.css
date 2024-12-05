@@ -1,7 +1,24 @@
 @charset "UTF-8";
 /*-------------Миксины----------------*/
+/*---------Шрифты------------*/
+@font-face {
+  font-family: "Futura-Pt";
+  font-weight: 400;
+  src: url("./fonts/Futura400.woff"), url("./fonts/Futura400.woff2");
+}
+@font-face {
+  font-family: "Futura-Pt";
+  font-weight: 450;
+  src: url("./fonts/Futura450.woff"), url("./fonts/Futura450.woff2");
+}
+@font-face {
+  font-family: "Futura-Pt";
+  font-weight: 500;
+  src: url("./fonts/Futura500.woff"), url("./fonts/Futura500.woff2");
+}
 /*--------------*/
 :root {
+  --main-font: "Futura-Pt";
   --black: #1F2022;
   --white: #fff;
   --blue: #374670;
@@ -123,6 +140,13 @@ img {
   -ms-user-select: none; /* для Internet Explorer/Edge */ /* стандартное свойство */
 }
 
+main {
+  padding-top: 65px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
 .container {
   width: 100%;
   max-width: 1432px;
@@ -134,17 +158,10 @@ img {
 .main_wrapper {
   display: grid;
   grid-template-columns: auto 5fr;
-  min-height: 100dvh;
+  flex: 1;
 }
 @media screen and (max-width: 960px) {
   .main_wrapper {
     grid-template-columns: auto;
   }
-}
-
-.main_container {
-  padding-top: 65px;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
 }/*# sourceMappingURL=style.css.map */

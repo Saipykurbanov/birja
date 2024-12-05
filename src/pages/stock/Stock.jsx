@@ -4,7 +4,7 @@ import './css/stock.css';
 
 const Stock = () => {
     return (
-        <div>
+        <div className='stock'>
             
         </div>
     );

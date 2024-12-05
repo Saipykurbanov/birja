@@ -3,6 +3,8 @@ import useMain from './useMain';
 import SignIn from './pages/sigIn/SignIn';
 import Panel from './components/panel/Panel';
 import Header from './components/header/Header';
+import Stock from './pages/stock/Stock';
+import Footer from './components/footer/Footer';
 
 
 function App() {
@@ -10,30 +12,28 @@ function App() {
   const main = useMain()
 
   return (
-    <>
+    <main>
+
+      <Header auth={main.auth}/>
+
       {main.auth ? 
         <div className="main_wrapper container">
           <Router>
             
-              <Header auth={main.auth}/>
-              <Panel />
+            <Panel />
 
-              <div className="main_container">
-                <Routes>
-                    <Route path='/' element={''}/>
-                </Routes>
- 
-                {/* footer */}
-              </div>
+            <Routes>
+              <Route path='/stock' element={<Stock />}/>
+            </Routes>
 
           </Router>
         </div>
-      :<>
-        <Header auth={main.auth}/>
-        <SignIn />
-      </>}
-    </>
+      :<SignIn />}
+
+      <Footer />
+
+    </main>
   )
-}
+} 
 
 export default App
