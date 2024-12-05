@@ -55,4 +55,19 @@
         color: var(--white);
         border: 1px solid var(--white);
     }
+    &.white {
+        color: var(--white);
+    }
+    &.small {
+        width: 44px;
+        flex-shrink: 0;
+        border: 1px solid var(--blue);
+        color: var(--blue);
+        font-size: 16px;
+    }
+    &.blue_lite {
+        border: 1px solid var(--blue);
+        color: var(--blue);
+        background-color: transparent;
+    }
 }

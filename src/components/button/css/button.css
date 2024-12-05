@@ -55,4 +55,19 @@
 .main_button.lite {
   color: var(--white);
   border: 1px solid var(--white);
+}
+.main_button.white {
+  color: var(--white);
+}
+.main_button.small {
+  width: 44px;
+  flex-shrink: 0;
+  border: 1px solid var(--blue);
+  color: var(--blue);
+  font-size: 16px;
+}
+.main_button.blue_lite {
+  border: 1px solid var(--blue);
+  color: var(--blue);
+  background-color: transparent;
 }/*# sourceMappingURL=button.css.map */

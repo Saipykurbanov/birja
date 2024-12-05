@@ -1,0 +1,38 @@
+@charset "UTF-8";
+/*-------------Миксины----------------*/
+.main_input {
+  width: 100%;
+}
+.main_input label {
+  color: var(--black2);
+  font-weight: 450;
+}
+@media (max-width: 768px) {
+  .main_input label {
+    font-size: calc(16px + 6.8 * (100vw - 320px) / 1920);
+  }
+}
+@media (min-width: 768px) {
+  .main_input label {
+    font-size: calc(16px + 4 * 0.0520833333vw);
+  }
+}
+.main_input input {
+  height: 44px;
+  padding: 0 10px;
+  width: 100%;
+  border: 1px solid var(--black);
+}
+@media (max-width: 768px) {
+  .main_input input {
+    font-size: calc(14px + 3.4 * (100vw - 320px) / 1920);
+  }
+}
+@media (min-width: 768px) {
+  .main_input input {
+    font-size: calc(14px + 2 * 0.0520833333vw);
+  }
+}
+.main_input input.grey {
+  border: 1px solid var(--grey);
+}/*# sourceMappingURL=input.css.map */
