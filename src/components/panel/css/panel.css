@@ -5,7 +5,6 @@
   height: 100%;
   position: sticky;
   top: 65px;
-  height: calc(100dvh - 65px);
   overflow: auto;
   border-right: 1px solid var(--grey);
   padding: 24px 16px;
