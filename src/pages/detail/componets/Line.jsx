@@ -1,0 +1,20 @@
+import React from 'react';
+
+const Line = () => {
+    return (
+        <svg width="100%" height="1" viewBox="0 0 500 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line y1="0.5" x2="500" y2="0.5" stroke="url(#paint0_linear_279_1958)"/>
+            <defs>
+            <linearGradient id="paint0_linear_279_1958" x1="0" y1="1.5" x2="500" y2="1.5" gradientUnits="userSpaceOnUse">
+            <stop stop-color="white"/>
+            <stop offset="0.25" stop-color="#1F2022"/>
+            <stop offset="0.5" stop-color="#1F2022"/>
+            <stop offset="0.75" stop-color="#1F2022"/>
+            <stop offset="1" stop-color="white"/>
+            </linearGradient>
+            </defs>
+        </svg>
+    );
+};
+
+export default Line;

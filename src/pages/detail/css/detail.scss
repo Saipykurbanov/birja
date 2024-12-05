@@ -1,2 +1,140 @@
 @import './../../../style/common';
 
+.detail {
+    flex: 1;
+    width: 100%;
+    .detail_head {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        svg {
+            cursor: pointer;
+            @include mediaMaxWidth(700) {
+                display: none;
+            }
+        }
+        button {
+            @include adaptiveFont(22, 18);
+            span,
+            p {
+                color: var(--grey);
+            }
+            span {
+                @include mediaMaxWidth(700) {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .detail_wrapper {
+        display: grid;
+        grid-template-columns: 520fr 580fr;
+        margin-top: 0;
+        .left_panel {
+            padding: 0 10px 10px 10px;
+            .preview {
+
+            }
+            .calendar {
+
+            }
+
+            .a {
+                display: grid;
+                grid-template-columns: minmax(90px, 1fr) minmax(90px, 1fr) minmax(90px, 1fr);
+                grid-auto-rows: auto;
+                gap: 9px;
+                @include mediaMaxWidth(768) {
+                    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+                }
+            }
+            .b {
+                display: flex;
+                gap: 9px;
+                flex-wrap: wrap;
+                margin-top: 9px;
+                .main_input {
+                    flex: 1;
+                    min-width: 100px;
+                }
+                button {
+                    flex: 1;
+                    min-width: 80px;
+                }
+                &.button_block {
+                    margin-top: 24px;
+                    margin-bottom: 20px;
+                }
+            }
+            .c {
+                display: grid;
+                grid-template-columns: minmax(90px, 1fr) minmax(90px, 1fr);
+                grid-auto-rows: auto;
+                gap: 9px;
+                margin-top: 9px;
+            }
+            
+        }
+    }
+
+    .timeline {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-height: 40dvh;
+        max-height: 40dvh;
+        border: 1px solid var(--black);
+        
+        .timeline_title {
+            margin-bottom: 12px;
+            padding: 10px 10px 0 10px;
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+
+            & h3 {
+                text-transform: uppercase;
+                @include adaptiveFont(20, 16);
+                color: var(--black2);   
+                font-weight: 450;
+            }
+        }
+
+        .line {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, #FFFFFF 0%, #1F2022 25%, #1F2022 50%, #1F2022 75%, #FFFFFF 100%);
+            margin-bottom: 12px;
+        }
+
+        .timeline_list_wrapper {
+            max-width: 100%;
+            flex: 1;
+            overflow: auto;
+
+            .timeline_header {
+                display: grid;
+                grid-template-columns: minmax(283px, 1fr) minmax(326px, 1fr) minmax(321px, 1fr) minmax(154px, 1fr);
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 8px;
+                padding: 0 5px;
+            }
+
+            .timeline_list {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                padding: 0 5px;
+
+                .timeline_item {
+                    display: grid;
+                    grid-template-columns: minmax(283px, 1fr) minmax(326px, 1fr) minmax(321px, 1fr) minmax(154px, 1fr);
+                    align-items: center;
+                    gap: 12px;
+                }
+            }
+        }
+    }
+}

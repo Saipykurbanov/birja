@@ -2,11 +2,20 @@
 
 .main_input {
     width: 100%;
+    overflow: hidden;
     
     & label {
         color: var(--black2);
-        @include adaptiveFont(20, 16);
-        font-weight: 450;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        span {
+            font-weight: 450;
+            @include adaptiveFont(20, 16);
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
     }
     
     & input {

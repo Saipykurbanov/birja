@@ -105,11 +105,13 @@
   align-items: center;
   gap: 12px;
   margin-bottom: 8px;
+  padding: 0 5px;
 }
 .stock .timeline .timeline_list_wrapper .timeline_list {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  padding: 0 5px;
 }
 .stock .timeline .timeline_list_wrapper .timeline_list .timeline_item {
   display: grid;
