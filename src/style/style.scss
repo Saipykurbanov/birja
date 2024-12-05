@@ -25,6 +25,7 @@
 :root {
     --main-font: 'Futura-Pt';
     --black: #1F2022;
+    --black2: #2C2F33;
     --white: #fff;
     --blue: #374670;
     --grey: #A8A8A8;
@@ -95,6 +96,11 @@ input:-webkit-autofill:focus {
     caret-color: var(--text-color-light);
 }
 
+input::placeholder {
+    color: var(--grey);
+    @include adaptiveFont(16, 14);
+}
+
 img {
     -moz-user-select: none;
     -webkit-user-select: none;
@@ -126,5 +132,20 @@ main {
     flex: 1;
     @include mediaMaxWidth(960) {
         grid-template-columns: auto;
+    }
+}
+
+.main_container {
+    width: 100%;
+    padding-left: 10px;
+    padding-bottom: 70px;
+    @include adaptiveProperty(padding-top, 25, 22);
+
+    @include mediaMaxWidth(960) {
+        padding-left: 0;
+    }
+    @include mediaMaxWidth(768) {
+        padding-left: 0;
+        padding-bottom: 40px;
     }
 }

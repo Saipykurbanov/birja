@@ -1,2 +1,120 @@
 @import './../../../style/common';
 
+.stock {
+
+    .custom_input {
+        width: 100%;
+        margin-bottom: 12px;
+
+        & label {
+            display: block;
+            font-weight: 450;
+            @include adaptiveFont(20, 16);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .custom_input_wrapper {
+            padding: 0 10px;
+            height: 48px;
+            border: 1px solid var(--grey);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+    }
+
+    .filter_buttons {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 20px 0;
+
+        & .main_button {
+            font-size: 20px;
+            font-weight: 450;
+            white-space: nowrap;
+            padding: 0 7px;
+        }
+
+        & img {
+            margin-left: 6px;
+        }
+    }
+
+    .table_filters {
+        margin: 12px 0;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        .button_flex {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        & .main_button {
+            max-width: 202px;
+        }
+    }
+
+    .timeline {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-height: 40dvh;
+        max-height: 40dvh;
+        border: 1px solid var(--black);
+        
+        .timeline_title {
+            margin-bottom: 12px;
+            padding: 10px 10px 0 10px;
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+
+            & h3 {
+                text-transform: uppercase;
+                @include adaptiveFont(20, 16);
+                color: var(--black2);   
+                font-weight: 450;
+            }
+        }
+
+        .line {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, #FFFFFF 0%, #1F2022 25%, #1F2022 50%, #1F2022 75%, #FFFFFF 100%);
+            margin-bottom: 12px;
+        }
+
+        .timeline_list_wrapper {
+            max-width: 100%;
+            flex: 1;
+            overflow: auto;
+
+            .timeline_header {
+                display: grid;
+                grid-template-columns: minmax(283px, 1fr) minmax(326px, 1fr) minmax(321px, 1fr) minmax(154px, 1fr);
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 8px;
+            }
+
+            .timeline_list {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+
+                .timeline_item {
+                    display: grid;
+                    grid-template-columns: minmax(283px, 1fr) minmax(326px, 1fr) minmax(321px, 1fr) minmax(154px, 1fr);
+                    align-items: center;
+                    gap: 12px;
+                }
+            }
+        }
+    }
+}
