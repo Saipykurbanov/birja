@@ -20,6 +20,9 @@
 .main_button.full {
   width: 100%;
 }
+.main_button.bold {
+  font-weight: 450;
+}
 .main_button.uppercase {
   text-transform: uppercase;
 }
@@ -66,6 +69,7 @@
   font-size: 16px;
 }
 .main_button.blue_lite {
+  font-size: 22px;
   border: 1px solid var(--blue);
   color: var(--blue);
   background-color: transparent;

@@ -1,9 +1,11 @@
 @import './../../../style/common';
 
 footer {
+    position: relative;
     margin-top: auto;
     padding: 70px 0;
     background-color: var(--blue);
+    z-index: 150;
     
     @include mediaMaxWidth(768) {
         padding: 40px 0;
