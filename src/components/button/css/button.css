@@ -33,6 +33,7 @@
 .main_button.blue {
   background-color: var(--blue);
   border: 1px solid var(--blue);
+  color: var(--white);
 }
 .main_button.brown {
   background-color: var(--brown);
