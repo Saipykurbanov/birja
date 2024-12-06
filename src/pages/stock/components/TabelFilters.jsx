@@ -18,7 +18,7 @@ const TabelFilters = () => {
                 maxWidth={'202'}
             />
 
-            <Button mode={'blue_lite uppercase full blue_lite'}>Show</Button>
+            <Button mode={'blue_lite uppercase full blue_lite bold'}>Show</Button>
         </div>
     );
 };

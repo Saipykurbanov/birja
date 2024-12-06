@@ -5,6 +5,7 @@ import FilterBtns from './components/FilterBtns';
 import Table from './components/Table';
 import TabelFilters from './components/TabelFilters';
 import TimeLine from './components/TimeLine';
+import FilterPanel from './components/filter_panel/FilterPanel';
 
 
 const Stock = () => {
@@ -32,6 +33,8 @@ const Stock = () => {
             <TabelFilters />
 
             <TimeLine />
+
+            <FilterPanel />
         </div>
     );
 };

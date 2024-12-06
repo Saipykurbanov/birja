@@ -22,6 +22,10 @@
             display: flex;
             align-items: center;
             gap: 8px;
+
+            & input {
+                flex: 1;
+            }
         }
     }
 
@@ -40,7 +44,13 @@
 
         & img {
             margin-left: 6px;
+            cursor: pointer;
         }
+    }
+
+    .table_wrapper {
+        width: 100%;
+        height: 50dvh;
     }
 
     .table_filters {
@@ -91,29 +101,263 @@
         }
 
         .timeline_list_wrapper {
-            max-width: 100%;
+            padding: 0 10px;
+            width: 100%;
             flex: 1;
             overflow: auto;
 
             .timeline_header {
                 display: grid;
-                grid-template-columns: minmax(283px, 1fr) minmax(326px, 1fr) minmax(321px, 1fr) minmax(154px, 1fr);
+                grid-template-columns: minmax(270px, 1fr) minmax(310px, 1fr) minmax(290px, 1fr) minmax(154px, 1fr);
                 align-items: center;
                 gap: 12px;
                 margin-bottom: 8px;
+
+                *{
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    font-size: 16px;
+                    color: var(--black);
+                }
             }
 
             .timeline_list {
                 display: flex;
                 flex-direction: column;
-                gap: 4px;
+                gap: 5px;
 
                 .timeline_item {
                     display: grid;
-                    grid-template-columns: minmax(283px, 1fr) minmax(326px, 1fr) minmax(321px, 1fr) minmax(154px, 1fr);
+                    grid-template-columns: minmax(270px, 1fr) minmax(310px, 1fr) minmax(290px, 1fr) minmax(154px, 1fr);
                     align-items: center;
                     gap: 12px;
+                    font-size: 16px;
+
+                    .time {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        gap: 3px;
+                    }
+
+                    &:nth-child(1) {
+                        color: var(--green);
+                    }
+                    &:nth-child(2) {
+                        color: #1D7C00;
+                    }
+                    &:nth-child(3) {
+                        color: #135000;
+                    }
+                    &:nth-child(3) {
+                        color: #051400;
+                    }
                 }
+            }
+        }
+    }
+    
+    .filter_panel {
+        position: fixed;
+        overflow-y: auto;
+        top: 0px;
+        right: 0;
+        transform: translateX(100%);
+        width: 50%;
+        min-width: 550px;
+        height: 100dvh;
+        background: var(--white);
+        box-shadow: -4px 0px 4px 0px #1F202226;
+        border-left: 1px solid var(--black);
+        transition: 0.7s;
+        z-index: 145;
+        will-change: transform;
+
+        &.open {
+            transform: translateX(0);
+        }
+    
+        @include mediaMaxWidth(768) {
+            width: 100%;
+            min-width: 0;
+        }
+
+        .filter_content {
+            position: relative;
+            padding: 95px 30px 200px 30px;
+            overflow: auto;
+            height: 100%;
+
+            @include mediaMaxWidth(768) {
+                padding: 95px 30px 180px 30px;
+            }
+        }
+
+        .data_tab, .table_tab{
+            display: none;
+
+            &.active {
+                display: block;
+                animation: Open 1s forwards ease;
+            }
+        }
+
+        .tabs {
+            width: max-content;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            border-bottom: 1px solid var(--grey);
+            margin-bottom: 24px;
+
+            .tab {
+                text-transform: uppercase;
+                font-size: 24px;
+                position: relative;
+                font-weight: 450;
+                color: var(--grey);
+                line-height: 30px;
+                cursor: pointer;
+
+                &.active {
+                    color: var(--blue);
+                    
+                    &::before{
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 2px;
+                        background-color: var(--blue);
+                    }
+                }
+            }
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 450;
+            color: #000;
+            line-height: 30px;
+            margin-bottom: 12px;
+            margin-top: 24px;
+        }
+
+        .check_box_container {
+            display: grid;
+            grid-template-columns: max-content max-content;
+            gap: 6px 30px;
+            margin-bottom: 20px;
+
+            .custom_check_box {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                cursor: pointer;
+                width: max-content;
+    
+                & input {
+                    appearance: none;
+                    position: relative;
+                    width: 16px;
+                    height: 16px;
+                    border: 1px solid var(--blue);
+                    display: flex;
+                    transition: 0.3s;
+                    cursor: pointer;
+                    
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background-image: url('./icons/mark.svg');
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        width: 16px;
+                        height: 16px;
+                        opacity: 0;
+                        transition: 0.3s;
+                    }
+    
+                    &:checked{
+                        background-color: var(--blue);
+    
+                        &:after {
+                            opacity: 1;
+                        }
+                    }
+                }
+    
+                & span {
+                    display: block;
+                    font-size: 16px;
+                }
+            }
+
+            .table_check_box {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                cursor: pointer;
+                width: max-content;
+    
+                & input {
+                    appearance: none;
+                    position: relative;
+                    width: 30px;
+                    height: 16px;
+                    border: 1px solid var(--blue);
+                    display: flex;
+                    transition: 0.3s;
+                    padding: 1px;
+                    cursor: pointer;
+                    
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        left: 1px;
+                        transform: translate(0, -50%);
+                        width: 12px;
+                        height: 12px;
+                        transition: 0.3s;
+                        background-color: var(--blue);
+                    }
+    
+                    &:checked{
+                        background-color: var(--blue);
+
+                        &:after {
+                            transform: translate(14px, -50%);
+                            background-color: var(--white);
+                        }
+                    }
+                }
+    
+                & span {
+                    display: block;
+                    font-size: 16px;
+                }
+            }
+        }
+
+        .main_button {
+            max-width: 260px;
+        }
+
+        .link_block {
+            margin-top: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+
+            & a {
+                font-size: 14px;
+                text-decoration: underline;
             }
         }
     }

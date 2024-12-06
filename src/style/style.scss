@@ -72,6 +72,7 @@ html,body{
     color: var(--text-color-light);
     background: var(--background);
 }
+
 input,button,textarea{font-family:inherit;}
 
 input::-ms-clear{display: none;}
@@ -111,6 +112,29 @@ img {
     -ms-user-select: none; /* для Internet Explorer/Edge */ /* стандартное свойство */
 }
 
+body {
+    &::before {
+        content: '';
+        display: none;
+        animation: Open 1s forwards ease;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #1F202233;
+        z-index: 144;
+    }
+}
+
+body.hidden {
+    overflow: hidden;
+
+    &::before {
+        display: block;
+    }
+}
+
 main {
     padding-top: 65px;
     display: flex;
@@ -127,9 +151,11 @@ main {
 }
 
 .main_wrapper {
+    position: relative;
     display: grid;
     grid-template-columns: auto 5fr;
     flex: 1;
+
     @include mediaMaxWidth(960) {
         grid-template-columns: auto;
     }
@@ -137,6 +163,7 @@ main {
 
 .main_container {
     width: 100%;
+    overflow: hidden;
     padding-left: 10px;
     padding-bottom: 70px;
     @include adaptiveProperty(padding-top, 25, 22);
@@ -147,5 +174,14 @@ main {
     @include mediaMaxWidth(768) {
         padding-left: 0;
         padding-bottom: 40px;
+    }
+}
+
+@keyframes Open {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }

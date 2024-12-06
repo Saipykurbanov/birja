@@ -5,7 +5,7 @@ const TimelineItem = () => {
         <div className="timeline_item">
             <div className="name">Alexandr Ovchinnikov</div>
 
-            <div className="action">Added description</div>
+            <div className="action">Added description Added description Added description </div>
 
             <div className="ip_state">192.168.123.132 RU</div>
 
