@@ -2,6 +2,7 @@ import React from 'react';
 import Input from '../../../components/input/Input';
 import Line from './Line';
 import Button from '../../../components/button/Button';
+import Calendar from './Calendar';
 
 const LeftPanel = () => {
     return (
@@ -13,7 +14,7 @@ const LeftPanel = () => {
 
             <Line />
 
-            <div className="calendar"></div>
+            <Calendar />
 
             <Line />
 
