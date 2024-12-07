@@ -1,15 +1,7 @@
 @import './../../../style/common';
 
-.main_input {
+.text_area_field {
     width: 100%;
-    &.mt {
-        margin-top: 20px;
-    }
-    &.grey {
-        input {
-            border: 1px solid var(--grey);
-        }
-    }
     & label {
         color: var(--black2);
         width: 100%;
@@ -34,13 +26,9 @@
             }
         }
     }
-    
-    input {
-        height: 44px;
-        padding: 0 10px;
+
+    textarea {
         width: 100%;
         border: 1px solid var(--black);
-        @include adaptiveFont(16, 14);
     }
-
 }

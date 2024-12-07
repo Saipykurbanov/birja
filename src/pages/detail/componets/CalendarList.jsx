@@ -2,9 +2,10 @@ import React from 'react';
 
 const CalendarList = ({calendar}) => {
 
+    if(!calendar.isOpen) return null
 
     return (
-        <div className={`calendar_list ${calendar.isOpen ? 'active' : ''}`} onClick={(e) => e.stopPropagation()}>
+        <div className={`calendar_list`} onClick={(e) => e.stopPropagation()}>
             <div className="head">
                 <p>{calendar.date.currentDay}.{calendar.date.currentMonth}.{calendar.date.currentYear}</p>
                 <img src="/icons/calendar.png" alt="" />
@@ -18,7 +19,7 @@ const CalendarList = ({calendar}) => {
                 </div>
             </div>
 
-            <div className="calendar_grid" ref={calendar.calendarRef}>
+            <div className="calendar_grid">
                 {calendar.days.map((el, i) => (
                     <div className={`day ${el.weekend ? 'weekend' : ''}`}key={i}>
                         <p className="short">{el.name}</p>

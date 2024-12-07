@@ -1,0 +1,97 @@
+@charset "UTF-8";
+/*-------------Миксины----------------*/
+.drop_list_container {
+  cursor: pointer;
+}
+.drop_list_container label {
+  color: var(--black2);
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: 5px;
+}
+.drop_list_container label span {
+  font-weight: 450;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+@media (max-width: 768px) {
+  .drop_list_container label span {
+    font-size: calc(16px + 6.8 * (100vw - 320px) / 1920);
+  }
+}
+@media (min-width: 768px) {
+  .drop_list_container label span {
+    font-size: calc(16px + 4 * 0.0520833333vw);
+  }
+}
+.drop_list_container .drop_list_field {
+  position: relative;
+  height: 43px;
+  padding: 0 10px;
+  border: 1px solid var(--black);
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+.drop_list_container .drop_list_field button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.drop_list_container .drop_list_field button p {
+  font-size: 16px;
+}
+.drop_list_container .drop_list_field .drop_list {
+  position: absolute;
+  top: -1px;
+  left: -2px;
+  width: calc(100% + 4px);
+  min-width: 376px;
+  padding-bottom: 10px;
+  z-index: 10;
+  background-color: var(--white);
+  border: 2px solid var(--black);
+}
+@media screen and (max-width: 768px) {
+  .drop_list_container .drop_list_field .drop_list {
+    min-width: 340px;
+  }
+}
+.drop_list_container .drop_list_field .drop_list.right {
+  left: auto;
+  right: -2px;
+}
+.drop_list_container .drop_list_field .drop_list p {
+  height: 44px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+.drop_list_container .drop_list_field .drop_list .list {
+  max-height: 200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: auto;
+}
+.drop_list_container .drop_list_field .drop_list .list .list_item {
+  height: 21px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 10px;
+  font-size: 16px;
+}
+.drop_list_container .drop_list_field .drop_list .list .list_item.active {
+  color: var(--white);
+  background-color: var(--blue);
+}
+.drop_list_container .drop_list_field .drop_list .list .list_item:hover {
+  background-color: var(--grey);
+}/*# sourceMappingURL=drop_list.css.map */

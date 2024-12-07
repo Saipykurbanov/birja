@@ -1,22 +1,16 @@
 @charset "UTF-8";
 /*-------------Миксины----------------*/
-.main_input {
+.text_area_field {
   width: 100%;
 }
-.main_input.mt {
-  margin-top: 20px;
-}
-.main_input.grey input {
-  border: 1px solid var(--grey);
-}
-.main_input label {
+.text_area_field label {
   color: var(--black2);
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
   margin-bottom: 5px;
 }
-.main_input label span {
+.text_area_field label span {
   position: relative;
   font-weight: 450;
   white-space: nowrap;
@@ -24,17 +18,17 @@
   overflow: hidden;
 }
 @media (max-width: 768px) {
-  .main_input label span {
+  .text_area_field label span {
     font-size: calc(16px + 6.8 * (100vw - 320px) / 1920);
   }
 }
 @media (min-width: 768px) {
-  .main_input label span {
+  .text_area_field label span {
     font-size: calc(16px + 4 * 0.0520833333vw);
   }
 }
 @media screen and (min-width: 992px) {
-  .main_input label span:hover {
+  .text_area_field label span:hover {
     overflow: visible;
     text-overflow: clip;
     z-index: 10;
@@ -42,19 +36,7 @@
     padding-right: 10px;
   }
 }
-.main_input input {
-  height: 44px;
-  padding: 0 10px;
+.text_area_field textarea {
   width: 100%;
   border: 1px solid var(--black);
-}
-@media (max-width: 768px) {
-  .main_input input {
-    font-size: calc(14px + 3.4 * (100vw - 320px) / 1920);
-  }
-}
-@media (min-width: 768px) {
-  .main_input input {
-    font-size: calc(14px + 2 * 0.0520833333vw);
-  }
-}/*# sourceMappingURL=input.css.map */
+}/*# sourceMappingURL=textarea.css.map */

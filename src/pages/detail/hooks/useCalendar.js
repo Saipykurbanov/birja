@@ -70,19 +70,18 @@ export default function useCalendar() {
         12: 'Декабрь'
     }
 
-    const calendarRef = useRef(null)
     const titleRef = useRef(null)    
 
     const openPopUp = (e) => {
         e.stopPropagation()
+        setDate(prev => (
+            {...prev, month: Number(date.currentMonth), year: date.currentYear}
+        ))
         setIsOpen(true)
     }
 
     const closePopUp = () => {
         setIsOpen(false)
-        setDate(prev => (
-            {...prev, month: Number(date.currentMonth), year: date.currentYear}
-        ))
     }
 
     const getDaysInMonth = (year, month) => {
@@ -125,7 +124,7 @@ export default function useCalendar() {
     }
 
     const changeDate = (day) => {
-        return setDate(prev => (
+        setDate(prev => (
             {
                 ...prev, 
                 currentDay: day, 
@@ -133,10 +132,13 @@ export default function useCalendar() {
                 currentYear: date.year
             }
         ))
+        setIsOpen(false)
+        return
     }
 
     useEffect(() => {
-        if(calendarRef.current) {
+
+            // Проверка прилетает ли с бэка дата, если нет то текущий день
 
             let days = getDaysInMonth(date.year, date.month)
             let start = getFirstDayOfWeek(date.year, date.month)
@@ -159,9 +161,8 @@ export default function useCalendar() {
     
             setCalendarList(list)
 
-        }
 
-    }, [date.month, date.year, calendarRef])
+    }, [date.month, date.year])
 
     useEffect(() => {
 
@@ -183,7 +184,6 @@ export default function useCalendar() {
         months, 
         prevMonth,
         nextMonth, 
-        calendarRef, 
         titleRef,
         blur,
         change,
