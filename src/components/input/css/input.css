@@ -2,18 +2,27 @@
 /*-------------Миксины----------------*/
 .main_input {
   width: 100%;
+  overflow: hidden;
 }
 .main_input label {
   color: var(--black2);
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.main_input label span {
   font-weight: 450;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 @media (max-width: 768px) {
-  .main_input label {
+  .main_input label span {
     font-size: calc(16px + 6.8 * (100vw - 320px) / 1920);
   }
 }
 @media (min-width: 768px) {
-  .main_input label {
+  .main_input label span {
     font-size: calc(16px + 4 * 0.0520833333vw);
   }
 }
