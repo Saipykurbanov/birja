@@ -6,6 +6,7 @@ import Header from './components/header/Header';
 import Stock from './pages/stock/Stock';
 import Footer from './components/footer/Footer';
 import Detail from './pages/detail/Detail';
+import Dashboard from './pages/dashboard/Dashboard';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
               <Routes>
                 <Route path='/stock' element={<Stock />}/>
                 <Route path='/detail/:id' element={<Detail />}/>
+                <Route path='/dashboard' element={<Dashboard />}/>
               </Routes>
             </div>
 

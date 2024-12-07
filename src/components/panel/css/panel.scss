@@ -31,7 +31,8 @@
             max-width: 165px;
         }
     }
-    h3 {
+    h3, a {
+        display: block;
         font-size: 18px;
         @include adaptiveFont(18, 16);
         margin-bottom: 12px;

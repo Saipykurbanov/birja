@@ -8,7 +8,9 @@ const Panel = () => {
         <div className='panel'>
             <img src="/images/logo2.jpg" alt="" />
 
-            <h3>Dashboard</h3>
+            {/* <h3>Dashboard</h3> */}
+            <NavLink to={'/dashboard'}>Dashboard</NavLink>
+            
             <div className="nav">
                 <div className="nav_item active">
                     <h4>Analytic</h4>
