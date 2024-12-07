@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react"
-import Store from "../../../utils/Store"
 
 
 export default function useCalendar() {
@@ -11,12 +10,41 @@ export default function useCalendar() {
         const object = {
             month: date.getMonth() + 1,
             year: date.getFullYear(),
-            currentDay: date.getDate(),
-            currentMonth: date.getMonth() + 1,
+            currentDay: date.getDate().toString().length < 2 ? '0' + date.getDate() : date.getDate(),
+            currentMonth: (date.getMonth() + 1).toString().length < 2 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1,
             currentYear: date.getFullYear(),
         }
         return object
     })
+
+
+    const change = (value, type) => {
+        if(type === 'currentYear') {
+            if(value.length > 4) {
+                return
+            } else {
+                return setDate(prev => ({...prev, [type]: value, year: value}))
+            }
+        } else if(type === 'currentMonth') {
+            if(value.length > 2) {
+                return
+            } else {
+                return setDate(prev => ({...prev, [type]: value, month: Number(value)}))
+            }
+        } else {
+            if(value.length > 2) {
+                return
+            } else {
+                return setDate(prev => ({...prev, [type]: value}))
+            }
+        }
+    }
+
+    const blur = (value, type) => {
+        if(value.length < 2) {
+            return setDate(prev => ({...prev, [type]: `0${value}`}))
+        }
+    }
 
     const days = [
         {day: 'Понедельник', name: 'Пн'}, 
@@ -42,15 +70,19 @@ export default function useCalendar() {
         12: 'Декабрь'
     }
 
-    const timeout = useRef(null)
     const calendarRef = useRef(null)
-    const titleRef = useRef(null)
+    const titleRef = useRef(null)    
 
-    Store.useListener('calendar', setIsOpen)
+    const openPopUp = (e) => {
+        e.stopPropagation()
+        setIsOpen(true)
+    }
 
     const closePopUp = () => {
-        document.body.style.overflow = 'visible'
-        setIsOpen('close')
+        setIsOpen(false)
+        setDate(prev => (
+            {...prev, month: Number(date.currentMonth), year: date.currentYear}
+        ))
     }
 
     const getDaysInMonth = (year, month) => {
@@ -92,40 +124,59 @@ export default function useCalendar() {
         }
     }
 
+    const changeDate = (day) => {
+        return setDate(prev => (
+            {
+                ...prev, 
+                currentDay: day, 
+                currentMonth: date.month.toString().length < 2 ? '0' + date.month: date.month, 
+                currentYear: date.year
+            }
+        ))
+    }
+
     useEffect(() => {
-
-        clearTimeout(timeout.current)
-        
         if(calendarRef.current) {
-            calendarRef.current.style.opacity = '0'
 
-            timeout.current = setTimeout(() => {
-                let days = getDaysInMonth(date.year, date.month)
-                let start = getFirstDayOfWeek(date.year, date.month)
-                let list = []
-        
-                for (let i = 0; i < start; i++) {
-                    list.push(0)
-                }
-                for (let i = 1; i <= days; i++) {
+            let days = getDaysInMonth(date.year, date.month)
+            let start = getFirstDayOfWeek(date.year, date.month)
+            let list = []
+    
+            for (let i = 0; i < start; i++) {
+                list.push(0)
+            }
+            for (let i = 1; i <= days; i++) {
+                i = i.toString()
+                if(i.length < 2) {
+                    list.push(`0${i}`)
+                } else {
                     list.push(i)
                 }
-                for (let i = 1; i <= 42 - days - start; i++) {
-                    list.push(0)
-                }
-        
-                setCalendarList(list)
-                timeout.current = setTimeout(() => {
-                    calendarRef.current.style.opacity = '1'
-                }, 300)
-            }, 300)
+            }
+            for (let i = 1; i <= 42 - days - start; i++) {
+                list.push(0)
+            }
+    
+            setCalendarList(list)
+
         }
 
     }, [date.month, date.year, calendarRef])
 
+    useEffect(() => {
+
+        window.addEventListener('click', closePopUp)
+
+        return () => {
+            window.removeEventListener('click', closePopUp)
+        }
+
+    }, [])
+
     return {
         isOpen, 
-        closePopUp, 
+        openPopUp, 
+        closePopUp,
         days, 
         calendarList, 
         date, 
@@ -133,7 +184,10 @@ export default function useCalendar() {
         prevMonth,
         nextMonth, 
         calendarRef, 
-        titleRef
+        titleRef,
+        blur,
+        change,
+        changeDate
     }
 
 }

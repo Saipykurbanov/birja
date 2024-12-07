@@ -70,18 +70,22 @@
                         border: 1px solid var(--black);
                         font-size: 16px;
                         padding: 0 10px;
-                        input[type="date"] {
-                            width: 100%;
-                            font-size: 16px;
-                        }
-                        [type="date"] {
-                            background:#fff url('./../../../../public/icons/calendar.png')  101% 50% no-repeat ;
-                        }
-                        [type="date"]::-webkit-inner-spin-button {
-                            display: none;
-                        }
-                        [type="date"]::-webkit-calendar-picker-indicator {
-                            opacity: 0;
+                        .date_input {
+                            width: max-content;
+                            display: flex;
+                            align-items: end;
+                            input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+                                -webkit-appearance: none;
+                                margin: 0;
+                            }
+                            input {
+                                flex: 1;
+                                width: 16px;
+                                text-align: center;
+                                &.year {
+                                    width: 28px;
+                                }
+                            }
                         }
                         .calendar_list {
                             position: absolute;
@@ -94,6 +98,9 @@
                             padding: 10px;
                             @include adaptiveProperty(width, 375, 345);
                             display: none;
+                            &.active {
+                                display: block;
+                            }
                             .head {
                                 display: flex;
                                 justify-content: space-between;
@@ -101,9 +108,20 @@
                                 gap: 10px;
                                 font-size: 16px;
                             }
-                            .months {
-                                margin-top: 22px;
-                                margin-bottom: 24px;
+                            .control {
+                                display: flex;
+                                width: 100%;
+                                align-items: center;
+                                justify-content: space-between;
+                                .months {
+                                    margin-top: 22px;
+                                    margin-bottom: 24px;
+                                }
+                                .button_control {
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 10px;
+                                }
                             }
                             .calendar_grid {
                                 display: grid;
@@ -112,6 +130,21 @@
                                 column-gap: 18px;
                                 row-gap: 25px;
                                 padding: 7px;
+                                .calendar_item {
+                                    width: 32px;
+                                    height: 32px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    cursor: pointer;
+                                    &.active {
+                                        background-color: var(--blue);
+                                        color: var(--white);
+                                    }
+                                    &:hover {
+                                        border: 1px solid var(--blue);
+                                    }
+                                }
                             }
                         }
                     }
