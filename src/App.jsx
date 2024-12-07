@@ -19,6 +19,7 @@ function App() {
 
       {main.auth ? 
         <div className="main_wrapper container">
+
           <Router>
             
             <Panel />
@@ -31,6 +32,7 @@ function App() {
             </div>
 
           </Router>
+
         </div>
       :<SignIn />}
 

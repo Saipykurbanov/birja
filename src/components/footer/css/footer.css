@@ -1,9 +1,11 @@
 @charset "UTF-8";
 /*-------------Миксины----------------*/
 footer {
+  position: relative;
   margin-top: auto;
   padding: 70px 0;
   background-color: var(--blue);
+  z-index: 150;
 }
 @media screen and (max-width: 768px) {
   footer {
