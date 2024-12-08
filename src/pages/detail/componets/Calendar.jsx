@@ -5,8 +5,8 @@ const Calendar = () => {
 
     return (
         <div className="calendar_wrapper">
-            <CalendarItem />
-            <CalendarItem />
+            {/* <CalendarItem />
+            <CalendarItem /> */}
         </div>
     );
 };

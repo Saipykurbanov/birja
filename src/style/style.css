@@ -4,17 +4,17 @@
 @font-face {
   font-family: "Futura-Pt";
   font-weight: 400;
-  src: url("./fonts/Futura400.woff"), url("./fonts/Futura400.woff2");
+  src: url("./../../public/fonts/Futura400.woff"), url("./../../public/fonts/Futura400.woff2");
 }
 @font-face {
   font-family: "Futura-Pt";
   font-weight: 450;
-  src: url("./fonts/Futura450.woff"), url("./fonts/Futura450.woff2");
+  src: url("./../../public/fonts/Futura450.woff"), url("./../../public/fonts/Futura450.woff2");
 }
 @font-face {
   font-family: "Futura-Pt";
   font-weight: 500;
-  src: url("./fonts/Futura500.woff"), url("./fonts/Futura500.woff2");
+  src: url("./../../public/fonts/Futura500.woff"), url("./../../public/fonts/Futura500.woff2");
 }
 /*--------------*/
 :root {

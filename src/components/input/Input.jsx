@@ -3,11 +3,10 @@ import './css/input.css';
 
 const Input = ({ label, mode, placeholder, value, callback, maxWidth, type }) => {
     return (
-        <div className={`main_input`} style={{maxWidth: `${maxWidth}px`}}>
+        <div className={`main_input ${mode}`} style={{maxWidth: `${maxWidth}px`}}>
             <label htmlFor=""><span>{label}</span></label>
 
             <input 
-                className={mode}
                 type={type} 
                 value={value} 
                 placeholder={placeholder}
