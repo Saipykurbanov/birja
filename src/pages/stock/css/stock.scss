@@ -51,6 +51,15 @@
     .table_wrapper {
         width: 100%;
         height: 50dvh;
+        
+    }
+    
+    .rdg {
+        
+    }
+
+    .rdg-header-row {
+        background-color: var(--green);
     }
 
     .table_filters {
@@ -97,11 +106,11 @@
             width: 100%;
             height: 1px;
             background: linear-gradient(90deg, #FFFFFF 0%, #1F2022 25%, #1F2022 50%, #1F2022 75%, #FFFFFF 100%);
-            margin-bottom: 12px;
         }
 
         .timeline_list_wrapper {
             padding: 0 10px;
+            padding-top: 12px;
             width: 100%;
             flex: 1;
             overflow: auto;

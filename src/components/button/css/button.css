@@ -11,6 +11,7 @@
   font-size: 16px;
   border: 1px solid var(--black);
   padding: 0 10px;
+  white-space: nowrap;
 }
 .main_button.flex {
   display: flex;

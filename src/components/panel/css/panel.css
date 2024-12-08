@@ -37,22 +37,23 @@
     max-width: 165px;
   }
 }
-.panel h3 {
+.panel h3, .panel a {
+  display: block;
   font-size: 18px;
   margin-bottom: 12px;
 }
 @media (max-width: 768px) {
-  .panel h3 {
+  .panel h3, .panel a {
     font-size: calc(16px + 3.4 * (100vw - 320px) / 1920);
   }
 }
 @media (min-width: 768px) {
-  .panel h3 {
+  .panel h3, .panel a {
     font-size: calc(16px + 2 * 0.0520833333vw);
   }
 }
 @media screen and (min-width: 769px) {
-  .panel h3 {
+  .panel h3, .panel a {
     padding-left: 24px;
     margin-bottom: 8px;
   }

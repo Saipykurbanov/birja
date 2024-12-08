@@ -1,0 +1,9 @@
+@charset "UTF-8";
+/*-------------Миксины----------------*/
+.main_title {
+  font-weight: 450;
+  font-size: 20px;
+  line-height: 25.64px;
+  color: #000;
+  text-transform: uppercase;
+}/*# sourceMappingURL=title.css.map */
