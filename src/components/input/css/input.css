@@ -35,11 +35,13 @@
 }
 @media screen and (min-width: 992px) {
   .main_input label span:hover {
+    width: -moz-max-content;
+    width: max-content;
+    padding-right: 10px;
     overflow: visible;
     text-overflow: clip;
-    z-index: 10;
+    z-index: 2;
     background-color: var(--white);
-    padding-right: 10px;
   }
 }
 .main_input input {

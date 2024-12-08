@@ -109,17 +109,17 @@ export default function useCalendar() {
 
     const prevMonth = () => {
         if(date.month < 2) {
-            return setDate(prev => ({...prev, month: 12, year: prev.year - 1})) 
+            return setDate(prev => ({...prev, month: 12, year: Number(prev.year) - 1})) 
         } else {
-            return setDate(prev => ({...prev, month: prev.month - 1}))
+            return setDate(prev => ({...prev, month: Number(prev.month) - 1}))
         }
     }
 
     const nextMonth = () => {
         if(date.month > 11) {
-            return setDate(prev => ({...prev, month: 1, year: prev.year + 1}))
+            return setDate(prev => ({...prev, month: 1, year: Number(prev.year) + 1}))
         } else {
-            return setDate(prev => ({...prev, month: prev.month + 1}))
+            return setDate(prev => ({...prev, month: Number(prev.month) + 1}))
         }
     }
 
