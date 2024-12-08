@@ -39,4 +39,6 @@
 .text_area_field textarea {
   width: 100%;
   border: 1px solid var(--black);
+  resize: none;
+  padding: 10px;
 }/*# sourceMappingURL=textarea.css.map */

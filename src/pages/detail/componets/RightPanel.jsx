@@ -61,7 +61,9 @@ const RightPanel = () => {
 
             <Input type={'text'} mode={'mt'} label={'SHORT DESCRIPTION'}/>
 
-            <TextArea />
+            <TextArea label={'DESCRIPTION'} rows={13}/>
+            <TextArea label={'DESCRIPTION'} rows={7}/>
+            <TextArea label={'INFO'} rows={5}/>
         </div>
     );
 };
