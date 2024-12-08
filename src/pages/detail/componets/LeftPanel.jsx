@@ -3,14 +3,13 @@ import Input from '../../../components/input/Input';
 import Line from './Line';
 import Button from '../../../components/button/Button';
 import Calendar from './Calendar';
+import Preview from './Preview';
 
 const LeftPanel = () => {
     return (
         <div className='left_panel'>
-            <div className="preview">
-                <div className="vertical_slider"></div>
-                <div className="preview_window"></div>
-            </div>
+            
+            <Preview />
 
             <Line />
 
