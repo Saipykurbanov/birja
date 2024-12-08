@@ -4,6 +4,7 @@ import Head from './componets/Head';
 import TimeLine from './componets/TimeLine';
 import LeftPanel from './componets/LeftPanel';
 import RightPanel from './componets/RightPanel';
+import Line from './componets/Line';
 
 
 const Detail = () => {
@@ -14,6 +15,7 @@ const Detail = () => {
 
             <div className="detail_wrapper">
                 <LeftPanel />
+                <Line mode={'vertical'}/>
                 <RightPanel />
             </div>
 
