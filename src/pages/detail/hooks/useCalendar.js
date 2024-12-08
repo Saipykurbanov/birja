@@ -71,7 +71,7 @@ export default function useCalendar() {
     // Функция открытия попапа календаря
     const openPopUp = (e) => {
         e.stopPropagation() // Останавливаем всплытие события
-        if(currentDate !== '') { // Если пользователь ввёл дату
+        if(currentDate !== '' && !error) { // Если пользователь ввёл дату
             const [day, month, year] = currentDate.split('.'); // Разбираем дату
             setDate(prev => ({...prev, month: Number(month), year: year})) // Устанавливаем текущий месяц и год
         }
