@@ -1,60 +1,56 @@
 import { useEffect, useRef, useState } from "react"
 
-
 export default function useCalendar() {
 
-    const [isOpen, setIsOpen] = useState(false)
-    const [calendarList, setCalendarList] = useState([])
-    const [date, setDate] = useState(() => {
+    // Переменные состояния для управления функциональностью календаря
+    const [isOpen, setIsOpen] = useState(false) // Состояние открытия попапа календаря
+    const [calendarList, setCalendarList] = useState([]) // Список дней для отображения в календаре
+    const [date, setDate] = useState(() => { 
         const date = new Date()
         const object = {
-            month: date.getMonth() + 1,
-            year: date.getFullYear(),
-            currentDay: date.getDate().toString().length < 2 ? '0' + date.getDate() : date.getDate(),
-            currentMonth: (date.getMonth() + 1).toString().length < 2 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1,
-            currentYear: date.getFullYear(),
+            month: date.getMonth() + 1, // Текущий месяц (1-based)
+            year: date.getFullYear(),  // Текущий год
         }
         return object
     })
 
+    const [currentDate, setCurrentDate] = useState('') // Текущая введённая пользователем дата
+    const [parseDate, setParseDate] = useState({
+        day: '', // День
+        month: '', // Месяц
+        year: '' // Год
+    })
+    const [error, setError] = useState(false) // Состояние ошибки при вводе даты
 
+    // Функция для изменения даты
     const change = (value, type) => {
-        if(type === 'currentYear') {
-            if(value.length > 4) {
-                return
-            } else {
-                return setDate(prev => ({...prev, [type]: value, year: value}))
-            }
-        } else if(type === 'currentMonth') {
-            if(value.length > 2) {
-                return
-            } else {
-                return setDate(prev => ({...prev, [type]: value, month: Number(value)}))
-            }
+        setCurrentDate(value);
+    
+        const regex = /^\d{2}\.\d{2}\.\d{4}$/; // Регулярное выражение для проверки формата ДД.ММ.ГГГГ
+        if (regex.test(value)) { // Если формат даты корректен
+            let [day, month, year] = value.split('.'); // Разделяем строку на день, месяц и год
+    
+            setError(false); // Убираем ошибку
+            setParseDate({ day, month, year }); // Устанавливаем разобранные значения
+            setCurrentDate(`${day}.${month}.${year}`); // Обновляем строку текущей даты
         } else {
-            if(value.length > 2) {
-                return
-            } else {
-                return setDate(prev => ({...prev, [type]: value}))
-            }
+            setError(true); // Устанавливаем ошибку
+            setParseDate({ day: '', month: '', year: '' }); // Сбрасываем разобранные значения
         }
-    }
+    };
 
-    const blur = (value, type) => {
-        if(value.length < 2) {
-            return setDate(prev => ({...prev, [type]: `0${value}`}))
-        }
-    }
-
+    // Список дней недели
     const days = [
         {day: 'Понедельник', name: 'Пн'}, 
         {day: 'Вторник', name: 'Вт'}, 
         {day: 'Среда', name: 'Ср'}, 
         {day:  'Четверг', name: 'Чт'}, 
         {day: 'Пятница', name: 'Пт'}, 
-        {day: 'Суббота', name: 'Сб', weekend: true}, 
-        {day: 'Воскресенье', name: 'Вс', weekend: true}]
+        {day: 'Суббота', name: 'Сб', weekend: true}, // Выходной день
+        {day: 'Воскресенье', name: 'Вс', weekend: true} // Выходной день
+    ]
 
+    // Список месяцев
     const months = {
         1: 'Январь',
         2: 'Февраль',
@@ -70,108 +66,110 @@ export default function useCalendar() {
         12: 'Декабрь'
     }
 
-    const titleRef = useRef(null)    
+    const titleRef = useRef(null) // Реф для заголовка календаря    
 
+    // Функция открытия попапа календаря
     const openPopUp = (e) => {
-        e.stopPropagation()
-        setDate(prev => (
-            {...prev, month: Number(date.currentMonth), year: date.currentYear}
-        ))
-        setIsOpen(true)
+        e.stopPropagation() // Останавливаем всплытие события
+        if(currentDate !== '') { // Если пользователь ввёл дату
+            const [day, month, year] = currentDate.split('.'); // Разбираем дату
+            setDate(prev => ({...prev, month: Number(month), year: year})) // Устанавливаем текущий месяц и год
+        }
+        setIsOpen(true) // Открываем попап
     }
 
+    // Функция закрытия попапа календаря
     const closePopUp = () => {
-        setIsOpen(false)
+        setIsOpen(false) // Закрываем попап
     }
 
+    // Получение количества дней в месяце
     const getDaysInMonth = (year, month) => {
-
-        if (month === 2) {
+        if (month === 2) { // Для февраля
             return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
-                ? 29
-                : 28;
-        } else if ([4, 6, 9, 11].includes(month)) {
+                ? 29 // Високосный год
+                : 28; // Обычный год
+        } else if ([4, 6, 9, 11].includes(month)) { // Для месяцев с 30 днями
             return 30;
-        } else {
+        } else { // Для остальных месяцев
             return 31;
         }
-
     }
 
+    // Определение первого дня недели месяца
     const getFirstDayOfWeek = (year, month) => {
-        const date = new Date(year, month - 1, 1);
-        const days = date.getDay()
-        if(days === 0) {
-            return 6
+        const date = new Date(year, month - 1, 1); // Первый день месяца
+        const days = date.getDay(); // День недели (0-6)
+        if(days === 0) { // Преобразуем воскресенье (0) в последний день
+            return 6;
         }
-        return days - 1;
+        return days - 1; // Остальные дни смещаем на 1
     }
 
+    // Переключение на предыдущий месяц
     const prevMonth = () => {
-        if(date.month < 2) {
-            return setDate(prev => ({...prev, month: 12, year: Number(prev.year) - 1})) 
+        if(date.month < 2) { // Если текущий месяц — январь
+            return setDate(prev => ({...prev, month: 12, year: Number(prev.year) - 1})) // Переход на декабрь предыдущего года
         } else {
-            return setDate(prev => ({...prev, month: Number(prev.month) - 1}))
+            return setDate(prev => ({...prev, month: Number(prev.month) - 1})) // Переход на предыдущий месяц
         }
     }
 
+    // Переключение на следующий месяц
     const nextMonth = () => {
-        if(date.month > 11) {
-            return setDate(prev => ({...prev, month: 1, year: Number(prev.year) + 1}))
+        if(date.month > 11) { // Если текущий месяц — декабрь
+            return setDate(prev => ({...prev, month: 1, year: Number(prev.year) + 1})) // Переход на январь следующего года
         } else {
-            return setDate(prev => ({...prev, month: Number(prev.month) + 1}))
+            return setDate(prev => ({...prev, month: Number(prev.month) + 1})) // Переход на следующий месяц
         }
     }
 
-    const changeDate = (day) => {
-        setDate(prev => (
-            {
-                ...prev, 
-                currentDay: day, 
-                currentMonth: date.month.toString().length < 2 ? '0' + date.month: date.month, 
-                currentYear: date.year
-            }
-        ))
-        setIsOpen(false)
+    // Изменение текущей даты
+    const changeDate = (d) => {
+        let day = d // Получаем выбранный день
+        let month = (date.month).toString().length < 2 ? '0' + date.month : date.month // Добавляем ведущий ноль к месяцу, если его длина меньше 2
+        let year = date.year // Получаем текущий год
+        
+        setCurrentDate(`${day}.${month}.${year}`) // Устанавливаем строку текущей даты в формате ДД.ММ.ГГГГ
+        setParseDate({ day, month, year }) // Обновляем разобранные значения дня, месяца и года
+        setIsOpen(false) // Закрываем календарь
+        setError(false) // Сбрасываем ошибку валидации
+        
         return
-    }
+    };
 
+    // Эффект для обновления списка дней календаря при изменении месяца или года
     useEffect(() => {
 
-            // Проверка прилетает ли с бэка дата, если нет то текущий день
-
-            let days = getDaysInMonth(date.year, date.month)
-            let start = getFirstDayOfWeek(date.year, date.month)
-            let list = []
+        let days = getDaysInMonth(date.year, date.month) // Получаем количество дней в месяце
+        let start = getFirstDayOfWeek(date.year, date.month) // Первый день недели
+        let list = []
     
-            for (let i = 0; i < start; i++) {
-                list.push(0)
+        for (let i = 0; i < start; i++) { // Добавляем пустые ячейки перед первым днём месяца
+            list.push(0)
+        }
+        for (let i = 1; i <= days; i++) { // Добавляем дни месяца
+            i = i.toString()
+            if(i.length < 2) {
+                list.push(`0${i}`) // Добавляем ведущий ноль
+            } else {
+                list.push(i)
             }
-            for (let i = 1; i <= days; i++) {
-                i = i.toString()
-                if(i.length < 2) {
-                    list.push(`0${i}`)
-                } else {
-                    list.push(i)
-                }
-            }
-            for (let i = 1; i <= 42 - days - start; i++) {
-                list.push(0)
-            }
+        }
+        for (let i = 1; i <= 42 - days - start; i++) { // Заполняем остаток ячейками
+            list.push(0)
+        }
     
-            setCalendarList(list)
-
-
+        setCalendarList(list) // Устанавливаем список дней
     }, [date.month, date.year])
 
+    // Эффект для закрытия попапа при клике вне него
     useEffect(() => {
-
         window.addEventListener('click', closePopUp)
 
         return () => {
             window.removeEventListener('click', closePopUp)
         }
-
     }, [])
 
     return {
@@ -185,9 +183,10 @@ export default function useCalendar() {
         prevMonth,
         nextMonth, 
         titleRef,
-        blur,
         change,
-        changeDate
+        changeDate,
+        currentDate,
+        parseDate,
+        error
     }
-
 }
