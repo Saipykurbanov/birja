@@ -52,6 +52,9 @@
   width: 100%;
   height: 50dvh;
 }
+.stock .rdg-header-row {
+  background-color: var(--green);
+}
 .stock .table_filters {
   margin: 12px 0;
   display: flex;

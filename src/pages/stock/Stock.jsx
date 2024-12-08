@@ -2,7 +2,7 @@ import React from 'react';
 import './css/stock.css';
 import CustomInput from './components/CustomInput';
 import FilterBtns from './components/FilterBtns';
-// import Table from './components/Table';
+import Table from './components/Table';
 import TabelFilters from './components/TabelFilters';
 import TimeLine from './components/TimeLine';
 import FilterPanel from './components/filter_panel/FilterPanel';
@@ -28,7 +28,7 @@ const Stock = () => {
             
             <FilterBtns />
 
-            {/* <Table /> */}
+            <Table />
 
             <TabelFilters />
 
