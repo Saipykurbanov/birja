@@ -15,7 +15,7 @@ Api.initToken = () => {
     }
 
     if(time > new Date()) {
-        return false
+        return window.location.reload()
     }
 
     return true
