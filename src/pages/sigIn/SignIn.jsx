@@ -8,17 +8,23 @@ import Api from '../../utils/Api';
 const SignIn = () => {
 
     const [error, setError] = useState(false)
+    const [input, setInput] = useState({
+        login: undefined,
+        password: undefined
+    })
 
     const signIn = async (e) => {
         e.preventDefault()
         let res = await Api.signIn()
-
+        
         if(res === 'error') {
+            setError('Invalid username or password')
             return false
         }
-
+        
+        setError('')
         localStorage.setItem('accessToken')
-        window.location.reload()
+        return window.location.reload()
     }
 
     return (
@@ -34,6 +40,7 @@ const SignIn = () => {
                     </Button>
                 </form>
                 <a href="№">Sign In</a>
+                <div className="error">{error || ''}</div>
             </div>
         </div>
     );
