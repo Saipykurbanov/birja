@@ -15,6 +15,14 @@
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
             margin: 0;
         }
+        &.c {
+            grid-area: c;
+        }
+        &.mob {
+            @include mediaMaxWidth(768) {
+                display: none;
+            }
+        }
     }
     .detail_head {
         width: 100%;
@@ -42,56 +50,157 @@
 
     .detail_wrapper {
         display: grid;
-        grid-template-columns: 520fr 1px 580fr;
+        grid-template-columns: 520fr 1px 580fr 20px;
+        grid-template-areas: 
+            'a c d e'
+            'b c d e'
+            'b c d e'
+            'b c d e'
+            'b c d e'
+            'b c d e'
+            'b c d e'
+            'b c d e'
+            'b c d e'
+            'b c d e'
+            'b c d e'
+            'b c d e'
+        ;
         margin-top: 20px;
-        .left_panel {
-            padding: 0 10px 10px 10px;
+        padding-right: 10px;
+        gap: 10px;
+        @include mediaMaxWidth(768) {
+            display: block;
+            padding: 0;
+        }
+        .preview {
+            display: grid;
+            grid-template-columns: 93px 1px 1fr;
+            grid-auto-rows: auto;
+            gap: 10px;
+            margin-bottom: 5px;
+            grid-area: a;
             @include mediaMaxWidth(768) {
-                padding: 0;
+                display: block;
             }
-            .preview {
-                display: grid;
-                grid-template-columns: 93px 1px 1fr;
-                grid-auto-rows: auto;
+            .vertical_lots {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
                 gap: 10px;
-                margin-bottom: 5px;
-                .vertical_lots {
+                padding-top: 24px;
+                @include mediaMaxWidth(768) {
+                    display: none;
+                }
+                img {
+                    transition: 0.3s;
+                    width: 74px;
+                    cursor: pointer;
+                    border: 1px solid transparent;
+                    &.current {
+                        width: 93px;
+                    }
+                    &:hover {
+                        border: 1px solid var(--grey);
+                    }
+                }
+            }
+            .preview_lot {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                padding-top: 24px;
+                .status {
+                    width: 100%;
+                    height: 29px;
+                }
+                .main_window {
                     display: flex;
-                    flex-direction: column;
                     align-items: center;
-                    gap: 10px;
-                    padding-top: 24px;
+                    flex: 1;
                     img {
-                        width: 74px;
+                        width: 100%;
+                        min-width: 260px;
+                    }
+                }
+                .lot_images {
+                    width: 100%;
+                    display: flex;
+                    gap: 7px;
+                    img {
+                        flex: 1;
+                        width: 100%;
+                        min-width: 10px;
+                        cursor: pointer;
+                        border: 1px solid transparent;
                         &.current {
                             width: 93px;
                         }
+                        &:hover {
+                            border: 1px solid var(--grey);
+                        }
                     }
                 }
-                .preview_lot {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 12px;
-                    padding-top: 24px;
-                    .status {
+            }
+        }
+
+        .mobile_head {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 39px;
+            border-bottom: 2px solid var(--grey);
+            margin-top: 24px;
+            margin-bottom: 24px;
+            @include mediaMinWidth(769) {
+                display: none;
+            }
+            .tab {
+                text-transform: uppercase;
+                font-size: 20px;
+                padding-bottom: 5px;
+                color: var(--grey);
+                transition: 0.3s;
+                cursor: pointer;
+                font-weight: 450;
+                span {
+                    position: relative;
+                    width: max-content;
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        bottom: -4px;
+                        left: 0;
                         width: 100%;
-                        height: 29px;
+                        height: 2px;
+                        background-color: transparent;
+                        transition: 0.3s;
                     }
-                    .main_window {
-                        img {
-                            width: 100%;
-                        }
+                }
+                &::before {
+                    content: '';
+                    width: 100%;
+                }
+                &.active {
+                    color: var(--blue);
+                    span::before {
+                        background-color: var(--blue);
                     }
-                    .lot_images {
-                        width: 100%;
-                        display: flex;
-                        gap: 7px;
-                        img {
-                            flex: 1;
-                            width: 100%;
-                            min-width: 10px;
-                        }
-                    }
+                }
+                &:hover {
+                    color: var(--blue);
+                }
+            }
+        }
+
+        .left_panel {
+            grid-area: b;
+            @include mediaMaxWidth(768) {
+                display: none;
+                opacity: 0;
+                animation: Open 0.8s forwards;
+                &.open {
+                    display: block;
                 }
             }
             .calendar_wrapper {
@@ -99,12 +208,12 @@
                 display: flex;
                 align-items: center;
                 gap: 9px;
-                flex-wrap: wrap;
                 margin-top: 5px;
                 margin-bottom: 5px;
                 .calendar_field {
                     position: relative;
                     flex: 1;
+                    width: 100%;
                     .label {
                         color: var(--black2);
                         width: 100%;
@@ -135,63 +244,83 @@
                         input {
                             flex: 1;
                             font-size: 16px;
+                            width: 100%;
                         }
-                        .calendar_list {
+                        .calendar_list_wrapper {
                             position: absolute;
                             top: -1px;
                             left: -1px;
-                            width: 375px;
-                            background-color: var(--white);
-                            border: 2px solid var(--black);
                             z-index: 20;
-                            padding: 10px;
-                            .head {
-                                display: flex;
-                                justify-content: space-between;
-                                align-items: center;
-                                gap: 10px;
-                                font-size: 16px;
-                            }
-                            .control {
-                                display: flex;
+                            @include mediaMaxWidth(768) {
+                                position: fixed;
+                                top: 0;
+                                left: 0;
                                 width: 100%;
+                                height: 100%;
+                                display: flex;
                                 align-items: center;
-                                justify-content: space-between;
-                                .months {
-                                    margin-top: 22px;
-                                    margin-bottom: 24px;
+                                justify-content: center;
+                                z-index: 300;
+                                background-color: rgba(31, 32, 34, 0.2);
+                                animation: Open 0.5s forwards;
+                                opacity: 0;
+                            }
+                            .calendar_list {
+                                background-color: var(--white);
+                                border: 2px solid var(--black);
+                                padding: 10px;
+                                width: 375px;
+                                @include mediaMaxWidth(768) {
+                                    width: 343px;
                                 }
-                                .button_control {
+                                .head {
                                     display: flex;
+                                    justify-content: space-between;
                                     align-items: center;
                                     gap: 10px;
+                                    font-size: 16px;
                                 }
-                            }
-                            .calendar_grid {
-                                display: grid;
-                                grid-template-columns: repeat(7, 1fr);
-                                grid-auto-rows: auto;
-                                column-gap: 18px;
-                                row-gap: 25px;
-                                padding: 7px;
-                                @include mediaMaxWidth(768) {
-                                    column-gap: 7px;
-                                    row-gap: 20px;
-                                }
-                                .calendar_item {
-                                    width: 32px;
-                                    height: 32px;
+                                .control {
                                     display: flex;
+                                    width: 100%;
                                     align-items: center;
-                                    justify-content: center;
-                                    @include adaptiveFont(16, 14);
-                                    cursor: pointer;
-                                    &.active {
-                                        background-color: var(--blue);
-                                        color: var(--white);
+                                    justify-content: space-between;
+                                    .months {
+                                        margin-top: 22px;
+                                        margin-bottom: 24px;
                                     }
-                                    &:hover {
-                                        border: 1px solid var(--blue);
+                                    .button_control {
+                                        display: flex;
+                                        align-items: center;
+                                        gap: 10px;
+                                    }
+                                }
+                                .calendar_grid {
+                                    display: grid;
+                                    grid-template-columns: repeat(7, 1fr);
+                                    grid-auto-rows: auto;
+                                    column-gap: 18px;
+                                    row-gap: 25px;
+                                    padding: 7px;
+                                    @include mediaMaxWidth(768) {
+                                        column-gap: 7px;
+                                        row-gap: 20px;
+                                    }
+                                    .calendar_item {
+                                        width: 32px;
+                                        height: 32px;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        @include adaptiveFont(16, 14);
+                                        cursor: pointer;
+                                        &.active {
+                                            background-color: var(--blue);
+                                            color: var(--white);
+                                        }
+                                        &:hover {
+                                            border: 1px solid var(--blue);
+                                        }
                                     }
                                 }
                             }
@@ -206,9 +335,9 @@
                 grid-auto-rows: auto;
                 gap: 9px;
                 margin-top: 5px;
-                @include mediaMaxWidth(768) {
-                    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-                }
+                // @include mediaMaxWidth(768) {
+                //     grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+                // }
             }
             .b {
                 display: flex;
@@ -226,6 +355,13 @@
                 &.button_block {
                     margin-top: 24px;
                     margin-bottom: 20px;
+                    @include mediaMaxWidth(768) {
+                        flex-direction: column;
+                        button {
+                            flex: 1;
+                            min-height: 44px;
+                        }
+                    }
                 }
             }
             .c {
@@ -238,9 +374,14 @@
         }
 
         .right_panel {
-            padding: 0 10px 10px 10px;
+            grid-area: d;
             @include mediaMaxWidth(768) {
-                padding: 0;
+                display: none;
+                opacity: 0;
+                animation: Open 0.8s forwards;
+                &.open {
+                    display: block;
+                }
             }
             .text_area_field {
                 margin-top: 8px;
@@ -302,7 +443,7 @@
                 margin-top: 12px;
                 .main_input {
                     flex: 1;
-                    min-width: 70px;
+                    min-width: 80px;
                 }
             }
 
@@ -316,6 +457,42 @@
                 button {
                     flex: 1;
                 }
+                @include mediaMaxWidth(768) {
+                    flex-direction: column;
+                    margin-top: 20px;
+                }
+            }
+        }
+        .status_block {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            box-sizing: border-box;
+            grid-area: e;
+            padding-top: 23px;
+            .status_item {
+                width: 10px;
+                flex: 1;
+                cursor: pointer;
+                &.active {
+                    width: 20px;
+                }
+                &.green {
+                    background-color: var(--green2);
+                }
+                &.burgundy {
+                    background-color: var(--burgundy);
+                }
+                &.blue {
+                    background-color: var(--blue2);
+                }
+                &.violet {
+                    background-color: var(--violet);
+                }
+                &:hover {
+                    border: 2px solid var(--grey);
+                }
             }
         }
     }
@@ -327,7 +504,10 @@
         min-height: 40dvh;
         max-height: 40dvh;
         border: 1px solid var(--black);
-        
+        @include mediaMaxWidth(768) {
+            display: none;
+        }
+
         .timeline_title {
             margin-bottom: 12px;
             padding: 10px 10px 0 10px;

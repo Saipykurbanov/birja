@@ -4,9 +4,9 @@ import DropList from '../../../components/dropList/DropList';
 import Button from '../../../components/button/Button';
 import TextArea from '../../../components/textarea/TextArea';
 
-const RightPanel = () => {
+const RightPanel = ({tab}) => {
     return (
-        <div className='right_panel'>
+        <div className={`right_panel ${tab === 2 ? 'open' : ''}`}>
             <div className="a">
                 <div className="qr">
                     <label htmlFor=""><span>STOCK</span></label>
@@ -62,7 +62,7 @@ const RightPanel = () => {
             <Input type={'text'} mode={'mt'} label={'SHORT DESCRIPTION'}/>
 
             <TextArea label={'DESCRIPTION'} rows={13}/>
-            <TextArea label={'DESCRIPTION'} rows={7}/>
+            <TextArea label={'AI DESCRIPTION'} rows={7}/>
             <TextArea label={'INFO'} rows={5}/>
         </div>
     );
