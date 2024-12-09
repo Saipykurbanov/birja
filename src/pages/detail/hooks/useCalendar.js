@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 
-export default function useCalendar() {
+export default function useCalendar(currentDate, setCurrentDate) {
 
     // Переменные состояния для управления функциональностью календаря
     const [isOpen, setIsOpen] = useState(false) // Состояние открытия попапа календаря
@@ -14,7 +14,7 @@ export default function useCalendar() {
         return object
     })
 
-    const [currentDate, setCurrentDate] = useState('') // Текущая введённая пользователем дата
+
     const [parseDate, setParseDate] = useState({
         day: '', // День
         month: '', // Месяц
@@ -140,6 +140,11 @@ export default function useCalendar() {
 
     // Эффект для обновления списка дней календаря при изменении месяца или года
     useEffect(() => {
+
+        if(currentDate) {
+            let [day, month, year] = currentDate.split('.')
+            setParseDate({ day, month, year })
+        }
 
         let days = getDaysInMonth(date.year, date.month) // Получаем количество дней в месяце
         let start = getFirstDayOfWeek(date.year, date.month) // Первый день недели

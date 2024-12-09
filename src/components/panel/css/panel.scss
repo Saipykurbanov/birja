@@ -11,7 +11,7 @@
     padding: 24px 16px;
     z-index: 140;
     background-color: var(--white);
-    @include mediaMaxWidth(960) {
+    @include mediaMaxWidth(1100) {
         position: fixed;
         top: 0;
         left: 0;

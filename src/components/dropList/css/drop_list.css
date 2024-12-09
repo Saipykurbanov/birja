@@ -51,14 +51,14 @@
   left: -2px;
   width: calc(100% + 4px);
   min-width: 376px;
-  padding-bottom: 10px;
   z-index: 10;
   background-color: var(--white);
   border: 2px solid var(--black);
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 960px) {
   .drop_list_container .drop_list_field .drop_list {
-    min-width: 340px;
+    min-width: 40px;
+    width: calc(100% + 4px);
   }
 }
 .drop_list_container .drop_list_field .drop_list.right {
@@ -79,6 +79,13 @@
   flex-direction: column;
   gap: 10px;
   overflow: auto;
+  max-height: 190px;
+  padding-bottom: 10px;
+}
+@media screen and (max-width: 960px) {
+  .drop_list_container .drop_list_field .drop_list .list {
+    max-height: 100px;
+  }
 }
 .drop_list_container .drop_list_field .drop_list .list .list_item {
   height: 21px;

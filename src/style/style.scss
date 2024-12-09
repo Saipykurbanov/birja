@@ -158,7 +158,7 @@ main {
     grid-template-columns: auto 5fr;
     flex: 1;
 
-    @include mediaMaxWidth(960) {
+    @include mediaMaxWidth(1100) {
         grid-template-columns: auto;
     }
 }
@@ -170,7 +170,7 @@ main {
     padding-bottom: 70px;
     @include adaptiveProperty(padding-top, 25, 22);
 
-    @include mediaMaxWidth(960) {
+    @include mediaMaxWidth(1100) {
         padding-left: 0;
     }
     @include mediaMaxWidth(768) {

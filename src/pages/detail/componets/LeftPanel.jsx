@@ -1,17 +1,14 @@
 import React from 'react';
 import Input from '../../../components/input/Input';
-import Line from './Line';
+import Line from '../../../components/line/Line';
 import Button from '../../../components/button/Button';
 import Calendar from './Calendar';
-import Preview from './Preview';
 
-const LeftPanel = () => {
+const LeftPanel = ({tab}) => {
     return (
-        <div className='left_panel'>
-            
-            <Preview />
+        <div className={`left_panel ${tab === 1 ? 'open' : ''}`}>
 
-            <Line />
+            <Line mode={'mob'}/>
 
             <Calendar />
 

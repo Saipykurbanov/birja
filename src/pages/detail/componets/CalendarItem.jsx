@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CalendarList from './CalendarList';
 import useCalendar from '../hooks/useCalendar';
 
-const CalendarItem = () => {
+const CalendarItem = ({currentDate, setCurrentDate}) => {
 
-    const calendar = useCalendar()
+    const calendar = useCalendar(currentDate, setCurrentDate)
 
     return (
         <div className="calendar_field">
