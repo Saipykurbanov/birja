@@ -1,7 +1,8 @@
 @import './../../../style/common';
 
 .stock {
-
+    opacity: 0;
+    animation: Open 0.5s forwards;
     .custom_input {
         width: 100%;
         margin-bottom: 12px;

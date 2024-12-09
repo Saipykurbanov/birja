@@ -1,5 +1,9 @@
 @charset "UTF-8";
 /*-------------Миксины----------------*/
+.dashboard {
+  opacity: 0;
+  animation: Open 0.5s forwards;
+}
 .dashboard .line {
   width: 100%;
   height: 1px;

@@ -1,5 +1,9 @@
 @charset "UTF-8";
 /*-------------Миксины----------------*/
+.stock {
+  opacity: 0;
+  animation: Open 0.5s forwards;
+}
 .stock .custom_input {
   width: 100%;
   margin-bottom: 12px;
