@@ -1,6 +1,6 @@
 import React from 'react';
 import Input from '../../../components/input/Input';
-import Line from './Line';
+import Line from '../../../components/line/Line';
 import Button from '../../../components/button/Button';
 import Calendar from './Calendar';
 

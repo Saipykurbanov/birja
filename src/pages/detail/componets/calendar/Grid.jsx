@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Grid = ({list, days, callback, date, parse}) => {
+    
     return (
         <div className="calendar_grid">
             {days.map((el, i) => (

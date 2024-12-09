@@ -2,30 +2,8 @@
 
 .detail {
     flex: 1;
-    width: 100%;
-    .line {
-        width: 100%;
-        height: 1px;
-        background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
-        margin-top: 12px;
-        margin-bottom: 12px;
-        &.vertical {
-            width: 1px;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
-            margin: 0;
-        }
-        &.c {
-            grid-area: c;
-        }
-        &.mob {
-            @include mediaMaxWidth(768) {
-                display: none;
-            }
-        }
-    }
+
     .detail_head {
-        width: 100%;
         display: flex;
         align-items: center;
         svg {
@@ -73,14 +51,12 @@
             padding: 0;
         }
         .preview {
-            display: grid;
-            grid-template-columns: 93px 1px 1fr;
-            grid-auto-rows: auto;
-            gap: 10px;
-            margin-bottom: 5px;
             grid-area: a;
-            @include mediaMaxWidth(768) {
-                display: block;
+            @include mediaMinWidth(768) {
+                display: grid;
+                grid-template-columns: 93px 1px 1fr;
+                grid-auto-rows: auto;
+                gap: 10px;
             }
             .vertical_lots {
                 display: flex;
@@ -93,8 +69,8 @@
                     display: none;
                 }
                 img {
-                    transition: 0.3s;
                     width: 74px;
+                    transition: 0.3s;
                     cursor: pointer;
                     border: 1px solid transparent;
                     &.current {
@@ -111,31 +87,27 @@
                 gap: 12px;
                 padding-top: 24px;
                 .status {
-                    width: 100%;
                     height: 29px;
                 }
                 .main_window {
-                    display: flex;
-                    align-items: center;
-                    flex: 1;
+                    margin: auto 0;
                     img {
                         width: 100%;
                         min-width: 260px;
                     }
                 }
                 .lot_images {
-                    width: 100%;
                     display: flex;
                     gap: 7px;
+                    @include mediaMaxWidth(768) {
+                        display: none;
+                    }
                     img {
                         flex: 1;
                         width: 100%;
                         min-width: 10px;
                         cursor: pointer;
                         border: 1px solid transparent;
-                        &.current {
-                            width: 93px;
-                        }
                         &:hover {
                             border: 1px solid var(--grey);
                         }
@@ -145,10 +117,9 @@
         }
 
         .mobile_head {
-            width: 100%;
             display: flex;
             align-items: center;
-            gap: 39px;
+            gap: 9dvw;
             border-bottom: 2px solid var(--grey);
             margin-top: 24px;
             margin-bottom: 24px;
@@ -204,14 +175,11 @@
                 }
             }
             .calendar_wrapper {
-                width: 100%;
                 display: flex;
                 align-items: center;
                 gap: 9px;
                 margin-top: 5px;
-                margin-bottom: 5px;
                 .calendar_field {
-                    position: relative;
                     flex: 1;
                     width: 100%;
                     .label {
