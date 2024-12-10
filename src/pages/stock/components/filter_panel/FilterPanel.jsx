@@ -16,11 +16,11 @@ const FilterPanel = () => {
         console.log('no')
     }
 
-    useEffect(() => {
-        window.addEventListener('mousedown', () => closePanel())
+    // useEffect(() => {
+    //     window.addEventListener('mousedown', () => closePanel())
         
-        return window.removeEventListener('mousedown', () => closePanel())
-    }, [])
+    //     return window.removeEventListener('mousedown', () => closePanel())
+    // }, [])
 
     return (
         <div className={`filter_panel ${isOpen ? 'open' : ''}`} onMouseDown={(e) => e.stopPropagation()}>

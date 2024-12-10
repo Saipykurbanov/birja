@@ -1,100 +1,127 @@
 @charset "UTF-8";
 /*-------------Миксины----------------*/
-.panel {
-  min-width: 276px;
-  height: 100%;
+.panel_wrapper {
   position: sticky;
+  height: 100%;
   top: 65px;
   overflow: auto;
-  border-right: 1px solid var(--grey);
-  padding: 24px 16px;
   z-index: 140;
-  background-color: var(--white);
+  transition: 0.4s;
 }
 @media screen and (max-width: 1100px) {
-  .panel {
+  .panel_wrapper {
+    width: 100%;
     position: fixed;
     top: 0;
     left: 0;
     transform: translateX(-100%);
+    z-index: 200;
+  }
+  .panel_wrapper.open {
+    transform: translateX(0);
+  }
+}
+.panel_wrapper .panel {
+  min-width: 276px;
+  border-right: 1px solid var(--grey);
+  padding: 24px 16px;
+  background-color: var(--white);
+  height: 100%;
+}
+@media screen and (max-width: 1100px) {
+  .panel_wrapper .panel {
     padding: 65px 16px 16px 16px;
+    width: 305px;
   }
 }
 @media screen and (max-width: 768px) {
-  .panel {
+  .panel_wrapper .panel {
     z-index: 160;
     width: 305px;
     padding: 16px;
   }
 }
-.panel img {
+.panel_wrapper .panel .exit {
+  margin-bottom: 24px;
+}
+@media screen and (min-width: 1101px) {
+  .panel_wrapper .panel .exit {
+    display: none;
+  }
+}
+.panel_wrapper .panel img {
   width: 100%;
   height: auto;
   margin-bottom: 5.56dvh;
 }
+@media screen and (max-width: 1100px) {
+  .panel_wrapper .panel img {
+    margin-bottom: 24px;
+  }
+}
 @media screen and (max-width: 768px) {
-  .panel img {
+  .panel_wrapper .panel img {
     max-width: 165px;
   }
 }
-.panel h3, .panel a {
+.panel_wrapper .panel h3, .panel_wrapper .panel a {
   display: block;
   font-size: 18px;
   margin-bottom: 12px;
 }
 @media (max-width: 768px) {
-  .panel h3, .panel a {
+  .panel_wrapper .panel h3, .panel_wrapper .panel a {
     font-size: calc(16px + 3.4 * (100vw - 320px) / 1920);
   }
 }
 @media (min-width: 768px) {
-  .panel h3, .panel a {
+  .panel_wrapper .panel h3, .panel_wrapper .panel a {
     font-size: calc(16px + 2 * 0.0520833333vw);
   }
 }
 @media screen and (min-width: 769px) {
-  .panel h3, .panel a {
+  .panel_wrapper .panel h3, .panel_wrapper .panel a {
     padding-left: 24px;
     margin-bottom: 8px;
   }
 }
-.panel .nav {
+.panel_wrapper .panel .nav {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 @media screen and (max-width: 768px) {
-  .panel .nav {
+  .panel_wrapper .panel .nav {
     gap: 12px;
   }
 }
-.panel .nav .nav_item {
+.panel_wrapper .panel .nav .nav_item {
   width: 100%;
   position: relative;
   cursor: pointer;
   padding-right: 20px;
 }
 @media screen and (min-width: 769px) {
-  .panel .nav .nav_item {
+  .panel_wrapper .panel .nav .nav_item {
     padding-left: 24px;
   }
 }
-.panel .nav .nav_item h4 {
+.panel_wrapper .panel .nav .nav_item h4 {
   height: 23px;
   display: flex;
   align-items: center;
 }
 @media (max-width: 768px) {
-  .panel .nav .nav_item h4 {
+  .panel_wrapper .panel .nav .nav_item h4 {
     font-size: calc(16px + 3.4 * (100vw - 320px) / 1920);
   }
 }
 @media (min-width: 768px) {
-  .panel .nav .nav_item h4 {
+  .panel_wrapper .panel .nav .nav_item h4 {
     font-size: calc(16px + 2 * 0.0520833333vw);
   }
 }
-.panel .nav .nav_item::after {
+.panel_wrapper .panel .nav .nav_item::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -107,11 +134,11 @@
   height: 16px;
   transform: translateY(-50%);
 }
-.panel .nav .nav_item.active {
+.panel_wrapper .panel .nav .nav_item.active {
   color: var(--blue);
 }
 @media screen and (min-width: 769px) {
-  .panel .nav .nav_item.active::before {
+  .panel_wrapper .panel .nav .nav_item.active::before {
     content: "";
     position: absolute;
     left: 0;
