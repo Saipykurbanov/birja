@@ -59,4 +59,7 @@
   .main_input input {
     font-size: calc(14px + 2 * 0.0520833333vw);
   }
+}
+.main_input.input_error input {
+  border: 1px solid red;
 }/*# sourceMappingURL=input.css.map */

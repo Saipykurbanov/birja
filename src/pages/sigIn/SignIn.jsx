@@ -24,7 +24,7 @@ const SignIn = () => {
         
         setError('')
         localStorage.setItem('accessToken', res.token)
-        localStorage.setItem('timestamp', Date.now() + 7200000) //+ 2 часа
+        localStorage.setItem('timestamp', Date.now() + 43200000) //+ 12 часов
 
         return window.location.reload()
     }
@@ -35,8 +35,8 @@ const SignIn = () => {
                 <div className="logo">Logo</div>
                 <h2>Enter your login and password</h2>
                 <form action="" onSubmit={signIn}>
-                    <Input label={'LOGIN'} placeholder={'Enter login'} type={'text'} value={input.login} callback={(e) => setInput(prev => ({...prev, login: e.target.value}))}/>
-                    <Input label={'PASSWORD'} placeholder={'Enter password'} type={'password'} value={input.password} callback={(e) => setInput(prev => ({...prev, password: e.target.value}))}/>
+                    <Input mode={error ? 'input_error' : ''} label={'LOGIN'} placeholder={'Enter login'} type={'text'} value={input.login} callback={(e) => setInput(prev => ({...prev, login: e.target.value}))}/>
+                    <Input mode={error ? 'input_error' : ''} label={'PASSWORD'} placeholder={'Enter password'} type={'password'} value={input.password} callback={(e) => setInput(prev => ({...prev, password: e.target.value}))}/>
                     <Button mode={'full blue uppercase'}>
                         LOGIN
                     </Button>
