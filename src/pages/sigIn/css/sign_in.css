@@ -57,4 +57,9 @@
   font-size: 16px;
   padding-bottom: 5px;
   border-bottom: 1px solid var(--black);
+}
+.sign_in .wrapper .error {
+  height: 15px;
+  font-size: 14px;
+  color: red;
 }/*# sourceMappingURL=sign_in.css.map */
