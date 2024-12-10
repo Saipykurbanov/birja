@@ -3,6 +3,7 @@
 .dashboard {
     opacity: 0;
     animation: Open 0.5s forwards;
+
     .line {
         width: 100%;
         height: 1px;
@@ -30,7 +31,7 @@
                 cursor: pointer;
 
                 & p {
-                    font-size: 16px;
+                    @include adaptiveFont(16, 14);
                     color: var(--black);
                 }
             }
@@ -44,6 +45,8 @@
                 & .main_button {
                     max-width: 208px;
                     padding: 0 20px;
+                    min-width: 169px;
+                    
                 }
             }
 
@@ -53,15 +56,28 @@
 
                 .auction_spoiler {
                     max-width: 100%;
-                    min-width: 150px;
+                    min-width: 169px;
                     flex: 1;
                 }
 
                 .auction_buttons {
                     flex: 1;
+
                     & .main_button {
                         max-width: none;
                     }
+                }
+            }
+
+            @include mediaMaxWidth(768) {
+                .auction_buttons {
+                    flex: 1 1 100%;
+                }
+            }
+
+            @include mediaMaxWidth(600) {
+                .auction_buttons {
+                    flex-wrap: wrap;
                 }
             }
         }
@@ -104,7 +120,7 @@
 
     .tables_grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
         gap: 12px;
         margin-top: 20px;
 
@@ -137,7 +153,7 @@
                     align-items: center;
 
                     & h4 {
-                        font-size: 16px;
+                        @include adaptiveFont(16, 14);
                         color: var(--black);
                     }
                 }
@@ -147,7 +163,7 @@
                 padding: 0 10px;
                 width: 100%;
                 flex: 1;
-                overflow: hidden;
+                overflow: auto;
                 margin-top: 16px;
     
                 .table_list {
@@ -238,6 +254,7 @@
             padding: 10px 10px 0 10px;
             text-transform: uppercase;
             @include adaptiveFont(20, 16);
+            @include adaptiveProperty(margin-bottom, 12, 0);
             color: var(--black2);   
             font-weight: 450;
         }
@@ -246,11 +263,13 @@
             width: 100%;
             height: 1px;
             background: linear-gradient(90deg, #FFFFFF 0%, #1F2022 25%, #1F2022 50%, #1F2022 75%, #FFFFFF 100%);
+            @include adaptiveProperty(margin-top, 12, 6);
+            @include adaptiveProperty(margin-bottom, 12, 6);
         }
 
         .enquiries_list_wrapper {
             padding: 0 10px;
-            padding-top: 12px;
+            @include adaptiveProperty(padding-top, 12, 0);
             width: 100%;
             flex: 1;
             overflow: auto;
@@ -263,13 +282,44 @@
 
                 .enquiries_item {
                     display: grid;
-                    grid-template-columns: minmax(270px, 1fr) minmax(141px, 1fr) 416px;
+                    grid-template-columns: minmax(170px, 1fr) minmax(141px, 1fr) 416px;
                     align-items: center;
                     gap: 12px;
-                    font-size: 16px;
+                    @include adaptiveFont(16, 14);
+
+                    .name {
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                    }
 
                     .time {
                         text-align: center;
+                    }
+                }
+            }
+        }
+
+        @include mediaMaxWidth(768) {
+            min-height: 222px;
+            max-height: 222px;
+
+            .enquiries_list_wrapper {
+                overflow: hidden;
+                .enquiries_list{
+                    .enquiries_item {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 4px;
+
+                        .name {
+                            font-weight: 450;
+                        }
+                        .time {
+                            order: 3;
+                            color: var(--grey);
+                            align-self: flex-end;
+                        }
                     }
                 }
             }
@@ -278,17 +328,19 @@
 
     .shop {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
-        gap: 34px;
+        gap: 12px 34px;
         margin-top: 20px;
 
         .shop_tabs {
             display: flex;
             align-items: center;
             gap: 6px;
-            font-size: 16px;
+            @include adaptiveFont(16, 14);
 
             .shop_tab_item {
+                white-space: nowrap;
                 position: relative;
                 line-height: 20.5px;
                 cursor: pointer;
@@ -313,20 +365,31 @@
     }
 
     .total {
+        width: 100%;
         display: flex;
+        flex-wrap: wrap;
         align-items: flex-end;
         gap: 26px;
         margin-top: 24px;
 
         .input_block {
-            display: grid;
-            // grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            grid-template-columns: 1fr 1fr;
+            flex: 2;
+            // width: 100%;
+            display: flex;
             align-items: flex-end;
             gap: 12px;
 
+            & .main_input {
+                width: 100%;
+                flex: 1;
+                min-width: 150px;
+            }
+
             .total_input {
                 width: 100%;
+                min-width: 150px;
+                flex: 1;
+                flex-shrink: 1;
 
                 .total_input_wrapper {
                     width: 100%;
@@ -341,7 +404,7 @@
     
                     & input {
                         height: 100%;
-                        flex: 1;
+                        width: 100%;
                         @include adaptiveFont(16, 14);
                         color: var(--green);
                     }
@@ -350,32 +413,27 @@
         }
 
         .button_block {
+            // width: 100%;
             display: flex;
             align-items: center;
             gap: 12px;
-            flex: 1;
+            flex: 3;
 
             & .main_button {
-                max-width: 208px;
+                // max-width: 208px;
+                min-width: 169px;
                 padding: 0 20px;
             }
         }
 
-        @include mediaMaxWidth(960) {
-            flex-wrap: wrap;
-            gap: 12px;
-
-            .auction_spoiler {
-                max-width: 100%;
-                min-width: 150px;
-                flex: 1;
+        @include mediaMaxWidth(650) {
+            .input_block {
+                flex: 1 1 100%;
+                flex-direction: column;
             }
-
-            .auction_buttons {
-                flex: 1;
-                & .main_button {
-                    max-width: none;
-                }
+            .button_block {
+                flex: 1 1 100%;
+                flex-direction: column;
             }
         }
     }
