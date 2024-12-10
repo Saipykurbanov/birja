@@ -27,8 +27,6 @@ Api.signIn = async (body) => {
 
     try {
 
-        console.log(body)
-
         let res = await fetch(`${Api.url}api/users/login`, {
             method: 'POST',
             headers: {
