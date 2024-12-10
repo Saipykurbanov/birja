@@ -33,7 +33,7 @@ header {
                     background-color: var(--white);
                 }
             }
-            @include mediaMaxWidth(960) {
+            @include mediaMaxWidth(1100) {
                 display: block;
             }
             @include mediaMaxWidth(768) {

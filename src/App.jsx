@@ -7,6 +7,7 @@ import Stock from './pages/stock/Stock';
 import Footer from './components/footer/Footer';
 import Detail from './pages/detail/Detail';
 import Dashboard from './pages/dashboard/Dashboard';
+import Prefences from './components/prefences/Prefences';
 
 
 function App() {
@@ -39,6 +40,8 @@ function App() {
       :<SignIn />}
 
       <Footer />
+
+      <Prefences />
 
     </main>
   )
