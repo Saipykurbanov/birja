@@ -4,7 +4,7 @@ Api.url = 'http://185.127.225.49:8083/'
 
 Api.initToken = () => {
     let token = localStorage.getItem('accessToken')
-    let time = localStorage.getItem('time')
+    let time = localStorage.getItem('timestamp')
 
     if(token === '') {
         return false
@@ -14,8 +14,10 @@ Api.initToken = () => {
         return false
     }
 
-    if(time > new Date()) {
-        return window.location.reload()
+
+    if(time < Date.now()) {
+        Api.logout()
+        return false
     }
 
     return true
@@ -25,17 +27,21 @@ Api.signIn = async (body) => {
 
     try {
 
+        console.log(body)
+
         let res = await fetch(`${Api.url}api/users/login`, {
             method: 'POST',
-            body: JSON.stringify(body),
             headers: {
-                "Content-type": 'application/json;charset=UTF-8',
-            }
+                "Content-Type": "application/json;charset=utf-8",
+            },
+            body: JSON.stringify(body),
         })
     
-        res = await res.json()
+        if(res.status === 200) {
+            return res = await res.json()
+        }
 
-        return res
+        return 'error'
 
     } catch(e) {
         return 'error'
@@ -49,6 +55,12 @@ Api.post = async () => {
     } catch(e) {
         return 'error'
     }
+}
+
+Api.logout = () => {
+    localStorage.removeItem('accessToken')
+    localStorage.removeItem('timestamp')
+    return window.location.reload()
 }
 
 export default Api;
