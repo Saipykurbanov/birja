@@ -61,4 +61,58 @@ Api.logout = () => {
     return window.location.reload()
 }
 
+Api.asyncGet = async (path) => {
+    try {
+        let token = localStorage.getItem('accessToken')
+
+        let res = await fetch(`${Api.url}${path}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                "Content-Type": "application/json;charset=utf-8",
+            },
+        })
+
+        if(res.status === 200) {
+            return res = await res.json()
+        }
+
+        if(res.status === 401) {
+            return Api.logout()
+        }
+
+        return 'error'
+
+    } catch(e) {
+        return 'error'
+    }
+}
+
+Api.asyncPost = async (path) => {
+    try {
+        let token = localStorage.getItem('accessToken')
+
+        let res = await fetch(`${Api.url}${path}`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                "Content-Type": "application/json;charset=utf-8",
+            },
+        })
+
+        if(res.status === 200) {
+            return res = await res.json()
+        }
+
+        if(res.status === 401) {
+            return Api.logout()
+        }
+
+        return 'error'
+
+    } catch(e) {
+        return 'error'
+    }
+}
+
 export default Api;
