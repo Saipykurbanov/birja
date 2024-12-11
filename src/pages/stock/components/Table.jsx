@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
+import useStockTable from '../hooks/useStockTable';
 
 
 const Table = () => {
+
+    const table = useStockTable()
 
     const [rows, setRows] = useState([
         { id: 1, col1: '123456', qr: '/icons/qr.svg' },
@@ -29,23 +32,23 @@ const Table = () => {
       ]);
       
       const columns = [
-        { field: 'col1', headerName: 'Stock', width: 100, cellClassName: 'first' },
+        { field: 'stock', headerName: 'Stock', width: 100, cellClassName: 'first' },
         { field: 'qr', headerName: 'Qr', width: 50, cellClassName: 'first', renderCell: (params) => (
             <img src={params.value} alt=''/>
         ) },
-        { field: 'col3', headerName: 'Media', width: 77 },
-        { field: 'col4', headerName: 'Sales Channel', width: 170 },
-        { field: 'col5', headerName: 'Lot', width: 70 },
-        { field: 'col6', headerName: 'Category', width: 120 },
-        { field: 'col7', headerName: 'Region', width: 90 },
-        { field: 'col8', headerName: 'City/mint', width: 110 },
-        { field: 'col9', headerName: 'Authority', width: 130 },
-        { field: 'col10', headerName: 'Metal', width: 80 },
-        { field: 'col11', headerName: 'Description', width: 145 },
-        { field: 'col12', headerName: 'Location', width: 115 },
-        { field: 'col13', headerName: 'Date', width: 70 },
-        { field: 'col14', headerName: 'Status', width: 90 },
-        { field: 'col15', headerName: 'Status', width: 50, renderHeader: () => (
+        { field: 'media', headerName: 'Media', width: 77 },
+        { field: 'salesChanel', headerName: 'Sales Channel', width: 170 },
+        { field: 'lot', headerName: 'Lot', width: 70 },
+        { field: 'category', headerName: 'Category', width: 120 },
+        { field: 'region', headerName: 'Region', width: 90 },
+        { field: 'cityMint', headerName: 'City/mint', width: 110 },
+        { field: 'authority', headerName: 'Authority', width: 130 },
+        { field: 'metal', headerName: 'Metal', width: 80 },
+        { field: 'description', headerName: 'Description', width: 145 },
+        { field: 'location', headerName: 'Location', width: 115 },
+        { field: 'date', headerName: 'Date', width: 70 },
+        { field: 'status', headerName: 'Status', width: 90 },
+        { field: 'settings', headerName: 'Status', width: 50, renderHeader: () => (
             <img src='/icons/settings_white.svg' alt=''/>
         ) },
     ];
@@ -54,7 +57,7 @@ const Table = () => {
     return (
         <div className='table_wrapper'>
             <DataGrid 
-                rows={rows} 
+                rows={table.list} 
                 columns={columns}
                 sx={{
                     '& .MuiDataGrid-columnHeader': {
@@ -74,6 +77,7 @@ const Table = () => {
                         height: '44px !important',
                         display: 'flex',
                         alignItems: 'center',
+                        justifyContent: 'center',
                         border: '1px solid var(--black)',
                     },
                     '& .MuiDataGrid-row': {
