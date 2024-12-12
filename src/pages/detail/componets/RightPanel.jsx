@@ -21,8 +21,8 @@ const RightPanel = ({tab, role}) => {
                         </div>
                     </div>
                 </div>
-                <Input type={'text'} label={'SALE CHANNEL'} value={coin.info.saleChannel} callback={(e) => coin.change(e, 'saleChannel')}/>
-                <Input type={'text'} label={'LOT'} value={coin.info.lotNumber} callback={(e) => coin.change(e, 'lotNumber')}/>
+                <Input type={'text'} label={'SALE CHANNEL'} value={coin.info.saleChannel} callback={(e) => coin.change(e.target.value, 'saleChannel')}/>
+                <Input type={'text'} label={'LOT'} value={coin.info.lotNumber} callback={(e) => coin.change(e.target.value, 'lotNumber')}/>
             </div>
 
             <div className="b">
@@ -32,24 +32,24 @@ const RightPanel = ({tab, role}) => {
                 <DropList label={'AUTHORITY'} value={'Authority 1'} list={['Category 1', 'Category 2']} mode={'right'}/>
                 <DropList label={'CITY/MINT'} value={'City/Mint 1'} list={['Category 1', 'Category 2']}/>
                 <Input type={'text'} label={'DATE'} />
-                <Input type={'text'} label={'NOMINAL'} value={coin.info.nominal} callback={(e) => coin.change(e, 'nominal')}/>
+                <Input type={'text'} label={'NOMINAL'} value={coin.info.nominal} callback={(e) => coin.change(e.target.value, 'nominal')}/>
                 <DropList label={'METAL'} value={'AV'} list={['Category 1', 'Category 2']} mode={'right'}/>
             </div>
 
             <div className="c">
-                <Input type={'text'} label={'DIAMETR'} value={coin.info.diameterMM} callback={(e) => coin.change(e, 'diameterMM')}/>
-                <Input type={'text'} label={'WEIGHT'} value={coin.info.weightGr} callback={(e) => coin.change(e, 'weightGr')}/>
-                <Input type={'text'} label={'HEIGHT'} value={coin.info.height} callback={(e) => coin.change(e, 'height')}/>
-                <Input type={'text'} label={'ORIGIN'} value={coin.info.origin} callback={(e) => coin.change(e, 'origin')}/>
-                <Input type={'text'} label={'HS CODE'} value={coin.info.hsCode} callback={(e) => coin.change(e, 'hsCode')}/>
+                <Input type={'text'} label={'DIAMETR'} value={coin.info.diameterMM} callback={(e) => coin.change(e.target.value, 'diameterMM')}/>
+                <Input type={'text'} label={'WEIGHT'} value={coin.info.weightGr} callback={(e) => coin.change(e.target.value, 'weightGr')}/>
+                <Input type={'text'} label={'HEIGHT'} value={coin.info.height} callback={(e) => coin.change(e.target.value, 'height')}/>
+                <Input type={'text'} label={'ORIGIN'} value={coin.info.origin} callback={(e) => coin.change(e.target.value, 'origin')}/>
+                <Input type={'text'} label={'HS CODE'} value={coin.info.hsCode} callback={(e) => coin.change(e.target.value, 'hsCode')}/>
             </div>
 
             <div className="c">
-                <Input type={'text'} label={'REFERENCE 1'} value={coin.info.reference1} callback={(e) => coin.change(e, 'reference1')}/>
-                <Input type={'text'} label={'REFERENCE 1'} value={coin.info.reference2} callback={(e) => coin.change(e, 'reference2')}/>
-                <Input type={'text'} label={'REFERENCE 1'} value={coin.info.reference3} callback={(e) => coin.change(e, 'reference3')}/>
-                <Input type={'text'} label={'REFERENCE 1'} value={coin.info.reference4} callback={(e) => coin.change(e, 'reference4')}/>
-                <Input type={'text'} label={'REFERENCE 1'} value={coin.info.reference5} callback={(e) => coin.change(e, 'reference5')}/>
+                <Input type={'text'} label={'REFERENCE 1'} value={coin.info.reference1} callback={(e) => coin.change(e.target.value, 'reference1')}/>
+                <Input type={'text'} label={'REFERENCE 1'} value={coin.info.reference2} callback={(e) => coin.change(e.target.value, 'reference2')}/>
+                <Input type={'text'} label={'REFERENCE 1'} value={coin.info.reference3} callback={(e) => coin.change(e.target.value, 'reference3')}/>
+                <Input type={'text'} label={'REFERENCE 1'} value={coin.info.reference4} callback={(e) => coin.change(e.target.value, 'reference4')}/>
+                <Input type={'text'} label={'REFERENCE 1'} value={coin.info.reference5} callback={(e) => coin.change(e.target.value, 'reference5')}/>
             </div>
 
             <div className="buttons">
@@ -61,13 +61,13 @@ const RightPanel = ({tab, role}) => {
                 </Button>
             </div>
 
-            <Input type={'text'} label={'TITLE'} value={coin.info.title} callback={(e) => coin.change(e, 'title')}/>
+            <Input type={'text'} label={'TITLE'} value={coin.info.title} callback={(e) => coin.change(e.target.value, 'title')}/>
 
-            <Input type={'text'} mode={'mt'} label={'SHORT DESCRIPTION'} value={coin.info.shortDescription} callback={(e) => coin.change(e, 'shortDescription')}/>
+            <Input type={'text'} mode={'mt'} label={'SHORT DESCRIPTION'} value={coin.info.shortDescription} callback={(e) => coin.change(e.target.value, 'shortDescription')}/>
 
-            <TextArea label={'DESCRIPTION'} rows={13} value={coin.info.description} callback={(e) => coin.change(e, 'description')}/>
+            <TextArea label={'DESCRIPTION'} rows={13} value={coin.info.description} callback={(e) => coin.change(e.target.value, 'description')}/>
             <TextArea label={'AI DESCRIPTION'} rows={7}/>
-            <TextArea label={'INFO'} rows={5} value={coin.info.info} callback={(e) => coin.change(e, 'info')}/>
+            <TextArea label={'INFO'} rows={5} value={coin.info.info} callback={(e) => coin.change(e.target.value, 'info')}/>
         </div>
     );
 };

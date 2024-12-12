@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './css/drop_list.css';
 
 
-const DropList = ({value, callback, list, label, mode}) => {
+const DropList = ({value, callback, list, label, mode, field}) => {
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -42,7 +42,7 @@ const DropList = ({value, callback, list, label, mode}) => {
                     <p>{value}</p>
                     <div className="list">
                         {list?.map((el) => (
-                            <div className="list_item" onClick={() => callback(el)}>{el}</div>
+                            <div className="list_item" onClick={() => callback(el, field)}>{el}</div>
                         ))}
                     </div>
                 </div>:<></>}
