@@ -26,14 +26,14 @@ const RightPanel = ({tab, role}) => {
             </div>
 
             <div className="b">
-                <DropList label={'CATEGORY'} value={'Category 1'} list={['Category 1', 'Category 2']}/>
-                <DropList label={'REGION'} value={'Region 1'} list={['Region 1', 'Region 2']} mode={'right'}/>
-                <DropList label={'DYNASTY & SO'} value={'Authority 1'} list={['Category 1', 'Category 2']}/>
-                <DropList label={'AUTHORITY'} value={'Authority 1'} list={['Category 1', 'Category 2']} mode={'right'}/>
-                <DropList label={'CITY/MINT'} value={'City/Mint 1'} list={['Category 1', 'Category 2']}/>
+                <DropList label={'CATEGORY'} value={coin.info.category} list={['Category 1', 'Category 2']} callback={coin.change} field={'category'}/>
+                <DropList label={'REGION'} value={coin.info.region} list={['Region 1', 'Region 2']} mode={'right'} callback={coin.change} field={'region'}/>
+                <DropList label={'DYNASTY & SO'} value={coin.info.dynastyAndCo} list={['Category 1', 'Category 2']} callback={coin.change} field={'dynastyAndCo'}/>
+                <DropList label={'AUTHORITY'} value={coin.info.authority} list={['Category 1', 'Category 2']} mode={'right'} callback={coin.change} field={'authority'}/>
+                <DropList label={'CITY/MINT'} value={coin.info.cityMint} list={['Category 1', 'Category 2']} callback={coin.change} field={'cityMint'}/>
                 <Input type={'text'} label={'DATE'} />
                 <Input type={'text'} label={'NOMINAL'} value={coin.info.nominal} callback={(e) => coin.change(e.target.value, 'nominal')}/>
-                <DropList label={'METAL'} value={'AV'} list={['Category 1', 'Category 2']} mode={'right'}/>
+                <DropList label={'METAL'} value={coin.info.metal} list={['Category 1', 'Category 2']} mode={'right'} callback={coin.change} field={'metal'}/>
             </div>
 
             <div className="c">

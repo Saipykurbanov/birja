@@ -68,6 +68,7 @@ export default function useCoin({role}) {
     }, [])
 
     const change = (value, field) => {
+        console.log(value)
         if(role === 'ADMIN') {
             setInfo(prev => ({...prev, [field]: value}))
         }
