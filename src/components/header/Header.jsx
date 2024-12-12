@@ -14,7 +14,11 @@ const Header = ({auth}) => {
 
     const openPanel = (e) => {
         e.stopPropagation()
-        Store.setListener('panel', true)
+        if(auth) {
+            Store.setListener('panel', true)
+        } else {
+            Store.setListener('signInMenu', true)
+        }
     }
 
     return (
@@ -57,7 +61,7 @@ const Header = ({auth}) => {
                             </svg>
                         </Button>
                     </>}
-                    <div className="burger mobile">
+                    <div className="burger mobile" onClick={openPanel}>
                         <div className="burger_wrapper">
                             <span></span><span></span><span></span>
                         </div>

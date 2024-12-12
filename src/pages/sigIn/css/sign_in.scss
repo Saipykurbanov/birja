@@ -49,4 +49,38 @@
             color: red;
         }
     }
+
+    .sign_in_panel {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 305px;
+        height: 100%;
+        overflow: auto;
+        background-color: var(--white);
+        z-index: 300;
+        transform: translateX(-100%);
+        transition: 0.5s;
+        @include mediaMinWidth(769) {
+            display: none;
+        }
+        &.open {
+            transform: translateX(0);
+        }
+        .sign_in_panel_wrapper {
+            padding: 26px 16px 10px 16px;
+            .logo {
+                width: 187px;
+                margin-bottom: 22px;
+            }
+            p {
+                font-size: 14px;
+                margin-top: 12px;
+                margin-bottom: 26px;
+            }
+            .panel_list {
+
+            }
+        }
+    }
 }

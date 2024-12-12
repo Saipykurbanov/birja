@@ -3,6 +3,7 @@ import Button from '../../components/button/Button';
 import './css/sign_in.css';
 import Input from '../../components/input/Input';
 import Api from '../../utils/Api';
+import Panel from './components/Panel';
 
 
 const SignIn = () => {
@@ -44,6 +45,7 @@ const SignIn = () => {
                 <a href="№">Sign In</a>
                 <div className="error">{error || ''}</div>
             </div>
+            <Panel />
         </div>
     );
 };
