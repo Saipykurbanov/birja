@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Input from '../../../components/input/Input';
 import Line from '../../../components/line/Line';
 import Button from '../../../components/button/Button';
 import Calendar from './Calendar';
+import { useParams } from 'react-router-dom';
+import Api from '../../../utils/Api';
+import useSales from '../hooks/useSales';
 
 const LeftPanel = ({tab}) => {
+
+    const sales = useSales()
+
     return (
         <div className={`left_panel ${tab === 1 ? 'open' : ''}`}>
 
