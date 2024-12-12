@@ -26,11 +26,15 @@
         align-items: center;
         box-sizing: border-box;
         button {
-            display: flex;
+            display: grid;
             align-items: center;
-            justify-content: space-between;
+            grid-template-columns: 1fr auto;
             width: 100%;
             p {
+                text-align: start;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
                 font-size: 16px;
             }
         }

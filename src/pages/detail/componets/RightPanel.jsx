@@ -15,7 +15,7 @@ const RightPanel = ({tab, role}) => {
                 <div className="qr">
                     <label htmlFor=""><span>STOCK</span></label>
                     <div className="stock_field">
-                        <input type="text" />
+                        <input type="text" value={coin.info.stockNumber} onChange={(e) => coin.change(e.target.value, 'stockNumber')}/>
                         <div className="code">
                             <img src="/images/qr-code.jpg" alt="" />
                         </div>
@@ -53,10 +53,10 @@ const RightPanel = ({tab, role}) => {
             </div>
 
             <div className="buttons">
-                <Button mode={'blue_lite full'}>
+                <Button mode={'blue_lite full fz22'}>
                     HIGHLIGHTS
                 </Button>
-                <Button mode={'full brown white'}>
+                <Button mode={'full brown white full fz22'}>
                     WITHDRAW
                 </Button>
             </div>

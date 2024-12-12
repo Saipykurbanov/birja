@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import Api from "../../../utils/Api"
 
 
-export default function useCoin({role}) {
+export default function useCoin(role) {
 
     const {id} = useParams()
     const [info, setInfo] = useState({

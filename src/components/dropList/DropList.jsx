@@ -42,7 +42,7 @@ const DropList = ({value, callback, list, label, mode, field}) => {
                     <p>{value}</p>
                     <div className="list">
                         {list?.map((el, i) => (
-                            <div key={i} className="list_item" onClick={() => callback(el, field)}>{el}</div>
+                            el === value ? <></>:<div key={i} className="list_item" onClick={() => callback(el, field)}>{el}</div>
                         ))}
                     </div>
                 </div>:<></>}
