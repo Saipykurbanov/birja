@@ -1,0 +1,21 @@
+@charset "UTF-8";
+/*-------------Миксины----------------*/
+.start_loading {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 65px;
+}
+@media (max-width: 768px) {
+  .start_loading p {
+    font-size: calc(30px + 51 * (100vw - 320px) / 1920);
+  }
+}
+@media (min-width: 768px) {
+  .start_loading p {
+    font-size: calc(30px + 30 * 0.0520833333vw);
+  }
+}/*# sourceMappingURL=loading.css.map */

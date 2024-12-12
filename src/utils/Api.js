@@ -7,20 +7,20 @@ Api.initToken = () => {
     let time = localStorage.getItem('timestamp')
 
     if(token === '') {
-        return false
+        return 2
     }
 
     if(!token) {
-        return false
+        return 2
     }
 
 
     if(time < Date.now()) {
         Api.logout()
-        return false
+        return 2
     }
 
-    return true
+    return 3
 }
 
 Api.signIn = async (body) => {

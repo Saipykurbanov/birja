@@ -4,13 +4,15 @@ import Api from "./utils/Api"
 
 export default function useMain() {
 
-    const [auth, setAuth] = useState(false)
+    const [auth, setAuth] = useState(1)
 
     useEffect(() => {
 
         let init = Api.initToken()
         
-        setAuth(init)
+        setTimeout(() => {
+            setAuth(init)
+        }, 1000)
 
     }, [])
 
