@@ -9,14 +9,28 @@ export default function useDetail() {
     const [time, setTime] = useState('30')
     const timer = useRef(null)
 
-    Store.useListener('autosave', async (body) => {
+    Store.useListener('autosave', async (body, path) => {
         if(timer.current) {
             cancelAnimationFrame(timer.current)
         }
-        timerNewFunc(body)
+        timerNewFunc(body, path)
     })
 
-    const timerNewFunc = async (body) => {
+    Store.useListener('stopAutosave', (data) => {
+        if(timer.current) {
+            cancelAnimationFrame(timer.current)
+            setTime('30')
+        }
+    })
+
+    const saveNow = async () => {
+        if(timer.current) {
+            cancelAnimationFrame(timer.current)
+            setTime('30')
+        }
+    }
+
+    const timerNewFunc = async (body, path) => {
         let date = new Date().getTime();
         const finish = date + 30000;
 
@@ -25,7 +39,8 @@ export default function useDetail() {
             if (currentTime > finish) {
                 setTime('30')
                 cancelAnimationFrame(timer.current)
-                let res = await Api.asyncPut('', body)
+
+                let res = await Api.asyncPut(path, body)
 
                 if(res !== 'error') {
                     return console.log('update coin')
@@ -51,6 +66,7 @@ export default function useDetail() {
     return {
         tab,
         setTab,
-        time
+        time,
+        saveNow
     }
 }

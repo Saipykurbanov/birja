@@ -134,7 +134,8 @@ Api.asyncPut = async (path, body) => {
         }
 
         if(res.status === 401) {
-            return Api.logout()
+            // return Api.logout()
+            return console.log('')
         }
 
         return 'error'

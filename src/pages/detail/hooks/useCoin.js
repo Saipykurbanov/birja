@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import Api from "../../../utils/Api"
+import Store from "../../../utils/Store"
 
 
 export default function useCoin() {
@@ -63,6 +64,52 @@ export default function useCoin() {
         createdAt: undefined,
         updatedAt: undefined
     })
+    const [originalInfo, setOriginalInfo] = useState({
+        stockNumber: undefined,
+        saleChannel: undefined,
+        lotNumber: undefined,
+        code: undefined,
+        category: undefined,
+        region: undefined,
+        cityMint: undefined,
+        mintCoin: undefined,
+        dynastyAndCo: undefined,
+        authority: undefined,
+        nominal: undefined,
+        metal: undefined,
+        diameterMM: undefined,
+        weightGr: undefined,
+        height: undefined,
+        origin: undefined,
+        hsCode: undefined,
+        reference1: undefined,
+        reference2: undefined,
+        reference3: undefined,
+        reference4: undefined,
+        reference5: undefined,
+        condition: undefined,
+        rarity: undefined,
+        provenance: undefined,
+        title: undefined,
+        shortDescription: undefined,
+        description: undefined,
+        info: undefined,
+        craw: undefined,
+        salesAccount: undefined,
+        idPhoto: undefined,
+        photos: undefined,
+        video: undefined,
+        sold: undefined,
+        salePrice: undefined,
+        price: undefined,
+        location: undefined,
+        inWork: undefined,
+        statusId: undefined,
+        userChanged: undefined,
+        roles: undefined,
+        createdAt: undefined,
+        updatedAt: undefined
+    })
 
     useEffect(() => {
 
@@ -78,6 +125,7 @@ export default function useCoin() {
 
             if(res !== 'error' && Object.keys(res).length > 0) {
                 setInfo(res)
+                setOriginalInfo(res)
             }
 
             if(region !== 'error') {
@@ -106,7 +154,15 @@ export default function useCoin() {
 
     const change = (value, field) => {
         if(role === 'admin') {
-            setInfo(prev => ({...prev, [field]: value}))
+            setInfo((prev) => {
+                let update = {...prev, [field]: value}
+                if(value == originalInfo[field]) {
+                    Store.setListener('stopAutosave', true)
+                } else {
+                    Store.setListener('autosave', (update, `api/coins/${id}`))
+                }
+                return update
+            })
         }
 
         return

@@ -18,7 +18,7 @@ const Detail = () => {
     return (
         <div className='detail'>
             
-            <Head time={detail.time}/>
+            <Head time={detail.time} saveNow={detail.saveNow}/>
 
             <div className="detail_wrapper">
                 <Preview />
