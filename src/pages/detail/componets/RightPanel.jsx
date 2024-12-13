@@ -5,9 +5,9 @@ import Button from '../../../components/button/Button';
 import TextArea from '../../../components/textarea/TextArea';
 import useCoin from '../hooks/useCoin';
 
-const RightPanel = ({tab, role}) => {
+const RightPanel = ({tab}) => {
 
-    const coin = useCoin(role)
+    const coin = useCoin()
 
     return (
         <div className={`right_panel ${tab === 2 ? 'open' : ''}`}>
@@ -52,6 +52,7 @@ const RightPanel = ({tab, role}) => {
                 <Input type={'text'} label={'REFERENCE 1'} value={coin.info.reference5} callback={(e) => coin.change(e.target.value, 'reference5')}/>
             </div>
 
+            {coin.role === 'admin' ? 
             <div className="buttons">
                 <Button mode={'blue_lite full fz22'}>
                     HIGHLIGHTS
@@ -59,7 +60,7 @@ const RightPanel = ({tab, role}) => {
                 <Button mode={'full brown white full fz22'}>
                     WITHDRAW
                 </Button>
-            </div>
+            </div>:<></>}
 
             <Input type={'text'} label={'TITLE'} value={coin.info.title} callback={(e) => coin.change(e.target.value, 'title')}/>
 

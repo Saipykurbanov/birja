@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import Store from '../../utils/Store';
 import Button from '../button/Button';
 import Api from '../../utils/Api';
+import Settings from '../settings/Settings';
 
 
 const Panel = () => {
@@ -24,7 +25,7 @@ const Panel = () => {
     return (
         <div className={`panel_wrapper ${isOpen ? 'open' : ''}`} onClick={close}>
             <div className={`panel`} onClick={(e) => e.stopPropagation()}>
-                <img src="/images/logo2.jpg" alt="" />
+                <img src="/images/logo2.jpg" className='logo' alt="" />
                 <Button mode={'flex black white exit'} callback={() => Api.logout()}>
                     Exit
                     <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -68,8 +69,8 @@ const Panel = () => {
                     <div className="nav_item">
                         <h4>Setting</h4>
                     </div>
-
                 </div>
+                <Settings />
             </div>
         </div>
     );

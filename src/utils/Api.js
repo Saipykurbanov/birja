@@ -58,6 +58,7 @@ Api.post = async () => {
 Api.logout = () => {
     localStorage.removeItem('accessToken')
     localStorage.removeItem('timestamp')
+    localStorage.removeItem('role')
     return window.location.reload()
 }
 

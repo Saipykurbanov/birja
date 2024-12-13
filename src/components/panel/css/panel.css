@@ -4,7 +4,6 @@
   position: sticky;
   height: 100%;
   top: 65px;
-  overflow: auto;
   z-index: 140;
   transition: 0.4s;
 }
@@ -27,6 +26,7 @@
   padding: 24px 16px;
   background-color: var(--white);
   height: 100%;
+  overflow: auto;
 }
 @media screen and (max-width: 1100px) {
   .panel_wrapper .panel {
@@ -49,18 +49,18 @@
     display: none;
   }
 }
-.panel_wrapper .panel img {
+.panel_wrapper .panel .logo {
   width: 100%;
   height: auto;
   margin-bottom: 5.56dvh;
 }
 @media screen and (max-width: 1100px) {
-  .panel_wrapper .panel img {
+  .panel_wrapper .panel .logo {
     margin-bottom: 24px;
   }
 }
 @media screen and (max-width: 768px) {
-  .panel_wrapper .panel img {
+  .panel_wrapper .panel .logo {
     max-width: 165px;
   }
 }
@@ -89,6 +89,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin-bottom: 24px;
 }
 @media screen and (max-width: 768px) {
   .panel_wrapper .panel .nav {

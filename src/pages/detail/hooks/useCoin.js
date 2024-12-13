@@ -3,9 +3,14 @@ import { useParams } from "react-router-dom"
 import Api from "../../../utils/Api"
 
 
-export default function useCoin(role) {
+export default function useCoin() {
 
     const {id} = useParams()
+    const [role, setRole] = useState(() => {
+        let localRole = localStorage.getItem('role') || 'guest'
+        // return localRole
+        return 'admin'
+    })
     const [info, setInfo] = useState({
         stockNumber: undefined,
         saleChannel: undefined,
@@ -68,7 +73,7 @@ export default function useCoin(role) {
     }, [])
 
     const change = (value, field) => {
-        if(role === 'ADMIN') {
+        if(role === 'admin') {
             setInfo(prev => ({...prev, [field]: value}))
         }
 
@@ -77,6 +82,7 @@ export default function useCoin(role) {
 
     return {
         info,
-        change
+        change,
+        role
     }
 }

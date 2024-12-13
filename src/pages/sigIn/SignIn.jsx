@@ -27,6 +27,12 @@ const SignIn = () => {
         localStorage.setItem('accessToken', res.token)
         localStorage.setItem('timestamp', Date.now() + 43200000) //+ 12 часов
 
+        if(res.user.isAdmin) {
+            localStorage.setItem('role', 'admin')
+        } else {
+            localStorage.setItem('role', JSON.stringify(res.user.roles))
+        }
+
         return window.location.reload()
     }
 

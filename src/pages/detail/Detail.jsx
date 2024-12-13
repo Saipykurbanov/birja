@@ -9,15 +9,11 @@ import StatusBlock from './componets/StatusBlock';
 import Preview from './componets/Preview';
 import MobileHead from './componets/MobileHead';
 import useDetail from './hooks/useDeatil';
-import Store from '../../utils/Store';
-
+import MobilePanel from './componets/MobilePanel';
 
 const Detail = () => {
 
     const detail = useDetail()
-
-    const [role, setRole] = useState('ADMIN')
-    Store.useListener('roleDetail', setRole)
 
     return (
         <div className='detail'>
@@ -29,8 +25,10 @@ const Detail = () => {
                 <MobileHead tab={detail.tab} callback={detail.setTab}/>
                 <LeftPanel tab={detail.tab}/>
                 <Line mode={'vertical c'}/>
-                <RightPanel role={role} tab={detail.tab}/>
+                <RightPanel tab={detail.tab}/>
                 <StatusBlock />
+
+                <MobilePanel />
             </div>
 
             <Line />
