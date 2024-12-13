@@ -6,6 +6,7 @@ import Table from './components/Table';
 import TabelFilters from './components/TabelFilters';
 import TimeLine from './components/TimeLine';
 import FilterPanel from './components/filter_panel/FilterPanel';
+import CustomTable from './components/custom_table/CustomTable';
 
 
 const Stock = () => {
@@ -28,9 +29,9 @@ const Stock = () => {
             
             <FilterBtns />
 
-            <Table />
+            <CustomTable />
 
-            {/* <TabelFilters /> */}
+            {/* <Table /> */}
 
             <TimeLine />
 

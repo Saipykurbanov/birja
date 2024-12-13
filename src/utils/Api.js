@@ -98,7 +98,7 @@ Api.asyncPost = async (path,body) => {
                 'Authorization': `Bearer ${token}`,
                 "Content-Type": "application/json;charset=utf-8",
             },
-            body: JSON.stringify(body)б
+            body: JSON.stringify(body)
         })
 
         if(res.status === 200) {
