@@ -10,10 +10,12 @@ import Preview from './componets/Preview';
 import MobileHead from './componets/MobileHead';
 import useDetail from './hooks/useDeatil';
 import MobilePanel from './componets/MobilePanel';
+import useCoin from './hooks/useCoin';
 
 const Detail = () => {
 
     const detail = useDetail()
+    const coin = useCoin()
 
     return (
         <div className='detail'>
@@ -21,12 +23,12 @@ const Detail = () => {
             <Head lastTime={detail.lastTime} time={detail.time} saveNow={detail.saveNow}/>
 
             <div className="detail_wrapper">
-                <Preview />
+                <Preview statusid={coin.info.statusId} idPhoto={coin.info.idPhoto} photos={coin.info.photos}/>
                 <MobileHead tab={detail.tab} callback={detail.setTab}/>
                 <LeftPanel tab={detail.tab}/>
                 <Line mode={'vertical c'}/>
-                <RightPanel tab={detail.tab}/>
-                <StatusBlock />
+                <RightPanel tab={detail.tab} coin={coin}/>
+                <StatusBlock statusId={coin.info.statusId}/>
 
                 <MobilePanel />
             </div>

@@ -9,12 +9,14 @@ export default function useDetail() {
     const [tab, setTab] = useState(1)
     const [time, setTime] = useState('30')
     const [lastTime, setLastTime] = useState('')
+    const [obj, setObj] = useState({})
     const timer = useRef(null)
 
     Store.useListener('autosave', async (obj) => {
         if(timer.current) {
             cancelAnimationFrame(timer.current)
         }
+        setObj(obj)
         timerNewFunc(obj.data, obj.path)
     })
 
@@ -30,6 +32,13 @@ export default function useDetail() {
         if(timer.current) {
             cancelAnimationFrame(timer.current)
             setTime('30')
+            let res = await Api.asyncPut(obj.path, obj.data)
+
+            if(res !== 'error') {
+                setLastTime(utils.formatDate())
+                setObj({})
+                return
+            }
         }
     }
 
@@ -42,6 +51,7 @@ export default function useDetail() {
             if (currentTime > finish) {
                 setTime('30')
                 cancelAnimationFrame(timer.current)
+                stop.current = false
 
                 let res = await Api.asyncPut(path, body)
 
@@ -49,7 +59,6 @@ export default function useDetail() {
                     setLastTime(utils.formatDate())
                     return
                 }
-
 
             } else {
                 setTime(((finish - currentTime) / 1000).toFixed(0));

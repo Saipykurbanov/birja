@@ -100,6 +100,9 @@
 .detail .detail_wrapper .preview .preview_lot .status {
   height: 29px;
 }
+.detail .detail_wrapper .preview .preview_lot .status.color4 {
+  background-color: var(--green);
+}
 .detail .detail_wrapper .preview .preview_lot .main_window {
   margin: auto 0;
 }

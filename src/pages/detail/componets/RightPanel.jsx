@@ -3,11 +3,8 @@ import Input from '../../../components/input/Input';
 import DropList from '../../../components/dropList/DropList';
 import Button from '../../../components/button/Button';
 import TextArea from '../../../components/textarea/TextArea';
-import useCoin from '../hooks/useCoin';
 
-const RightPanel = ({tab}) => {
-
-    const coin = useCoin()
+const RightPanel = ({tab, coin}) => {
 
     return (
         <div className={`right_panel ${tab === 2 ? 'open' : ''}`}>

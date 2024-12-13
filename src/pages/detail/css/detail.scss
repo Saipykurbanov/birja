@@ -92,6 +92,9 @@
                 }
                 .status {
                     height: 29px;
+                    &.color4 {
+                        background-color: var(--green);
+                    }
                 }
                 .main_window {
                     margin: auto 0;
