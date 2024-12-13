@@ -1,7 +1,13 @@
 import React from 'react';
 import Button from '../../../components/button/Button';
+import Store from '../../../utils/Store';
 
-const Head = () => {
+const Head = ({time}) => {
+
+    const save = () => {
+        Store.setListener('autosave', 'hi')
+    }
+
     return (
         <div className='detail_head'>
 
@@ -9,9 +15,9 @@ const Head = () => {
                 <path d="M31.0005 38L17.0005 24L31.0005 10" stroke="#1F2022" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
 
-            <Button mode={'full blue'}>
+            <Button mode={'full blue'} callback={save}>
                 SAVE
-                <span>(Autosave 30 sec) - </span>
+                <span>(Autosave {time} sec) - </span>
                 <p>[12.03.202 11:23 PM]</p>
             </Button>
 
