@@ -33,17 +33,6 @@
     font-size: calc(16px + 4 * 0.0520833333vw);
   }
 }
-@media screen and (min-width: 992px) {
-  .main_input label span:hover {
-    width: -moz-max-content;
-    width: max-content;
-    padding-right: 10px;
-    overflow: visible;
-    text-overflow: clip;
-    z-index: 2;
-    background-color: var(--white);
-  }
-}
 .main_input input {
   height: 44px;
   padding: 0 10px;

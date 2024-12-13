@@ -4,7 +4,7 @@ import './css/input.css';
 const Input = ({ label, mode, placeholder, value, callback, maxWidth, type }) => {
     return (
         <div className={`main_input ${mode}`} style={{maxWidth: `${maxWidth}px`}}>
-            <label htmlFor=""><span>{label}</span></label>
+            <label title={label} htmlFor=""><span>{label}</span></label>
 
             <input 
                 type={type} 

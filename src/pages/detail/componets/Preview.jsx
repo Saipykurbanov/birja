@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Line from '../../../components/line/Line';
 import Button from '../../../components/button/Button';
 import Api from '../../../utils/Api';
+import MainSlider from './MainSlider';
+import HorizontalSlider from './HorizontalSlider';
 
 const Preview = ({idPhoto, photos, statusid}) => {
+
+    const main = useRef(null)
+    const horiz = useRef(null)
+
+    useEffect(() => {
+        if(main.current && horiz.current) {
+            main.current.sync(horiz.current.splide);
+        }
+    }, [main, horiz]);
+
     return (
         <div className="preview">
             
@@ -22,17 +34,10 @@ const Preview = ({idPhoto, photos, statusid}) => {
             <div className="preview_lot">
 
                 <div className={`status color${statusid}`} style={{background: '#1E3F05'}}></div>
-                <div className="main_window">
-                    <img src={`${Api.url2}20000/${idPhoto}`} alt="" />
-                </div>
 
-                <div className="lot_images">
-                    {photos?.length ? 
-                        photos.map((el) => (
-                            <img src={`${Api.url2}20000/${el}`} alt="" />
-                        ))
-                    :<></>}
-                </div>
+                <MainSlider main={main} photos={['1', '2', '3']}/>
+
+                <HorizontalSlider horiz={horiz} photos={['1', '2', '3']}/>
 
                 <Button mode={'full'}>
                     <img src="/icons/Vimeo.svg" alt="" />

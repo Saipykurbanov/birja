@@ -9,6 +9,7 @@ footer {
     
     @include mediaMaxWidth(768) {
         padding: 40px 0;
+        z-index: 0;
     }
 
     .container {
