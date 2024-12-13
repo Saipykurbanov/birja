@@ -30,7 +30,7 @@ const Stock = () => {
 
             <Table />
 
-            <TabelFilters />
+            {/* <TabelFilters /> */}
 
             <TimeLine />
 

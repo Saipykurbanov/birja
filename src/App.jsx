@@ -28,7 +28,7 @@ function App() {
 
             <div className="main_container">
               <Routes>
-                <Route path='/stock' element={<Stock />}/>
+                <Route path='/' element={<Stock />}/>
                 <Route path='/detail/:id' element={<Detail />}/>
                 <Route path='/dashboard' element={<Dashboard />}/>
               </Routes>

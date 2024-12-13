@@ -6,6 +6,16 @@ export default function useStockTable () {
     const [list, setList] = useState(false)
     const [error, setError] = useState(false)
 
+    const closeCellMenus = () => {
+        const findActive = document.querySelectorAll('.cell_menu')
+
+        findActive.forEach(el => {
+            if(el.classList.contains('active')) {
+                el.classList.remove('active')
+            } 
+        })
+    }
+
     useEffect(() => {
         (async () => {
             let init = await Api.asyncGet('api/coins/')
@@ -33,6 +43,8 @@ export default function useStockTable () {
                 }
             }))
         })()
+
+        window.addEventListener('click', closeCellMenus)
     }, [])
 
     return {
