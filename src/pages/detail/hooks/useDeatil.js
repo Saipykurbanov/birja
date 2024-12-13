@@ -23,6 +23,8 @@ export default function useDetail() {
         }
     })
 
+
+    // Доделать
     const saveNow = async () => {
         if(timer.current) {
             cancelAnimationFrame(timer.current)
