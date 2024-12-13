@@ -87,47 +87,19 @@
 .stock .table_wrapper .settings_cell {
   overflow: visible;
 }
-.stock .table_wrapper .cell_menu {
-  position: relative;
+.stock .table_filters {
+  flex-shrink: 0;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 3px;
-  width: 50px;
-  height: 44px;
-  cursor: pointer;
+  gap: 20px;
 }
-.stock .table_wrapper .cell_menu span {
-  display: block;
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background-color: var(--black);
-}
-.stock .table_wrapper .cell_menu .cell_menu_list {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  width: 134px;
-  background-color: var(--white);
-  z-index: 10;
-  border: 2px solid var(--black);
-  display: none;
-  flex-direction: column;
-  gap: 10px;
-  padding: 5px 0;
-}
-.stock .table_wrapper .cell_menu .cell_menu_list p {
-  line-height: 20.51px;
-  padding: 0 10px;
-}
-.stock .table_wrapper .cell_menu .cell_menu_list p.active {
-  background-color: var(--blue);
-  color: var(--white);
-}
-.stock .table_wrapper .cell_menu.active .cell_menu_list {
+.stock .table_filters .button_flex {
   display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.stock .table_filters .main_button {
+  max-width: 202px;
 }
 .stock .timeline {
   margin-top: 12px;

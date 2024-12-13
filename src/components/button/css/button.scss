@@ -76,11 +76,38 @@
         border: 1px solid var(--blue);
         color: var(--blue);
         font-size: 16px;
+
+        &.active {
+            background-color: var(--blue);
+            color: var(--white);
+        }
+
+        @include mediaMinWidth(992) {
+            &:hover {
+                background-color: var(--blue);
+                color: var(--white);
+    
+                & svg * {
+                    fill: var(--white);
+                }
+            }
+        }
     }
     &.blue_lite {
         font-size: 22px;
         border: 1px solid var(--blue);
         color: var(--blue);
         background-color: transparent;
+
+        @include mediaMinWidth(992) {
+            &:hover {
+                background-color: var(--blue);
+                color: var(--white);
+    
+                & svg * {
+                    fill: var(--white);
+                }
+            }
+        }
     }
 }

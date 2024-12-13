@@ -1,0 +1,357 @@
+@import './../../../../../style/common';
+
+.custom_table {
+    position: relative;
+    width: 100%;
+    overflow: auto;
+    min-height: 50dvh;
+    max-height: 50dvh;
+    height: 50dvh;
+
+    .custom_table_header {
+        position: sticky;
+        border: 1px solid var(--black);
+        border-right: 0;
+        display: flex;
+        width: max-content;
+        top: 0;
+        z-index: 10;
+
+        * {
+            position: relative;
+            flex-shrink: 0;
+            border-right: 1px solid var(--black);
+            background: var(--brown2);
+            font-size: 18px;
+            color: var(--white);
+            text-transform: uppercase;
+            padding: 10px;
+            height: 44px;
+            text-align: center;
+            line-height: 23.08px;
+            font-weight: 450;
+            cursor: pointer;
+        }
+
+        .arrow {
+            &::after {
+                content: '';
+                position: absolute;
+                display: none;
+                right: 0;
+                top: 50%;
+                width: 10px;
+                height: 20px;
+                transform: translateY(-50%);
+                background-image: url('/icons/white_arrow.svg');
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            @include mediaMinWidth(992) {
+                &:hover:after {
+                    display: block;
+                }
+            }
+
+            &.ASC {
+                &::after {
+                    display: block;
+                }
+            }
+
+            &.DESC {
+                &::after {
+                    display: block;
+                    transform: translateY(-50%) rotate(180deg);
+                }
+            }
+        }
+
+        .stock {
+            width: 100px;
+            border-right: 0;
+            text-align: left;
+        }
+
+        .qr {
+            width: 50px;
+        }
+
+        .media {
+            width: 77px;
+        }
+
+        .sales_chanel {
+            width: 170px;
+        }
+
+        .lot {
+            width: 70px;
+        }
+
+        .category {
+            width: 120px;
+        }
+
+        .region {
+            width: 90px;
+        }
+
+        .city_mint {
+            width: 110px;
+        }
+        .authority {
+            width: 130px;
+        }
+
+        .metal {
+            width: 120px;
+        }
+
+        .description {
+            width: 145px;
+        }
+
+        .location {
+            width: 115px;
+        }
+
+        .date {
+            width: 70px;
+        }
+
+        .status {
+            width: 90px;
+        }
+
+        .settings {
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+
+            & img {
+                padding: 0;
+                max-width: 30px;
+                height: 30px;
+                border-right: 0;
+                background: transparent;
+            }
+        }
+    }
+
+    .custom_table_list {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        
+        width: max-content;
+        // overflow-y: auto;
+
+        .custom_table_item {
+            display: flex;
+            width: max-content;
+            border-left: 1px solid var(--black);
+            border-bottom: 1px solid var(--black);
+
+            .all {
+                position: relative;
+                flex-shrink: 0;
+                border-right: 1px solid var(--black);
+                font-size: 16px;
+                color: var(--black);
+                padding: 10px;
+                height: 44px;
+                text-align: center;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+    
+            .stock {
+                width: 100px;
+                border-right: 0;
+                background: #DFDFDF;
+                text-align: left;
+            }
+    
+            .qr {
+                width: 50px;
+                background: #DFDFDF;
+            }
+    
+            .media {
+                width: 77px;
+            }
+    
+            .sales_chanel {
+                width: 170px;
+            }
+    
+            .lot {
+                width: 70px;
+            }
+    
+            .category {
+                width: 120px;
+            }
+    
+            .region {
+                width: 90px;
+            }
+    
+            .city_mint {
+                width: 110px;
+            }
+            .authority {
+                width: 130px;
+            }
+    
+            .metal {
+                width: 120px;
+            }
+    
+            .description {
+                width: 145px;
+            }
+    
+            .location {
+                width: 115px;
+            }
+    
+            .date {
+                width: 70px;
+            }
+    
+            .status {
+                width: 90px;
+
+                &.color0 {
+                    // background-color: ;
+                }
+                &.color1 {
+                    background-color: var(--green);
+                }
+                &.color2 {
+                    background-color: yellow;
+                }
+                &.color3 {
+                    background-color: var(--red);
+                }
+                &.color4 {
+                    background-color: var(--green2);
+                }
+                &.color5 {
+                    background-color: rgba(137, 43, 226, 0.655);
+                }
+                &.color6 {
+                    background-color: rgba(58, 36, 0, 0.623);
+                }
+            }
+    
+            .settings {
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 50px;
+                overflow: visible;
+    
+                & img {
+                    padding: 0;
+                    max-width: 30px;
+                    height: 30px;
+                    border-right: 0;
+                    background: transparent;
+                }
+
+                
+            }
+
+            &:nth-last-child(-n+4) .settings .cell_menu .cell_menu_list {
+                top: unset;
+                bottom: 100%;
+            }
+        }
+    }
+}
+
+.pagination_flex {
+    display: flex;
+    margin: 12px 0;
+}
+
+.custom_table_pagination {
+    display: flex;
+    align-items: flex-end;
+    font-weight: 450;
+    width: 100%;
+    justify-content: flex-end;
+    font-size: 20px;
+    gap: 8px;
+
+    .page{
+        margin-bottom: 5px;
+        margin-right: 10px;
+    }
+}
+
+.cell_menu {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    width: 50px;
+    height: 44px;
+    cursor: pointer;
+
+    & span {
+        display: block;
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background-color: var(--black);
+    }
+
+    .cell_menu_list {
+        position: absolute;
+        top: 100%;
+        right: -1px;
+        width: 134px;
+        background-color: var(--white);
+        z-index: 10;
+        border: 2px solid var(--black);
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        padding: 5px 0;
+
+        & p {
+            line-height: 20.51px;
+            padding: 0 10px;
+            
+            &.active {
+                background-color: var(--blue);
+                color: var(--white);
+            }
+
+            @include mediaMinWidth(992) {
+                &:hover {
+                    background-color: var(--blue);
+                    color: var(--white);
+                }
+            }
+        }
+
+    }
+
+    &.active {
+        .cell_menu_list {
+            display: flex;
+        }
+    }
+}
