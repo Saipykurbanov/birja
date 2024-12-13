@@ -92,17 +92,18 @@
   }
 }
 .drop_list_container .drop_list_field .drop_list .list .list_item {
-  height: 21px;
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 0 10px;
+  padding: 5px 10px;
   font-size: 16px;
 }
 .drop_list_container .drop_list_field .drop_list .list .list_item.active {
   color: var(--white);
   background-color: var(--blue);
 }
-.drop_list_container .drop_list_field .drop_list .list .list_item:hover {
-  background-color: var(--grey);
+@media screen and (min-width: 992px) {
+  .drop_list_container .drop_list_field .drop_list .list .list_item:hover {
+    background-color: var(--grey);
+  }
 }/*# sourceMappingURL=drop_list.css.map */

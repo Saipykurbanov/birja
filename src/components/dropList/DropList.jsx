@@ -34,16 +34,19 @@ const DropList = ({value, callback, list, label, mode, field}) => {
             <label htmlFor=""><span>{label}</span></label>
             <div className={`drop_list_field`}>
                 <button onClick={toggleDropList}>
-                    <p>{value}</p>
+                    <p>{value || '-'}</p>
                     <img src="/icons/chev_down.svg" alt="" />
                 </button>
 
                 {isOpen ? <div className={`drop_list ${mode}`}>
-                    <p>{value}</p>
+                    <p>{value || '-'}</p>
                     <div className="list">
                         {list?.map((el, i) => (
                             el === value ? <></>:<div key={i} className="list_item" onClick={() => callback(el, field)}>{el}</div>
                         ))}
+                        {value !== '' ?
+                            <div className="list_item" onClick={() => callback('', field)}>-</div>
+                        :<></>}
                     </div>
                 </div>:<></>}
 

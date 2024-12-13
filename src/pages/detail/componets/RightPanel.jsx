@@ -26,12 +26,13 @@ const RightPanel = ({tab}) => {
             </div>
 
             <div className="b">
-                <DropList label={'CATEGORY'} value={coin.info.category} list={['Category 1', 'Category 2']} callback={coin.change} field={'category'}/>
-                <DropList label={'REGION'} value={coin.info.region} list={['Region 1', 'Region 2']} mode={'right'} callback={coin.change} field={'region'}/>
-                <DropList label={'DYNASTY & SO'} value={coin.info.dynastyAndCo} list={['Category 1', 'Category 2']} callback={coin.change} field={'dynastyAndCo'}/>
-                <DropList label={'AUTHORITY'} value={coin.info.authority} list={['Category 1', 'Category 2']} mode={'right'} callback={coin.change} field={'authority'}/>
-                <DropList label={'CITY/MINT'} value={coin.info.cityMint} list={['Category 1', 'Category 2']} callback={coin.change} field={'cityMint'}/>
-                <Input type={'text'} label={'DATE'} />
+                <DropList label={'CATEGORY'} value={coin.info.category} list={['Category 1']} callback={coin.change} field={'category'}/>
+                <DropList label={'REGION'} value={coin.info.region} list={coin.region} mode={'right'} callback={coin.change} field={'region'}/>
+                <DropList label={'DYNASTY & SO'} value={coin.info.dynastyAndCo} list={coin.dynastyandco} callback={coin.change} field={'dynastyAndCo'}/>
+                <DropList label={'AUTHORITY'} value={coin.info.authority} list={coin.authorities} mode={'right'} callback={coin.change} field={'authority'}/>
+                <DropList label={'CITY/MINT'} value={coin.info.cityMint} list={coin.citymint} callback={coin.change} field={'cityMint'}/>
+                <DropList label={'DATE'} value={coin.info.mintCoin} list={coin.years} mode={'right'}  callback={coin.change} field={'mintCoin'}/>
+
                 <Input type={'text'} label={'NOMINAL'} value={coin.info.nominal} callback={(e) => coin.change(e.target.value, 'nominal')}/>
                 <DropList label={'METAL'} value={coin.info.metal} list={['Category 1', 'Category 2']} mode={'right'} callback={coin.change} field={'metal'}/>
             </div>

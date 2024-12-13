@@ -6,6 +6,12 @@ import Api from "../../../utils/Api"
 export default function useCoin() {
 
     const {id} = useParams()
+    const [region, setRegion] = useState([])
+    const [citymint, setCityMint] = useState([])
+    const [dynastyandco, setDynastyandco] = useState([])
+    const [authorities, setAuthorities] = useState([])
+    const [years, setYears] = useState([])
+
     const [role, setRole] = useState(() => {
         let localRole = localStorage.getItem('role') || 'guest'
         // return localRole
@@ -64,8 +70,34 @@ export default function useCoin() {
 
             let res = await Api.asyncGet(`api/coins/${id}`)
 
+            let region = await Api.asyncGet(`api/regions`)
+            let citymint = await Api.asyncGet(`api/citymints`)
+            let dynastyandco = await Api.asyncGet('api/dynastyandco')
+            let authorities = await Api.asyncGet('api/authorities')
+            let years = await Api.asyncGet('api/years')
+
             if(res !== 'error' && Object.keys(res).length > 0) {
                 setInfo(res)
+            }
+
+            if(region !== 'error') {
+                setRegion(region)
+            }
+
+            if(citymint !== 'error') {
+                setCityMint(citymint)
+            }
+
+            if(dynastyandco !== 'error') {
+                setDynastyandco(dynastyandco)
+            }
+
+            if(authorities !== 'error') {
+                setAuthorities(authorities)
+            }
+
+            if(years !== 'error') {
+                setYears(years)
             }
 
         })()
@@ -83,6 +115,11 @@ export default function useCoin() {
     return {
         info,
         change,
-        role
+        role,
+        years,
+        authorities,
+        dynastyandco,
+        citymint,
+        region
     }
 }
