@@ -88,7 +88,7 @@ Api.asyncGet = async (path) => {
     }
 }
 
-Api.asyncPost = async (path) => {
+Api.asyncPost = async (path,body) => {
     try {
         let token = localStorage.getItem('accessToken')
 
@@ -98,6 +98,7 @@ Api.asyncPost = async (path) => {
                 'Authorization': `Bearer ${token}`,
                 "Content-Type": "application/json;charset=utf-8",
             },
+            body: JSON.stringify(body)б
         })
 
         if(res.status === 200) {
