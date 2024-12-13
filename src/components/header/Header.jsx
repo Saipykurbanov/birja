@@ -44,7 +44,7 @@ const Header = ({auth}) => {
                         </svg>
                         <p>English</p>
                     </div>
-                    {auth 
+                    {auth === 3
                     ?<Button mode={'flex lite'} callback={() => Api.logout()}>
                         Exit
                         <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const MobilePanel = () => {
+const MobilePanel = ({statusId}) => {
 
     const [isOpen, setIsOpen] = useState(false)
 

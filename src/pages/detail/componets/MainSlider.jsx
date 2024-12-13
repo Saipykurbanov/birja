@@ -34,7 +34,7 @@ const MainSlider = ({main, photos}) => {
                 {photos?.length ? 
                     photos.map((el) => (
                         <SplideSlide>
-                            <img src={`${Api.url2}20000/26027q00.jpg`} alt="" />
+                            <img src={`${Api.url2}20000/${el}`} alt="" />
                         </SplideSlide>
                     ))
                 :<></>}

@@ -104,6 +104,7 @@
   background-color: var(--green);
 }
 .detail .detail_wrapper .preview .preview_lot .main_window {
+  width: 100%;
   margin: auto 0;
   align-self: center;
 }
