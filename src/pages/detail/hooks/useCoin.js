@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import Api from "../../../utils/Api"
 import Store from "../../../utils/Store"
+import utils from "../../../utils/utils"
 
 
 export default function useCoin() {
@@ -156,7 +157,7 @@ export default function useCoin() {
         if(role === 'admin') {
             setInfo((prev) => {
                 let update = {...prev, [field]: value}
-                if(value == originalInfo[field]) {
+                if(utils.deepEqual(update, originalInfo)) {
                     Store.setListener('stopAutosave', true)
                 } else {
                     Store.setListener('autosave', (update, `api/coins/${id}`))
