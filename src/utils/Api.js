@@ -121,7 +121,7 @@ Api.asyncPut = async (path, body) => {
         let token = localStorage.getItem('accessToken')
 
         let res = await fetch(`${Api.url}${path}`, {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token}`,
                 "Content-Type": "application/json;charset=utf-8",
@@ -134,8 +134,7 @@ Api.asyncPut = async (path, body) => {
         }
 
         if(res.status === 401) {
-            // return Api.logout()
-            return console.log('')
+            return 'error'
         }
 
         return 'error'

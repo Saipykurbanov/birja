@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '../../../components/button/Button';
 import Store from '../../../utils/Store';
 
-const Head = ({time, saveNow}) => {
+const Head = ({lastTime, time, saveNow}) => {
 
     return (
         <div className='detail_head'>
@@ -14,7 +14,7 @@ const Head = ({time, saveNow}) => {
             <Button mode={'full blue'} callback={saveNow}>
                 SAVE
                 <span>(Autosave {time} sec) - </span>
-                <p>[12.03.202 11:23 PM]</p>
+                <p>{lastTime ? `[${lastTime}]` : '00.00.000'}</p>
             </Button>
 
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">

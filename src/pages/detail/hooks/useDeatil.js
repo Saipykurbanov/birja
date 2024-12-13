@@ -1,19 +1,21 @@
 import { useEffect, useRef, useState } from "react"
 import Store from "../../../utils/Store"
 import Api from "../../../utils/Api"
+import utils from "../../../utils/utils"
 
 
 export default function useDetail() {
 
     const [tab, setTab] = useState(1)
     const [time, setTime] = useState('30')
+    const [lastTime, setLastTime] = useState('')
     const timer = useRef(null)
 
-    Store.useListener('autosave', async (body, path) => {
+    Store.useListener('autosave', async (obj) => {
         if(timer.current) {
             cancelAnimationFrame(timer.current)
         }
-        timerNewFunc(body, path)
+        timerNewFunc(obj.data, obj.path)
     })
 
     Store.useListener('stopAutosave', (data) => {
@@ -22,7 +24,6 @@ export default function useDetail() {
             setTime('30')
         }
     })
-
 
     // Доделать
     const saveNow = async () => {
@@ -45,8 +46,11 @@ export default function useDetail() {
                 let res = await Api.asyncPut(path, body)
 
                 if(res !== 'error') {
-                    return console.log('update coin')
+                    setLastTime(utils.formatDate())
+                    return
                 }
+
+
             } else {
                 setTime(((finish - currentTime) / 1000).toFixed(0));
                 timer.current = requestAnimationFrame(timerAnimation)
@@ -69,6 +73,7 @@ export default function useDetail() {
         tab,
         setTab,
         time,
-        saveNow
+        saveNow,
+        lastTime
     }
 }

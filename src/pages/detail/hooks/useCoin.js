@@ -160,7 +160,7 @@ export default function useCoin() {
                 if(utils.deepEqual(update, originalInfo)) {
                     Store.setListener('stopAutosave', true)
                 } else {
-                    Store.setListener('autosave', (update, `api/coins/${id}`))
+                    Store.setListener('autosave', {data: update, path: `api/coins/${id}`})
                 }
                 return update
             })
