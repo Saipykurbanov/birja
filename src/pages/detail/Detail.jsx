@@ -1,38 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './css/detail.css';
 import Head from './componets/Head';
-import TimeLine from './componets/TimeLine';
-import LeftPanel from './componets/LeftPanel';
-import RightPanel from './componets/RightPanel';
+import TimeLine from './componets/timeline/TimeLine';
+import LeftPanel from './componets/wrapper/LeftPanel';
+import RightPanel from './componets/wrapper/RightPanel';
 import Line from '../../components/line/Line';
-import StatusBlock from './componets/StatusBlock';
-import Preview from './componets/Preview';
-import MobileHead from './componets/MobileHead';
-import useDetail from './hooks/useDeatil';
-import MobilePanel from './componets/MobilePanel';
+import StatusBlock from './componets/wrapper/StatusBlock';
+import Preview from './componets/preview/Preview';
+import MobileHead from './componets/wrapper/MobileHead';
+import MobilePanel from './componets/wrapper/MobilePanel';
 import useCoin from './hooks/useCoin';
 import Load from './componets/Load';
 
 const Detail = () => {
 
-    const detail = useDetail()
     const coin = useCoin()
 
     return (
         <div className='detail'>
+
             <Load load={coin.load}/>
-            
-            <Head lastTime={detail.lastTime} time={detail.time} saveNow={detail.saveNow}/>
+            <Head timer={{lastTime: coin.lastTime, time: coin.time, saveNow: coin.saveNow, updatedAt: coin.info.updatedAt}}/>
 
             <div className="detail_wrapper">
-                <Preview statusid={coin.info.statusId}/>
-                <MobileHead tab={detail.tab} callback={detail.setTab}/>
-                <LeftPanel tab={detail.tab}/>
-                <Line mode={'vertical c'}/>
-                <RightPanel changeStatus={coin.changeStatus} tab={detail.tab} coin={coin}/>
-                <StatusBlock statusId={coin.info.statusId}/>
 
-                <MobilePanel statusId={coin.info.statusId} stockNumber={coin.info.stockNumber}/>
+                <Preview statusid={coin.info.statusId}/>
+                <MobileHead tab={coin.tab} callback={coin.setTab}/>
+                <LeftPanel coin={coin}/>
+                <Line mode={'vertical c'}/>
+                <RightPanel coin={coin}/>
+                <StatusBlock setInReady={coin.setInReady} setInCheck={coin.setInCheck} nullStatus={coin.nullStatus} setInWork={coin.setInWork} statusId={coin.info.statusId}/>
+                <MobilePanel setInReady={coin.setInReady} setInCheck={coin.setInCheck} nullStatus={coin.nullStatus} setInWork={coin.setInWork} statusId={coin.info.statusId} stockNumber={coin.info.stockNumber}/>
+
             </div>
 
             <Line />

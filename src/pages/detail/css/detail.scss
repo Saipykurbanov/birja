@@ -124,8 +124,23 @@
                 }
                 .status {
                     height: 29px;
+                    &.color6 {
+                        background-color: var(--withdraw);
+                    }
+                    &.color5 {
+                        background-color: var(--sold);
+                    }
                     &.color4 {
                         background-color: var(--green);
+                    }
+                    &.color3 {
+                        background-color: var(--burgundy);
+                    }
+                    &.color2 {
+                        background-color: var(--blue2);
+                    }
+                    &.color1 {
+                        background-color: var(--violet);
                     }
                 }
                 .main_window {

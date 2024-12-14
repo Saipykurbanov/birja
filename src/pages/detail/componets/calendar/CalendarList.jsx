@@ -1,7 +1,7 @@
 import React from 'react';
-import Head from './calendar/Head';
-import Control from './calendar/Control';
-import Grid from './calendar/Grid';
+import Head from './Head';
+import Control from './Control';
+import Grid from './Grid';
 
 const CalendarList = ({calendar}) => {
 

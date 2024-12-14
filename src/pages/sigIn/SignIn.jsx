@@ -26,6 +26,7 @@ const SignIn = () => {
         setError('')
         localStorage.setItem('accessToken', res.token)
         localStorage.setItem('timestamp', Date.now() + 43200000) //+ 12 часов
+        localStorage.setItem('user', JSON.stringify(res.user))
 
         if(res.user.isAdmin) {
             localStorage.setItem('role', 'admin')

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Api from '../../../utils/Api';
+import Api from '../../../../utils/Api';
 import { Link, NavLink } from 'react-router-dom';
-import Store from '../../../utils/Store';
+import Store from '../../../../utils/Store';
 
 const VerticalLots = () => {
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CalendarItem from './CalendarItem';
 
 const Calendar = ({currentDate1, currentDate2, change}) => {

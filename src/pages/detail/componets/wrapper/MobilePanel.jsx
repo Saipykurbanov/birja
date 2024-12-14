@@ -46,10 +46,10 @@ const MobilePanel = ({statusId, stockNumber}) => {
                     <button>Print</button>
                 </div>
                 <div className="status_block">
-                    <div className="status_item green active"></div>
-                    <div className="status_item burgundy"></div>
-                    <div className="status_item blue"></div>
-                    <div className="status_item violet"></div>
+                    <div className={`status_item green ${statusId === 4 ? 'active' : ''}`}></div>
+                    <div className={`status_item burgundy ${statusId === 3 ? 'active' : ''}`}></div>
+                    <div className={`status_item blue ${statusId === 2 ? 'active' : ''}`}></div>
+                    <div className={`status_item violet ${statusId === 1 ? 'active' : ''}`}></div>
                 </div>
             </div>
         </div>

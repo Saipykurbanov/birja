@@ -1,6 +1,6 @@
 import React from 'react';
 import CalendarList from './CalendarList';
-import useCalendar from '../hooks/useCalendar';
+import useCalendar from '../../hooks/useCalendar';
 
 const CalendarItem = ({currentDate, setCurrentDate, field}) => {
 

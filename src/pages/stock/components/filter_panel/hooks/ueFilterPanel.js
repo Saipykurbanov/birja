@@ -26,7 +26,6 @@ export default function useFilterPanel () {
         e.stopPropagation()
         document.body.className = ''
         setIsOpen(prev => prev = false)
-        console.log('no')
     }
 
     const saveShowFilters = () => {

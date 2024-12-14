@@ -36,13 +36,13 @@
   align-items: center;
   box-sizing: border-box;
 }
-.drop_list_container .drop_list_field button {
+.drop_list_container .drop_list_field .field_container {
   display: grid;
   align-items: center;
   grid-template-columns: 1fr auto;
   width: 100%;
 }
-.drop_list_container .drop_list_field button p {
+.drop_list_container .drop_list_field .field_container input {
   text-align: start;
   overflow: hidden;
   white-space: nowrap;

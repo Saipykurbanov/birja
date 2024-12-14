@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useParams } from "react-router-dom"
 import Api from "../../../utils/Api"
 import Store from "../../../utils/Store"
 import utils from "../../../utils/utils"
+import Notice from "../../../components/notice/Notice"
 
 
 export default function useCoin() {
@@ -10,11 +11,20 @@ export default function useCoin() {
     const {id} = useParams()
     const [region, setRegion] = useState([])
     const [citymint, setCityMint] = useState([])
+    const [categories, setCategories] = useState([])
     const [dynastyandco, setDynastyandco] = useState([])
     const [authorities, setAuthorities] = useState([])
     const [years, setYears] = useState([])
     const [load, setLoad] = useState(true)
-
+    const [tab, setTab] = useState(1)
+    const [time, setTime] = useState('30')
+    const [lastTime, setLastTime] = useState('')
+    const [obj, setObj] = useState({})
+    const [disabled, setDisabled] = useState(false)
+    const [user, setUser] = useState(() => {
+        let user = localStorage.getItem('user') || {}
+        return JSON.parse(user)
+    })
     const [role, setRole] = useState(() => {
         let localRole = localStorage.getItem('role') || 'guest'
         // return localRole
@@ -112,97 +122,183 @@ export default function useCoin() {
         createdAt: undefined,
         updatedAt: undefined
     })
+    const [infoSales, setInfoSales] = useState({
+        stockNumber: undefined,
+        entryDate: '',
+        outDate: '',
+        vendorId: undefined, 
+        consigment: undefined,
+        commission: undefined,
+        estimate: undefined,
+        reserve: undefined,
+        hammer: undefined,
+        payment: undefined,
+        buyerId: undefined,   
+        commission: undefined,
+        shipping: undefined,
+        insurane: undefined,
+        extras: undefined,
+        payment: undefined,
+        asquired: undefined,
+        availaibleOrSold: undefined,
+        status: undefined,
+        freeText: undefined
+    })
+    const [originalInfoSales, setOriginalInfoSales] = useState({
+        stockNumber: undefined,
+        entryDate: '',
+        outDate: '',
+        vendorId: undefined, 
+        consigment: undefined,
+        commission: undefined,
+        estimate: undefined,
+        reserve: undefined,
+        hammer: undefined,
+        payment: undefined,
+        buyerId: undefined,   
+        commission: undefined,
+        shipping: undefined,
+        insurane: undefined,
+        extras: undefined,
+        payment: undefined,
+        asquired: undefined,
+        availaibleOrSold: undefined,
+        status: undefined,
+        freeText: undefined
+    })
+    const timer = useRef(null)
 
-    Store.useListener('updateOriginal', setOriginalInfo)
 
     useEffect(() => {
 
         (async () => {
-            Store.setListener('stopAutosave', true)
-            setLoad(true)
+            try {
+                stopAutoSave()
+                setLoad(true)
+    
+                let res = await Api.asyncGet(`api/coins/${id}`)
+                let sales = await Api.asyncGet(`api/coinsales/${id}`)
+                
+                let categories = await Api.asyncGet(`api/categories`)
+                let region = await Api.asyncGet(`api/regions`)
+                let citymint = await Api.asyncGet(`api/citymints`)
+                let dynastyandco = await Api.asyncGet('api/dynastyandco')
+                let authorities = await Api.asyncGet('api/authorities')
+                let years = await Api.asyncGet('api/years')
+                let coins = await Api.asyncGet('api/coins')
+                
+                if(res !== 'error' && Object.keys(res).length > 0) {
+                    setInfo(res)
+                    setOriginalInfo(res)
+                    Store.setListener('previewPhotos', res.photos)
 
-            let res = await Api.asyncGet(`api/coins/${id}`)
+                    if(res.statusId != 2) {
+                        setDisabled(true)
+                    } else if(role === 'admin') {
+                        setDisabled(false)
+                    } else if(res.userChanged === '') {
+                        setDisabled(true)
+                    } else if(res.userChanged !== user.login) {
+                        setDisabled(true)
+                    } else {
+                        setDisabled(false)
+                    }
 
-            let region = await Api.asyncGet(`api/regions`)
-            let citymint = await Api.asyncGet(`api/citymints`)
-            let dynastyandco = await Api.asyncGet('api/dynastyandco')
-            let authorities = await Api.asyncGet('api/authorities')
-            let years = await Api.asyncGet('api/years')
-            let coins = await Api.asyncGet('api/coins')
+                    if(coins !== 'error') {
+                        let index = coins.findIndex(item => item.stockNumber === res.stockNumber);
+                        Store.setListener('verticalGetSN', res.stockNumber)
+                        getCoins(index,coins)
+                    }
+                }
 
-            if(res !== 'error' && Object.keys(res).length > 0) {
-                setInfo(res)
-                setOriginalInfo(res)
-                Store.setListener('previewPhotos', res.photos)
+                if(sales !== 'error' && Object.keys(res).length > 0) {
+                    setInfoSales(sales)
+                }
+                
+                if(categories !== 'error') setCategories(categories)
+                if(region !== 'error') setRegion(region)
+                if(citymint !== 'error') setCityMint(citymint)
+                if(dynastyandco !== 'error') setDynastyandco(dynastyandco)
+                if(authorities !== 'error') setAuthorities(authorities)
+                if(years !== 'error') setYears(years)
+
+            } catch(e) {
+                return
+            } finally {
+                setLoad(false)
             }
-
-            if(res !== 'error' && Object.keys(res).length > 0 && coins !== 'error') {
-                let index = coins.findIndex(item => item.stockNumber === res.stockNumber);
-                Store.setListener('verticalGetSN', res.stockNumber)
-                getCoins(index,coins)
-            }
-
-            if(region !== 'error') {
-                setRegion(region)
-            }
-
-            if(citymint !== 'error') {
-                setCityMint(citymint)
-            }
-
-            if(dynastyandco !== 'error') {
-                setDynastyandco(dynastyandco)
-            }
-
-            if(authorities !== 'error') {
-                setAuthorities(authorities)
-            }
-
-            if(years !== 'error') {
-                setYears(years)
-            }
-
-            setLoad(false)
 
         })()
 
+        return () => {
+            if(timer.current) {
+                cancelAnimationFrame(timer.current)
+            }
+        }
+
     }, [id])
 
-    const change = (value, field) => {
-        if(role === 'admin') {
-            setInfo((prev) => {
-                let update = {...prev, [field]: value}
-                if(utils.deepEqual(update, originalInfo)) {
-                    Store.setListener('stopAutosave', true)
-                } else {
-                    Store.setListener('autosave', {data: update, path: `api/coins/${id}`})
-                }
-                return update
-            })
+    const autosave = (obj) => {
+        if(timer.current) {
+            cancelAnimationFrame(timer.current)
         }
-
-        return
+        setObj(obj)
+        timerNewFunc(obj.data, obj.path)
     }
 
-    const changeStatus = () => {
-        if(role === 'admin') {
-            
-            setInfo((prev) => {
-                let value;
-                if(info.statusId === 6) {
-                    value = 1
-                } else {
-                    value = 6
-                }
-                let update = {...prev, statusId: value}
-                if(utils.deepEqual(update, originalInfo)) {
-                    Store.setListener('stopAutosave', true)
-                } else {
-                    Store.setListener('autosave', {data: update, path: `api/coins/${id}`})
-                }
-                return update
-            })
+    Store.useListener('autosave', (obj) => {
+        autosave(obj)
+    })
+
+    const stopAutoSave = () => {
+        if(timer.current) {
+            cancelAnimationFrame(timer.current)
+            setTime('30')
         }
+    }
+
+    Store.useListener('stopAutosave', stopAutoSave)
+
+    const saveNow = async () => {
+        if(timer.current) {
+            cancelAnimationFrame(timer.current)
+            setTime('30')
+            let res = await Api.asyncPut(obj.path, obj.data)
+
+            if(res !== 'error') {
+                setLastTime(utils.formatDate())
+                setOriginalInfo(obj.data)
+                setObj({})
+                return
+            }
+        }
+    }
+
+    const timerNewFunc = async (body, path) => {
+        let date = new Date().getTime();
+        const finish = date + 30000;
+
+        let timerAnimation = async () => {
+            let currentTime = new Date().getTime();
+            if (currentTime > finish) {
+                setTime('30')
+                cancelAnimationFrame(timer.current)
+
+                let res = await Api.asyncPut(path, body)
+
+                if(res !== 'error') {
+                    setLastTime(utils.formatDate())
+                    setOriginalInfo(body)
+                    return
+                }
+
+            } else {
+                setTime(((finish - currentTime) / 1000).toFixed(0));
+                timer.current = requestAnimationFrame(timerAnimation)
+            }
+        }
+
+        timer.current = requestAnimationFrame(timerAnimation)
     }
 
     const getCoins = (index, res) => {
@@ -228,6 +324,136 @@ export default function useCoin() {
         } 
     }
 
+    const change = (value, field) => {
+        if(info.userChanged === user?.login || role === 'admin') {
+            setInfo((prev) => {
+                let update = {...prev, [field]: value}
+                if(utils.deepEqual(update, originalInfo)) {
+                    stopAutoSave()
+                } else {
+                    autosave({data: update, path: `api/coins/${id}`})
+                }
+                return update
+            })
+        }
+
+        return
+    }
+
+    const changeSales = (value, field) => {
+
+        setInfoSales((prev) => {
+            let update = {...prev, [field]: value}
+            if(utils.deepEqual(update, originalInfoSales)) {
+                stopAutoSave()
+            } else {
+                autosave({data: update, path: `api/coinsales/${id}`})
+            }
+            return update
+        })
+
+    }
+
+    //Кнопка WITHDROW
+    const changeStatus = async () => {
+        if(role === 'admin') { 
+            let update;
+            if(info.statusId == 6) {
+                update = { ...info, statusId: 1, userChanged: '' };
+            } else {
+                update = { ...info, statusId: 6};
+            }
+
+            let res = await Api.asyncPut(`api/coins/${id}`, update);
+            
+            if (res !== 'error') {
+                setInfo(update)
+                setDisabled(true)
+            } else {
+                Notice.Send({type: 'error', text: 'Access is denied'})
+            }
+
+        } else {
+            Notice.Send({type: 'error', text: 'Access is denied'})
+        }
+    }
+    
+    const setInWork = async () => {
+        if(info.statusId === 2) {
+            return
+        }
+        if(!info.userChanged) {
+            let update = {...info, statusId: 2, userChanged: user?.login}
+            let res = await Api.asyncPut(`api/coins/${id}`, update)
+
+            if (res !== 'error') {
+                setInfo(update)
+                setDisabled(false)
+            } else {
+                Notice.Send({type: 'error', text: 'Access is denied'})
+            }
+        } else {
+            Notice.Send({type: 'error', text: 'Access is denied'})
+        }   
+    }
+
+    const setInCheck = async () => {
+        if(info.statusId === 3) {
+            return
+        }
+        if(info.userChanged === user?.login && role !== 'admin') {
+            let update = {...info, statusId: 3}
+            let res = await Api.asyncPut(`api/coins/${id}`, update)
+
+            if (res !== 'error') {
+                setInfo(update)
+                setDisabled(true)
+            } else {
+                Notice.Send({type: 'error', text: 'Access is denied'})
+            }
+        } else {
+            Notice.Send({type: 'error', text: 'Access is denied'})
+        }   
+    }
+
+    const nullStatus = async () => {
+        if(info.statusId === 1) {
+            return
+        }
+        if(role === 'admin') {
+            let update = { ...info, statusId: 1, userChanged: '' };
+            let res = await Api.asyncPut(`api/coins/${id}`, update);
+    
+            if (res !== 'error') {
+                setInfo(update)
+                setDisabled(true)
+            } else {
+                Notice.Send({type: 'error', text: 'Access is denied'})
+            }
+        } else {
+            Notice.Send({type: 'error', text: 'Access is denied'})
+        } 
+    }
+
+    const setInReady = async () => {
+        if(info.statusId === 4) {
+            return
+        }
+        if(role === 'admin') {
+            let update = { ...info, statusId: 4};
+            let res = await Api.asyncPut(`api/coins/${id}`, update);
+    
+            if (res !== 'error') {
+                setInfo(update)
+                setDisabled(true)
+            } else {
+                Notice.Send({type: 'error', text: 'Access is denied'})
+            }
+        } else {
+            Notice.Send({type: 'error', text: 'Access is denied'})
+        } 
+    }
+
     return {
         info,
         change,
@@ -237,7 +463,65 @@ export default function useCoin() {
         dynastyandco,
         citymint,
         region,
+        categories,
         changeStatus,
-        load
+        load,
+        tab,
+        setTab,
+        time,
+        saveNow,
+        lastTime,
+        infoSales,
+        changeSales,
+        setInWork,
+        setInCheck,
+        nullStatus,
+        setInReady,
+        disabled
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+// const updateStatus = async (newStatusId) => {
+//     if (info.statusId === newStatusId) {
+//         return; // Статус уже установлен
+//     }
+
+//     // Проверка доступа для каждого статуса
+//     if (newStatusId === 2 && info.userChanged) {
+//         return Notice.Send({ type: 'error', text: 'Access is denied' });
+//     }
+
+//     if (newStatusId === 3 && (info.userChanged !== user?.login || role === 'admin')) {
+//         return Notice.Send({ type: 'error', text: 'Access is denied' });
+//     }
+
+//     if ((newStatusId === 1 || newStatusId === 4) && role !== 'admin') {
+//         return Notice.Send({ type: 'error', text: 'Access is denied' });
+//     }
+
+//     // Обновляем объект информации
+//     const update = { 
+//         ...info, 
+//         statusId: newStatusId, 
+//         userChanged: newStatusId === 1 ? '' : info.userChanged || user?.login 
+//     };
+
+//     let res = await Api.asyncPut(`api/coins/${id}`, update);
+
+//     if (res !== 'error') {
+//         setInfo(update);
+//         if (newStatusId === 2) setDisabled(false);
+//     } else {
+//         Notice.Send({ type: 'error', text: 'Access is denied' });
+//     }
+// };

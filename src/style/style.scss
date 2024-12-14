@@ -40,6 +40,8 @@
     --violet: #33013F;
     --red: rgba(255, 0, 0, 1);
     --link: rgba(27, 99, 245, 1);
+    --withdraw: rgba(58, 36, 0, 0.623);
+    --sold: rgba(137, 43, 226, 0.655);
 }
 
 /*--------Обнуление----------*/
@@ -203,7 +205,7 @@ main {
     padding: 10px 10px;
     font-size: 16px;}
 .notice .error {background-color: var(--violet);color: var(--white)}
-.notice .success {background-color: var(--green);color:#000;}
+.notice .success {background-color: var(--green);color: var(--white);}
 .notice .remark {color:#FF9800;}
 
 [status='show'] {
