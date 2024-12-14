@@ -27,7 +27,7 @@ const CustomTableHeader = ({sortFunction, sort, isShow}) => {
 
             <div onClick={() => sortFunction('location')}       className={`location arrow ${sort.location} ${isShow.location ? '' : 'no_show'}`}>location</div>
 
-            <div onClick={() => sortFunction('date')}           className={`date arrow ${sort.date} ${isShow.data ? '' : 'no_show'}`}>date</div>
+            <div onClick={() => sortFunction('date')}           className={`date arrow ${sort.date} ${isShow.date ? '' : 'no_show'}`}>date</div>
 
             <div onClick={() => sortFunction('')}               className={`status ${isShow.status ? '' : 'no_show'}`}>status</div>
 
