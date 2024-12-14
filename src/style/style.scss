@@ -130,7 +130,7 @@ body {
 }
 
 body.hidden {
-    overflow: hidden;
+    overflow: hidden !important;
 
     &::before {
         display: block;

@@ -10,7 +10,7 @@ const SettingsBtn = () => {
     }
 
     return (
-        <img src={'./icons/settings.svg'} alt="" className="settings" onMouseDown={(e) => openFilterPanel(e)}/>
+        <img src={'./icons/settings.svg'} alt="" className="settings" onClick={(e) => openFilterPanel(e)}/>
     );
 };
 

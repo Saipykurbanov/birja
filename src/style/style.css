@@ -181,7 +181,7 @@ body::before {
 }
 
 body.hidden {
-  overflow: hidden;
+  overflow: hidden !important;
 }
 body.hidden::before {
   display: block;

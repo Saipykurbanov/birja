@@ -14,9 +14,13 @@ const Header = ({auth}) => {
 
     const openPanel = (e) => {
         e.stopPropagation()
+        Store.setListener('panel', true)
+        Store.setListener('open_filter_panel', prev => prev = false)
+
         if(auth === 3) {
             Store.setListener('panel', true)
         }
+      
         if(auth === 2) {
             Store.setListener('signInMenu', true)
         }

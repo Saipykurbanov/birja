@@ -13,12 +13,12 @@ const CustomTable = () => {
     return (
         <>  
             <div className='custom_table'>
-                <CustomTableHeader sortFunction={table.sortFunction} sort={table.sort}/>
+                <CustomTableHeader isShow={table.isShow} sortFunction={table.sortFunction} sort={table.sort}/>
 
                 <div className="custom_table_list">
                     {table?.list?.length ?
                         table?.list?.map(el => (
-                            <CustomTableItem el={el} key={el.stockNumber}/>
+                            <CustomTableItem isShow={table.isShow} el={el} key={el.stockNumber}/>
                         ))
                         :
                         <></>
