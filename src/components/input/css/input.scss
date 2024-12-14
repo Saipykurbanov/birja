@@ -23,16 +23,6 @@
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
-            @include mediaMinWidth(992) {
-                &:hover {
-                    width: max-content;
-                    padding-right: 10px;
-                    overflow: visible;
-                    text-overflow: clip;
-                    z-index: 2;
-                    background-color: var(--white);
-                }
-            }
         }
     }
     

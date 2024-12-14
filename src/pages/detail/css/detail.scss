@@ -1,9 +1,31 @@
 @import './../../../style/common';
 
 .detail {
+    position: relative;
     flex: 1;
     opacity: 0;
     animation: Open 0.5s forwards;
+    .detail_load {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 30;
+        background-color: var(--white);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        p {
+            margin-top: 40dvh;
+            @include adaptiveFont(50, 20);
+        }
+        &.open {
+            display: flex;
+        }
+        
+    }
     .detail_head {
         display: flex;
         align-items: center;
@@ -71,12 +93,13 @@
                     display: none;
                 }
                 img {
-                    width: 74px;
-                    transition: 0.3s;
+                    min-width: 74px;
+                    max-width: 74px;
                     cursor: pointer;
                     border: 1px solid transparent;
+                    min-height: 38px;
                     &.current {
-                        width: 93px;
+                        max-width: 93px;
                     }
                     &:hover {
                         border: 1px solid var(--grey);
@@ -92,12 +115,23 @@
                 }
                 .status {
                     height: 29px;
+                    &.color4 {
+                        background-color: var(--green);
+                    }
                 }
                 .main_window {
+                    width: 100%;
                     margin: auto 0;
+                    align-self: center;
+                    .main_splider {
+                        width: 100%;
+                        min-width: 280px;
+                        .splide__slide  {
+                            width: 100%;
+                        }
+                    }
                     img {
                         width: 100%;
-                        min-width: 260px;
                     }
                 }
                 .lot_images {
@@ -106,14 +140,18 @@
                     @include mediaMaxWidth(768) {
                         display: none;
                     }
-                    img {
-                        flex: 1;
+                    .horiz_splider {
                         width: 100%;
-                        min-width: 10px;
-                        cursor: pointer;
-                        border: 1px solid transparent;
-                        &:hover {
-                            border: 1px solid var(--grey);
+                        .splide__slide {
+                            cursor: pointer;
+                            width: 64px;
+                            border: 1px solid transparent;
+                            img {
+                                width: 100%;
+                            }
+                            &.is-active {
+                                border: 1px solid var(--grey);
+                            }
                         }
                     }
                 }
@@ -462,8 +500,79 @@
                 &.violet {
                     background-color: var(--violet);
                 }
-                &:hover {
-                    border: 2px solid var(--grey);
+                @include mediaMinWidth(992) {
+                    &:hover {
+                        border: 2px solid var(--grey);
+                    }
+                }
+            }
+        }
+
+        .mobile_panel {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--black);
+            padding: 12px 15px;
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            z-index: 200;
+            @include mediaMinWidth(701) {
+                display: none;
+            }
+            .mobile_panel_popup {
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translate(-50%, calc(-100% - 12px));
+                width: 175px;
+                height: 128px;
+                display: flex;
+                gap: 10px;
+                z-index: 300;
+                background-color: var(--white);
+                border: 1px solid var(--black);
+                display: none;
+                opacity: 0;
+                &.open {
+                    display: flex;
+                    animation: Open 0.4s forwards;
+                }
+                .buttons {
+                    width: 100%;
+                    flex: 10;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 10px;
+                    padding-top: 5px;
+                    button {
+                        font-size: 16px;
+                        width: 100%;
+                        height: 21px;
+                        padding: 0 10px;
+                        text-align: start;
+                        &.active {
+                            background-color: var(--blue);
+                            color: var(--white);
+                        }
+                    }
+                }
+                .status_block {
+                    padding-top: 0;
+                    flex: 1;
+                    min-width: 30px;
+                    max-width: 30px;
+                    .status_item {
+                        width: 20px;
+                        &.active {
+                            width: 100%;
+                        }
+                    }
                 }
             }
         }

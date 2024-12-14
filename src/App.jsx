@@ -8,6 +8,7 @@ import Footer from './components/footer/Footer';
 import Detail from './pages/detail/Detail';
 import Dashboard from './pages/dashboard/Dashboard';
 import Prefences from './components/prefences/Prefences';
+import Loading from './components/loading/Loading';
 
 
 function App() {
@@ -17,31 +18,36 @@ function App() {
   return (
     <main>
 
-      <Header auth={main.auth}/>
+      {main.auth === 1 ?<Loading />
+      :
+        <>
 
-      {main.auth ? 
-        <div className="main_wrapper container">
+          <Header auth={main.auth}/>
 
-          <Router>
-            
-            <Panel />
+          {main.auth === 2 ? <SignIn /> 
+          :
+          <div className="main_wrapper container">
 
-            <div className="main_container">
-              <Routes>
-                <Route path='/' element={<Stock />}/>
-                <Route path='/detail/:id' element={<Detail />}/>
-                <Route path='/dashboard' element={<Dashboard />}/>
-              </Routes>
-            </div>
+            <Router>
+              
+              <Panel />
 
-          </Router>
+              <div className="main_container">
+                <Routes>
+                  <Route path='/' element={<Stock />}/>
+                  <Route path='/detail/:id' element={<Detail />}/>  
+                  <Route path='/dashboard' element={<Dashboard />}/>
+                </Routes>
+              </div>
 
-        </div>
-      :<SignIn />}
+            </Router>
 
-      <Footer />
+          </div>}
+        <Footer />
 
-      <Prefences />
+        <Prefences />
+        </>
+      }
 
     </main>
   )

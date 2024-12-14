@@ -91,10 +91,12 @@
   }
 }
 .main_button.blue_lite {
-  font-size: 22px;
   border: 1px solid var(--blue);
   color: var(--blue);
   background-color: transparent;
+}
+.main_button.fz22 {
+  font-size: 22px;
 }
 @media screen and (min-width: 992px) {
   .main_button.blue_lite:hover {

@@ -1,37 +1,42 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Line from '../../../components/line/Line';
 import Button from '../../../components/button/Button';
+import Api from '../../../utils/Api';
+import MainSlider from './MainSlider';
+import HorizontalSlider from './HorizontalSlider';
+import { NavLink } from 'react-router-dom';
+import VerticalLots from './VerticalLots';
+import Store from '../../../utils/Store';
 
-const Preview = () => {
+const Preview = ({statusid}) => {
+
+    const main = useRef(null)
+    const horiz = useRef(null)
+    const [photos, setPhotos] = useState([])
+    Store.useListener('previewPhotos', setPhotos)
+
+    useEffect(() => {
+
+        if(main.current && horiz.current) {
+            main.current.sync(horiz.current.splide)
+        }
+
+    }, [main, horiz]);
+
     return (
         <div className="preview">
             
-            <div className="vertical_lots">
-                <img src="/images/v-lot.jpg" alt="" />
-                <img src="/images/v-lot.jpg" alt="" />
-                <img src="/images/v-lot.jpg" alt="" />
-                <img className='current' src="/images/v-lot.jpg" alt="" />
-                <img src="/images/v-lot.jpg" alt="" />
-                <img src="/images/v-lot.jpg" alt="" />
-                <img src="/images/v-lot.jpg" alt="" />
-            </div>
+            <VerticalLots />
 
             <Line mode={'vertical'}/>
 
             <div className="preview_lot">
 
-                <div className="status" style={{background: '#1E3F05'}}></div>
-                <div className="main_window">
-                    <img src="/images/main.jpg" alt="" />
-                </div>
+                <div className={`status color${statusid}`} style={{background: '#1E3F05'}}></div>
 
-                <div className="lot_images">
-                    <img src="/images/v-lot.jpg" alt="" />
-                    <img src="/images/v-lot.jpg" alt="" />
-                    <img src="/images/v-lot.jpg" alt="" />
-                    <img src="/images/v-lot.jpg" alt="" />
-                    <img src="/images/v-lot.jpg" alt="" />
-                </div>
+                <MainSlider main={main} photos={photos}/>
+
+                <HorizontalSlider horiz={horiz} photos={photos}/>
 
                 <Button mode={'full'}>
                     <img src="/icons/Vimeo.svg" alt="" />

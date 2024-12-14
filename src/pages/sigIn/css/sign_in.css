@@ -62,4 +62,36 @@
   height: 15px;
   font-size: 14px;
   color: red;
+}
+.sign_in .sign_in_panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 305px;
+  height: 100%;
+  overflow: auto;
+  background-color: var(--white);
+  z-index: 300;
+  transform: translateX(-100%);
+  transition: 0.5s;
+}
+@media screen and (min-width: 769px) {
+  .sign_in .sign_in_panel {
+    display: none;
+  }
+}
+.sign_in .sign_in_panel.open {
+  transform: translateX(0);
+}
+.sign_in .sign_in_panel .sign_in_panel_wrapper {
+  padding: 26px 16px 10px 16px;
+}
+.sign_in .sign_in_panel .sign_in_panel_wrapper .logo {
+  width: 187px;
+  margin-bottom: 22px;
+}
+.sign_in .sign_in_panel .sign_in_panel_wrapper p {
+  font-size: 14px;
+  margin-top: 12px;
+  margin-bottom: 26px;
 }/*# sourceMappingURL=sign_in.css.map */
