@@ -5,25 +5,14 @@ import Api from '../../../utils/Api';
 import MainSlider from './MainSlider';
 import HorizontalSlider from './HorizontalSlider';
 import { NavLink } from 'react-router-dom';
+import VerticalLots from './VerticalLots';
 
 const Preview = ({stockNumber, idPhoto, photos, statusid}) => {
 
     const main = useRef(null)
     const horiz = useRef(null)
-    const [coins, setCoins] = useState([])
 
     useEffect(() => {
-
-        // (async () => {
-
-        //     let res = await Api.asyncGet('api/coins')
-
-        //     if(res !== 'error') {
-        //         let index = res.findIndex(item => item.stockNumber === stockNumber)
-        //         setCoins(res.slice(index - 3, index + 4))
-        //     }
-
-        // })()
 
         if(main.current && horiz.current) {
             main.current.sync(horiz.current.splide)
@@ -34,15 +23,7 @@ const Preview = ({stockNumber, idPhoto, photos, statusid}) => {
     return (
         <div className="preview">
             
-            <div className="vertical_lots">
-                {coins?.length ?
-                    coins.map((el, i) => (
-                        <NavLink key={i} to={`/detail/${el.stockNumber}`}>
-                            <img className={`${stockNumber === el.stockNumber ? 'current' : ''}`} src={`${Api.url2}20000/${idPhoto}`} alt="" />
-                        </NavLink>
-                    ))
-                :<></>}
-            </div>
+            <VerticalLots stockNumber={stockNumber}/>
 
             <Line mode={'vertical'}/>
 

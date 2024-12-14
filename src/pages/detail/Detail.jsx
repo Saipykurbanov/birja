@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './css/detail.css';
 import Head from './componets/Head';
 import TimeLine from './componets/TimeLine';

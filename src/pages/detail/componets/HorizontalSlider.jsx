@@ -28,7 +28,7 @@ const HorizontalSlider = ({horiz, photos}) => {
             className='horiz_splider'
             aria-label="">
                 
-                {photos?.length ? 
+                {photos?.length && photos instanceof Array ? 
                     photos.map((el) => (
                         <SplideSlide>
                             <img src={`${Api.url2}20000/${el}`} alt="" />

@@ -72,9 +72,9 @@
                 }
                 img {
                     width: 74px;
-                    transition: 0.3s;
                     cursor: pointer;
                     border: 1px solid transparent;
+                    min-height: 38px;
                     &.current {
                         width: 93px;
                     }
