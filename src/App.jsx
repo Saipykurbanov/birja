@@ -8,6 +8,7 @@ import Footer from './components/footer/Footer';
 import Detail from './pages/detail/Detail';
 import Dashboard from './pages/dashboard/Dashboard';
 import Prefences from './components/prefences/Prefences';
+import FilterPanel from './pages/stock/components/filter_panel/FilterPanel';
 
 
 function App() {
@@ -33,6 +34,8 @@ function App() {
                 <Route path='/dashboard' element={<Dashboard />}/>
               </Routes>
             </div>
+
+            <FilterPanel />
 
           </Router>
 

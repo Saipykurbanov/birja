@@ -5,6 +5,9 @@ import Input from '../../../components/input/Input';
 const TabelFilters = ({ perPageInput, setPerPageInput, perPage, changePerPage }) => {
 
     const show = () => {
+        if(perPageInput === '' || perPageInput <= 0) {
+            return
+        }
         changePerPage(perPageInput)
         setPerPageInput('')
     }

@@ -31,6 +31,10 @@
             line-height: 23.08px;
             font-weight: 450;
             cursor: pointer;
+
+            &.no_show  {
+                display: none;
+            }
         }
 
         .arrow {
@@ -139,6 +143,10 @@
                 border-right: 0;
                 background: transparent;
             }
+
+            &.no_show  {
+                display: none !important;
+            }
         }
     }
 
@@ -156,6 +164,12 @@
             border-left: 1px solid var(--black);
             border-bottom: 1px solid var(--black);
 
+            * {
+                &.no_show  {
+                    display: none;
+                }
+            }
+
             .all {
                 position: relative;
                 flex-shrink: 0;
@@ -168,6 +182,7 @@
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 overflow: hidden;
+                cursor: default;
             }
     
             .stock {
@@ -178,12 +193,37 @@
             }
     
             .qr {
+                padding: 0; 
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                & img {
+                    width: 30px;
+                    height: 30px;
+                }
                 width: 50px;
                 background: #DFDFDF;
+
+                &.no_show  {
+                    display: none !important;
+                }
             }
     
             .media {
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 width: 77px;
+
+                & img {
+                    height: 30px;
+                    width: 56px;
+                }
+
+                &.no_show  {
+                    display: none !important;
+                }
             }
     
             .sales_chanel {
@@ -267,7 +307,9 @@
                     background: transparent;
                 }
 
-                
+                &.no_show  {
+                    display: none !important;
+                }
             }
 
             &:nth-last-child(-n+4) .settings .cell_menu .cell_menu_list {

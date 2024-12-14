@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import Api from "../../../utils/Api"
 import usePagination from "../../../hooks/usePagination"
+import Store from "../../../utils/Store"
 
 export default function useStockTable () {
 
@@ -24,9 +25,28 @@ export default function useStockTable () {
         date: '',
         status: '',
     })
+    const [isShow, setIsShow] = useState({
+        stock: true,
+        media: true,
+        salesChanel: true,
+        lot: true,
+        category: true,
+        region: true,
+        cityMint: true,
+        authority: true,
+        metal: true,
+        description: true,
+        location: true,
+        date: true,
+        status: true,
+    })
     const [perPageInput, setPerPageInput] = useState('')
 
     const pagination = usePagination(intermediateStore, setList)
+
+    Store.useListener('saveShowFilters', (data) => {
+        setIsShow(data)
+    })
 
     const closeCellMenus = () => {
         const findActive = document.querySelectorAll('.cell_menu')
@@ -81,7 +101,6 @@ export default function useStockTable () {
             const lastIndex = pagination.currentPage * pagination.perPage
             const firstIndex = lastIndex - pagination.perPage
     
-            // setStore(obj)
             setIntermediateStore(obj)
             const newObj = obj.slice(firstIndex, lastIndex)
             setList(newObj);
@@ -103,6 +122,7 @@ export default function useStockTable () {
                 return {
                     id: el.stockNumber,
                     stock: el.stockNumber,
+                    qr: el.idPhoto,
                     media: el.photos,
                     salesChanel: el.saleChannel,
                     lot: el.lotNumber,
@@ -129,6 +149,7 @@ export default function useStockTable () {
     return {
         list,
         sort,
+        isShow,
         sortFunction,
         pagination,
         perPageInput, setPerPageInput,

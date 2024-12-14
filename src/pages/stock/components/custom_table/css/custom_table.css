@@ -33,6 +33,9 @@
   font-weight: 450;
   cursor: pointer;
 }
+.custom_table .custom_table_header *.no_show {
+  display: none;
+}
 .custom_table .custom_table_header .arrow::after {
   content: "";
   position: absolute;
@@ -116,6 +119,9 @@
   border-right: 0;
   background: transparent;
 }
+.custom_table .custom_table_header .settings.no_show {
+  display: none !important;
+}
 .custom_table .custom_table_list {
   width: 100%;
   display: flex;
@@ -130,6 +136,9 @@
   border-left: 1px solid var(--black);
   border-bottom: 1px solid var(--black);
 }
+.custom_table .custom_table_list .custom_table_item *.no_show {
+  display: none;
+}
 .custom_table .custom_table_list .custom_table_item .all {
   position: relative;
   flex-shrink: 0;
@@ -142,6 +151,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  cursor: default;
 }
 .custom_table .custom_table_list .custom_table_item .stock {
   width: 100px;
@@ -150,11 +160,33 @@
   text-align: left;
 }
 .custom_table .custom_table_list .custom_table_item .qr {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 50px;
   background: #DFDFDF;
 }
+.custom_table .custom_table_list .custom_table_item .qr img {
+  width: 30px;
+  height: 30px;
+}
+.custom_table .custom_table_list .custom_table_item .qr.no_show {
+  display: none !important;
+}
 .custom_table .custom_table_list .custom_table_item .media {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 77px;
+}
+.custom_table .custom_table_list .custom_table_item .media img {
+  height: 30px;
+  width: 56px;
+}
+.custom_table .custom_table_list .custom_table_item .media.no_show {
+  display: none !important;
 }
 .custom_table .custom_table_list .custom_table_item .sales_chanel {
   width: 170px;
@@ -221,6 +253,9 @@
   height: 30px;
   border-right: 0;
   background: transparent;
+}
+.custom_table .custom_table_list .custom_table_item .settings.no_show {
+  display: none !important;
 }
 .custom_table .custom_table_list .custom_table_item:nth-last-child(-n+4) .settings .cell_menu .cell_menu_list {
   top: unset;

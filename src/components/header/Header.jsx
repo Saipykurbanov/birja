@@ -15,6 +15,7 @@ const Header = ({auth}) => {
     const openPanel = (e) => {
         e.stopPropagation()
         Store.setListener('panel', true)
+         Store.setListener('open_filter_panel', prev => prev = false)
     }
 
     return (

@@ -1,11 +1,16 @@
 import React from 'react';
 
-const TableCheckBox = ({ label }) => {
+const TableCheckBox = ({ label, isShow, name, setIsShow }) => {
+
+    const changeShow = () => {
+        setIsShow(prev => ({...prev, [name]: prev[name] ? false : true}))
+    }
+
     return (
-        <label htmlFor={`${label}_table`} className='table_check_box'>
-            <input type="checkbox"  id={`${label}_table`}/>
+        <div className='table_check_box' onClick={changeShow}>
+            <input type="checkbox" className={isShow[name] ? 'active' : ''}/>
             <span>{label}</span>
-        </label>
+        </div>
     );
 };
 
