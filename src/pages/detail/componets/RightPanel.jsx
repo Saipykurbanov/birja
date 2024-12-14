@@ -4,7 +4,7 @@ import DropList from '../../../components/dropList/DropList';
 import Button from '../../../components/button/Button';
 import TextArea from '../../../components/textarea/TextArea';
 
-const RightPanel = ({tab, coin}) => {
+const RightPanel = ({changeStatus, tab, coin}) => {
 
     return (
         <div className={`right_panel ${tab === 2 ? 'open' : ''}`}>
@@ -55,7 +55,7 @@ const RightPanel = ({tab, coin}) => {
                 <Button mode={'blue_lite full fz22'}>
                     HIGHLIGHTS
                 </Button>
-                <Button mode={'full brown white full fz22'}>
+                <Button mode={`full  full fz22 ${coin.info.statusId === 6 ? 'brown white' : ''}`} callback={changeStatus}>
                     WITHDRAW
                 </Button>
             </div>:<></>}

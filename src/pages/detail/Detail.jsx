@@ -27,7 +27,7 @@ const Detail = () => {
                 <MobileHead tab={detail.tab} callback={detail.setTab}/>
                 <LeftPanel tab={detail.tab}/>
                 <Line mode={'vertical c'}/>
-                <RightPanel tab={detail.tab} coin={coin}/>
+                <RightPanel changeStatus={coin.changeStatus} tab={detail.tab} coin={coin}/>
                 <StatusBlock statusId={coin.info.statusId}/>
 
                 <MobilePanel statusId={coin.info.statusId}/>

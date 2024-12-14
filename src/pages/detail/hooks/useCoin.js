@@ -169,6 +169,27 @@ export default function useCoin() {
         return
     }
 
+    const changeStatus = () => {
+        if(role === 'admin') {
+            
+            setInfo((prev) => {
+                let value;
+                if(info.statusId === 6) {
+                    value = 1
+                } else {
+                    value = 6
+                }
+                let update = {...prev, statusId: value}
+                if(utils.deepEqual(update, originalInfo)) {
+                    Store.setListener('stopAutosave', true)
+                } else {
+                    Store.setListener('autosave', {data: update, path: `api/coins/${id}`})
+                }
+                return update
+            })
+        }
+    }
+
     return {
         info,
         change,
@@ -177,6 +198,7 @@ export default function useCoin() {
         authorities,
         dynastyandco,
         citymint,
-        region
+        region,
+        changeStatus
     }
 }
