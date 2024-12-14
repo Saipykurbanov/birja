@@ -20,16 +20,16 @@
   display: none;
 }
 .detail .detail_load p {
-  margin-top: 20dvh;
+  margin-top: 40dvh;
 }
 @media (max-width: 768px) {
   .detail .detail_load p {
-    font-size: calc(20px + 68 * (100vw - 320px) / 1920);
+    font-size: calc(20px + 51 * (100vw - 320px) / 1920);
   }
 }
 @media (min-width: 768px) {
   .detail .detail_load p {
-    font-size: calc(20px + 40 * 0.0520833333vw);
+    font-size: calc(20px + 30 * 0.0520833333vw);
   }
 }
 .detail .detail_load.open {

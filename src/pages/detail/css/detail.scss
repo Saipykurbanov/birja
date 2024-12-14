@@ -12,17 +12,14 @@
         width: 100%;
         height: 100%;
         z-index: 30;
-        // background-color: rgba($color: #000000, $alpha: 0.3)
         background-color: var(--white);
         display: flex;
         flex-direction: column;
         align-items: center;
-        // justify-content: center;
         display: none;
         p {
-            margin-top: 20dvh;
-            @include adaptiveFont(60, 20);
-            // color: var(--white);
+            margin-top: 40dvh;
+            @include adaptiveFont(50, 20);
         }
         &.open {
             display: flex;

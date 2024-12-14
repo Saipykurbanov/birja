@@ -29,7 +29,7 @@ const Panel = () => {
     }, [])
 
     return (
-        <div className={`sign_in_panel ${isOpen ? 'open' : ''}`}>
+        <div className={`sign_in_panel ${isOpen ? 'open' : ''}`} onClick={(e) => e.stopPropagation()}>
             <div className="sign_in_panel_wrapper">
                 <img src="/images/Logo_black.png" alt="" className="logo" />
 
