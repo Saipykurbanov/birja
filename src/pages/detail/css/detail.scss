@@ -17,9 +17,16 @@
         flex-direction: column;
         align-items: center;
         display: none;
-        p {
+        svg {
             margin-top: 40dvh;
-            @include adaptiveFont(50, 20);
+        }
+        .circle {
+            fill: none;
+            stroke-width: 5px;
+            stroke-dashoffset: 185;
+            stroke-dasharray: 100;
+            stroke: var(--grey);
+            animation: Spin 0.5s infinite linear;
         }
         &.open {
             display: flex;
@@ -98,8 +105,10 @@
                     cursor: pointer;
                     border: 1px solid transparent;
                     min-height: 38px;
+                    height: 38px;
+                    flex-shrink: 0;
                     &.current {
-                        max-width: 93px;
+                        transform: scale(1.25);
                     }
                     &:hover {
                         border: 1px solid var(--grey);

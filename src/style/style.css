@@ -242,11 +242,91 @@ main {
   }
 }
 
+/*----------- Notice -------------*/
+.notice {
+  width: 100%;
+  max-width: 300px;
+  position: fixed;
+  bottom: 0px;
+  left: 50%;
+  z-index: 300;
+  transform: translateX(-50%);
+}
+
+.notice .item {
+  display: block;
+  text-align: center;
+  width: 100%;
+  border-radius: 0px;
+  background: rgba(33, 32, 32, 0.9215686275);
+  border: 1px solid var(--black);
+  will-change: transform;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 3s ease 0s;
+  padding: 10px 10px;
+  font-size: 16px;
+}
+
+.notice .error {
+  background-color: var(--violet);
+  color: var(--white);
+}
+
+.notice .success {
+  background-color: var(--green);
+  color: #000;
+}
+
+.notice .remark {
+  color: #FF9800;
+}
+
+[status=show] {
+  opacity: 1; /*Элемент полностью прозрачный (невидимый)*/
+  transition: 1s; /*Скорость перехода состояния элемента*/
+  animation: show-notice 0.5s 1; /* Указываем название анимации, её время и количество повторов*/
+  animation-fill-mode: forwards; /* Чтобы элемент оставался в конечном состоянии анимации */
+  /*animation-delay: 1s; /* Задержка перед началом */
+}
+
+[status=hide] {
+  opacity: 1; /*Элемент полностью прозрачный (невидимый)*/
+  transition: 1s; /*Скорость перехода состояния элемента*/
+  animation: hide-notice 0.5s 1; /* Указываем название анимации, её время и количество повторов*/
+  animation-fill-mode: forwards; /* Чтобы элемент оставался в конечном состоянии анимации */
+  /*animation-delay: 1s; /* Задержка перед началом */
+}
+
+@keyframes show-notice {
+  0% {
+    transform: translateY(200%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+@keyframes hide-notice {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(200%);
+  }
+}
 @keyframes Open {
   0% {
     opacity: 0;
   }
   100% {
     opacity: 1;
+  }
+}
+@keyframes Spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }/*# sourceMappingURL=style.css.map */

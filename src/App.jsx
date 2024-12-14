@@ -10,6 +10,7 @@ import Dashboard from './pages/dashboard/Dashboard';
 import Prefences from './components/prefences/Prefences';
 import FilterPanel from './pages/stock/components/filter_panel/FilterPanel';
 import Loading from './components/loading/Loading';
+import Notice from './components/notice/Notice';
 
 
 function App() {
@@ -34,8 +35,6 @@ function App() {
               <Panel />
            
             <FilterPanel />
-
-            </Router>
            
               <div className="main_container">
                 <Routes>
@@ -48,12 +47,14 @@ function App() {
             </Router>
 
           </div>}
-        <Footer />
+          <Footer />
 
-        <Prefences />
-        </>
-      }
+          <Prefences />
+          <Notice.Init />
 
+        </>}
+
+        
     </main>
   )
 } 

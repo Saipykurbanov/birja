@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import Store from "../../../utils/Store"
 import Api from "../../../utils/Api"
 import utils from "../../../utils/utils"
+import Notice from "../../../components/notice/Notice"
 
 
 export default function useDetail() {
@@ -57,6 +58,7 @@ export default function useDetail() {
 
                 if(res !== 'error') {
                     setLastTime(utils.formatDate())
+                    Store.setListener('updateOriginal', body)
                     return
                 }
 
