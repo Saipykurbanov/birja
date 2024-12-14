@@ -1,10 +1,11 @@
 import React from 'react';
 import CellMenu from '../CellMenu';
+import { NavLink } from 'react-router';
 
 const CustomTableItem = ({el, isShow}) => {
     return (
         <div className='custom_table_item'>
-            <div title={el.stock} className={`stock all ${isShow.stock ? '' : 'no_show'}`}>{el.stock}</div>
+            <NavLink to={`/detail/${el.stock}`} title={el.stock} className={`stock all ${isShow.stock ? '' : 'no_show'}`}>{el.stock}</NavLink>
 
             <div className={`qr all ${isShow.stock ? '' : 'no_show'}`}><img src={el.qr} alt="" /></div>
 
@@ -28,7 +29,7 @@ const CustomTableItem = ({el, isShow}) => {
 
             <div title={el.location} className={`location all ${isShow.location ? '' : 'no_show'}`}>{el.location}</div>
 
-            <div title={el.date} className={`date all ${isShow.data ? '' : 'no_show'}`}>{el.date}</div>
+            <div title={el.date} className={`date all ${isShow.date ? '' : 'no_show'}`}>{el.date}</div>
 
             <div className={`status all color${el.status} ${isShow.status ? '' : 'no_show'}`}></div>
 

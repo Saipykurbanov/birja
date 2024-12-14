@@ -8,6 +8,17 @@
     max-height: 50dvh;
     height: 50dvh;
 
+    .stock_loading {
+        width: 100%;
+        height: calc(100% - 50px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        color: var(--black);
+        background-color: var(--white);
+    }
+
     .custom_table_header {
         position: sticky;
         border: 1px solid var(--black);
@@ -189,6 +200,7 @@
                 border-right: 0;
                 background: #DFDFDF;
                 text-align: left;
+                cursor: pointer;
             }
     
             .qr {
@@ -271,22 +283,22 @@
                     // background-color: ;
                 }
                 &.color1 {
-                    background-color: var(--green);
+                    background-color: var(--violet);
                 }
                 &.color2 {
-                    background-color: yellow;
+                    background-color: var(--blue2);
                 }
                 &.color3 {
-                    background-color: var(--red);
+                    background-color: var(--burgundy);
                 }
                 &.color4 {
-                    background-color: var(--green2);
+                    background-color: var(--green);
                 }
                 &.color5 {
-                    background-color: rgba(137, 43, 226, 0.655);
+                    background-color: var(--sold);
                 }
                 &.color6 {
-                    background-color: rgba(58, 36, 0, 0.623);
+                    background-color: var(--withdraw);
                 }
             }
     
