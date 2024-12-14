@@ -34,7 +34,7 @@ function App() {
               
               <Panel />
            
-            <FilterPanel />
+              <FilterPanel />
            
               <div className="main_container">
                 <Routes>

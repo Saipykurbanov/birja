@@ -20,7 +20,7 @@ const Detail = () => {
         <div className='detail'>
 
             <Load load={coin.load}/>
-            <Head timer={{lastTime: coin.lastTime, time: coin.time, saveNow: coin.saveNow, updatedAt: coin.info.updatedAt}}/>
+            <Head timer={{time: coin.time, saveNow: coin.saveNow, updatedAt: coin.info.updatedAt}}/>
 
             <div className="detail_wrapper">
 
@@ -29,8 +29,20 @@ const Detail = () => {
                 <LeftPanel coin={coin}/>
                 <Line mode={'vertical c'}/>
                 <RightPanel coin={coin}/>
-                <StatusBlock setInReady={coin.setInReady} setInCheck={coin.setInCheck} nullStatus={coin.nullStatus} setInWork={coin.setInWork} statusId={coin.info.statusId}/>
-                <MobilePanel setInReady={coin.setInReady} setInCheck={coin.setInCheck} nullStatus={coin.nullStatus} setInWork={coin.setInWork} statusId={coin.info.statusId} stockNumber={coin.info.stockNumber}/>
+                <StatusBlock 
+                    setInReady={coin.setInReady}
+                    setInCheck={coin.setInCheck} 
+                    nullStatus={coin.nullStatus} 
+                    setInWork={coin.setInWork} 
+                    statusId={coin.info.statusId}
+                />
+                <MobilePanel 
+                    setInReady={coin.setInReady} 
+                    setInCheck={coin.setInCheck} 
+                    nullStatus={coin.nullStatus} 
+                    setInWork={coin.setInWork} 
+                    statusId={coin.info.statusId}
+                />
 
             </div>
 

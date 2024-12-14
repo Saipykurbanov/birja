@@ -18,7 +18,6 @@ export default function useCoin() {
     const [load, setLoad] = useState(true)
     const [tab, setTab] = useState(1)
     const [time, setTime] = useState('30')
-    const [lastTime, setLastTime] = useState('')
     const [obj, setObj] = useState({})
     const [disabled, setDisabled] = useState(false)
     const [user, setUser] = useState(() => {
@@ -266,7 +265,6 @@ export default function useCoin() {
             let res = await Api.asyncPut(obj.path, obj.data)
 
             if(res !== 'error') {
-                setLastTime(utils.formatDate())
                 setOriginalInfo(obj.data)
                 setObj({})
                 return
@@ -287,7 +285,6 @@ export default function useCoin() {
                 let res = await Api.asyncPut(path, body)
 
                 if(res !== 'error') {
-                    setLastTime(utils.formatDate())
                     setOriginalInfo(body)
                     return
                 }
@@ -304,22 +301,28 @@ export default function useCoin() {
     const getCoins = (index, res) => {
 
         if (index !== -1) {
-            let start, end;
+            let start, end, data;
 
             if (index - 3 < 0) {
                 const overflow = 3 - index; 
                 start = res.length - overflow;
                 end = Math.min(res.length, index + 4);
-                Store.setListener('getCoins', [...res.slice(start, res.length), ...res.slice(0, end)]);
+                data = [...res.slice(start, res.length), ...res.slice(0, end)]
+                Store.setListener('getCoins', data);
+                Store.setListener('pages', data)
             } else if (index + 4 > res.length) {
                 const overflow = (index + 4) - res.length; 
                 start = Math.max(0, index - 3);
                 end = res.length;
-                Store.setListener('getCoins', [...res.slice(start, end), ...res.slice(0, overflow)]);
+                data = [...res.slice(start, end), ...res.slice(0, overflow)]
+                Store.setListener('getCoins', data);
+                Store.setListener('pages', data)
             } else {
                 start = Math.max(0, index - 3);
                 end = Math.min(res.length, index + 4);
-                Store.setListener('getCoins', res.slice(start, end));
+                data = res.slice(start, end)
+                Store.setListener('getCoins', data);
+                Store.setListener('pages', data)
             }
         } 
     }
@@ -470,7 +473,6 @@ export default function useCoin() {
         setTab,
         time,
         saveNow,
-        lastTime,
         infoSales,
         changeSales,
         setInWork,

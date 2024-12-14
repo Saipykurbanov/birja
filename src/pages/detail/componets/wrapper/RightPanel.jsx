@@ -12,7 +12,7 @@ const RightPanel = ({coin}) => {
                 <div className="qr">
                     <label htmlFor=""><span>STOCK</span></label>
                     <div className="stock_field">
-                        <input type="text" value={coin.info.stockNumber} onChange={(e) => coin.change(e.target.value, 'stockNumber')}/>
+                        <input disabled={coin.disabled} type="text" value={coin.info.stockNumber} onChange={(e) => coin.change(e.target.value, 'stockNumber')}/>
                         <div className="code">
                             <img src="/images/qr-code.jpg" alt="" />
                         </div>
