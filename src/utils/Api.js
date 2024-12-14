@@ -61,6 +61,7 @@ Api.post = async () => {
 Api.logout = () => {
     localStorage.removeItem('accessToken')
     localStorage.removeItem('timestamp')
+    localStorage.removeItem('user')
     localStorage.removeItem('role')
     return window.location.reload()
 }
@@ -134,12 +135,12 @@ Api.asyncPut = async (path, body) => {
         })
 
         if(res.status === 200) {
-            Notice.Send({type: 'success', text: 'Success'})
+            Notice.Send({type: 'success', text: 'Successfully updated'})
             return res = await res.json()
         }
 
         if(res.status === 401) {
-            Notice.Send({type: 'error', text: 'Not allowed'})
+            Notice.Send({type: 'error', text: 'Access is denied'})
             return 'error'
         }
 
@@ -147,6 +148,7 @@ Api.asyncPut = async (path, body) => {
         return 'error'
 
     } catch(e) {
+        Notice.Send({type: 'error', text: 'Server error'})
         return 'error'
     }
 }

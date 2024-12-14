@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './css/drop_list.css';
 
 
-const DropList = ({value, callback, list, label, mode, field}) => {
+const DropList = ({disabled, value, callback, list, label, mode, field}) => {
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -32,11 +32,11 @@ const DropList = ({value, callback, list, label, mode, field}) => {
     return (
         <div className='drop_list_container'>
             <label title={label} htmlFor=""><span>{label}</span></label>
-            <div className={`drop_list_field`}>
-                <button onClick={toggleDropList}>
-                    <p>{value || '-'}</p>
-                    <img src="/icons/chev_down.svg" alt="" />
-                </button>
+            <div className={`drop_list_field`} >
+                <div className="field_container">
+                    <input disabled={disabled} type="text" value={value} onChange={(e) => callback(e.target.value, field)}/>
+                    <button onClick={toggleDropList}><img src="/icons/chev_down.svg" alt="" /></button>
+                </div>
 
                 {isOpen ? <div className={`drop_list ${mode}`}>
                     <p>{value || '-'}</p>

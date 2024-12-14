@@ -1,12 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Line from '../../../components/line/Line';
-import Button from '../../../components/button/Button';
-import Api from '../../../utils/Api';
-import MainSlider from './MainSlider';
-import HorizontalSlider from './HorizontalSlider';
-import { NavLink } from 'react-router-dom';
-import VerticalLots from './VerticalLots';
-import Store from '../../../utils/Store';
+import Line from '../../../../components/line/Line';
+import Button from '../../../../components/button/Button';
+import Store from '../../../../utils/Store';
+import MainSlider from '../preview/MainSlider';
+import HorizontalSlider from '../preview/HorizontalSlider';
+import VerticalLots from '../preview/VerticalLots';
 
 const Preview = ({statusid}) => {
 
@@ -32,7 +30,7 @@ const Preview = ({statusid}) => {
 
             <div className="preview_lot">
 
-                <div className={`status color${statusid}`} style={{background: '#1E3F05'}}></div>
+                <div className={`status color${statusid}`}></div>
 
                 <MainSlider main={main} photos={photos}/>
 

@@ -131,8 +131,23 @@
 .detail .detail_wrapper .preview .preview_lot .status {
   height: 29px;
 }
+.detail .detail_wrapper .preview .preview_lot .status.color6 {
+  background-color: var(--withdraw);
+}
+.detail .detail_wrapper .preview .preview_lot .status.color5 {
+  background-color: var(--sold);
+}
 .detail .detail_wrapper .preview .preview_lot .status.color4 {
   background-color: var(--green);
+}
+.detail .detail_wrapper .preview .preview_lot .status.color3 {
+  background-color: var(--burgundy);
+}
+.detail .detail_wrapper .preview .preview_lot .status.color2 {
+  background-color: var(--blue2);
+}
+.detail .detail_wrapper .preview .preview_lot .status.color1 {
+  background-color: var(--violet);
 }
 .detail .detail_wrapper .preview .preview_lot .main_window {
   width: 100%;
