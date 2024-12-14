@@ -13,6 +13,7 @@ export default function useCoin() {
     const [dynastyandco, setDynastyandco] = useState([])
     const [authorities, setAuthorities] = useState([])
     const [years, setYears] = useState([])
+    const [load, setLoad] = useState(true)
 
     const [role, setRole] = useState(() => {
         let localRole = localStorage.getItem('role') || 'guest'
@@ -115,6 +116,8 @@ export default function useCoin() {
     useEffect(() => {
 
         (async () => {
+            Store.setListener('stopAutosave', true)
+            setLoad(true)
 
             let res = await Api.asyncGet(`api/coins/${id}`)
 
@@ -123,10 +126,18 @@ export default function useCoin() {
             let dynastyandco = await Api.asyncGet('api/dynastyandco')
             let authorities = await Api.asyncGet('api/authorities')
             let years = await Api.asyncGet('api/years')
+            let coins = await Api.asyncGet('api/coins')
 
             if(res !== 'error' && Object.keys(res).length > 0) {
                 setInfo(res)
                 setOriginalInfo(res)
+                Store.setListener('previewPhotos', res.photos)
+            }
+
+            if(res !== 'error' && Object.keys(res).length > 0 && coins !== 'error') {
+                let index = coins.findIndex(item => item.stockNumber === res.stockNumber);
+                Store.setListener('verticalGetSN', res.stockNumber)
+                getCoins(index,coins)
             }
 
             if(region !== 'error') {
@@ -149,9 +160,11 @@ export default function useCoin() {
                 setYears(years)
             }
 
+            setLoad(false)
+
         })()
 
-    }, [])
+    }, [id])
 
     const change = (value, field) => {
         if(role === 'admin') {
@@ -190,6 +203,29 @@ export default function useCoin() {
         }
     }
 
+    const getCoins = (index, res) => {
+
+        if (index !== -1) {
+            let start, end;
+
+            if (index - 3 < 0) {
+                const overflow = 3 - index; 
+                start = res.length - overflow;
+                end = Math.min(res.length, index + 4);
+                Store.setListener('getCoins', [...res.slice(start, res.length), ...res.slice(0, end)]);
+            } else if (index + 4 > res.length) {
+                const overflow = (index + 4) - res.length; 
+                start = Math.max(0, index - 3);
+                end = res.length;
+                Store.setListener('getCoins', [...res.slice(start, end), ...res.slice(0, overflow)]);
+            } else {
+                start = Math.max(0, index - 3);
+                end = Math.min(res.length, index + 4);
+                Store.setListener('getCoins', res.slice(start, end));
+            }
+        } 
+    }
+
     return {
         info,
         change,
@@ -199,6 +235,7 @@ export default function useCoin() {
         dynastyandco,
         citymint,
         region,
-        changeStatus
+        changeStatus,
+        load
     }
 }

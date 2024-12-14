@@ -6,11 +6,14 @@ import MainSlider from './MainSlider';
 import HorizontalSlider from './HorizontalSlider';
 import { NavLink } from 'react-router-dom';
 import VerticalLots from './VerticalLots';
+import Store from '../../../utils/Store';
 
-const Preview = ({stockNumber, idPhoto, photos, statusid}) => {
+const Preview = ({statusid}) => {
 
     const main = useRef(null)
     const horiz = useRef(null)
+    const [photos, setPhotos] = useState([])
+    Store.useListener('previewPhotos', setPhotos)
 
     useEffect(() => {
 
@@ -23,7 +26,7 @@ const Preview = ({stockNumber, idPhoto, photos, statusid}) => {
     return (
         <div className="preview">
             
-            <VerticalLots stockNumber={stockNumber}/>
+            <VerticalLots />
 
             <Line mode={'vertical'}/>
 

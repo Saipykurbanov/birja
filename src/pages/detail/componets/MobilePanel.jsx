@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
-const MobilePanel = ({statusId}) => {
+const MobilePanel = ({statusId, stockNumber}) => {
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -34,9 +35,9 @@ const MobilePanel = ({statusId}) => {
 
     return (
         <div className='mobile_panel'>
-            <button><img src="/icons/arrow_left_b.svg" alt="" /></button>
+            <NavLink to={`/detail/${stockNumber}`}><img src="/icons/arrow_left_b.svg" alt="" /></NavLink>
             <button onClick={toggle}><img src="/icons/burger.svg" alt="" /></button>
-            <button><img src="/icons/arrow_right_b.svg" alt="" /></button>
+            <NavLink to={`/detail/${stockNumber}`}><img src="/icons/arrow_right_b.svg" alt="" /></NavLink>
 
             <div className={`mobile_panel_popup ${isOpen ? 'open' : ''}`}>
                 <div className="buttons">
