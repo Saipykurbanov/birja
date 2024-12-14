@@ -1,10 +1,95 @@
 import { useEffect, useState } from "react"
 import Api from "../../../utils/Api"
+import usePagination from "../../../hooks/usePagination"
 
 export default function useStockTable () {
 
     const [list, setList] = useState(false)
+    const [store, setStore] = useState(false)
+    const [intermediateStore, setIntermediateStore] = useState(false)
     const [error, setError] = useState(false)
+    const [sort, setSort] = useState({
+        id: '',
+        stock: '',
+        media: '',
+        salesChanel: '',
+        lot: '',
+        category: '',
+        region: '',
+        cityMint: '',
+        authority: '',
+        metal: '',
+        description: '',
+        location: '',
+        date: '',
+        status: '',
+    })
+    const [perPageInput, setPerPageInput] = useState('')
+
+    const pagination = usePagination(intermediateStore, setList)
+
+    const closeCellMenus = () => {
+        const findActive = document.querySelectorAll('.cell_menu')
+
+        findActive.forEach(el => {
+            if(el.classList.contains('active')) {
+                el.classList.remove('active')
+            } 
+        })
+    }
+
+    const sortFunction = (sortBy) => {
+        const obj = JSON.parse(JSON.stringify(store));
+
+        setSort(prev => {
+            const newSort = { ...prev };
+    
+            for (let key in newSort) {
+                if (key !== sortBy) {
+                    newSort[key] = ''; 
+                }
+            }
+
+            if (newSort[sortBy] === '') {
+                newSort[sortBy] = 'ASC';
+                
+                obj.sort((a, b) => {
+                    if (a[sortBy] < b[sortBy]) {
+                        return -1;
+                    }
+                    if (a[sortBy] > b[sortBy]) {
+                        return 1;
+                    }
+                    return 0;
+                });
+            } else if (newSort[sortBy] === 'ASC') {
+                newSort[sortBy] = 'DESC'; 
+                
+                obj.sort((a, b) => {
+                    if (a[sortBy] < b[sortBy]) {
+                        return 1;
+                    }
+                    if (a[sortBy] > b[sortBy]) {
+                        return -1;
+                    }
+                    return 0;
+                });
+            } else if (newSort[sortBy] === 'DESC') {
+                newSort[sortBy] = ''
+            }
+    
+            const lastIndex = pagination.currentPage * pagination.perPage
+            const firstIndex = lastIndex - pagination.perPage
+    
+            // setStore(obj)
+            setIntermediateStore(obj)
+            const newObj = obj.slice(firstIndex, lastIndex)
+            setList(newObj);
+
+            return newSort;
+        });
+
+    };
 
     useEffect(() => {
         (async () => {
@@ -14,7 +99,7 @@ export default function useStockTable () {
                 return setError(true)
             }
 
-            setList(init.map((el) => {
+            const obj = init.map((el) => {
                 return {
                     id: el.stockNumber,
                     stock: el.stockNumber,
@@ -31,11 +116,21 @@ export default function useStockTable () {
                     date: el.createdAt,
                     status: el.statusId,
                 }
-            }))
+            })
+
+            setStore(obj)
+            setIntermediateStore(obj)
+            setList(obj.slice(0, 50))
         })()
+
+        window.addEventListener('click', closeCellMenus)
     }, [])
 
     return {
-        list
+        list,
+        sort,
+        sortFunction,
+        pagination,
+        perPageInput, setPerPageInput,
     }
 }

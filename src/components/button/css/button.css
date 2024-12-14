@@ -77,6 +77,19 @@
   color: var(--blue);
   font-size: 16px;
 }
+.main_button.small.active {
+  background-color: var(--blue);
+  color: var(--white);
+}
+@media screen and (min-width: 992px) {
+  .main_button.small:hover {
+    background-color: var(--blue);
+    color: var(--white);
+  }
+  .main_button.small:hover svg * {
+    fill: var(--white);
+  }
+}
 .main_button.blue_lite {
   border: 1px solid var(--blue);
   color: var(--blue);
@@ -84,4 +97,13 @@
 }
 .main_button.fz22 {
   font-size: 22px;
+}
+@media screen and (min-width: 992px) {
+  .main_button.blue_lite:hover {
+    background-color: var(--blue);
+    color: var(--white);
+  }
+  .main_button.blue_lite:hover svg * {
+    fill: var(--white);
+  }
 }/*# sourceMappingURL=button.css.map */
