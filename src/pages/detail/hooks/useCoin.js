@@ -27,8 +27,8 @@ export default function useCoin() {
     })
     const [role, setRole] = useState(() => {
         let localRole = localStorage.getItem('role') || 'guest'
-        // return localRole
-        return 'admin'
+        return localRole
+        // return 'admin'
     })
     const [info, setInfo] = useState({
         stockNumber: undefined,
