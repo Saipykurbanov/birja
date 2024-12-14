@@ -15,7 +15,15 @@ const Header = ({auth}) => {
     const openPanel = (e) => {
         e.stopPropagation()
         Store.setListener('panel', true)
-         Store.setListener('open_filter_panel', prev => prev = false)
+        Store.setListener('open_filter_panel', prev => prev = false)
+
+        if(auth === 3) {
+            Store.setListener('panel', true)
+        }
+      
+        if(auth === 2) {
+            Store.setListener('signInMenu', true)
+        }
     }
 
     return (
@@ -40,7 +48,7 @@ const Header = ({auth}) => {
                         </svg>
                         <p>English</p>
                     </div>
-                    {auth 
+                    {auth === 3
                     ?<Button mode={'flex lite'} callback={() => Api.logout()}>
                         Exit
                         <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -58,7 +66,7 @@ const Header = ({auth}) => {
                             </svg>
                         </Button>
                     </>}
-                    <div className="burger mobile">
+                    <div className="burger mobile" onClick={openPanel}>
                         <div className="burger_wrapper">
                             <span></span><span></span><span></span>
                         </div>

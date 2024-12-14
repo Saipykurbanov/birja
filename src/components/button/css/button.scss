@@ -94,7 +94,6 @@
         }
     }
     &.blue_lite {
-        font-size: 22px;
         border: 1px solid var(--blue);
         color: var(--blue);
         background-color: transparent;
@@ -109,5 +108,8 @@
                 }
             }
         }
+    }
+    &.fz22 {
+        font-size: 22px;
     }
 }

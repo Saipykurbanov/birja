@@ -26,11 +26,15 @@
         align-items: center;
         box-sizing: border-box;
         button {
-            display: flex;
+            display: grid;
             align-items: center;
-            justify-content: space-between;
+            grid-template-columns: 1fr auto;
             width: 100%;
             p {
+                text-align: start;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
                 font-size: 16px;
             }
         }
@@ -71,18 +75,19 @@
                     max-height: 100px;
                 }
                 .list_item {
-                    height: 21px;
                     display: flex;
                     align-items: center;
                     width: 100%;
-                    padding: 0 10px;
+                    padding: 5px 10px;
                     font-size: 16px;
                     &.active {
                         color: var(--white);
                         background-color: var(--blue);
                     }
-                    &:hover {
-                        background-color: var(--grey);
+                    @include mediaMinWidth(992) {
+                        &:hover {
+                            background-color: var(--grey);
+                        }
                     }
                 }
             }

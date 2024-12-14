@@ -1,7 +1,9 @@
 import React from 'react';
 import Button from '../../../components/button/Button';
+import Store from '../../../utils/Store';
 
-const Head = () => {
+const Head = ({lastTime, time, saveNow}) => {
+
     return (
         <div className='detail_head'>
 
@@ -9,10 +11,10 @@ const Head = () => {
                 <path d="M31.0005 38L17.0005 24L31.0005 10" stroke="#1F2022" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
 
-            <Button mode={'full blue'}>
+            <Button mode={'full blue'} callback={saveNow}>
                 SAVE
-                <span>(Autosave 30 sec) - </span>
-                <p>[12.03.202 11:23 PM]</p>
+                <span>(Autosave {time} sec) - </span>
+                <p>{lastTime ? `[${lastTime}]` : '00.00.000'}</p>
             </Button>
 
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 
-export default function useCalendar(currentDate, setCurrentDate) {
+export default function useCalendar(currentDate, setCurrentDate, field) {
 
     // Переменные состояния для управления функциональностью календаря
     const [isOpen, setIsOpen] = useState(false) // Состояние открытия попапа календаря
@@ -24,7 +24,7 @@ export default function useCalendar(currentDate, setCurrentDate) {
 
     // Функция для изменения даты
     const change = (value, type) => {
-        setCurrentDate(value);
+        setCurrentDate(value, field);
     
         const regex = /^\d{2}\.\d{2}\.\d{4}$/; // Регулярное выражение для проверки формата ДД.ММ.ГГГГ
         if (regex.test(value)) { // Если формат даты корректен
@@ -32,7 +32,7 @@ export default function useCalendar(currentDate, setCurrentDate) {
     
             setError(false); // Убираем ошибку
             setParseDate({ day, month, year }); // Устанавливаем разобранные значения
-            setCurrentDate(`${day}.${month}.${year}`); // Обновляем строку текущей даты
+            setCurrentDate(`${day}.${month}.${year}`, field); // Обновляем строку текущей даты
         } else {
             setError(true); // Устанавливаем ошибку
             setParseDate({ day: '', month: '', year: '' }); // Сбрасываем разобранные значения
@@ -130,7 +130,7 @@ export default function useCalendar(currentDate, setCurrentDate) {
         let month = (date.month).toString().length < 2 ? '0' + date.month : date.month // Добавляем ведущий ноль к месяцу, если его длина меньше 2
         let year = date.year // Получаем текущий год
         
-        setCurrentDate(`${day}.${month}.${year}`) // Устанавливаем строку текущей даты в формате ДД.ММ.ГГГГ
+        setCurrentDate(`${day}.${month}.${year}`, field) // Устанавливаем строку текущей даты в формате ДД.ММ.ГГГГ
         setParseDate({ day, month, year }) // Обновляем разобранные значения дня, месяца и года
         setIsOpen(false) // Закрываем календарь
         setError(false) // Сбрасываем ошибку валидации
@@ -190,7 +190,6 @@ export default function useCalendar(currentDate, setCurrentDate) {
         titleRef,
         change,
         changeDate,
-        currentDate,
         parseDate,
         error
     }

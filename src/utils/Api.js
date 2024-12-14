@@ -1,26 +1,27 @@
 const Api = {}
 
 Api.url = 'http://185.127.225.49:8083/'
+Api.url2 = 'http://185.127.225.49:8084/'
 
 Api.initToken = () => {
     let token = localStorage.getItem('accessToken')
     let time = localStorage.getItem('timestamp')
 
     if(token === '') {
-        return false
+        return 2
     }
 
     if(!token) {
-        return false
+        return 2
     }
 
 
     if(time < Date.now()) {
         Api.logout()
-        return false
+        return 2
     }
 
-    return true
+    return 3
 }
 
 Api.signIn = async (body) => {
@@ -58,6 +59,7 @@ Api.post = async () => {
 Api.logout = () => {
     localStorage.removeItem('accessToken')
     localStorage.removeItem('timestamp')
+    localStorage.removeItem('role')
     return window.location.reload()
 }
 
@@ -107,6 +109,34 @@ Api.asyncPost = async (path,body) => {
 
         if(res.status === 401) {
             return Api.logout()
+        }
+
+        return 'error'
+
+    } catch(e) {
+        return 'error'
+    }
+}
+
+Api.asyncPut = async (path, body) => {
+    try {
+        let token = localStorage.getItem('accessToken')
+
+        let res = await fetch(`${Api.url}${path}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                "Content-Type": "application/json;charset=utf-8",
+            },
+            body: JSON.stringify(body)
+        })
+
+        if(res.status === 200) {
+            return res = await res.json()
+        }
+
+        if(res.status === 401) {
+            return 'error'
         }
 
         return 'error'

@@ -3,6 +3,7 @@ import Button from '../../components/button/Button';
 import './css/sign_in.css';
 import Input from '../../components/input/Input';
 import Api from '../../utils/Api';
+import Panel from './components/Panel';
 
 
 const SignIn = () => {
@@ -26,6 +27,12 @@ const SignIn = () => {
         localStorage.setItem('accessToken', res.token)
         localStorage.setItem('timestamp', Date.now() + 43200000) //+ 12 часов
 
+        if(res.user.isAdmin) {
+            localStorage.setItem('role', 'admin')
+        } else {
+            localStorage.setItem('role', JSON.stringify(res.user.roles))
+        }
+
         return window.location.reload()
     }
 
@@ -44,6 +51,7 @@ const SignIn = () => {
                 <a href="№">Sign In</a>
                 <div className="error">{error || ''}</div>
             </div>
+            <Panel />
         </div>
     );
 };

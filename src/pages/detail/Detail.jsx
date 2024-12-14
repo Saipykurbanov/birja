@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './css/detail.css';
 import Head from './componets/Head';
 import TimeLine from './componets/TimeLine';
@@ -9,24 +9,30 @@ import StatusBlock from './componets/StatusBlock';
 import Preview from './componets/Preview';
 import MobileHead from './componets/MobileHead';
 import useDetail from './hooks/useDeatil';
-
+import MobilePanel from './componets/MobilePanel';
+import useCoin from './hooks/useCoin';
+import Load from './componets/Load';
 
 const Detail = () => {
 
     const detail = useDetail()
+    const coin = useCoin()
 
     return (
         <div className='detail'>
+            <Load load={coin.load}/>
             
-            <Head />
+            <Head lastTime={detail.lastTime} time={detail.time} saveNow={detail.saveNow}/>
 
             <div className="detail_wrapper">
-                <Preview />
+                <Preview statusid={coin.info.statusId}/>
                 <MobileHead tab={detail.tab} callback={detail.setTab}/>
                 <LeftPanel tab={detail.tab}/>
                 <Line mode={'vertical c'}/>
-                <RightPanel tab={detail.tab}/>
-                <StatusBlock />
+                <RightPanel changeStatus={coin.changeStatus} tab={detail.tab} coin={coin}/>
+                <StatusBlock statusId={coin.info.statusId}/>
+
+                <MobilePanel statusId={coin.info.statusId} stockNumber={coin.info.stockNumber}/>
             </div>
 
             <Line />
