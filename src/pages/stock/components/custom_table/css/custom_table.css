@@ -23,7 +23,6 @@
   flex-shrink: 0;
   border-right: 1px solid var(--black);
   background: var(--brown2);
-  font-size: 18px;
   color: var(--white);
   text-transform: uppercase;
   padding: 10px;
@@ -32,6 +31,16 @@
   line-height: 23.08px;
   font-weight: 450;
   cursor: pointer;
+}
+@media (max-width: 768px) {
+  .custom_table .custom_table_header * {
+    font-size: calc(16px + 3.4 * (100vw - 320px) / 1920);
+  }
+}
+@media (min-width: 768px) {
+  .custom_table .custom_table_header * {
+    font-size: calc(16px + 2 * 0.0520833333vw);
+  }
 }
 .custom_table .custom_table_header *.no_show {
   display: none;
@@ -143,15 +152,43 @@
   position: relative;
   flex-shrink: 0;
   border-right: 1px solid var(--black);
-  font-size: 16px;
   color: var(--black);
   padding: 10px;
-  height: 44px;
   text-align: center;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
   cursor: default;
+}
+@media (max-width: 768px) {
+  .custom_table .custom_table_list .custom_table_item .all {
+    font-size: calc(14px + 3.4 * (100vw - 320px) / 1920);
+  }
+}
+@media (min-width: 768px) {
+  .custom_table .custom_table_list .custom_table_item .all {
+    font-size: calc(14px + 2 * 0.0520833333vw);
+  }
+}
+@media (max-width: 768px) {
+  .custom_table .custom_table_list .custom_table_item .all {
+    line-height: calc(17.95px + 4.352 * (100vw - 320px) / 1920);
+  }
+}
+@media (min-width: 768px) {
+  .custom_table .custom_table_list .custom_table_item .all {
+    line-height: calc(17.95px + 2.56 * 0.0520833333vw);
+  }
+}
+@media (max-width: 768px) {
+  .custom_table .custom_table_list .custom_table_item .all {
+    height: calc(38px + 10.2 * (100vw - 320px) / 1920);
+  }
+}
+@media (min-width: 768px) {
+  .custom_table .custom_table_list .custom_table_item .all {
+    height: calc(38px + 6 * 0.0520833333vw);
+  }
 }
 .custom_table .custom_table_list .custom_table_item .stock {
   width: 100px;
@@ -265,9 +302,12 @@
 .pagination_flex {
   display: flex;
   margin: 12px 0;
+  flex-wrap: wrap-reverse;
+  gap: 12px;
 }
 
 .custom_table_pagination {
+  flex: 1;
   display: flex;
   align-items: flex-end;
   font-weight: 450;
@@ -279,6 +319,7 @@
 .custom_table_pagination .page {
   margin-bottom: 5px;
   margin-right: 10px;
+  white-space: nowrap;
 }
 
 .cell_menu {

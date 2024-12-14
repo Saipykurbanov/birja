@@ -27,16 +27,18 @@ const TabelFilters = ({ perPageInput, setPerPageInput, perPage, changePerPage })
                 <Button mode={`small ${perPage === 150 ? 'active' : ''}`} callback={() => changePerPage(150)}>150</Button>
             </div>
 
-            <Input 
-                type={'text'}
-                mode={'grey'}
-                placeholder={'Your number'}
-                maxWidth={'202'}
-                value={perPageInput}
-                callback={(e) => inputPerPage(e.target.value)}
-            />
+            <div className='input_flex'>
+                <Input 
+                    type={'text'}
+                    mode={'grey'}
+                    placeholder={'Your number'}
+                    maxWidth={'202'}
+                    value={perPageInput}
+                    callback={(e) => inputPerPage(e.target.value)}
+                />
 
-            <Button mode={'blue_lite uppercase full bold'} callback={show}>Show</Button>
+                <Button mode={'blue_lite uppercase full bold'} callback={show}>Show</Button>
+            </div>
         </div>
     );
 };
