@@ -34,6 +34,7 @@ const Panel = () => {
                 </Button>
                 {/* <h3>Dashboard</h3> */}
                 <NavLink to={'/dashboard'}>Dashboard</NavLink>
+                <NavLink to={'/'}>Stock</NavLink>
                 
                 <div className="nav">
                     <div className="nav_item active">

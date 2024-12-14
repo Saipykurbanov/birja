@@ -29,9 +29,9 @@ const CustomTableHeader = ({sortFunction, sort, isShow}) => {
 
             <div onClick={() => sortFunction('date')}           className={`date arrow ${sort.date} ${isShow.date ? '' : 'no_show'}`}>date</div>
 
-            <div onClick={() => sortFunction('')}               className={`status ${isShow.status ? '' : 'no_show'}`}>status</div>
+            <div onClick={() => sortFunction('status')}         className={`status arrow ${sort.status} ${isShow.status ? '' : 'no_show'}`}>status</div>
 
-            <div onClick={() => sortFunction('')}               className={`settings ${isShow.status ? '' : 'no_show'}`}><img src='/icons/settings_white.svg' alt=''/></div>
+            <div className={`settings ${isShow.status ? '' : 'no_show'}`}><img src='/icons/settings_white.svg' alt=''/></div>
         </div>
     );
 };

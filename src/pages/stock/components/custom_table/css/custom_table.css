@@ -8,6 +8,16 @@
   max-height: 50dvh;
   height: 50dvh;
 }
+.custom_table .stock_loading {
+  width: 100%;
+  height: calc(100% - 50px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--black);
+  background-color: var(--white);
+}
 .custom_table .custom_table_header {
   position: sticky;
   border: 1px solid var(--black);
@@ -195,6 +205,7 @@
   border-right: 0;
   background: #DFDFDF;
   text-align: left;
+  cursor: pointer;
 }
 .custom_table .custom_table_list .custom_table_item .qr {
   padding: 0;
@@ -259,22 +270,22 @@
   width: 90px;
 }
 .custom_table .custom_table_list .custom_table_item .status.color1 {
-  background-color: var(--green);
+  background-color: var(--violet);
 }
 .custom_table .custom_table_list .custom_table_item .status.color2 {
-  background-color: yellow;
+  background-color: var(--blue2);
 }
 .custom_table .custom_table_list .custom_table_item .status.color3 {
-  background-color: var(--red);
+  background-color: var(--burgundy);
 }
 .custom_table .custom_table_list .custom_table_item .status.color4 {
-  background-color: var(--green2);
+  background-color: var(--green);
 }
 .custom_table .custom_table_list .custom_table_item .status.color5 {
-  background-color: rgba(137, 43, 226, 0.655);
+  background-color: var(--sold);
 }
 .custom_table .custom_table_list .custom_table_item .status.color6 {
-  background-color: rgba(58, 36, 0, 0.623);
+  background-color: var(--withdraw);
 }
 .custom_table .custom_table_list .custom_table_item .settings {
   padding: 0;

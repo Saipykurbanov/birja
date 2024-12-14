@@ -15,6 +15,8 @@ export default function useStockTable () {
     // Состояние ошибки (true, если загрузка данных не удалась)
     const [error, setError] = useState(false)
 
+    const [loading, setloading] = useState(false)
+
     // Состояние для сортировки (по каким полям и в каком порядке)
     const [sort, setSort] = useState({
         id: '',
@@ -159,6 +161,7 @@ export default function useStockTable () {
             setStore(obj)
             setIntermediateStore(obj)
             setList(obj.slice(0, 50)) // Отображаем первые 50 элементов
+            setloading(prev => prev = true)
         })()
 
         // Добавляем обработчик клика для закрытия меню
@@ -167,6 +170,7 @@ export default function useStockTable () {
 
     // Возвращаем публичные методы и состояния
     return {
+        loading,
         list,                   // Список данных для отображения
         sort,                   // Состояние сортировки
         isShow,                 // Видимость колонок
