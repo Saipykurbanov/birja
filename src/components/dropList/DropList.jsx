@@ -31,7 +31,7 @@ const DropList = ({value, callback, list, label, mode, field}) => {
 
     return (
         <div className='drop_list_container'>
-            <label htmlFor=""><span>{label}</span></label>
+            <label title={label} htmlFor=""><span>{label}</span></label>
             <div className={`drop_list_field`}>
                 <button onClick={toggleDropList}>
                     <p>{value || '-'}</p>

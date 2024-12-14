@@ -113,6 +113,8 @@ export default function useCoin() {
         updatedAt: undefined
     })
 
+    Store.useListener('updateOriginal', setOriginalInfo)
+
     useEffect(() => {
 
         (async () => {

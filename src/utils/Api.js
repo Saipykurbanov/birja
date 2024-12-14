@@ -1,3 +1,5 @@
+import Notice from "../components/notice/Notice"
+
 const Api = {}
 
 Api.url = 'http://185.127.225.49:8083/'
@@ -132,13 +134,16 @@ Api.asyncPut = async (path, body) => {
         })
 
         if(res.status === 200) {
+            Notice.Send({type: 'success', text: 'Success'})
             return res = await res.json()
         }
 
         if(res.status === 401) {
+            Notice.Send({type: 'error', text: 'Not allowed'})
             return 'error'
         }
 
+        Notice.Send({type: 'error', text: 'Error'})
         return 'error'
 
     } catch(e) {
