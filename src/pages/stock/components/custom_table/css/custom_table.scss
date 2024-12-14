@@ -8,6 +8,17 @@
     max-height: 50dvh;
     height: 50dvh;
 
+    .stock_loading {
+        width: 100%;
+        height: calc(100% - 50px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        color: var(--black);
+        background-color: var(--white);
+    }
+
     .custom_table_header {
         position: sticky;
         border: 1px solid var(--black);
@@ -22,7 +33,7 @@
             flex-shrink: 0;
             border-right: 1px solid var(--black);
             background: var(--brown2);
-            font-size: 18px;
+            @include adaptiveFont(18, 16);
             color: var(--white);
             text-transform: uppercase;
             padding: 10px;
@@ -154,9 +165,7 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-        
         width: max-content;
-        // overflow-y: auto;
 
         .custom_table_item {
             display: flex;
@@ -174,10 +183,11 @@
                 position: relative;
                 flex-shrink: 0;
                 border-right: 1px solid var(--black);
-                font-size: 16px;
+                @include adaptiveFont(16, 14);
                 color: var(--black);
                 padding: 10px;
-                height: 44px;
+                @include adaptiveProperty(line-height, 20.51, 17.95);
+                @include adaptiveProperty(height, 44, 38);
                 text-align: center;
                 text-overflow: ellipsis;
                 white-space: nowrap;
@@ -190,6 +200,7 @@
                 border-right: 0;
                 background: #DFDFDF;
                 text-align: left;
+                cursor: pointer;
             }
     
             .qr {
@@ -272,22 +283,22 @@
                     // background-color: ;
                 }
                 &.color1 {
-                    background-color: var(--green);
+                    background-color: var(--violet);
                 }
                 &.color2 {
-                    background-color: yellow;
+                    background-color: var(--blue2);
                 }
                 &.color3 {
-                    background-color: var(--red);
+                    background-color: var(--burgundy);
                 }
                 &.color4 {
-                    background-color: var(--green2);
+                    background-color: var(--green);
                 }
                 &.color5 {
-                    background-color: rgba(137, 43, 226, 0.655);
+                    background-color: var(--sold);
                 }
                 &.color6 {
-                    background-color: rgba(58, 36, 0, 0.623);
+                    background-color: var(--withdraw);
                 }
             }
     
@@ -323,9 +334,12 @@
 .pagination_flex {
     display: flex;
     margin: 12px 0;
+    flex-wrap: wrap-reverse;
+    gap: 12px;
 }
 
 .custom_table_pagination {
+    flex: 1;
     display: flex;
     align-items: flex-end;
     font-weight: 450;
@@ -337,6 +351,7 @@
     .page{
         margin-bottom: 5px;
         margin-right: 10px;
+        white-space: nowrap;
     }
 }
 

@@ -3,9 +3,7 @@ import './css/stock.css';
 import CustomInput from './components/CustomInput';
 import FilterBtns from './components/FilterBtns';
 import Table from './components/Table';
-import TabelFilters from './components/TabelFilters';
 import TimeLine from './components/TimeLine';
-import FilterPanel from './components/filter_panel/FilterPanel';
 import CustomTable from './components/custom_table/CustomTable';
 
 
@@ -34,8 +32,6 @@ const Stock = () => {
             {/* <Table /> */}
 
             <TimeLine />
-
-            {/* <FilterPanel /> */}
         </div>
     );
 };
