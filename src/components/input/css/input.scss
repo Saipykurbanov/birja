@@ -1,0 +1,43 @@
+@import './../../../style/common';
+
+.main_input {
+    width: 100%;
+    &.mt {
+        margin-top: 20px;
+    }
+    &.grey {
+        input {
+            border: 1px solid var(--grey);
+        }
+    }
+    & label {
+        color: var(--black2);
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-bottom: 5px;
+        span {
+            position: relative;
+            font-weight: 450;
+            @include adaptiveFont(20, 16);
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    }
+    
+    input {
+        height: 44px;
+        padding: 0 10px;
+        width: 100%;
+        border: 1px solid var(--black);
+        @include adaptiveFont(16, 14);
+    }
+    &.input_error {
+        input {
+            border: 1px solid red;
+            
+        }
+    }
+
+}

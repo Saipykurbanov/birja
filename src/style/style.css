@@ -1,8 +1,26 @@
 @charset "UTF-8";
 /*-------------Миксины----------------*/
+/*---------Шрифты------------*/
+@font-face {
+  font-family: "Futura-Pt";
+  font-weight: 400;
+  src: url("./../../public/fonts/Futura400.woff"), url("./../../public/fonts/Futura400.woff2");
+}
+@font-face {
+  font-family: "Futura-Pt";
+  font-weight: 450;
+  src: url("./../../public/fonts/Futura450.woff"), url("./../../public/fonts/Futura450.woff2");
+}
+@font-face {
+  font-family: "Futura-Pt";
+  font-weight: 500;
+  src: url("./../../public/fonts/Futura500.woff"), url("./../../public/fonts/Futura500.woff2");
+}
 /*--------------*/
 :root {
+  --main-font: "Futura-Pt";
   --black: #1F2022;
+  --black2: #2C2F33;
   --white: #fff;
   --blue: #374670;
   --grey: #A8A8A8;
@@ -15,6 +33,10 @@
   --green: #259E00;
   --green2: #1E3F05;
   --violet: #33013F;
+  --red: rgba(255, 0, 0, 1);
+  --link: rgba(27, 99, 245, 1);
+  --withdraw: rgba(58, 36, 0, 0.623);
+  --sold: rgba(137, 43, 226, 0.655);
 }
 
 /*--------Обнуление----------*/
@@ -114,6 +136,30 @@ input:-webkit-autofill:focus {
   caret-color: var(--text-color-light);
 }
 
+input::-moz-placeholder {
+  color: var(--grey);
+}
+
+input::placeholder {
+  color: var(--grey);
+}
+@media (max-width: 768px) {
+  input::-moz-placeholder {
+    font-size: calc(14px + 3.4 * (100vw - 320px) / 1920);
+  }
+  input::placeholder {
+    font-size: calc(14px + 3.4 * (100vw - 320px) / 1920);
+  }
+}
+@media (min-width: 768px) {
+  input::-moz-placeholder {
+    font-size: calc(14px + 2 * 0.0520833333vw);
+  }
+  input::placeholder {
+    font-size: calc(14px + 2 * 0.0520833333vw);
+  }
+}
+
 img {
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -121,4 +167,168 @@ img {
   -webkit-user-drag: none; /* для старых версий WebKit (Safari, Chrome до версии 76) */
   -moz-user-select: none; /* для Firefox */
   -ms-user-select: none; /* для Internet Explorer/Edge */ /* стандартное свойство */
+}
+
+body::before {
+  content: "";
+  display: none;
+  animation: Open 1s forwards ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(31, 32, 34, 0.2);
+  z-index: 144;
+}
+
+body.hidden {
+  overflow: hidden !important;
+}
+body.hidden::before {
+  display: block;
+}
+
+main {
+  padding-top: 65px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.container {
+  width: 100%;
+  max-width: 1432px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin: 0 auto;
+}
+
+.main_wrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 5fr;
+  flex: 1;
+}
+@media screen and (max-width: 1100px) {
+  .main_wrapper {
+    grid-template-columns: auto;
+  }
+}
+
+.main_container {
+  width: 100%;
+  overflow: hidden;
+  padding-left: 10px;
+  padding-bottom: 70px;
+}
+@media (max-width: 768px) {
+  .main_container {
+    padding-top: calc(22px + 5.1 * (100vw - 320px) / 1920);
+  }
+}
+@media (min-width: 768px) {
+  .main_container {
+    padding-top: calc(22px + 3 * 0.0520833333vw);
+  }
+}
+@media screen and (max-width: 1100px) {
+  .main_container {
+    padding-left: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .main_container {
+    padding-left: 0;
+    padding-bottom: 40px;
+  }
+}
+
+/*----------- Notice -------------*/
+.notice {
+  width: 100%;
+  max-width: 300px;
+  position: fixed;
+  bottom: 0px;
+  left: 50%;
+  z-index: 300;
+  transform: translateX(-50%);
+}
+
+.notice .item {
+  display: block;
+  text-align: center;
+  width: 100%;
+  border-radius: 0px;
+  background: rgba(33, 32, 32, 0.9215686275);
+  border: 1px solid var(--black);
+  will-change: transform;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 3s ease 0s;
+  padding: 10px 10px;
+  font-size: 16px;
+}
+
+.notice .error {
+  background-color: var(--violet);
+  color: var(--white);
+}
+
+.notice .success {
+  background-color: var(--green);
+  color: var(--white);
+}
+
+.notice .remark {
+  color: #FF9800;
+}
+
+[status=show] {
+  opacity: 1; /*Элемент полностью прозрачный (невидимый)*/
+  transition: 1s; /*Скорость перехода состояния элемента*/
+  animation: show-notice 0.5s 1; /* Указываем название анимации, её время и количество повторов*/
+  animation-fill-mode: forwards; /* Чтобы элемент оставался в конечном состоянии анимации */
+  /*animation-delay: 1s; /* Задержка перед началом */
+}
+
+[status=hide] {
+  opacity: 1; /*Элемент полностью прозрачный (невидимый)*/
+  transition: 1s; /*Скорость перехода состояния элемента*/
+  animation: hide-notice 0.5s 1; /* Указываем название анимации, её время и количество повторов*/
+  animation-fill-mode: forwards; /* Чтобы элемент оставался в конечном состоянии анимации */
+  /*animation-delay: 1s; /* Задержка перед началом */
+}
+
+@keyframes show-notice {
+  0% {
+    transform: translateY(200%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+@keyframes hide-notice {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(200%);
+  }
+}
+@keyframes Open {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes Spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }/*# sourceMappingURL=style.css.map */

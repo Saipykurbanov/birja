@@ -2,6 +2,15 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import useMain from './useMain';
 import SignIn from './pages/sigIn/SignIn';
 import Panel from './components/panel/Panel';
+import Header from './components/header/Header';
+import Stock from './pages/stock/Stock';
+import Footer from './components/footer/Footer';
+import Detail from './pages/detail/Detail';
+import Dashboard from './pages/dashboard/Dashboard';
+import Prefences from './components/prefences/Prefences';
+import FilterPanel from './pages/stock/components/filter_panel/FilterPanel';
+import Loading from './components/loading/Loading';
+import Notice from './components/notice/Notice';
 
 
 function App() {
@@ -9,22 +18,45 @@ function App() {
   const main = useMain()
 
   return (
-    <>
-      {main.auth ? 
-        <Router>
+    <main>
 
-            <Panel />
+      {main.auth === 1 ?<Loading />
+      :
+        <>
 
-            <div className="main_container">
-              <Routes>
-                  <Route path='/' element={''}/>
-              </Routes>
-            </div>
+          <Header auth={main.auth}/>
 
-        </Router>
-      :<SignIn />}
-    </>
+          {main.auth === 2 ? <SignIn /> 
+          :
+          <div className="main_wrapper container">
+
+            <Router>
+              
+              <Panel />
+           
+              <FilterPanel />
+           
+              <div className="main_container">
+                <Routes>
+                  <Route path='/' element={<Stock />}/>
+                  <Route path='/detail/:id' element={<Detail />}/>  
+                  <Route path='/dashboard' element={<Dashboard />}/>
+                </Routes>
+              </div>
+
+            </Router>
+
+          </div>}
+          <Footer />
+
+          <Prefences />
+          <Notice.Init />
+
+        </>}
+
+        
+    </main>
   )
-}
+} 
 
 export default App

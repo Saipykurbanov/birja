@@ -1,2 +1,86 @@
 @import './../../../style/common';
 
+.sign_in {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        @include mediaMaxWidth(400) {
+            width: 100%;
+        }
+        .logo {
+            width: 187px;
+            height: 51px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            border: 1px solid var(--black);
+            margin-bottom: 3px;
+        }
+        h2 {
+            @include adaptiveFont(32, 24);
+            font-weight: 450;
+        }
+        form {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            @include mediaMaxWidth(400) {
+                width: 100%;
+            }
+        }
+        a {
+            font-size: 16px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--black);
+        }
+        .error {
+            height: 15px;
+            font-size: 14px;
+            color: red;
+        }
+    }
+
+    .sign_in_panel {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 305px;
+        height: 100%;
+        overflow: auto;
+        background-color: var(--white);
+        z-index: 300;
+        transform: translateX(-100%);
+        transition: 0.5s;
+        @include mediaMinWidth(769) {
+            display: none;
+        }
+        &.open {
+            transform: translateX(0);
+        }
+        .sign_in_panel_wrapper {
+            padding: 26px 16px 10px 16px;
+            .logo {
+                width: 187px;
+                margin-bottom: 22px;
+            }
+            p {
+                font-size: 14px;
+                margin-top: 12px;
+                margin-bottom: 26px;
+            }
+            .panel_list {
+
+            }
+        }
+    }
+}

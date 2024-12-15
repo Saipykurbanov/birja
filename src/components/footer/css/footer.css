@@ -1,0 +1,49 @@
+@charset "UTF-8";
+/*-------------Миксины----------------*/
+footer {
+  margin-top: auto;
+  padding: 70px 0;
+  background-color: var(--blue);
+}
+@media screen and (min-width: 769px) {
+  footer {
+    position: relative;
+    z-index: 150;
+  }
+}
+@media screen and (max-width: 768px) {
+  footer {
+    padding: 40px 0;
+  }
+}
+footer .container {
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+}
+@media screen and (max-width: 768px) {
+  footer .container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+footer .logo {
+  width: 100%;
+}
+@media (max-width: 768px) {
+  footer .logo {
+    width: calc(111px + 119 * (100vw - 320px) / 1920);
+  }
+}
+@media (min-width: 768px) {
+  footer .logo {
+    width: calc(111px + 70 * 0.0520833333vw);
+  }
+}
+footer .policy {
+  color: var(--white);
+  font-size: 16px;
+  text-decoration: underline;
+  height: -moz-max-content;
+  height: max-content;
+}/*# sourceMappingURL=footer.css.map */

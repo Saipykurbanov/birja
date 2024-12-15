@@ -1,2 +1,152 @@
 @charset "UTF-8";
-/*-------------Миксины----------------*//*# sourceMappingURL=panel.css.map */
+/*-------------Миксины----------------*/
+.panel_wrapper {
+  position: sticky;
+  height: 100%;
+  top: 65px;
+  z-index: 140;
+  transition: 0.4s;
+}
+@media screen and (max-width: 1100px) {
+  .panel_wrapper {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    z-index: 200;
+  }
+  .panel_wrapper.open {
+    transform: translateX(0);
+  }
+}
+.panel_wrapper .panel {
+  min-width: 276px;
+  border-right: 1px solid var(--grey);
+  padding: 24px 16px;
+  background-color: var(--white);
+  height: 100%;
+  overflow: auto;
+}
+@media screen and (max-width: 1100px) {
+  .panel_wrapper .panel {
+    padding: 65px 16px 16px 16px;
+    width: 305px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .panel_wrapper .panel {
+    z-index: 160;
+    width: 305px;
+    padding: 16px;
+  }
+}
+.panel_wrapper .panel .exit {
+  margin-bottom: 24px;
+}
+@media screen and (min-width: 1101px) {
+  .panel_wrapper .panel .exit {
+    display: none;
+  }
+}
+.panel_wrapper .panel .logo {
+  width: 100%;
+  height: auto;
+  margin-bottom: 5.56dvh;
+}
+@media screen and (max-width: 1100px) {
+  .panel_wrapper .panel .logo {
+    margin-bottom: 24px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .panel_wrapper .panel .logo {
+    max-width: 165px;
+  }
+}
+.panel_wrapper .panel h3, .panel_wrapper .panel a {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+@media (max-width: 768px) {
+  .panel_wrapper .panel h3, .panel_wrapper .panel a {
+    font-size: calc(16px + 3.4 * (100vw - 320px) / 1920);
+  }
+}
+@media (min-width: 768px) {
+  .panel_wrapper .panel h3, .panel_wrapper .panel a {
+    font-size: calc(16px + 2 * 0.0520833333vw);
+  }
+}
+@media screen and (min-width: 769px) {
+  .panel_wrapper .panel h3, .panel_wrapper .panel a {
+    padding-left: 24px;
+    margin-bottom: 8px;
+  }
+}
+.panel_wrapper .panel .nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+@media screen and (max-width: 768px) {
+  .panel_wrapper .panel .nav {
+    gap: 12px;
+  }
+}
+.panel_wrapper .panel .nav .nav_item {
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+  padding-right: 20px;
+}
+@media screen and (min-width: 769px) {
+  .panel_wrapper .panel .nav .nav_item {
+    padding-left: 24px;
+  }
+}
+.panel_wrapper .panel .nav .nav_item h4 {
+  height: 23px;
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .panel_wrapper .panel .nav .nav_item h4 {
+    font-size: calc(16px + 3.4 * (100vw - 320px) / 1920);
+  }
+}
+@media (min-width: 768px) {
+  .panel_wrapper .panel .nav .nav_item h4 {
+    font-size: calc(16px + 2 * 0.0520833333vw);
+  }
+}
+.panel_wrapper .panel .nav .nav_item::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  background: url("./../../../../public/images/chevron.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 16px;
+  height: 16px;
+  transform: translateY(-50%);
+}
+.panel_wrapper .panel .nav .nav_item.active {
+  color: var(--blue);
+}
+@media screen and (min-width: 769px) {
+  .panel_wrapper .panel .nav .nav_item.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 23px;
+    background-color: var(--blue);
+  }
+}/*# sourceMappingURL=panel.css.map */

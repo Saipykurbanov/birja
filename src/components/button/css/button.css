@@ -7,12 +7,24 @@
   justify-content: center;
   gap: 5px;
   height: 44px;
+  min-height: 44px;
   width: 184px;
   font-size: 16px;
   border: 1px solid var(--black);
+  padding: 0 10px;
+  white-space: nowrap;
+}
+.main_button.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 .main_button.full {
   width: 100%;
+}
+.main_button.bold {
+  font-weight: 450;
 }
 .main_button.uppercase {
   text-transform: uppercase;
@@ -24,10 +36,16 @@
 .main_button.blue {
   background-color: var(--blue);
   border: 1px solid var(--blue);
+  color: var(--white);
+}
+.main_button.blue_lite {
+  border: 1px solid var(--blue);
+  color: var(--blue);
 }
 .main_button.brown {
   background-color: var(--brown);
   border: 1px solid var(--brown);
+  color: var(--2hite);
 }
 .main_button.blue2 {
   background-color: var(--blue2);
@@ -44,4 +62,48 @@
 .main_button.violet {
   background-color: var(--violet);
   border: 1px solid var(--violet);
+}
+.main_button.lite {
+  color: var(--white);
+  border: 1px solid var(--white);
+}
+.main_button.white {
+  color: var(--white);
+}
+.main_button.small {
+  width: 44px;
+  flex-shrink: 0;
+  border: 1px solid var(--blue);
+  color: var(--blue);
+  font-size: 16px;
+}
+.main_button.small.active {
+  background-color: var(--blue);
+  color: var(--white);
+}
+@media screen and (min-width: 992px) {
+  .main_button.small:hover {
+    background-color: var(--blue);
+    color: var(--white);
+  }
+  .main_button.small:hover svg * {
+    fill: var(--white);
+  }
+}
+.main_button.blue_lite {
+  border: 1px solid var(--blue);
+  color: var(--blue);
+  background-color: transparent;
+}
+@media screen and (min-width: 992px) {
+  .main_button.blue_lite:hover {
+    background-color: var(--blue);
+    color: var(--white);
+  }
+  .main_button.blue_lite:hover svg * {
+    fill: var(--white);
+  }
+}
+.main_button.fz22 {
+  font-size: 22px;
 }/*# sourceMappingURL=button.css.map */

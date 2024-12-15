@@ -1,2 +1,118 @@
 @import './../../../style/common';
 
+.panel_wrapper {
+    position: sticky;
+    height: 100%;
+    top: 65px;
+    // overflow: auto;
+    z-index: 140;
+    transition: 0.4s;
+    @include mediaMaxWidth(1100) {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translateX(-100%);
+        z-index: 200;
+        &.open {
+            transform: translateX(0);
+        }
+    }
+    .panel {
+        min-width: 276px;
+        // height: calc(100dvh - 65px);
+        border-right: 1px solid var(--grey);
+        padding: 24px 16px;
+        background-color: var(--white);
+        height: 100%;
+        overflow: auto;
+        @include mediaMaxWidth(1100) {
+            padding: 65px 16px 16px 16px;
+            width: 305px;
+        }
+        @include mediaMaxWidth(768) {
+            z-index: 160;
+            width: 305px;
+            padding: 16px;
+        }
+        .exit {
+            margin-bottom: 24px;
+            @include mediaMinWidth(1101) {
+                display: none;
+            }
+        }
+        .logo {
+            width: 100%;
+            height: auto;
+            margin-bottom: 5.56dvh;
+            @include mediaMaxWidth(1100) {
+                margin-bottom: 24px;
+            }
+            @include mediaMaxWidth(768) {
+                max-width: 165px;
+            }
+        }
+        h3, a {
+            display: block;
+            font-size: 18px;
+            @include adaptiveFont(18, 16);
+            margin-bottom: 12px;
+            @include mediaMinWidth(769) {
+                padding-left: 24px;
+                margin-bottom: 8px;
+            }
+        }
+        .nav {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 24px;
+            @include mediaMaxWidth(768) {
+                gap: 12px;
+            }
+            .nav_item {
+                width: 100%;
+                position: relative;
+                cursor: pointer;
+                padding-right: 20px;
+                @include mediaMinWidth(769) {
+                    padding-left: 24px;
+                }
+                h4 {
+                    @include adaptiveFont(18, 16);
+                    height: 23px;
+                    display: flex;
+                    align-items: center;
+                }
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    background: url('./../../../../public/images/chevron.svg');
+                    background-size: 100%;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    width: 16px;
+                    height: 16px;
+                    transform: translateY(-50%);
+                }
+                &.active {
+                    color: var(--blue);
+                    @include mediaMinWidth(769) {
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            left: 0;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            width: 2px;
+                            height: 23px;
+                            background-color: var(--blue);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

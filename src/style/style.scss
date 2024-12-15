@@ -1,8 +1,31 @@
 @import './common';
 
+/*---------Шрифты------------*/
+
+@font-face{
+    font-family: 'Futura-Pt';
+    font-weight: 400;
+    src: url('./../../public/fonts/Futura400.woff'),
+         url('./../../public/fonts/Futura400.woff2');
+}
+@font-face{
+    font-family: 'Futura-Pt';
+    font-weight: 450;
+    src: url('./../../public/fonts/Futura450.woff'),
+         url('./../../public/fonts/Futura450.woff2');
+}
+@font-face{
+    font-family: 'Futura-Pt';
+    font-weight: 500;
+    src: url('./../../public/fonts/Futura500.woff'),
+         url('./../../public/fonts/Futura500.woff2');
+}
+
 /*--------------*/
 :root {
+    --main-font: 'Futura-Pt';
     --black: #1F2022;
+    --black2: #2C2F33;
     --white: #fff;
     --blue: #374670;
     --grey: #A8A8A8;
@@ -15,6 +38,10 @@
     --green: #259E00;
     --green2: #1E3F05;
     --violet: #33013F;
+    --red: rgba(255, 0, 0, 1);
+    --link: rgba(27, 99, 245, 1);
+    --withdraw: rgba(58, 36, 0, 0.623);
+    --sold: rgba(137, 43, 226, 0.655);
 }
 
 /*--------Обнуление----------*/
@@ -49,6 +76,7 @@ html,body{
     color: var(--text-color-light);
     background: var(--background);
 }
+
 input,button,textarea{font-family:inherit;}
 
 input::-ms-clear{display: none;}
@@ -73,6 +101,11 @@ input:-webkit-autofill:focus {
     caret-color: var(--text-color-light);
 }
 
+input::placeholder {
+    color: var(--grey);
+    @include adaptiveFont(16, 14);
+}
+
 img {
     -moz-user-select: none;
     -webkit-user-select: none;
@@ -81,4 +114,148 @@ img {
     -webkit-user-drag: none; /* для старых версий WebKit (Safari, Chrome до версии 76) */
     -moz-user-select: none; /* для Firefox */
     -ms-user-select: none; /* для Internet Explorer/Edge */ /* стандартное свойство */
+}
+
+body {
+    &::before {
+        content: '';
+        display: none;
+        animation: Open 1s forwards ease;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #1F202233;
+        z-index: 144;
+    }
+}
+
+body.hidden {
+    overflow: hidden !important;
+
+    &::before {
+        display: block;
+    }
+}
+
+main {
+    padding-top: 65px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+}
+
+.container {
+    width: 100%;
+    max-width: 1432px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin: 0 auto;
+}
+
+.main_wrapper {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 5fr;
+    flex: 1;
+
+    @include mediaMaxWidth(1100) {
+        grid-template-columns: auto;
+    }
+}
+
+.main_container {
+    width: 100%;
+    overflow: hidden;
+    padding-left: 10px;
+    padding-bottom: 70px;
+    @include adaptiveProperty(padding-top, 25, 22);
+
+    @include mediaMaxWidth(1100) {
+        padding-left: 0;
+    }
+    @include mediaMaxWidth(768) {
+        padding-left: 0;
+        padding-bottom: 40px;
+    }
+}
+
+/*----------- Notice -------------*/
+.notice{ 
+    width: 100%;
+    max-width: 300px;
+    position: fixed;
+    bottom: 0px;
+    left: 50%;
+    z-index: 300;
+    transform: translateX(-50%);
+}
+.notice .item {
+    display: block;
+    text-align: center;
+    width: 100%;
+    border-radius: 0px;
+    background: #212020eb;
+    border: 1px solid var(--black);
+    will-change: transform;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 3s ease 0s;
+    padding: 10px 10px;
+    font-size: 16px;}
+.notice .error {background-color: var(--violet);color: var(--white)}
+.notice .success {background-color: var(--green);color: var(--white);}
+.notice .remark {color:#FF9800;}
+
+[status='show'] {
+   opacity:1; /*Элемент полностью прозрачный (невидимый)*/
+   transition: 1s; /*Скорость перехода состояния элемента*/
+   animation: show-notice 0.5s 1; /* Указываем название анимации, её время и количество повторов*/
+   animation-fill-mode: forwards; /* Чтобы элемент оставался в конечном состоянии анимации */
+  /*animation-delay: 1s; /* Задержка перед началом */
+}
+
+[status='hide'] {
+   opacity:1; /*Элемент полностью прозрачный (невидимый)*/
+   transition: 1s; /*Скорость перехода состояния элемента*/
+   animation: hide-notice 0.5s 1; /* Указываем название анимации, её время и количество повторов*/
+   animation-fill-mode: forwards; /* Чтобы элемент оставался в конечном состоянии анимации */
+  /*animation-delay: 1s; /* Задержка перед началом */
+}
+
+@keyframes show-notice{
+  0%{
+    transform: translateY(200%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes hide-notice{
+  0%{
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(200%);
+  }
+}
+
+@keyframes Open {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes Spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

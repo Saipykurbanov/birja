@@ -1,0 +1,189 @@
+@charset "UTF-8";
+/*-------------Миксины----------------*/
+.filter_panel {
+  position: fixed;
+  overflow-y: auto;
+  top: 0px;
+  right: 0;
+  transform: translateX(100%);
+  width: 50%;
+  min-width: 550px;
+  height: 100dvh;
+  background: var(--white);
+  box-shadow: -4px 0px 4px 0px rgba(31, 32, 34, 0.1490196078);
+  border-left: 1px solid var(--black);
+  transition: 0.7s;
+  z-index: 146;
+  will-change: transform;
+}
+.filter_panel.open {
+  transform: translateX(0);
+}
+@media screen and (max-width: 768px) {
+  .filter_panel {
+    width: 305px;
+    min-width: 0;
+  }
+}
+.filter_panel .filter_content {
+  position: relative;
+  padding: 95px 30px 200px 30px;
+  overflow: auto;
+  height: 100%;
+}
+@media screen and (max-width: 768px) {
+  .filter_panel .filter_content {
+    padding: 95px 30px 180px 30px;
+  }
+}
+.filter_panel .data_tab, .filter_panel .table_tab {
+  display: none;
+}
+.filter_panel .data_tab.active, .filter_panel .table_tab.active {
+  display: block;
+  animation: Open 1s forwards ease;
+}
+.filter_panel .tabs {
+  width: -moz-max-content;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  border-bottom: 1px solid var(--grey);
+  margin-bottom: 24px;
+}
+.filter_panel .tabs .tab {
+  text-transform: uppercase;
+  font-size: 24px;
+  position: relative;
+  font-weight: 450;
+  color: var(--grey);
+  line-height: 30px;
+  cursor: pointer;
+}
+.filter_panel .tabs .tab.active {
+  color: var(--blue);
+}
+.filter_panel .tabs .tab.active::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--blue);
+}
+.filter_panel h3 {
+  font-size: 24px;
+  font-weight: 450;
+  color: #000;
+  line-height: 30px;
+  margin-bottom: 12px;
+  margin-top: 24px;
+}
+.filter_panel .check_box_container {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  gap: 6px 30px;
+  margin-bottom: 20px;
+}
+.filter_panel .check_box_container .custom_check_box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  width: -moz-max-content;
+  width: max-content;
+}
+.filter_panel .check_box_container .custom_check_box input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--blue);
+  display: flex;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.filter_panel .check_box_container .custom_check_box input::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url("./icons/mark.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 16px;
+  height: 16px;
+  opacity: 0;
+  transition: 0.3s;
+}
+.filter_panel .check_box_container .custom_check_box input:checked {
+  background-color: var(--blue);
+}
+.filter_panel .check_box_container .custom_check_box input:checked:after {
+  opacity: 1;
+}
+.filter_panel .check_box_container .custom_check_box span {
+  display: block;
+  font-size: 16px;
+}
+.filter_panel .check_box_container .table_check_box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  width: -moz-max-content;
+  width: max-content;
+}
+.filter_panel .check_box_container .table_check_box input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  position: relative;
+  width: 30px;
+  height: 16px;
+  border: 1px solid var(--blue);
+  display: flex;
+  transition: 0.3s;
+  padding: 1px;
+  cursor: pointer;
+}
+.filter_panel .check_box_container .table_check_box input::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 1px;
+  transform: translate(0, -50%);
+  width: 12px;
+  height: 12px;
+  transition: 0.3s;
+  background-color: var(--blue);
+}
+.filter_panel .check_box_container .table_check_box input.active {
+  background-color: var(--blue);
+}
+.filter_panel .check_box_container .table_check_box input.active:after {
+  transform: translate(14px, -50%);
+  background-color: var(--white);
+}
+.filter_panel .check_box_container .table_check_box span {
+  display: block;
+  font-size: 16px;
+}
+.filter_panel .main_button {
+  max-width: 260px;
+}
+.filter_panel .link_block {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.filter_panel .link_block a {
+  font-size: 14px;
+  text-decoration: underline;
+}/*# sourceMappingURL=filter_panel.css.map */

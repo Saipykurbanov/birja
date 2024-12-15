@@ -1,0 +1,36 @@
+@import './../../../style/common';
+
+.text_area_field {
+    width: 100%;
+    & label {
+        color: var(--black2);
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-bottom: 5px;
+        span {
+            position: relative;
+            font-weight: 450;
+            @include adaptiveFont(20, 16);
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            @include mediaMinWidth(992) {
+                &:hover {
+                    overflow: visible;
+                    text-overflow: clip;
+                    z-index: 10;
+                    background-color: var(--white);
+                    padding-right: 10px;
+                }
+            }
+        }
+    }
+
+    textarea {
+        width: 100%;
+        border: 1px solid var(--black);
+        resize: none;
+        padding: 10px;
+    }
+}
