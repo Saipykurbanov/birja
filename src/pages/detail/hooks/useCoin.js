@@ -385,6 +385,9 @@ export default function useCoin() {
         if(info.statusId === 2) {
             return
         }
+        // if(user.coins.length > 2) {
+        //     return Notice.Send({type: 'error', text: 'You cannot select more than 3 coins'})
+        // }
         if(!info.userChanged) {
             let update = {...info, statusId: 2, userChanged: user?.login}
             let res = await Api.asyncPut(`api/coins/${id}`, update)
