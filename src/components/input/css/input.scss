@@ -5,6 +5,9 @@
     &.mt {
         margin-top: 20px;
     }
+    &.mt12 {
+        margin-top: 12px;
+    }
     &.grey {
         input {
             border: 1px solid var(--grey);
@@ -32,6 +35,7 @@
         width: 100%;
         border: 1px solid var(--black);
         @include adaptiveFont(16, 14);
+        border-radius: 0;
     }
     &.input_error {
         input {

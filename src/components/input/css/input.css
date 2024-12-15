@@ -6,6 +6,9 @@
 .main_input.mt {
   margin-top: 20px;
 }
+.main_input.mt12 {
+  margin-top: 12px;
+}
 .main_input.grey input {
   border: 1px solid var(--grey);
 }
@@ -38,6 +41,7 @@
   padding: 0 10px;
   width: 100%;
   border: 1px solid var(--black);
+  border-radius: 0;
 }
 @media (max-width: 768px) {
   .main_input input {
