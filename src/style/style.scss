@@ -106,6 +106,10 @@ input::placeholder {
     @include adaptiveFont(16, 14);
 }
 
+input {
+    border-radius: 0 !important;
+}
+
 img {
     -moz-user-select: none;
     -webkit-user-select: none;
