@@ -55,6 +55,9 @@
             &.right {
                 left: auto;
                 right: -2px;
+                @include mediaMaxWidth(768) {
+                    right: -1px;
+                }
             }
             p {
                 min-height: 44px;

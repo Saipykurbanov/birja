@@ -70,6 +70,11 @@
   left: auto;
   right: -2px;
 }
+@media screen and (max-width: 768px) {
+  .drop_list_container .drop_list_field .drop_list.right {
+    right: -1px;
+  }
+}
 .drop_list_container .drop_list_field .drop_list p {
   min-height: 44px;
   padding: 5px 10px;

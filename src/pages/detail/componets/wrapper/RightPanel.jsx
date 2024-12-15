@@ -61,7 +61,7 @@ const RightPanel = ({coin}) => {
                 </Button>
             </div>:<></>}
 
-            <Input disabled={coin.disabled} type={'text'} label={'TITLE'} value={coin.info.title} callback={(e) => coin.change(e.target.value, 'title')}/>
+            <Input disabled={coin.disabled} type={'text'} mode={'mt12'} label={'TITLE'} value={coin.info.title} callback={(e) => coin.change(e.target.value, 'title')}/>
 
             <Input disabled={coin.disabled} type={'text'} mode={'mt'} label={'SHORT DESCRIPTION'} value={coin.info.shortDescription} callback={(e) => coin.change(e.target.value, 'shortDescription')}/>
 
