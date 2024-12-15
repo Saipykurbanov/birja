@@ -1,15 +1,16 @@
 import React from 'react';
 import CellMenu from '../CellMenu';
 import { NavLink } from 'react-router';
+import Api from '../../../../utils/Api';
 
 const CustomTableItem = ({el, isShow}) => {
     return (
         <div className='custom_table_item'>
             <NavLink to={`/detail/${el.stock}`} title={el.stock} className={`stock all ${isShow.stock ? '' : 'no_show'}`}>{el.stock}</NavLink>
 
-            <div className={`qr all ${isShow.stock ? '' : 'no_show'}`}><img src={el.qr} alt="" /></div>
+            <div className={`qr all ${isShow.stock ? '' : 'no_show'}`}><img src={`${Api.mainUrl}${Api.port3}qr_code_${el.stock}.png`} alt="" /></div>
 
-            <div className={`media all ${isShow.media ? '' : 'no_show'}`}><img src={el.media} alt="" /></div>
+            <div className={`media all ${isShow.media ? '' : 'no_show'}`}><img src={el.qr ? `${Api.url2}20000/${el.qr}` : '/images/noimage.jpeg'} alt="" /></div>
 
             <div title={el.salesChanel} className={`sales_chanel all ${isShow.salesChanel ? '' : 'no_show'}`}>{el.salesChanel}</div>
 
