@@ -455,6 +455,11 @@
                             width: 100%;
                             @include adaptiveFont(16, 14);
                         }
+                        .code {
+                            img {
+                                width: 30px;
+                            }
+                        }
                     }
                 }
             }

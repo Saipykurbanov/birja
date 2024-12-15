@@ -18,18 +18,18 @@ const MobilePanel = ({statusId, setInWork, nullStatus, setInCheck, setInReady}) 
 
     const close = () => {
         setIsOpen(false)
-        document.body.className = ''
+        document.body.style.overflow = 'visible'
     }
 
     const toggle = (e) => {
         e.stopPropagation()
         if(isOpen) {
             setIsOpen(false)
-            document.body.className = ''
+            document.body.style.overflow = 'visible'
         }
         else {
             setIsOpen(true)
-            document.body.className = 'hidden'
+            document.body.style.overflow = 'hidden'
         }
     }
 

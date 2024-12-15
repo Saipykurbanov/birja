@@ -508,6 +508,9 @@
     font-size: calc(14px + 2 * 0.0520833333vw);
   }
 }
+.detail .detail_wrapper .right_panel .a .qr .stock_field .code img {
+  width: 30px;
+}
 .detail .detail_wrapper .right_panel .b {
   width: 100%;
   display: grid;

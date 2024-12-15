@@ -3,6 +3,7 @@ import Input from '../../../../components/input/Input';
 import DropList from '../../../../components/dropList/DropList';
 import Button from '../../../../components/button/Button';
 import TextArea from '../../../../components/textarea/TextArea';
+import Api from '../../../../utils/Api';
 
 const RightPanel = ({coin}) => {
 
@@ -14,7 +15,7 @@ const RightPanel = ({coin}) => {
                     <div className="stock_field">
                         <input disabled={coin.disabled} type="text" value={coin.info.stockNumber} onChange={(e) => coin.change(e.target.value, 'stockNumber')}/>
                         <div className="code">
-                            <img src="/images/qr-code.jpg" alt="" />
+                            <img src={`${Api.mainUrl}${Api.port3}qr_code_${coin.info.stockNumber}.png`} alt="" />
                         </div>
                     </div>
                 </div>
