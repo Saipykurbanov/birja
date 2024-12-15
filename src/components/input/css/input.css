@@ -38,6 +38,7 @@
   padding: 0 10px;
   width: 100%;
   border: 1px solid var(--black);
+  border-radius: 0;
 }
 @media (max-width: 768px) {
   .main_input input {
