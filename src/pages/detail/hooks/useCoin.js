@@ -174,6 +174,7 @@ export default function useCoin() {
             try {
                 stopAutoSave()
                 setLoad(true)
+                setObj({})
     
                 let res = await Api.asyncGet(`api/coins/${id}`)
                 let sales = await Api.asyncGet(`api/coinsales/${id}`)
@@ -388,8 +389,8 @@ export default function useCoin() {
         // if(user.coins.length > 2) {
         //     return Notice.Send({type: 'error', text: 'You cannot select more than 3 coins'})
         // }
-        if(!info.userChanged) {
-            let update = {...info, statusId: 2, userChanged: user?.login}
+        if(!info.userChanged || info.userChanged === user?.login) {
+            let update = {...info, statusId: 2, userChanged: user?.login}       
             let res = await Api.asyncPut(`api/coins/${id}`, update)
 
             if (res !== 'error') {
