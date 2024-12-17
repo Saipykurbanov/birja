@@ -459,10 +459,10 @@
   margin-top: 13px;
 }
 .detail .detail_wrapper .right_panel .text_area_field.description textarea {
-  height: 210px;
+  height: 216px;
 }
 .detail .detail_wrapper .right_panel .text_area_field.ai {
-  margin-top: 15px;
+  margin-top: 10px;
 }
 .detail .detail_wrapper .right_panel .text_area_field.ai textarea {
   height: 112px;
@@ -509,6 +509,9 @@
   border: 1px solid var(--black);
   gap: 10px;
 }
+.detail .detail_wrapper .right_panel .a .qr .stock_field.disabled {
+  opacity: 0.5;
+}
 .detail .detail_wrapper .right_panel .a .qr .stock_field input {
   flex: 1;
   width: 100%;
@@ -522,6 +525,9 @@
   .detail .detail_wrapper .right_panel .a .qr .stock_field input {
     font-size: calc(14px + 2 * 0.0520833333vw);
   }
+}
+.detail .detail_wrapper .right_panel .a .qr .stock_field input:disabled {
+  background-color: transparent;
 }
 .detail .detail_wrapper .right_panel .a .qr .stock_field .code img {
   width: 30px;

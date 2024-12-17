@@ -37,4 +37,8 @@
   border: 1px solid var(--black);
   resize: none;
   padding: 10px;
+}
+.text_area_field textarea:disabled {
+  background-color: transparent;
+  opacity: 0.5;
 }/*# sourceMappingURL=textarea.css.map */

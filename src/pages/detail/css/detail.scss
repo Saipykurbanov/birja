@@ -437,11 +437,11 @@
                 &.description {
                     margin-top: 13px;
                     textarea {
-                        height: 210px;
+                        height: 216px;
                     }
                 }
                 &.ai {
-                    margin-top: 15px;
+                    margin-top: 10px;
                     textarea {
                         height: 112px;
                     }
@@ -487,10 +487,16 @@
                         padding: 0 10px;
                         border: 1px solid var(--black);
                         gap: 10px;
+                        &.disabled {
+                            opacity: 0.5;
+                        }
                         input {
                             flex: 1;
                             width: 100%;
                             @include adaptiveFont(16, 14);
+                            &:disabled {
+                                background-color: transparent;
+                            }
                         }
                         .code {
                             img {

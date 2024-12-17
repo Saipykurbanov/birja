@@ -35,5 +35,9 @@
         border: 1px solid var(--black);
         resize: none;
         padding: 10px;
+        &:disabled {
+            background-color: transparent;
+            opacity: 0.5;
+        }
     }
 }
