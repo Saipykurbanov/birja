@@ -29,6 +29,7 @@ export default function useStockTable () {
         cityMint: '',
         authority: '',
         metal: '',
+        nominal: '',
         description: '',
         location: '',
         date: '',
@@ -46,6 +47,7 @@ export default function useStockTable () {
         cityMint: true,
         authority: true,
         metal: true,
+        nominal: true,
         description: true,
         location: true,
         date: true,
@@ -136,6 +138,8 @@ export default function useStockTable () {
                 return setError(true) // Устанавливаем ошибку, если данные не загрузились
             }
 
+            console.log(init)
+
             // Мапируем данные API в нужный формат
             const obj = init.map((el) => {
                 return {
@@ -150,6 +154,7 @@ export default function useStockTable () {
                     cityMint: el.cityMint,
                     authority: el.authority,
                     metal: el.metal,
+                    nominal: el.nominal,
                     description: el.description,
                     location: el.location,
                     date: el.createdAt,

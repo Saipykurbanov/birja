@@ -33,11 +33,11 @@ const Panel = () => {
                     </svg>
                 </Button>
                 {/* <h3>Dashboard</h3> */}
-                <NavLink to={'/dashboard'}>Dashboard</NavLink>
-                <NavLink to={'/'}>Stock</NavLink>
+                <NavLink className={'link'} to={'/'}>Dashboard</NavLink>
+                {/* <NavLink to={'/stock'}>Stock</NavLink> */}
                 
                 <div className="nav">
-                    <div className="nav_item active">
+                    <div className="nav_item">
                         <h4>Analytic</h4>
                     </div>
                     <div className="nav_item">
@@ -46,9 +46,9 @@ const Panel = () => {
                     <div className="nav_item">
                         <h4>Shop management</h4>
                     </div>
-                    <div className="nav_item">
-                        <h4>Inventory</h4>
-                    </div>
+
+                    <NavLink className={'nav_item'} to={'/stock'}><h4>Inventory</h4></NavLink>
+                    
                     <div className="nav_item">
                         <h4>Customers</h4>
                     </div>

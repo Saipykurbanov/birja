@@ -3,7 +3,7 @@ import './css/stock.css';
 import CustomInput from './components/CustomInput';
 import FilterBtns from './components/FilterBtns';
 import Table from './components/Table';
-import TimeLine from './components/TimeLine';
+import TimeLine from './components/timeline/TimeLine';
 import CustomTable from './components/custom_table/CustomTable';
 
 
