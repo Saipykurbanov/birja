@@ -5,7 +5,7 @@ import Button from '../../../../components/button/Button';
 const DataTab = ({mode}) => {
     return (
         <div className={`data_tab ${mode}`}>
-            <h3>Unloading data (lots) from the table</h3>
+            <h3>Download data (lots) from the table</h3>
 
             <div className="check_box_container">
                 <CheckBox label={'Stock qr'}/>

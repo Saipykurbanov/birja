@@ -13,7 +13,7 @@ const Stock = () => {
             <CustomInput 
                 label={'Search'}
                 icon={'./icons/search.svg'}
-                placeholder={'Find your lot'}
+                placeholder={'Search'}
                 callback={''}
                 value={''}
             />
