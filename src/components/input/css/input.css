@@ -9,6 +9,9 @@
 .main_input.mt12 {
   margin-top: 12px;
 }
+.main_input.mt10 {
+  margin-top: 10px;
+}
 .main_input.grey input {
   border: 1px solid var(--grey);
 }
@@ -17,23 +20,19 @@
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  margin-bottom: 5px;
+  margin-bottom: 7px;
 }
 .main_input label span {
   position: relative;
   font-weight: 450;
+  font-size: 20px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .main_input label span {
-    font-size: calc(16px + 6.8 * (100vw - 320px) / 1920);
-  }
-}
-@media (min-width: 768px) {
-  .main_input label span {
-    font-size: calc(16px + 4 * 0.0520833333vw);
+    font-size: 16px;
   }
 }
 .main_input input {
@@ -42,6 +41,9 @@
   width: 100%;
   border: 1px solid var(--black);
   border-radius: 0;
+  outline: 1px solid transparent;
+  transition: 0.3s;
+  outline-offset: -2px;
 }
 @media (max-width: 768px) {
   .main_input input {
@@ -52,6 +54,13 @@
   .main_input input {
     font-size: calc(14px + 2 * 0.0520833333vw);
   }
+}
+.main_input input:focus {
+  outline: 1px solid var(--black);
+}
+.main_input input:disabled {
+  opacity: 0.5;
+  background-color: transparent;
 }
 .main_input.input_error input {
   border: 1px solid red;

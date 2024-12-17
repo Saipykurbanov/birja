@@ -13,18 +13,14 @@
 .text_area_field label span {
   position: relative;
   font-weight: 450;
+  font-size: 20px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .text_area_field label span {
-    font-size: calc(16px + 6.8 * (100vw - 320px) / 1920);
-  }
-}
-@media (min-width: 768px) {
-  .text_area_field label span {
-    font-size: calc(16px + 4 * 0.0520833333vw);
+    font-size: 16px;
   }
 }
 @media screen and (min-width: 992px) {
@@ -41,4 +37,8 @@
   border: 1px solid var(--black);
   resize: none;
   padding: 10px;
+}
+.text_area_field textarea:disabled {
+  background-color: transparent;
+  opacity: 0.5;
 }/*# sourceMappingURL=textarea.css.map */

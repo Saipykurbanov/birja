@@ -5,7 +5,7 @@
   height: 1px;
   background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%);
   margin-top: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 .line.vertical {
   width: 1px;

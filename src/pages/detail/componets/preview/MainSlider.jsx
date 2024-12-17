@@ -19,7 +19,7 @@ const MainSlider = ({main, photos}) => {
                 perMove: 1,
                 padding      : '0px',
                 speed        : 1000,
-                arrows       : true,
+                arrows       : photos.length > 1 ? true : false,
                 drag: true,
                 pagination: false,
                 breakpoints: {

@@ -13,7 +13,13 @@
     border: 1px solid var(--black);
     padding: 0 10px;
     white-space: nowrap;
-    
+    transition: 0.3s;
+    svg {
+        transition: 0.3s;
+        path {
+            transition: 0.3s;
+        }
+    }
     &.flex {
         display: flex;
         align-items: center;
@@ -70,41 +76,80 @@
     &.white {
         color: var(--white);
     }
+    &.withdrow {
+        background-color: var(--black);
+        &.active {
+            background-color: var(--brown);
+        }
+        @include mediaMinWidth(992) {
+            &:hover {
+                background-color: var(--brown);
+            }
+        }
+    }
     &.small {
         width: 44px;
         flex-shrink: 0;
         border: 1px solid var(--blue);
+        outline: 1px solid transparent;
         color: var(--blue);
         font-size: 16px;
+        outline-offset: -2px;
 
         &.active {
             background-color: var(--blue);
             color: var(--white);
         }
 
+        // &:active {
+        //     background-color: var(--blue);
+        //     color: var(--white);
+
+        //     & svg * {
+        //         fill: var(--white);
+        //     }
+        // }
+
         @include mediaMinWidth(992) {
             &:hover {
-                background-color: var(--blue);
-                color: var(--white);
+                outline: 1px solid var(--blue);
+                // background-color: var(--blue);
+                // color: var(--white);
     
-                & svg * {
-                    fill: var(--white);
-                }
+                // & svg * {
+                //     fill: var(--white);
+                // }
             }
         }
     }
     &.blue_lite {
         border: 1px solid var(--blue);
+        outline: 1px solid transparent;
         color: var(--blue);
         background-color: transparent;
-
+        box-sizing: border-box;
+        outline-offset: -2px;
+        font-weight: 450;
+        
         @include mediaMinWidth(992) {
             &:hover {
-                background-color: var(--blue);
-                color: var(--white);
-    
-                & svg * {
-                    fill: var(--white);
+                outline: 1px solid var(--blue);
+            }
+        }
+    }
+    &.exit {
+        border: 1px solid var(--white);
+        color: var(--white);
+        font-size: 16px;
+        @include mediaMinWidth(992) {
+            &:hover {
+                background-color: var(--white);
+                color: var(--black);
+                svg {
+                    path {
+                        stroke: var(--black)
+
+                    }
                 }
             }
         }

@@ -23,6 +23,7 @@ export default function useFilterPanel() {
         cityMint: true,
         authority: true,
         metal: true,
+        nominal: true,
         description: true,
         location: true,
         date: true,

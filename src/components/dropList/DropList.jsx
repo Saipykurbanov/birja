@@ -5,9 +5,23 @@ import './css/drop_list.css';
 const DropList = ({disabled, value, callback, list, label, mode, field}) => {
 
     const [isOpen, setIsOpen] = useState(false)
+    const [isFocused, setIsFocused] = useState(false);
+
+    const handleFocus = () => {
+        if(!disabled) {
+            setIsFocused(true);
+        }
+    };
+  
+    const handleBlur = () => {
+      setIsFocused(false); 
+    };
 
     const toggleDropList = (e) => {
         e.stopPropagation()
+        if(disabled) {
+            return
+        }
         if(isOpen) {
             return setIsOpen(false)
         } else {
@@ -32,13 +46,13 @@ const DropList = ({disabled, value, callback, list, label, mode, field}) => {
     return (
         <div className='drop_list_container'>
             <label title={label} htmlFor=""><span>{label}</span></label>
-            <div className={`drop_list_field`} >
-                <div className="field_container">
+            <div className={`drop_list_field ${disabled ? 'disabled' : ''} ${isFocused && !disabled ? 'focus' : ''}`} onDoubleClick={toggleDropList} onFocus={handleFocus} onBlur={handleBlur}>
+                <div className={`field_container`}  >
                     <input disabled={disabled} type="text" value={value} onChange={(e) => callback(e.target.value, field)}/>
-                    <button onClick={toggleDropList}><img src="/icons/chev_down.svg" alt="" /></button>
+                    <button><img src="/icons/chev_down.svg" alt="" /></button>
                 </div>
 
-                {isOpen ? <div className={`drop_list ${mode}`}>
+                <div className={`drop_list ${mode} ${isOpen ? 'open' : ''}`}>
                     <p>{value || '-'}</p>
                     <div className="list">
                         {list?.map((el, i) => (
@@ -48,7 +62,7 @@ const DropList = ({disabled, value, callback, list, label, mode, field}) => {
                             <div className="list_item" onClick={() => callback('', field)}>-</div>
                         :<></>}
                     </div>
-                </div>:<></>}
+                </div>
 
             </div>
         </div>
