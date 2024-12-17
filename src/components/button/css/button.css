@@ -113,6 +113,7 @@
   background-color: transparent;
   box-sizing: border-box;
   outline-offset: -2px;
+  font-weight: 450;
 }
 @media screen and (min-width: 992px) {
   .main_button.blue_lite:hover {

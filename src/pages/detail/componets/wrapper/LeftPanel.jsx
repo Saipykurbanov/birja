@@ -51,13 +51,13 @@ const LeftPanel = ({coin}) => {
             </div>
 
             <div className="b button_block">
-                <Button mode={'full'}>
+                <Button mode={'blue_lite full'}>
                     AUCTION
                 </Button>
-                <Button mode={'full'}>
+                <Button mode={'blue_lite full'}>
                     ONLINE
                 </Button>
-                <Button mode={'blue full'}>
+                <Button mode={'blue_lite full'}>
                     STORE
                 </Button>
             </div>

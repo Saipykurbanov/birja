@@ -8,6 +8,9 @@
     &.mt12 {
         margin-top: 12px;
     }
+    &.mt10 {
+        margin-top: 10px;
+    }
     &.grey {
         input {
             border: 1px solid var(--grey);
@@ -18,14 +21,17 @@
         width: 100%;
         display: grid;
         grid-template-columns: 1fr;
-        margin-bottom: 5px;
+        margin-bottom: 7px;
         span {
             position: relative;
             font-weight: 450;
-            @include adaptiveFont(20, 16);
+            font-size: 20px;
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
+            @include mediaMaxWidth(768) {
+                font-size: 16px;
+            }
         }
     }
     

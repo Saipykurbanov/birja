@@ -57,14 +57,33 @@ header {
             p {
                 color: var(--white);
                 font-size: 18px;
+                @include mediaMaxWidth(768) {
+                    display: none;
+                }
+            }
+            @include mediaMaxWidth(768) {
+                order: 2;
+            }
+        }
+        .norification {
+            cursor: pointer;
+            @include mediaMaxWidth(768) {
+                display: none;
+            }
+            &.mob {
+                display: block;
+                order: 3;
+                @include mediaMinWidth(769) {
+                    display: none;
+                }
             }
         }
         .right {
             display: flex;
             align-items: center;
             @include adaptiveProperty(gap, 20, 12);
-            .norification {
-                cursor: pointer;
+            @include mediaMaxWidth(768) {
+                order: 0;
             }
             .language {
                 display: flex;

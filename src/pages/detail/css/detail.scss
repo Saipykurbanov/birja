@@ -72,6 +72,19 @@
             'b c d e'
             'b c d e'
             'b c d e'
+            'b c d e'
+            'b c d e'
+            'b c d e'
+            'b c d e'
+            'b c d e'
+            'b c d e'
+            'b c d e'
+            'b c d e'
+            'b c d e'
+            'b c d e'
+            'b c d e'
+            'b c d e'
+            'b c d e'
         ;
         margin-top: 20px;
         padding-right: 10px;
@@ -88,14 +101,15 @@
                 grid-template-columns: 93px 1px 1fr;
                 grid-auto-rows: auto;
                 gap: 10px;
+                margin-bottom: -10px;
             }
             .vertical_lots {
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
+                justify-content: space-between;
                 align-items: center;
-                gap: 10px;
-                padding-top: 24px;
+                padding-top: 27px;
+                height: 381px;
                 @include mediaMaxWidth(768) {
                     display: none;
                 }
@@ -120,7 +134,8 @@
                 flex-direction: column;
                 gap: 12px;
                 @include mediaMinWidth(769) {
-                    padding-top: 24px;
+                    height: 381px;
+                    padding-top: 27px;
                 }
                 .status {
                     height: 29px;
@@ -149,7 +164,7 @@
                     align-self: center;
                     .main_splider {
                         width: 100%;
-                        min-width: 280px;
+                        min-width: 250px;
                         .splide__slide  {
                             width: 100%;
                         }
@@ -161,6 +176,7 @@
                 .lot_images {
                     display: flex;
                     gap: 7px;
+                    height: 38px;
                     @include mediaMaxWidth(768) {
                         display: none;
                     }
@@ -418,7 +434,24 @@
                 }
             }
             .text_area_field {
-                margin-top: 8px;
+                &.description {
+                    margin-top: 13px;
+                    textarea {
+                        height: 210px;
+                    }
+                }
+                &.ai {
+                    margin-top: 15px;
+                    textarea {
+                        height: 112px;
+                    }
+                }
+                &.info {
+                    margin-top: 20px;
+                    textarea {
+                        height: 88px;
+                    }
+                }
             }
             .a {
                 display: grid;
@@ -434,13 +467,16 @@
                         width: 100%;
                         display: grid;
                         grid-template-columns: 1fr;
-                        margin-bottom: 5px;
+                        margin-bottom: 7px;
                         span {
                             font-weight: 450;
-                            @include adaptiveFont(20, 16);
+                            font-size: 20px;
                             white-space: nowrap;
                             text-overflow: ellipsis;
                             overflow: hidden;
+                            @include mediaMaxWidth(768) {
+                                font-size: 16px;
+                            }
                         }
                     }
                     
@@ -470,20 +506,28 @@
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 grid-auto-rows: auto;
-                gap: 8px;
-                margin-top: 8px;
+                gap: 9px;
+                margin-top: 9px;
             }
 
             .c {
                 width: 100%;
                 display: flex;
-                flex-wrap: wrap;
                 column-gap: 8px;
                 row-gap: 12px;
-                margin-top: 12px;
+                margin-top: 10px;
+                @include mediaMaxWidth(768) {
+                    flex-wrap: wrap;
+                    .main_input {
+                        flex: 1;
+                        min-width: 80px;
+                    }
+                }
                 .main_input {
                     flex: 1;
-                    min-width: 80px;
+                }
+                &.mt20 {
+                    margin-top: 20px;   
                 }
             }
 

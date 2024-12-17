@@ -43,12 +43,12 @@ const RightPanel = ({coin}) => {
                 <Input disabled={coin.disabled} type={'text'} label={'HS CODE'} value={coin.info.hsCode} callback={(e) => coin.change(e.target.value, 'hsCode')}/>
             </div>
 
-            <div className="c">
-                <Input disabled={coin.disabled} type={'text'} label={'REF. 1'} value={coin.info.reference1} callback={(e) => coin.change(e.target.value, 'reference1')}/>
-                <Input disabled={coin.disabled} type={'text'} label={'REF. 2'} value={coin.info.reference2} callback={(e) => coin.change(e.target.value, 'reference2')}/>
-                <Input disabled={coin.disabled} type={'text'} label={'REF. 3'} value={coin.info.reference3} callback={(e) => coin.change(e.target.value, 'reference3')}/>
-                <Input disabled={coin.disabled} type={'text'} label={'REF. 4'} value={coin.info.reference4} callback={(e) => coin.change(e.target.value, 'reference4')}/>
-                <Input disabled={coin.disabled} type={'text'} label={'REF. 5'} value={coin.info.reference5} callback={(e) => coin.change(e.target.value, 'reference5')}/>
+            <div className="c mt20">
+                <Input disabled={coin.disabled} type={'text'} label={'REF 1'} value={coin.info.reference1} callback={(e) => coin.change(e.target.value, 'reference1')}/>
+                <Input disabled={coin.disabled} type={'text'} label={'REF 2'} value={coin.info.reference2} callback={(e) => coin.change(e.target.value, 'reference2')}/>
+                <Input disabled={coin.disabled} type={'text'} label={'REF 3'} value={coin.info.reference3} callback={(e) => coin.change(e.target.value, 'reference3')}/>
+                <Input disabled={coin.disabled} type={'text'} label={'REF 4'} value={coin.info.reference4} callback={(e) => coin.change(e.target.value, 'reference4')}/>
+                <Input disabled={coin.disabled} type={'text'} label={'REF 5'} value={coin.info.reference5} callback={(e) => coin.change(e.target.value, 'reference5')}/>
             </div>
 
             {/* {coin.role === 'admin' ? 
@@ -70,13 +70,13 @@ const RightPanel = ({coin}) => {
                 </Button>
             </div>
 
-            <Input disabled={coin.disabled} type={'text'} mode={'mt12'} label={'TITLE'} value={coin.info.title} callback={(e) => coin.change(e.target.value, 'title')}/>
+            <Input disabled={coin.disabled} type={'text'} mode={'mt10'} label={'TITLE'} value={coin.info.title} callback={(e) => coin.change(e.target.value, 'title')}/>
 
             <Input disabled={coin.disabled} type={'text'} mode={'mt'} label={'SHORT DESCRIPTION'} value={coin.info.shortDescription} callback={(e) => coin.change(e.target.value, 'shortDescription')}/>
 
-            <TextArea disabled={coin.disabled} label={'DESCRIPTION'} rows={13} value={coin.info.description} callback={(e) => coin.change(e.target.value, 'description')}/>
-            <TextArea disabled={coin.disabled} label={'AI DESCRIPTION'} rows={7}/>
-            <TextArea disabled={coin.disabled} label={'INFO'} rows={5} value={coin.info.info} callback={(e) => coin.change(e.target.value, 'info')}/>
+            <TextArea mode={'description'} disabled={coin.disabled} label={'DESCRIPTION'} value={coin.info.description} callback={(e) => coin.change(e.target.value, 'description')}/>
+            <TextArea mode={'ai'} disabled={coin.disabled} label={'AI DESCRIPTION'} />
+            <TextArea mode={'info'} disabled={coin.disabled} label={'INFO'} rows={5} value={coin.info.info} callback={(e) => coin.change(e.target.value, 'info')}/>
         </div>
     );
 };

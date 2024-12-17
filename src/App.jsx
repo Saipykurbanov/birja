@@ -38,9 +38,9 @@ function App() {
            
               <div className="main_container">
                 <Routes>
+                  <Route path='/' element={<Dashboard />}/>
                   <Route path='/coin/:id' element={<Detail />}/>  
                   <Route path='/stock' element={<Stock />}/>
-                  <Route path='/' element={<Dashboard />}/>
                 </Routes>
               </div>
 

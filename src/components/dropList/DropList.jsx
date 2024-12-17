@@ -49,10 +49,10 @@ const DropList = ({disabled, value, callback, list, label, mode, field}) => {
             <div className={`drop_list_field ${disabled ? 'disabled' : ''} ${isFocused && !disabled ? 'focus' : ''}`} onDoubleClick={toggleDropList} onFocus={handleFocus} onBlur={handleBlur}>
                 <div className={`field_container`}  >
                     <input disabled={disabled} type="text" value={value} onChange={(e) => callback(e.target.value, field)}/>
-                    <button onClick={toggleDropList}><img src="/icons/chev_down.svg" alt="" /></button>
+                    <button><img src="/icons/chev_down.svg" alt="" /></button>
                 </div>
 
-                {isOpen ? <div className={`drop_list ${mode}`}>
+                <div className={`drop_list ${mode} ${isOpen ? 'open' : ''}`}>
                     <p>{value || '-'}</p>
                     <div className="list">
                         {list?.map((el, i) => (
@@ -62,7 +62,7 @@ const DropList = ({disabled, value, callback, list, label, mode, field}) => {
                             <div className="list_item" onClick={() => callback('', field)}>-</div>
                         :<></>}
                     </div>
-                </div>:<></>}
+                </div>
 
             </div>
         </div>

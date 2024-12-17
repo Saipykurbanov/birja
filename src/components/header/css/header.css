@@ -85,6 +85,33 @@ header .container .left p {
   color: var(--white);
   font-size: 18px;
 }
+@media screen and (max-width: 768px) {
+  header .container .left p {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  header .container .left {
+    order: 2;
+  }
+}
+header .container .norification {
+  cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+  header .container .norification {
+    display: none;
+  }
+}
+header .container .norification.mob {
+  display: block;
+  order: 3;
+}
+@media screen and (min-width: 769px) {
+  header .container .norification.mob {
+    display: none;
+  }
+}
 header .container .right {
   display: flex;
   align-items: center;
@@ -99,8 +126,10 @@ header .container .right {
     gap: calc(12px + 8 * 0.0520833333vw);
   }
 }
-header .container .right .norification {
-  cursor: pointer;
+@media screen and (max-width: 768px) {
+  header .container .right {
+    order: 0;
+  }
 }
 header .container .right .language {
   display: flex;

@@ -11,10 +11,13 @@
         span {
             position: relative;
             font-weight: 450;
-            @include adaptiveFont(20, 16);
+            font-size: 20px;
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
+            @include mediaMaxWidth(768) {
+                font-size: 16px;
+            }
             @include mediaMinWidth(992) {
                 &:hover {
                     overflow: visible;
