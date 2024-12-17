@@ -41,6 +41,8 @@ function App() {
                   <Route path='/' element={<Stock />}/>
                   <Route path='/coin/:id' element={<Detail />}/>  
                   <Route path='/dashboard' element={<Dashboard />}/>
+                  <Route path='/stock' element={<Stock />}/>
+                  <Route path='/' element={<Dashboard />}/>
                 </Routes>
               </div>
 

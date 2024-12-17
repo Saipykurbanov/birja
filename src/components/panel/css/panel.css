@@ -65,6 +65,7 @@
   }
 }
 .panel_wrapper .panel h3, .panel_wrapper .panel a {
+  position: relative;
   display: block;
   font-size: 18px;
   margin-bottom: 12px;
@@ -83,6 +84,22 @@
   .panel_wrapper .panel h3, .panel_wrapper .panel a {
     padding-left: 24px;
     margin-bottom: 8px;
+  }
+}
+.panel_wrapper .panel h3.active, .panel_wrapper .panel a.active {
+  color: var(--blue);
+  font-weight: 450;
+}
+@media screen and (min-width: 769px) {
+  .panel_wrapper .panel h3.active::before, .panel_wrapper .panel a.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 23px;
+    background-color: var(--blue);
   }
 }
 .panel_wrapper .panel .nav {
@@ -122,6 +139,23 @@
     font-size: calc(16px + 2 * 0.0520833333vw);
   }
 }
+.panel_wrapper .panel .nav .nav_item a {
+  height: 23px;
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+@media (max-width: 768px) {
+  .panel_wrapper .panel .nav .nav_item a {
+    font-size: calc(16px + 3.4 * (100vw - 320px) / 1920);
+  }
+}
+@media (min-width: 768px) {
+  .panel_wrapper .panel .nav .nav_item a {
+    font-size: calc(16px + 2 * 0.0520833333vw);
+  }
+}
 .panel_wrapper .panel .nav .nav_item::after {
   content: "";
   position: absolute;
@@ -137,6 +171,9 @@
 }
 .panel_wrapper .panel .nav .nav_item.active {
   color: var(--blue);
+}
+.panel_wrapper .panel .nav .nav_item.active h4 {
+  font-weight: 450;
 }
 @media screen and (min-width: 769px) {
   .panel_wrapper .panel .nav .nav_item.active::before {

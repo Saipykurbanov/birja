@@ -53,6 +53,7 @@
             }
         }
         h3, a {
+            position: relative;
             display: block;
             font-size: 18px;
             @include adaptiveFont(18, 16);
@@ -60,6 +61,23 @@
             @include mediaMinWidth(769) {
                 padding-left: 24px;
                 margin-bottom: 8px;
+            }
+
+            &.active {
+                color: var(--blue);
+                font-weight: 450;
+                @include mediaMinWidth(769) {
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 2px;
+                        height: 23px;
+                        background-color: var(--blue);
+                    }
+                }
             }
         }
         .nav {
@@ -84,6 +102,14 @@
                     display: flex;
                     align-items: center;
                 }
+                & a {
+                    @include adaptiveFont(18, 16);
+                    height: 23px;
+                    display: flex;
+                    align-items: center;
+                    padding-left: 0;
+                    margin-bottom: 0;
+                }
                 &::after {
                     content: '';
                     position: absolute;
@@ -99,6 +125,10 @@
                 }
                 &.active {
                     color: var(--blue);
+
+                    & h4 {
+                        font-weight: 450;
+                    }
                     @include mediaMinWidth(769) {
                         &::before {
                             content: '';

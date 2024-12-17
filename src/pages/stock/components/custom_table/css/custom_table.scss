@@ -7,6 +7,7 @@
     min-height: 50dvh;
     max-height: 50dvh;
     height: 50dvh;
+    @include adaptiveProperty(margin-bottom, 12, 20);
 
     .stock_loading {
         width: 100%;
@@ -24,9 +25,15 @@
         border: 1px solid var(--black);
         border-right: 0;
         display: flex;
-        width: max-content;
         top: 0;
         z-index: 10;
+
+        @include mediaMinWidth(768) {
+            width: max-content;
+        }
+        @include mediaMaxWidth(415) {
+            width: max-content;
+        }
 
         * {
             position: relative;
@@ -42,9 +49,16 @@
             line-height: 23.08px;
             font-weight: 450;
             cursor: pointer;
+            white-space: nowrap;
 
             &.no_show  {
                 display: none;
+            }
+
+            &.mobile {
+                @include mediaMaxWidth(768) {
+                    display: none;
+                }
             }
         }
 
@@ -84,60 +98,94 @@
         }
 
         .stock {
-            width: 100px;
+            width: 80px;
             border-right: 0;
             text-align: left;
+
+            @include mediaMaxWidth(768) {
+                flex: 1;
+                min-width: 71px;
+                width: 71px;
+            }
         }
 
         .qr {
             width: 50px;
+
+            @include mediaMaxWidth(768) {
+                flex: 1;
+                min-width: 44px;
+                width: 44px;
+            }
         }
 
         .media {
-            width: 77px;
+            width: 73px;
+
+            @include mediaMaxWidth(768) {
+                flex: 1;
+                min-width: 67px;
+                width: 67px;
+            }
         }
 
         .sales_chanel {
-            width: 170px;
+            width: 149px;
+
+            @include mediaMaxWidth(768) {
+                flex: 1;
+                min-width: 135px;
+                width: 135px;
+            }
         }
 
         .lot {
-            width: 70px;
+            width: 71px;
+
+            @include mediaMaxWidth(768) {
+                flex: 1;
+                min-width: 65px;
+                width: 65px;
+            }
         }
 
         .category {
-            width: 120px;
+            width: 106px;
         }
 
         .region {
-            width: 90px;
+            width: 85px;
         }
 
         .city_mint {
-            width: 110px;
+            width: 108px;
         }
         .authority {
-            width: 130px;
+            width: 127px;
         }
 
         .metal {
-            width: 120px;
+            width: 71px;
+        }
+
+        .nominal {
+            width: 100px;
         }
 
         .description {
-            width: 145px;
+            width: 125px;
         }
 
         .location {
-            width: 115px;
+            width: 103px;
         }
 
         .date {
-            width: 70px;
+            width: 91px;
         }
 
         .status {
-            width: 90px;
+            width: 76px;
         }
 
         .settings {
@@ -158,24 +206,43 @@
             &.no_show  {
                 display: none !important;
             }
+
+            @include mediaMaxWidth(768) {
+                display: none;
+            }
         }
     }
 
     .custom_table_list {
-        width: 100%;
         display: flex;
         flex-direction: column;
-        width: max-content;
+        
+        @include mediaMinWidth(768) {
+            width: max-content;
+        }
 
+        
         .custom_table_item {
             display: flex;
-            width: max-content;
             border-left: 1px solid var(--black);
             border-bottom: 1px solid var(--black);
+            
+            @include mediaMinWidth(768) {
+                width: max-content;
+            }
+            @include mediaMaxWidth(415) {
+                width: max-content;
+            }
 
             * {
                 &.no_show  {
                     display: none;
+                }
+
+                &.mobile {
+                    @include mediaMaxWidth(768) {
+                        display: none;
+                    }
                 }
             }
 
@@ -196,15 +263,21 @@
             }
     
             .stock {
-                width: 100px;
+                width: 80px;
                 border-right: 0;
                 background: #DFDFDF;
                 text-align: left;
                 cursor: pointer;
+
+                @include mediaMaxWidth(768) {
+                    flex: 1;
+                    min-width: 71px;
+                    width: 71px;
+                }
             }
     
             .qr {
-                padding: 0; 
+                padding: 0 10px; 
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -218,14 +291,25 @@
                 &.no_show  {
                     display: none !important;
                 }
+
+                @include mediaMaxWidth(768) {
+                    flex: 1;
+                    min-width: 44px;
+                    width: 44px;
+
+                    & img {
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
             }
     
             .media {
-                padding: 0;
+                padding: 0 10px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                width: 77px;
+                width: 73px;
 
                 & img {
                     height: 30px;
@@ -235,49 +319,71 @@
                 &.no_show  {
                     display: none !important;
                 }
+
+                @include mediaMaxWidth(768) {
+                    flex: 1;
+                    min-width: 67px;
+                    width: 67px;
+                }
             }
     
             .sales_chanel {
-                width: 170px;
+                width: 149px;
+
+                @include mediaMaxWidth(768) {
+                    flex: 1;
+                    min-width: 135px;
+                    width: 135px;
+                }
             }
     
             .lot {
-                width: 70px;
+                width: 71px;
+
+                @include mediaMaxWidth(768) {
+                    flex: 1;
+                    min-width: 65px;
+                    width: 65px;
+                }
             }
     
             .category {
-                width: 120px;
+                width: 106px;
             }
     
             .region {
-                width: 90px;
+                width: 85px;
             }
     
             .city_mint {
-                width: 110px;
+                width: 108px;
             }
             .authority {
-                width: 130px;
+                width: 127px;
             }
     
             .metal {
-                width: 120px;
+                width: 71px;
+            }
+
+            .nominal {
+                width: 100px;
             }
     
             .description {
-                width: 145px;
+                width: 125px;
             }
     
             .location {
-                width: 115px;
+                width: 103px;
             }
     
             .date {
-                width: 70px;
+                width: 91px;
             }
     
             .status {
-                width: 90px;
+                width: 76px;
 
                 &.color0 {
                     // background-color: ;
@@ -321,6 +427,10 @@
                 &.no_show  {
                     display: none !important;
                 }
+
+                @include mediaMaxWidth(768) {
+                    display: none;
+                }
             }
 
             &:nth-last-child(-n+4) .settings .cell_menu .cell_menu_list {
@@ -336,6 +446,10 @@
     margin: 12px 0;
     flex-wrap: wrap-reverse;
     gap: 12px;
+
+    @include mediaMaxWidth(768) {
+        display: none;
+    }
 }
 
 .custom_table_pagination {

@@ -10,7 +10,7 @@ const Total = () => {
             <div className="input_block">
                 <Input 
                     type={'text'}
-                    label={'Total Estimate'}
+                    label={'TOTAL ESTIMATE'}
                     mode={''} 
                     placeholder={''} 
                     value={'15 008 ₽'} 

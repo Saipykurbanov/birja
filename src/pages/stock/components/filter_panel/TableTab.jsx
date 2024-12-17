@@ -13,7 +13,7 @@ const TableTab = ({ mode, isShow, setIsShow, saveShowFilters }) => {
                 <TableCheckBox isShow={isShow} name={'media'} setIsShow={setIsShow} label={'Media'}/>
                 <TableCheckBox isShow={isShow} name={'metal'} setIsShow={setIsShow} label={'Metal'}/>
                 <TableCheckBox isShow={isShow} name={'salesChanel'} setIsShow={setIsShow} label={'Sales Channel'}/>
-                {/* <TableCheckBox isShow={isShow} name={''} setIsShow={setIsShow} label={'Nominal'}/> */}
+                <TableCheckBox isShow={isShow} name={'nominal'} setIsShow={setIsShow} label={'Nominal'}/>
                 <TableCheckBox isShow={isShow} name={'lot'} setIsShow={setIsShow} label={'Lot'}/>
                 <TableCheckBox isShow={isShow} name={'description'} setIsShow={setIsShow} label={'Description'}/>
                 <TableCheckBox isShow={isShow} name={'category'} setIsShow={setIsShow} label={'Category'}/>
