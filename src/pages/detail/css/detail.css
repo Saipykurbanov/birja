@@ -67,7 +67,7 @@
 .detail .detail_wrapper {
   display: grid;
   grid-template-columns: 520fr 1px 580fr 20px;
-  grid-template-areas: "a c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e";
+  grid-template-areas: "a c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e" "b c d e";
   margin-top: 20px;
   padding-right: 10px;
   gap: 10px;
@@ -88,15 +88,16 @@
     grid-template-columns: 93px 1px 1fr;
     grid-auto-rows: auto;
     gap: 10px;
+    margin-bottom: -10px;
   }
 }
 .detail .detail_wrapper .preview .vertical_lots {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
-  padding-top: 24px;
+  padding-top: 27px;
+  height: 381px;
 }
 @media screen and (max-width: 768px) {
   .detail .detail_wrapper .preview .vertical_lots {
@@ -125,7 +126,8 @@
 }
 @media screen and (min-width: 769px) {
   .detail .detail_wrapper .preview .preview_lot {
-    padding-top: 24px;
+    height: 381px;
+    padding-top: 27px;
   }
 }
 .detail .detail_wrapper .preview .preview_lot .status {
@@ -156,7 +158,7 @@
 }
 .detail .detail_wrapper .preview .preview_lot .main_window .main_splider {
   width: 100%;
-  min-width: 280px;
+  min-width: 250px;
 }
 .detail .detail_wrapper .preview .preview_lot .main_window .main_splider .splide__slide {
   width: 100%;
@@ -167,6 +169,7 @@
 .detail .detail_wrapper .preview .preview_lot .lot_images {
   display: flex;
   gap: 7px;
+  height: 38px;
 }
 @media screen and (max-width: 768px) {
   .detail .detail_wrapper .preview .preview_lot .lot_images {
@@ -452,8 +455,23 @@
     display: block;
   }
 }
-.detail .detail_wrapper .right_panel .text_area_field {
-  margin-top: 8px;
+.detail .detail_wrapper .right_panel .text_area_field.description {
+  margin-top: 13px;
+}
+.detail .detail_wrapper .right_panel .text_area_field.description textarea {
+  height: 210px;
+}
+.detail .detail_wrapper .right_panel .text_area_field.ai {
+  margin-top: 15px;
+}
+.detail .detail_wrapper .right_panel .text_area_field.ai textarea {
+  height: 112px;
+}
+.detail .detail_wrapper .right_panel .text_area_field.info {
+  margin-top: 20px;
+}
+.detail .detail_wrapper .right_panel .text_area_field.info textarea {
+  height: 88px;
 }
 .detail .detail_wrapper .right_panel .a {
   display: grid;
@@ -469,22 +487,18 @@
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  margin-bottom: 5px;
+  margin-bottom: 7px;
 }
 .detail .detail_wrapper .right_panel .a .qr label span {
   font-weight: 450;
+  font-size: 20px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .detail .detail_wrapper .right_panel .a .qr label span {
-    font-size: calc(16px + 6.8 * (100vw - 320px) / 1920);
-  }
-}
-@media (min-width: 768px) {
-  .detail .detail_wrapper .right_panel .a .qr label span {
-    font-size: calc(16px + 4 * 0.0520833333vw);
+    font-size: 16px;
   }
 }
 .detail .detail_wrapper .right_panel .a .qr .stock_field {
@@ -517,21 +531,31 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-auto-rows: auto;
-  gap: 8px;
-  margin-top: 8px;
+  gap: 9px;
+  margin-top: 9px;
 }
 .detail .detail_wrapper .right_panel .c {
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
   -moz-column-gap: 8px;
        column-gap: 8px;
   row-gap: 12px;
-  margin-top: 12px;
+  margin-top: 10px;
+}
+@media screen and (max-width: 768px) {
+  .detail .detail_wrapper .right_panel .c {
+    flex-wrap: wrap;
+  }
+  .detail .detail_wrapper .right_panel .c .main_input {
+    flex: 1;
+    min-width: 80px;
+  }
 }
 .detail .detail_wrapper .right_panel .c .main_input {
   flex: 1;
-  min-width: 80px;
+}
+.detail .detail_wrapper .right_panel .c.mt20 {
+  margin-top: 20px;
 }
 .detail .detail_wrapper .right_panel .buttons {
   display: flex;

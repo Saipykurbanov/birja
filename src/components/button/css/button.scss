@@ -117,6 +117,7 @@
         background-color: transparent;
         box-sizing: border-box;
         outline-offset: -2px;
+        font-weight: 450;
         
         @include mediaMinWidth(992) {
             &:hover {
