@@ -31,13 +31,13 @@ const TabelFilters = ({ perPageInput, setPerPageInput, perPage, changePerPage })
                 <Input 
                     type={'text'}
                     mode={'grey'}
-                    placeholder={'Your number'}
+                    placeholder={'Individual'}
                     maxWidth={'202'}
                     value={perPageInput}
                     callback={(e) => inputPerPage(e.target.value)}
                 />
 
-                <Button mode={'blue_lite uppercase full bold'} callback={show}>Show</Button>
+                <Button mode={'blue_lite uppercase full bold'} callback={show}>Apply</Button>
             </div>
         </div>
     );

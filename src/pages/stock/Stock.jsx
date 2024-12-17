@@ -12,14 +12,14 @@ const Stock = () => {
         <div className='stock'>
             <CustomInput 
                 label={'Search'}
-                icon={'./icons/search.svg'}
-                placeholder={'Find your lot'}
+                icon={'/icons/search.svg'}
+                placeholder={'Search'}
                 callback={''}
                 value={''}
             />
             <CustomInput 
                 label={'Setting Filter'}
-                icon={'./icons/filter.svg'}
+                icon={'/icons/filter.svg'}
                 placeholder={'Enter parameter'}
                 callback={''}
                 value={''}
