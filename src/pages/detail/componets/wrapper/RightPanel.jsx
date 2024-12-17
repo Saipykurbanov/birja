@@ -44,11 +44,11 @@ const RightPanel = ({coin}) => {
             </div>
 
             <div className="c mt20">
-                <Input disabled={coin.disabled} type={'text'} label={'REF. 1'} value={coin.info.reference1} callback={(e) => coin.change(e.target.value, 'reference1')}/>
-                <Input disabled={coin.disabled} type={'text'} label={'REF. 2'} value={coin.info.reference2} callback={(e) => coin.change(e.target.value, 'reference2')}/>
-                <Input disabled={coin.disabled} type={'text'} label={'REF. 3'} value={coin.info.reference3} callback={(e) => coin.change(e.target.value, 'reference3')}/>
-                <Input disabled={coin.disabled} type={'text'} label={'REF. 4'} value={coin.info.reference4} callback={(e) => coin.change(e.target.value, 'reference4')}/>
-                <Input disabled={coin.disabled} type={'text'} label={'REF. 5'} value={coin.info.reference5} callback={(e) => coin.change(e.target.value, 'reference5')}/>
+                <Input disabled={coin.disabled} type={'text'} label={'REF 1'} value={coin.info.reference1} callback={(e) => coin.change(e.target.value, 'reference1')}/>
+                <Input disabled={coin.disabled} type={'text'} label={'REF 2'} value={coin.info.reference2} callback={(e) => coin.change(e.target.value, 'reference2')}/>
+                <Input disabled={coin.disabled} type={'text'} label={'REF 3'} value={coin.info.reference3} callback={(e) => coin.change(e.target.value, 'reference3')}/>
+                <Input disabled={coin.disabled} type={'text'} label={'REF 4'} value={coin.info.reference4} callback={(e) => coin.change(e.target.value, 'reference4')}/>
+                <Input disabled={coin.disabled} type={'text'} label={'REF 5'} value={coin.info.reference5} callback={(e) => coin.change(e.target.value, 'reference5')}/>
             </div>
 
             {/* {coin.role === 'admin' ? 
