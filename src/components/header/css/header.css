@@ -113,10 +113,22 @@ header .container .right .language p {
   font-size: 16px;
   text-transform: uppercase;
   color: var(--white);
+  transition: 0.3s;
+}
+header .container .right .language svg path {
+  transition: 0.3s;
 }
 @media screen and (max-width: 768px) {
   header .container .right .language {
     display: none;
+  }
+}
+@media screen and (min-width: 992px) {
+  header .container .right .language:hover p {
+    color: var(--grey);
+  }
+  header .container .right .language:hover svg path {
+    fill: var(--grey);
   }
 }
 @media (max-width: 768px) {

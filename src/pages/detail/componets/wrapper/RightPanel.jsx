@@ -44,14 +44,14 @@ const RightPanel = ({coin}) => {
             </div>
 
             <div className="c">
-                <Input disabled={coin.disabled} type={'text'} label={'REFERENCE 1'} value={coin.info.reference1} callback={(e) => coin.change(e.target.value, 'reference1')}/>
-                <Input disabled={coin.disabled} type={'text'} label={'REFERENCE 1'} value={coin.info.reference2} callback={(e) => coin.change(e.target.value, 'reference2')}/>
-                <Input disabled={coin.disabled} type={'text'} label={'REFERENCE 1'} value={coin.info.reference3} callback={(e) => coin.change(e.target.value, 'reference3')}/>
-                <Input disabled={coin.disabled} type={'text'} label={'REFERENCE 1'} value={coin.info.reference4} callback={(e) => coin.change(e.target.value, 'reference4')}/>
-                <Input disabled={coin.disabled} type={'text'} label={'REFERENCE 1'} value={coin.info.reference5} callback={(e) => coin.change(e.target.value, 'reference5')}/>
+                <Input disabled={coin.disabled} type={'text'} label={'REF. 1'} value={coin.info.reference1} callback={(e) => coin.change(e.target.value, 'reference1')}/>
+                <Input disabled={coin.disabled} type={'text'} label={'REF. 2'} value={coin.info.reference2} callback={(e) => coin.change(e.target.value, 'reference2')}/>
+                <Input disabled={coin.disabled} type={'text'} label={'REF. 3'} value={coin.info.reference3} callback={(e) => coin.change(e.target.value, 'reference3')}/>
+                <Input disabled={coin.disabled} type={'text'} label={'REF. 4'} value={coin.info.reference4} callback={(e) => coin.change(e.target.value, 'reference4')}/>
+                <Input disabled={coin.disabled} type={'text'} label={'REF. 5'} value={coin.info.reference5} callback={(e) => coin.change(e.target.value, 'reference5')}/>
             </div>
 
-            {coin.role === 'admin' ? 
+            {/* {coin.role === 'admin' ? 
             <div className="buttons">
                 <Button mode={'blue_lite full fz22'}>
                     HIGHLIGHTS
@@ -59,7 +59,16 @@ const RightPanel = ({coin}) => {
                 <Button mode={`full fz22 ${coin.info.statusId === 6 ? 'brown white' : ''}`} callback={coin.changeStatus}>
                     WITHDRAW
                 </Button>
-            </div>:<></>}
+            </div>:<></>} */}
+
+            <div className="buttons">
+                <Button mode={'blue_lite full fz22'}>
+                    HIGHLIGHTS
+                </Button>
+                <Button mode={`full white withdrow ${coin.info.statusId === 6 ? 'active' : ''}`} callback={coin.changeStatus}>
+                    WITHDRAW
+                </Button>
+            </div>
 
             <Input disabled={coin.disabled} type={'text'} mode={'mt12'} label={'TITLE'} value={coin.info.title} callback={(e) => coin.change(e.target.value, 'title')}/>
 

@@ -452,6 +452,7 @@
                         border: 1px solid var(--black);
                         gap: 10px;
                         input {
+                            flex: 1;
                             width: 100%;
                             @include adaptiveFont(16, 14);
                         }

@@ -13,6 +13,13 @@
   border: 1px solid var(--black);
   padding: 0 10px;
   white-space: nowrap;
+  transition: 0.3s;
+}
+.main_button svg {
+  transition: 0.3s;
+}
+.main_button svg path {
+  transition: 0.3s;
 }
 .main_button.flex {
   display: flex;
@@ -70,6 +77,17 @@
 .main_button.white {
   color: var(--white);
 }
+.main_button.withdrow {
+  background-color: var(--black);
+}
+.main_button.withdrow.active {
+  background-color: var(--brown);
+}
+@media screen and (min-width: 992px) {
+  .main_button.withdrow:hover {
+    background-color: var(--brown);
+  }
+}
 .main_button.small {
   width: 44px;
   flex-shrink: 0;
@@ -92,16 +110,29 @@
 }
 .main_button.blue_lite {
   border: 1px solid var(--blue);
+  outline: 1px solid transparent;
   color: var(--blue);
   background-color: transparent;
+  box-sizing: border-box;
+  outline-offset: -2px;
 }
 @media screen and (min-width: 992px) {
   .main_button.blue_lite:hover {
-    background-color: var(--blue);
-    color: var(--white);
+    outline: 1px solid var(--blue);
   }
-  .main_button.blue_lite:hover svg * {
-    fill: var(--white);
+}
+.main_button.exit {
+  border: 1px solid var(--white);
+  color: var(--white);
+  font-size: 16px;
+}
+@media screen and (min-width: 992px) {
+  .main_button.exit:hover {
+    background-color: var(--white);
+    color: var(--black);
+  }
+  .main_button.exit:hover svg path {
+    stroke: var(--black);
   }
 }
 .main_button.fz22 {
