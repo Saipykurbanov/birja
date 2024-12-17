@@ -76,9 +76,27 @@ header {
                     font-size: 16px;
                     text-transform: uppercase;
                     color: var(--white);
+                    transition: 0.3s;
+                }
+                svg {
+                    path {
+                        transition: 0.3s;
+                    }
                 }
                 @include mediaMaxWidth(768) {
                     display: none;
+                }
+                @include mediaMinWidth(992) {
+                    &:hover {
+                        p {
+                            color: var(--grey)
+                        }
+                        svg {
+                            path {
+                                fill: var(--grey);
+                            }
+                        }
+                    }
                 }
             }
             button {

@@ -14,8 +14,8 @@ const VerticalLots = () => {
         <div className="vertical_lots">
             {coins?.length ?
                 coins.map((el, i) => (
-                    <Link key={i} to={`/detail/${el.stockNumber}`}>
-                        <img className={`${stockNumber === el.stockNumber ? 'current' : ''}`} src={el.idPhoto ? `${Api.url2}20000/${el.idPhoto}` : '/images/noimage.jpeg'} alt="" />
+                    <Link key={i} to={`/coin/${el.stockNumber}`}>
+                        <img className={`${stockNumber === el.stockNumber ? 'current' : ''}`} src={el.idPhoto ? `${Api.url2}${el.stockNumber.toString()[0]}0000/${el.idPhoto}` : '/images/noimage.jpeg'} alt="" />
                     </Link>
                 ))
             :<></>}

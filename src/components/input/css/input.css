@@ -42,6 +42,9 @@
   width: 100%;
   border: 1px solid var(--black);
   border-radius: 0;
+  outline: 1px solid transparent;
+  transition: 0.3s;
+  outline-offset: -2px;
 }
 @media (max-width: 768px) {
   .main_input input {
@@ -52,6 +55,13 @@
   .main_input input {
     font-size: calc(14px + 2 * 0.0520833333vw);
   }
+}
+.main_input input:focus {
+  outline: 1px solid var(--black);
+}
+.main_input input:disabled {
+  opacity: 0.5;
+  background-color: transparent;
 }
 .main_input.input_error input {
   border: 1px solid red;

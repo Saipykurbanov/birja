@@ -38,8 +38,10 @@ function App() {
            
               <div className="main_container">
                 <Routes>
+                  <Route path='/' element={<Stock />}/>
+                  <Route path='/coin/:id' element={<Detail />}/>  
+                  <Route path='/dashboard' element={<Dashboard />}/>
                   <Route path='/stock' element={<Stock />}/>
-                  <Route path='/detail/:id' element={<Detail />}/>  
                   <Route path='/' element={<Dashboard />}/>
                 </Routes>
               </div>

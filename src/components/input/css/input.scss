@@ -36,6 +36,16 @@
         border: 1px solid var(--black);
         @include adaptiveFont(16, 14);
         border-radius: 0;
+        outline: 1px solid transparent;
+        transition: 0.3s;
+        outline-offset: -2px;
+        &:focus {
+            outline: 1px solid var(--black);
+        }
+        &:disabled {
+            opacity: 0.5;
+            background-color: transparent;
+        }
     }
     &.input_error {
         input {
