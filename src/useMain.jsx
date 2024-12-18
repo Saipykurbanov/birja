@@ -12,7 +12,7 @@ export default function useMain() {
         
         setTimeout(() => {
             setAuth(init)
-        }, 1000)
+        }, 500)
 
     }, [])
 
