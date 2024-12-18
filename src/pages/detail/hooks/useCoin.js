@@ -177,14 +177,7 @@ export default function useCoin() {
                 setObj({})
     
                 let res = await Api.asyncGet(`api/coins/${id}`)
-                let sales = await Api.asyncGet(`api/coinsales/${id}`)
-                
-                let categories = await Api.asyncGet(`api/categories`)
-                let region = await Api.asyncGet(`api/regions`)
-                let citymint = await Api.asyncGet(`api/citymints`)
-                let dynastyandco = await Api.asyncGet('api/dynastyandco')
-                let authorities = await Api.asyncGet('api/authorities')
-                let years = await Api.asyncGet('api/years')
+                let sales = await Api.asyncGet(`api/coinsales/${id}`)     
                 let coins = await Api.asyncGet('api/coins')
                 
                 if(res !== 'error' && Object.keys(res).length > 0) {
@@ -214,13 +207,6 @@ export default function useCoin() {
                 if(sales !== 'error' && Object.keys(res).length > 0) {
                     setInfoSales(sales)
                 }
-                
-                if(categories !== 'error') setCategories(categories)
-                if(region !== 'error') setRegion(region)
-                if(citymint !== 'error') setCityMint(citymint)
-                if(dynastyandco !== 'error') setDynastyandco(dynastyandco)
-                if(authorities !== 'error') setAuthorities(authorities)
-                if(years !== 'error') setYears(years)
 
             } catch(e) {
                 return
@@ -228,7 +214,21 @@ export default function useCoin() {
                 setLoad(false)
             }
 
+            let categories = await Api.asyncGet(`api/categories`)
+            let region = await Api.asyncGet(`api/regions`)
+            let citymint = await Api.asyncGet(`api/citymints`)
+            let dynastyandco = await Api.asyncGet('api/dynastyandco')
+            let authorities = await Api.asyncGet('api/authorities')
+            let years = await Api.asyncGet('api/years')
+            if(categories !== 'error') setCategories(categories)
+            if(region !== 'error') setRegion(region)
+            if(citymint !== 'error') setCityMint(citymint)
+            if(dynastyandco !== 'error') setDynastyandco(dynastyandco)
+            if(authorities !== 'error') setAuthorities(authorities)
+            if(years !== 'error') setYears(years)
+                
         })()
+
 
         return () => {
             if(timer.current) {

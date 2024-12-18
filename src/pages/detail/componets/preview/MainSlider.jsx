@@ -34,7 +34,7 @@ const MainSlider = ({main, photos}) => {
                 {photos?.length && photos instanceof Array ? 
                     photos?.map((el) => (
                         <SplideSlide>
-                            <img src={`${Api.url2}20000/${el}`} alt="" />
+                            <img loading='lazy' src={`${Api.url2}20000/${el}`} alt="" />
                         </SplideSlide>
                     ))
                 :<img src='/images/noimage.jpeg' alt=''/>}
