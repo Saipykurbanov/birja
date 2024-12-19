@@ -46,9 +46,9 @@ const MobilePanel = ({statusId, setInWork, nullStatus, setInCheck, setInReady}) 
 
     return (
         <div className='mobile_panel'>
-            <NavLink to={`/detail/${link.prev}`}><img src="/icons/arrow_left_b.svg" alt="" /></NavLink>
+            <NavLink to={`/coin/${link.prev}`}><img src="/icons/arrow_left_b.svg" alt="" /></NavLink>
             <button onClick={toggle}><img src="/icons/burger.svg" alt="" /></button>
-            <NavLink to={`/detail/${link.next}`}><img src="/icons/arrow_right_b.svg" alt="" /></NavLink>
+            <NavLink to={`/coin/${link.next}`}><img src="/icons/arrow_right_b.svg" alt="" /></NavLink>
 
             <div className={`mobile_panel_popup ${isOpen ? 'open' : ''}`}>
                 <div className="buttons">
