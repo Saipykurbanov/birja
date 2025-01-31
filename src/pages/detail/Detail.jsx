@@ -31,9 +31,9 @@ const Detail = () => {
                 <RightPanel coin={coin}/>
                 <StatusBlock 
                     setInReady={coin.setInReady}
-                    setInCheck={coin.setInCheck} 
-                    nullStatus={coin.nullStatus} 
-                    setInWork={coin.setInWork} 
+                    setInCheck={coin.setInCheck}
+                    nullStatus={coin.nullStatus}
+                    setInWork={coin.setInWork}
                     statusId={coin.info.statusId}
                 />
                 <MobilePanel 

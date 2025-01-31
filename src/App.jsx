@@ -11,6 +11,7 @@ import Prefences from './components/prefences/Prefences';
 import FilterPanel from './pages/stock/components/filter_panel/FilterPanel';
 import Loading from './components/loading/Loading';
 import Notice from './components/notice/Notice';
+import Filter from './pages/filter_test/Filter';
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
                   <Route path='/' element={<Dashboard />}/>
                   <Route path='/coin/:id' element={<Detail />}/>  
                   <Route path='/stock' element={<Stock />}/>
+                  <Route path='/filter' element={<Filter />}/>
                 </Routes>
               </div>
 
