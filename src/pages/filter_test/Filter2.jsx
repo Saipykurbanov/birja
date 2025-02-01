@@ -25,16 +25,9 @@ const FilterComponent = () => {
     <div style={{ padding: "20px", maxWidth: "500px", border: "1px solid #ddd" }}>
       <h3>Фильтр</h3>
       {filters.map((filter, index) => (
-        <div
-          key={index}
-          style={{ marginBottom: "10px", display: "flex", gap: "10px" }}
-        >
+        <div key={index} style={{ marginBottom: "10px", display: "flex", gap: "10px" }}>
           {index > 0 && (
-            <select
-              value={filter.logic}
-              onChange={(e) => handleChange(index, "logic", e.target.value)}
-            >
-              <option value="">Выберите</option>
+            <select value={filter.logic} onChange={(e) => handleChange(index, "logic", e.target.value)}>
               {logicOperators.map((op) => (
                 <option key={op} value={op}>
                   {op}

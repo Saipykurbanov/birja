@@ -10,7 +10,6 @@
   padding: 5px 10px;
   border: 1px solid var(--grey);
   transition: 0.3s;
-  gap: 10px;
   cursor: text;
 }
 .filter_field label {
@@ -38,31 +37,33 @@
 .filter_field img {
   transition: 0.3s;
   opacity: 0.5;
+  margin-left: auto;
 }
 .filter_field .filters {
   position: relative;
   z-index: 2;
   height: 100%;
-  flex: 1;
-  width: 100%;
   background-color: transparent;
   font-size: 16px;
   display: flex;
   align-items: center;
-  gap: 5px;
   overflow: auto;
 }
 .filter_field .filters::-webkit-scrollbar {
-  height: 2px;
+  height: 3px;
+}
+.filter_field .filters::-webkit-scrollbar-thumb {
+  background-color: var(--grey);
+  cursor: default;
 }
 .filter_field .filters .filter_item {
   display: flex;
   align-items: center;
-  gap: 5px;
 }
 .filter_field .filters .filter_item .txt {
   font-size: 16px;
   text-transform: capitalize;
+  margin-right: 5px;
 }
 .filter_field .filters .filter_item .parametr {
   color: var(--red2);
@@ -72,6 +73,49 @@
 }
 .filter_field .filters .filter_item .value {
   color: var(--link);
+}
+.filter_field .filters .filter_item input {
+  font-size: 16px;
+  color: var(--link);
+}
+.filter_field .list_block {
+  align-self: flex-start;
+  position: relative;
+  max-width: 204px;
+  min-width: 10px;
+  flex: 1;
+}
+.filter_field .list_block .list {
+  position: absolute;
+  right: -10px;
+  top: 0;
+  min-width: 204px;
+  min-height: 33px;
+  max-height: 185px;
+  overflow: auto;
+  border: 1px solid var(--black);
+  opacity: 0;
+  animation: Open 0.4s forwards;
+  background-color: var(--white);
+  z-index: 20;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.filter_field .list_block .list p {
+  width: 100%;
+  height: 31px;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  font-size: 16px;
+}
+.filter_field .list_block .list p:hover {
+  background-color: var(--black);
+  color: var(--white);
+}
+.filter_field .list_block .list::-webkit-scrollbar {
+  width: 2px;
 }
 .filter_field:hover label {
   font-size: 10px;
