@@ -8,13 +8,13 @@ const Input = ({lastInputRef, change, el, i}) => {
     useEffect(() => {
 
         if (spanRef.current) {
-            setInputWidth(spanRef.current.offsetWidth + 5); // +5px для небольшого отступа
+            setInputWidth(spanRef.current.offsetWidth + 5);
         }
 
     }, [el[Object.keys(el)[1]]]);
 
     return (
-        <div style={{ display: "flex", position: "relative" }}>
+        <div style={{ display: "flex", position: "relative", marginRight: '5px' }}>
             <span ref={spanRef} style={{ 
                 position: "absolute", 
                 visibility: "hidden", 
