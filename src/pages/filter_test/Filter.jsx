@@ -18,13 +18,12 @@ const Filter = () => {
                 {f.filters?.length 
                 ? f.filters.map((el, i) => (
                     <FilterItem 
-                        field={Object.keys(el)[1]} 
-                        inputList={f.inputList} 
-                        el={el} 
-                        change={f.change} 
-                        lastInputRef={f.lastInputRef}
+                        field={Object.keys(el)[1]}
+                        el={el}
+                        hook={f}
                         i={i} 
-                        key={i} 
+                        key={i}
+                        disabled={i === f.filters.length - 1 ? false : true}
                     />
                 ))
                 :null}
