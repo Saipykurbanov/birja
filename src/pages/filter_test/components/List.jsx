@@ -6,7 +6,7 @@ const List = ({open, param, callback, last}) => {
     const parametrs = ['Categories', 'Name', 'Parametr1', 'Parametr2', 'Parametr3', 'Date']
     const values = {
         'Categories': ['Cat1', 'Cat2', 'Cat3', 'Cat4'],
-        'Parametr2': ['Val1', 'Val2', 'Val3'],
+        'Parametr2': ['By default', 'Range'],
         'Parametr3': ['Val1', 'Val2', 'Val3'],
         'Date': ['By default', 'Range']
     }

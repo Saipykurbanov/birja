@@ -14,11 +14,25 @@ const FilterItem = ({field, el, i, hook, disabled}) => {
             ?<Input disabled={disabled} el={el} lastInputRef={hook.lastInputRef} change={hook.change} i={i} field={field}/>
 
             :field === 'Date' && el.type === 'By default' 
-            ?<DateInput disabled={disabled} placeholder={'__.__.____'} change={hook.changeDate} el={el} field={field} i={i} lastInputRef={hook.lastInputRef}/>
+            ?<DateInput 
+                disabled={disabled} 
+                placeholder={'__.__.____'} 
+                change={hook.changeDate} 
+                el={el} field={field} i={i} 
+                lastInputRef={hook.lastInputRef}
+            />
 
             :field === 'Date' && el.type === 'Range' 
-            ?<DateInput disabled={disabled} placeholder={'__.__.____ - __.__.____'} change={hook.changeRange} el={el} field={field} i={i} lastInputRef={hook.lastInputRef}/>
+            ?<DateInput 
+                disabled={disabled} 
+                placeholder={'__.__.____ - __.__.____'} 
+                change={hook.changeRange} el={el} 
+                lastInputRef={hook.lastInputRef}
+                field={field} i={i} 
+            />
 
+            :hook.rangeList.includes(field)
+            ?<></>
             :<div className="txt value">{el[field]};</div>}
 
         </div>
