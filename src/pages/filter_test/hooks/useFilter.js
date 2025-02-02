@@ -11,7 +11,7 @@ export default function useFilter() {
     const [filters, setFilters] = useState([])
 
     const inputList = ['Name', 'Parametr1']
-    const rangeList = ['Parametr2']
+    const rangeList = ['Parametr2', 'Lots']
 
 
     const handleFocus = (e) => {

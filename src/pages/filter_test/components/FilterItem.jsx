@@ -1,6 +1,7 @@
 import React from 'react';
 import Input from './Input';
 import DateInput from './DateInput';
+import FieldsLogic from './FieldsLogic';
 
 const FilterItem = ({field, el, i, hook, disabled}) => {
 
@@ -10,30 +11,7 @@ const FilterItem = ({field, el, i, hook, disabled}) => {
             {i > 0 ? <div className="txt logic">{el.logic}</div> :null}
             {field ? <div className="txt parametr">{field}:</div> :null}
 
-            {hook.inputList.includes(field)
-            ?<Input disabled={disabled} el={el} lastInputRef={hook.lastInputRef} change={hook.change} i={i} field={field}/>
-
-            :field === 'Date' && el.type === 'By default' 
-            ?<DateInput 
-                disabled={disabled} 
-                placeholder={'__.__.____'} 
-                change={hook.changeDate} 
-                el={el} field={field} i={i} 
-                lastInputRef={hook.lastInputRef}
-            />
-
-            :field === 'Date' && el.type === 'Range' 
-            ?<DateInput 
-                disabled={disabled} 
-                placeholder={'__.__.____ - __.__.____'} 
-                change={hook.changeRange} el={el} 
-                lastInputRef={hook.lastInputRef}
-                field={field} i={i} 
-            />
-
-            :hook.rangeList.includes(field)
-            ?<></>
-            :<div className="txt value">{el[field]};</div>}
+            <FieldsLogic hook={hook} i={i} el={el} field={field} disabled={disabled}/>
 
         </div>
     );
