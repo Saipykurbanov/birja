@@ -1,15 +1,13 @@
 import React from 'react';
 import List from './components/List';
-import Input from './components/Input';
 import useFilter from './hooks/useFilter';
 
 import './css/filter.css';
+import FilterItem from './components/FilterItem';
 
 const Filter = () => {
 
     const f = useFilter()
-
-    console.log(f.filters)
 
     return (
         <div className={`filter_field ${f.focus || f.filters?.length > 0 ? 'focus' : ''}`} onClick={f.handleFocus}>
@@ -19,16 +17,15 @@ const Filter = () => {
             <div className="filters">
                 {f.filters?.length 
                 ? f.filters.map((el, i) => (
-                    <div className="filter_item" key={i}>
-
-                        {i > 0 ? <div className="txt logic">{el.logic}</div> :null}
-                        {Object.keys(el)[1] ? <div className="txt parametr">{Object.keys(el)[1]}:</div> :null}
-
-                        {f.inputList.includes(Object.keys(el)[1])
-                        ?<Input el={el} lastInputRef={f.lastInputRef} change={f.change} i={i}/>
-                        :<div className="txt value">{el[Object.keys(el)[1]]}</div>}
-
-                    </div>
+                    <FilterItem 
+                        field={Object.keys(el)[1]} 
+                        inputList={f.inputList} 
+                        el={el} 
+                        change={f.change} 
+                        lastInputRef={f.lastInputRef}
+                        i={i} 
+                        key={i} 
+                    />
                 ))
                 :null}
             </div>

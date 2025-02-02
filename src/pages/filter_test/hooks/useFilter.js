@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react"
+import Api from "../../../utils/Api";
 
 
 export default function useFilter() {
@@ -102,6 +103,10 @@ export default function useFilter() {
         }
 
     }, [filters])
+
+    const getList = async () => {
+        let req = await Api.asyncPost('')
+    }
 
     return {
         focus,
