@@ -1,13 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
-import './css/filter.css';
+import React from 'react';
 import List from './components/List';
 import Input from './components/Input';
 import useFilter from './hooks/useFilter';
 
+import './css/filter.css';
 
 const Filter = () => {
 
     const f = useFilter()
+
+    console.log(f.filters)
 
     return (
         <div className={`filter_field ${f.focus || f.filters?.length > 0 ? 'focus' : ''}`} onClick={f.handleFocus}>

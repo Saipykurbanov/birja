@@ -20,11 +20,6 @@ export default function useFilter() {
         }
     }
 
-    const handleBlur = () => {
-        setFocus(false)
-        setListOpen(false)
-    }
-
     const getParam = () => {
         let param = 1;
         let el = filters.at(-1)
@@ -89,6 +84,11 @@ export default function useFilter() {
     }
 
     useEffect(() => {
+        const handleBlur = () => {
+            setFocus(false)
+            setListOpen(false)
+        }
+
         window.addEventListener('click', handleBlur)
 
         return () => window.removeEventListener('click', handleBlur)
@@ -107,7 +107,6 @@ export default function useFilter() {
         focus,
         setFocus,
         change,
-        handleBlur,
         handleFocus,
         inputList,
         getParam,
