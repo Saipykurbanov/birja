@@ -69,10 +69,10 @@ export default function useFilter() {
                 let list = [...prev]
                 let el = { ...list.at(-1) }
                 let field = Object.keys(el)[1]
-                if(field === 'Date') {
+                if(field === 'Date' || rangeList.includes(field)) {
                     setListOpen(false)
                     setFocus(false)
-                    el['Date'] = ''
+                    el[field] = ''
                     el.type = value
                     list[list.length - 1] = el
                     return list
@@ -96,10 +96,9 @@ export default function useFilter() {
 
     const formatDate = (value) => {
     
-        // Убираем все символы, кроме цифр и точек
         value = value.replace(/[^0-9.]/g, '');
-        // Удаляем лишние точки, оставляем только 2
         const parts = value.split('.');
+
         if (parts.length > 3) {
             parts.splice(3);
             value = parts.join('.');
@@ -111,8 +110,7 @@ export default function useFilter() {
         let year = '';
 
         if (value.length > 0) {
-            const digitsOnly = value.replace(/\./g, ''); // Убираем точки для разделения
-            // Разделяем на день, месяц и год
+            const digitsOnly = value.replace(/\./g, ''); 
             if (digitsOnly.length <= 2) {
                 day = digitsOnly;
             } else if (digitsOnly.length <= 4) {
@@ -124,7 +122,6 @@ export default function useFilter() {
                 year = digitsOnly.slice(4, 8);
             }
 
-            // Собираем строку
             formattedValue = [day, month, year].filter(Boolean).join('.');
         }
 
@@ -138,10 +135,8 @@ export default function useFilter() {
     const changeRange = (index, event) => {
         let value = event.target.value;
       
-         // Убираем все символы, кроме цифр, точек и дефиса
         value = value.replace(/[^0-9.\-]/g, '');
       
-          // Если в конце ввода нет дефиса, а длина строки соответствует формату первой даты, добавляем дефис
         const parts = value.split('-');
         if (parts.length === 1 && value.replace(/\D/g, '').length === 8 && !value.endsWith(' - ')) {
              value += ' - ';
@@ -162,7 +157,7 @@ export default function useFilter() {
            }
       
       
-          if(value.endsWith(' - ')){ // Проверка в оригинальном value
+          if(value.endsWith(' - ')){ 
             formattedValue += ' - ';
           }
       
