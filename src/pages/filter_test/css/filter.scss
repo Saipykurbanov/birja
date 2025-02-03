@@ -82,7 +82,17 @@
                 font-size: 16px;
                 color: var(--link);
             }
-            
+
+            .range {
+                display: flex;
+                align-items: center;
+                span {
+                    margin: 0 5px;
+                }
+            }
+            .close_head {
+                margin-right: 5px;
+            }
         }
 
     }

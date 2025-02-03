@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-const Input = ({lastInputRef, change, el, i, field, disabled}) => {
+const Input = ({lastInputRef, change, disabled, placeholder, value}) => {
 
     const spanRef = useRef(null);
     const [inputWidth, setInputWidth] = useState(1);
@@ -11,25 +11,26 @@ const Input = ({lastInputRef, change, el, i, field, disabled}) => {
             setInputWidth(spanRef.current.offsetWidth + 5);
         }
 
-    }, [el[field]]);
+    }, [value]);
 
     return (
-        <div style={{ display: "flex", position: "relative", marginRight: '5px' }}>
+        <div style={{ display: "flex", position: "relative" }}>
             <span ref={spanRef} style={{ 
                 position: "absolute", 
                 visibility: "hidden", 
                 whiteSpace: "pre"
             }}>
-                {el[field] || " "} 
+                {value || " "} 
             </span>
             <input 
                 ref={lastInputRef}
+                placeholder={placeholder}
                 type="text"
-                value={el[field]}
-                onChange={(e) => change(i, field, e.target.value)}
+                value={value}
+                onChange={change}
                 style={{ width: inputWidth, minWidth: "10px" }}
                 disabled={disabled}
-            />;
+            />
         </div>
     );
 };

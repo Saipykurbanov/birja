@@ -1,17 +1,17 @@
 import React from 'react';
 
-const DateInput = ({placeholder, change, el, field, i, lastInputRef, disabled}) => {
+const DateInput = ({change, lastInputRef, disabled, value}) => {
     return (
         <div style={{marginRight: '5px', display: 'flex'}}>
             <input
                 ref={lastInputRef}
-                placeholder={placeholder}
-                style={{width: `${el.type === 'Range' ? '19ch' : '9ch'}`}}
+                placeholder={'__.__._____'}
+                style={{width: '80px'}}
                 type="text"
-                value={el[field]} 
-                onChange={(e) => change(i, e)}
+                value={value} 
+                onChange={change}
                 disabled={disabled}
-            />;
+            />
         </div>
     );
 };
