@@ -128,6 +128,12 @@ export default function useFilter() {
         return formattedValue
     }
 
+    const convertToISO = (dateStr) => {
+        const [day, month, year] = dateStr.split('.').map(Number);
+        const date = new Date(Date.UTC(year, month - 1, day));
+        return date.toISOString();
+    }
+
     const changeDate = (index, event) => {
         change(index, 'Date', formatDate(event.target.value))
     };
@@ -185,8 +191,70 @@ export default function useFilter() {
 
     }, [filters])
 
+    const convertData = () => {
+        return filters.map((item, index) => {
+            if (index === 0) {
+                const { logic, type, ...rest } = item;
+                return rest;
+            }
+    
+            const handleRange = (value) => {
+                const rangeMatch = value.match(/^(\d+\.?\d*)\s*-\s*(\d+\.?\d*)$/);
+                if (rangeMatch) {
+                    return { min: parseFloat(rangeMatch[1]), max: parseFloat(rangeMatch[2]) };
+                }
+                const dateRangeMatch = value.match(/^(\d{2}\.\d{2}\.\d{4})\s*-\s*(\d{2}\.\d{2}\.\d{4})$/);
+                if (dateRangeMatch) {
+                    return {
+                        min: convertToISO(dateRangeMatch[1]) || "Invalid Date",
+                        max: convertToISO(dateRangeMatch[2]) || "Invalid Date",
+                    };
+                }
+                return value;
+            };
+    
+            if ("Date" in item) {
+                let newDate = item.Date;
+    
+                if (item.type === 'By default') {
+                    newDate = convertToISO(newDate) || "Invalid Date";
+                } else if (item.type === 'Range') {
+                    if (typeof newDate === 'string' && newDate.includes(' - ')) {
+                        const dateRange = newDate.split(' - ');
+                        newDate = {
+                            min: convertToISO(dateRange[0]) || "Invalid Date",
+                            max: convertToISO(dateRange[1]) || "Invalid Date"
+                        };
+                    } else {
+                        newDate = convertToISO(newDate) || "Invalid Date";
+                    }
+                }
+    
+                const { type, ...rest } = item;
+                return { ...rest, Date: newDate };
+            }
+    
+            if (["Range", "By default"].includes(item.type)) {
+                const { type, ...rest } = item;
+                const updatedItem = Object.keys(rest).reduce((acc, key) => {
+                    acc[key] = handleRange(rest[key]); 
+                    return acc;
+                }, {});
+                return { ...updatedItem };
+            }
+    
+            const { type, ...rest } = item;
+            return rest;
+        });
+    };
+    
+    
     const getList = async () => {
-        let req = await Api.asyncPost('')
+
+        console.log(convertData())
+        
+        let req = await Api.asyncPost('', convertData())
+
     }
 
     return {
@@ -204,6 +272,7 @@ export default function useFilter() {
         setListOpen,
         lastInputRef,
         changeRange,
-        rangeList
+        rangeList,
+        getList
     }
 }
