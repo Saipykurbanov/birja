@@ -25,7 +25,8 @@ const Stock = () => {
                 callback={''}
                 value={''}
             /> */}
-            <Filter />
+            
+            <Filter /> {/* Новый фильтр */}
             
             <FilterBtns />
 
