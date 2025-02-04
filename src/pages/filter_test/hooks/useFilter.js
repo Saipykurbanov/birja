@@ -13,7 +13,7 @@ export default function useFilter() {
     const [filters, setFilters] = useState([])
 
     const values = {
-        'saleChannel': ['Astarte web 7', 'Astarte web 8', 'Astarte web 9'],
+        'saleChannel': ['Astarte web 73', 'Astarte web 8', 'Astarte web 9'],
         'category': ['Roman', 'Provincial'],
         'region': ['Egypt', 'Russia', 'USA', 'China', 'Italy', "Hispania ", "Gallia ", "Britian ", "Celts of Central & East ", "Picenum and Vestini "],
         'cityMint': ['Alexandria in Egypt', 'Moscow in Russia', 'New York in USA', 'Beijing in China', 'Rome in Italy'],
