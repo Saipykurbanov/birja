@@ -132,7 +132,7 @@ export default function useStockTable () {
     useEffect(() => {
         (async () => {
             // Получаем данные из API
-            let init = await Api.asyncGet('api/coins/')
+            let init = await Api.asyncPost('api/coins/', {})
 
             if(init === 'error') {
                 return setError(true) // Устанавливаем ошибку, если данные не загрузились
