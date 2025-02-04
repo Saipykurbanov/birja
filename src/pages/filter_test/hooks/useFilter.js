@@ -232,12 +232,14 @@ export default function useFilter() {
         });
     }
     
-    
     const delFilter = (e) => {
         e.stopPropagation()
         setFilters(prev => {
             let list = [...prev]
             list.pop()
+            if(list.length <= 0) {
+                Store.setListener('clear_all_filters')
+            }
             return list
         })
     }
