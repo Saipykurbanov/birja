@@ -36,6 +36,17 @@ export default function useFilter() {
         3: values
     })
 
+    useEffect(() => {
+        const handleBlur = () => {
+            setFocus(false)
+            setListOpen(false)
+        }
+
+        window.addEventListener('click', handleBlur)
+
+        return () => window.removeEventListener('click', handleBlur)
+    }, [])
+
     const handleFocus = (e) => {
         e.stopPropagation()
         if(!focus) {
@@ -183,17 +194,6 @@ export default function useFilter() {
         changeRange(index, field, formatDate(event.target.value), range)
     };    
 
-    useEffect(() => {
-        const handleBlur = () => {
-            setFocus(false)
-            setListOpen(false)
-        }
-
-        window.addEventListener('click', handleBlur)
-
-        return () => window.removeEventListener('click', handleBlur)
-    }, [])
-
     const convertData = () => {
         return filters.map((item, index) => {
             let field = Object.keys(item)[1]
@@ -230,6 +230,20 @@ export default function useFilter() {
         });
     }
     
+    
+    const delFilter = (e) => {
+        e.stopPropagation()
+        setFilters(prev => {
+            let list = [...prev]
+            list.pop()
+            return list
+        })
+    }
+    
+    const clearAllFilter = () => {
+        setFilters([])
+    }
+    
     const getList = async () => {
 
         console.log(convertData())
@@ -239,19 +253,6 @@ export default function useFilter() {
         
         let req = await Api.asyncPost('', convertData())
 
-    }
-
-    const delFilter = (e) => {
-        e.stopPropagation()
-        setFilters(prev => {
-            let list = [...prev]
-            list.pop()
-            return list
-        })
-    }
-
-    const clearAllFilter = () => {
-        setFilters([])
     }
 
     return {
