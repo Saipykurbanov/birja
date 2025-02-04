@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import Api from "../../../utils/Api";
+import { dateList, inputList, operators, parametrs, rangeList } from "../allLists";
 
 
 export default function useFilter() {
@@ -9,8 +10,6 @@ export default function useFilter() {
 
     const [filters, setFilters] = useState([])
 
-    const operators = ['AND', 'OR', 'NOT', 'Apply filter']
-    const parametrs = ['Categories', 'Name', 'Parametr1', 'Parametr2', 'Parametr3', 'Date', 'Lots']
     const values = {
         'Categories': ['Cat1', 'Cat2', 'Cat3', 'Cat4'],
         'Parametr2': ['By default', 'Range'],
@@ -18,14 +17,12 @@ export default function useFilter() {
         'Date': ['By default', 'Range'],
         'Lots': ['By default', 'Range']
     }
+
     const [list, setList] = useState({
         1: operators,
         2: parametrs,
         3: values
     })
-    const inputList = ['Name', 'Parametr1']
-    const rangeList = ['Parametr2', 'Lots']
-    const dateList = ['Date', 'createdAt', 'updatedAt']
 
     const handleFocus = (e) => {
         e.stopPropagation()
@@ -47,6 +44,8 @@ export default function useFilter() {
 
         if (!key) {
             param = 2;
+        } else if (inputList.includes(key)) {
+            param = 1
         } else if (lastFilter[key] === '') {
             param = 3;
         }
@@ -77,8 +76,6 @@ export default function useFilter() {
         }
 
         if(param == 3) {
-            // setListOpen(false)
-            // setFocus(false)
             
             setFilters(prev => {
                 let list = [...prev]
@@ -241,11 +238,8 @@ export default function useFilter() {
 
     return {
         focus,
-        inputList,
         listOpen,
         filters,
-        rangeList,
-        dateList,
         list,
         changeDate,
         setFocus,

@@ -1,14 +1,15 @@
 import React from 'react';
 import Input from './Input';
 import DateInput from './DateInput';
+import { dateList, inputList, rangeList } from '../allLists';
 
 const FieldsLogic = ({hook, el, i, field, disabled}) => {
 
-    if(hook.inputList.includes(field)) {
+    if(inputList.includes(field)) {
         return <><Input disabled={disabled} change={(e) => hook.change(i, field, e.target.value)} value={el[field]} type={'min'}/><div className='close_head'>;</div></>
     }
 
-    if(hook.dateList.includes(field)) {
+    if(dateList.includes(field)) {
         if(el.type === 'By default') {
 
             return <>
@@ -40,7 +41,7 @@ const FieldsLogic = ({hook, el, i, field, disabled}) => {
         }
     }
 
-    if(hook.rangeList.includes(field)) {
+    if(rangeList.includes(field)) {
         if(el.type === 'By default') {
             return <><Input type={'min'} disabled={disabled} change={(e) => hook.change(i, field, e.target.value)} value={el[field]}/><div className='close_head'>;</div></>
         }
