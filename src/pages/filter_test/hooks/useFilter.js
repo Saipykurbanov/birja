@@ -251,8 +251,8 @@ export default function useFilter() {
         setFocus(false)
         
         try {
+            // let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibG9naW4iOiJ1c2VyMSIsInJvbGVzIjpbInVzZXIiXSwicGVybWlzc2lvbnMiOltdLCJzYWxlQ2hhbm5lbCI6W10sImlhdCI6MTczODY4OTE1NiwiZXhwIjoxNzM4NzMyMzU2fQ.VE0W3Io8CLsF_QaUYVh-esckFyee0rwF7_ZB8OK_Of0'
             let token = localStorage.getItem('accessToken')
-    
             let res = await fetch(`http://188.120.229.3:8083/api/coins`, {
                 method: 'POST',
                 headers: {
@@ -265,11 +265,13 @@ export default function useFilter() {
     
             if(res.status === 200) {
                 res = await res.json()
-                return console.log(res) // вставить состояние для списка таблицы
+                console.log(res)
+                return  // вставить состояние для списка таблицы
             }
     
             if(res.status === 401) {
-                return Api.logout()
+                // return Api.logout()
+                return 'error'
             }
 
             Notice.Send({type: 'error', text: 'Error'})
