@@ -64,6 +64,7 @@
   font-size: 16px;
   text-transform: capitalize;
   margin-right: 5px;
+  white-space: nowrap;
 }
 .filter_field .filters .filter_item .parametr {
   color: var(--red2);

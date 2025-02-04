@@ -12,23 +12,23 @@ export default function useFilter() {
     const [filters, setFilters] = useState([])
 
     const values = {
-        'saleChannel': ['1', '2', '3', '4', '5'],
-        'category': [],
-        'region': [],
-        'cityMint': [],
-        'authority': [],
-        'metal': [],
-        'nominal': [],
-        'condition': [],
-        'rarity': [],
-        'provenance': [],
-        'sold': [],
-        'location': [],
-        'inWork': [],
-        'statusLd': [],
-        'userChanged': [],
-        'consigner': [],
-        'dynastyAndSo': []
+        'saleChannel': ['Astarte web 7', 'Astarte web 8', 'Astarte web 9'],
+        'category': ['Roman', 'Provincial'],
+        'region': ['Egypt', 'Russia', 'USA', 'China', 'Italy', "Hispania ", "Gallia ", "Britian ", "Celts of Central & East ", "Picenum and Vestini "],
+        'cityMint': ['Alexandria in Egypt', 'Moscow in Russia', 'New York in USA', 'Beijing in China', 'Rome in Italy'],
+        'authority': ['Gallienus (253-268 AD)', 'Constantinus I, as August (306-337 AD)', 'Claudius (268-284 AD)', 'Nero (284-284 AD)', 'Nero (284-284 AD)'],
+        'metal': ['Billon', 'Palladium', 'Platinum'],
+        'nominal': ['Tetradrachm', 'Follis', "Denarius"],
+        'condition': ['New', 'Used', 'Repaired', 'Repaired (recovered)'],
+        'rarity': ['Common', 'Uncommon', 'Rare', 'Very Rare'],
+        'provenance': ['Unknown', 'Unknown', 'Unknown', 'Unknown', 'Unknown'],
+        'sold': ['No', 'Yes'],
+        'location': ['Rome', 'Moscow'],
+        'inWork': ['Yes', 'No'],
+        'statusLd': ['Yes', 'No'],
+        'userChanged': ['user11', 'user12', 'user13'],
+        'consigner': ['consigner11', 'consigner12', 'consigner13'],
+        'dynastyAndSo': ["Syracusan Kings of Sicily ", "Galatian Kings of Tylis ", "Thraco-Galatian Kings of Kabyle: ", "Roman Kings of Sicily ", "Roman Kings of Tylis ", "Roman Kings of Kabyle: "],
     }
 
     const [list, setList] = useState({
@@ -251,7 +251,7 @@ export default function useFilter() {
         setFocus(false)
         
         try {
-            let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibG9naW4iOiJ1c2VyMSIsInJvbGVzIjpbInVzZXIiXSwicGVybWlzc2lvbnMiOltdLCJzYWxlQ2hhbm5lbCI6W10sImlhdCI6MTczODU5MzE5MCwiZXhwIjoxNzM4NjM2MzkwfQ.0FPqnFHwBIUIxjcGySZIoqhGlcoZuppTgsgqWU5iTVk'
+            let token = localStorage.getItem('accessToken')
     
             let res = await fetch(`http://188.120.229.3:8083/api/coins`, {
                 method: 'POST',
