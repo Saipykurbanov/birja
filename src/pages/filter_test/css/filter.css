@@ -96,6 +96,11 @@
   min-width: 204px;
   flex: 1;
 }
+@media screen and (max-width: 991px) {
+  .filter_field .list_block {
+    min-width: 10px;
+  }
+}
 .filter_field .list_block .list {
   position: absolute;
   right: -10px;
@@ -111,6 +116,11 @@
   z-index: 20;
   margin-right: 10px;
   cursor: pointer;
+}
+@media screen and (max-width: 991px) {
+  .filter_field .list_block .list {
+    top: 30px;
+  }
 }
 .filter_field .list_block .list p {
   width: 100%;
