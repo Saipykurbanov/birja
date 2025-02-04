@@ -11,7 +11,7 @@ export default function useFilter() {
     const [filters, setFilters] = useState([])
 
     const values = {
-        'salecСannel': [],
+        'saleChannel': ['1', '2', '3', '4', '5'],
         'category': [],
         'region': [],
         'cityMint': [],
@@ -175,12 +175,12 @@ export default function useFilter() {
         return date.toISOString();
     }
 
-    const changeDate = (index, event) => {
-        change(index, 'Date', formatDate(event.target.value))
+    const changeDate = (index, event, field) => {
+        change(index, field, formatDate(event.target.value))
     };
 
-    const changeDateRange = (index, event, range) => {
-        changeRange(index, 'Date', formatDate(event.target.value), range)
+    const changeDateRange = (index, event, range, field) => {
+        changeRange(index, field, formatDate(event.target.value), range)
     };    
 
     useEffect(() => {

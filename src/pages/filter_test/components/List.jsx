@@ -5,7 +5,17 @@ const List = ({open, param, callback, last, list, getList}) => {
 
     if(!open) return null
 
-    if(param == 3) {
+    if((param == 3 && (rangeList.includes(last) || dateList.includes(last)))) {
+        return (
+            <div className="list_block">
+                <div className="list">
+                    {range.map((el, i) => (
+                        <p key={i} onClick={() => callback(3, el)}>{el}</p>
+                    ))}
+                </div>
+            </div>
+        )
+    } else if (param == 3) {
         return (
             <div className="list_block">
                 {list[3]?.[last]?.length
@@ -14,18 +24,10 @@ const List = ({open, param, callback, last, list, getList}) => {
                             <p key={i} onClick={() => callback(3, el)}>{el}</p>
                         ))}
                     </div>
-                    :null
+                    :<div className="list">
+                        <p>Not found</p>
+                    </div>
                 }
-            </div>
-        )
-    } else if (param == 3 && (rangeList.includes(last) || dateList.includes(last))) {
-        return (
-            <div className="list_block">
-                <div className="list">
-                    {range.map((el, i) => (
-                        <p key={i} onClick={() => callback(3, el)}>{el}</p>
-                    ))}
-                </div>
             </div>
         )
     } else {

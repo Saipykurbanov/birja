@@ -15,7 +15,7 @@ const FieldsLogic = ({hook, el, i, field, disabled}) => {
             return <>
                 <DateInput 
                     disabled={disabled}
-                    change={(e) => hook.changeDate(i, e)}
+                    change={(e) => hook.changeDate(i, e, field)}
                     value={el[field]}
                     type={'min'}
                 /><div className='close_head'>;</div>
@@ -26,14 +26,14 @@ const FieldsLogic = ({hook, el, i, field, disabled}) => {
             return <div className="range">
                 <DateInput 
                     disabled={disabled}
-                    change={(e) => hook.changeDateRange(i, e, 'min')}
+                    change={(e) => hook.changeDateRange(i, e, 'min', field)}
                     value={el[field].min}
                     type={'min'}
                 />
                 <span>-</span>
                 <DateInput 
                     disabled={disabled}
-                    change={(e) => hook.changeDateRange(i, e, 'max')}
+                    change={(e) => hook.changeDateRange(i, e, 'max', field)}
                     value={el[field].max}
                 /><div className='close_head'>;</div>
             </div>
