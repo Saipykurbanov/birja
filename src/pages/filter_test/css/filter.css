@@ -127,6 +127,10 @@
 .filter_field .list_block .list::-webkit-scrollbar {
   width: 2px;
 }
+.filter_field .list_block .list::-webkit-scrollbar-thumb {
+  background-color: var(--grey);
+  cursor: default;
+}
 .filter_field:hover label {
   font-size: 10px;
   top: 0px;

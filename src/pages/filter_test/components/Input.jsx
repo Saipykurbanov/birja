@@ -30,6 +30,7 @@ const Input = ({lastInputRef, change, disabled, placeholder, value}) => {
                 onChange={change}
                 style={{ width: inputWidth, minWidth: "10px" }}
                 disabled={disabled}
+                onClick={(e) => e.stopPropagation()}
             />
         </div>
     );

@@ -10,8 +10,25 @@ export default function useFilter() {
 
     const [filters, setFilters] = useState([])
 
+    const operators = ['AND', 'OR', 'NOT']
+    const parametrs = ['Categories', 'Name', 'Parametr1', 'Parametr2', 'Parametr3', 'Date', 'Lots']
+    const values = {
+        'Categories': ['Cat1', 'Cat2', 'Cat3', 'Cat4'],
+        'Parametr2': ['By default', 'Range'],
+        'Parametr3': ['Val1', 'Val2', 'Val3'],
+        'Date': ['By default', 'Range'],
+        'Lots': ['By default', 'Range']
+    }
+    const [list, setList] = useState({
+        1: operators,
+        2: parametrs,
+        3: values
+    })
     const inputList = ['Name', 'Parametr1']
     const rangeList = ['Parametr2', 'Lots']
+    const dateList = ['Date', 'createdAt', 'updatedAt']
+
+
 
 
     const handleFocus = (e) => {
@@ -65,14 +82,15 @@ export default function useFilter() {
         }
 
         if(param == 3) {
+            setListOpen(false)
+            setFocus(false)
+            
             setFilters(prev => {
                 let list = [...prev]
                 let el = { ...list.at(-1) }
                 let field = Object.keys(el)[1]
 
-                if(field === 'Date' || rangeList.includes(field)) {
-                    setListOpen(false)
-                    setFocus(false)
+                if(dateList.includes(field) || rangeList.includes(field)) {
                     if(value === 'By default') {
                         el[field] = ''
                     }
@@ -181,8 +199,9 @@ export default function useFilter() {
 
     const convertData = () => {
         return filters.map((item, index) => {
-            if ("Date" in item) {
-                let newDate = item.Date;
+            let field = Object.keys(item)[1]
+            if (dateList.includes(field)) {
+                let newDate = item[field];
     
                 if (item.type === 'By default') {
                     newDate = convertToISO(newDate) || "Invalid Date";
@@ -196,10 +215,10 @@ export default function useFilter() {
     
                 if(index === 0) {
                     const { type, logic, ...rest } = item;
-                    return { ...rest, Date: newDate };
+                    return { ...rest, [field]: newDate };
                 } else {
                     const { type, ...rest } = item;
-                    return { ...rest, Date: newDate };
+                    return { ...rest, [field]: newDate };
                 }
             }
             
@@ -226,22 +245,24 @@ export default function useFilter() {
     }
 
     return {
-        changeDate,
         focus,
+        inputList,
+        listOpen,
+        filters,
+        lastInputRef,
+        rangeList,
+        dateList,
+        list,
+        changeDate,
         setFocus,
         change,
         handleFocus,
-        inputList,
         getParam,
         addNewItem,
-        listOpen,
         setFilters,
-        filters,
         setListOpen,
-        lastInputRef,
         changeDateRange,
-        rangeList,
         getList,
-        changeRange
+        changeRange,
     }
 }

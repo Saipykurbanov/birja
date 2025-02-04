@@ -1,9 +1,9 @@
 import React from 'react';
 import List from './components/List';
 import useFilter from './hooks/useFilter';
+import FilterItem from './components/FilterItem';
 
 import './css/filter.css';
-import FilterItem from './components/FilterItem';
 
 const Filter = () => {
 
@@ -31,7 +31,7 @@ const Filter = () => {
                 </div>
 
                 <div className="list_block">
-                    <List open={f.listOpen} param={f.getParam()} callback={f.addNewItem} last={f.filters?.length ? Object.keys(f.filters.at(-1))[1] : ''}/>
+                    <List open={f.listOpen} param={f.getParam()} callback={f.addNewItem} last={f.filters?.length ? Object.keys(f.filters.at(-1))[1] : ''} list={f.list}/>
                 </div>
 
                 <img src="/icons/filter_black.svg" alt="" />

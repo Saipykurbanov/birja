@@ -136,6 +136,10 @@
             &::-webkit-scrollbar {
                 width: 2px;
             }
+            &::-webkit-scrollbar-thumb {
+                background-color: var(--grey);
+                cursor: default;
+            }
         }
     }
 
