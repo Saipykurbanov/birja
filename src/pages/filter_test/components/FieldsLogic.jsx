@@ -5,7 +5,7 @@ import DateInput from './DateInput';
 const FieldsLogic = ({hook, el, i, field, disabled}) => {
 
     if(hook.inputList.includes(field)) {
-        return <><Input disabled={disabled} change={(e) => hook.change(i, field, e.target.value)} value={el[field]}/><div className='close_head'>;</div></>
+        return <><Input disabled={disabled} change={(e) => hook.change(i, field, e.target.value)} value={el[field]} type={'min'}/><div className='close_head'>;</div></>
     }
 
     if(hook.dateList.includes(field)) {
@@ -16,6 +16,7 @@ const FieldsLogic = ({hook, el, i, field, disabled}) => {
                     disabled={disabled}
                     change={(e) => hook.changeDate(i, e)}
                     value={el[field]}
+                    type={'min'}
                 /><div className='close_head'>;</div>
             </>
 
@@ -41,14 +42,14 @@ const FieldsLogic = ({hook, el, i, field, disabled}) => {
 
     if(hook.rangeList.includes(field)) {
         if(el.type === 'By default') {
-            return <><Input disabled={disabled} change={(e) => hook.change(i, field, e.target.value)} value={el[field]}/><div className='close_head'>;</div></>
+            return <><Input type={'min'} disabled={disabled} change={(e) => hook.change(i, field, e.target.value)} value={el[field]}/><div className='close_head'>;</div></>
         }
 
         if(el.type === 'Range') {
             return <div className="range">
-                <Input placeholder={'__'} disabled={disabled} change={(e) => hook.changeRange(i, field, e.target.value, 'min')} value={el[field].min}/>
+                <Input type={'min'} placeholder={'__'} disabled={disabled} change={(e) => hook.changeRange(i, field, e.target.value, 'min')} value={el[field].min}/>
                 <span>-</span>
-                <Input placeholder={'__'} disabled={disabled} change={(e) => hook.changeRange(i, field, e.target.value, 'max')} value={el[field].max}/>
+                <Input type={'min'} placeholder={'__'} disabled={disabled} change={(e) => hook.changeRange(i, field, e.target.value, 'max')} value={el[field].max}/>
                 <div className='close_head'>;</div>
             </div>
         }

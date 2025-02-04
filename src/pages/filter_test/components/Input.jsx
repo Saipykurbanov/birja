@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-const Input = ({change, disabled, placeholder, value}) => {
+const Input = ({change, disabled, placeholder, value, type}) => {
 
     const spanRef = useRef(null);
     const input = useRef(null)
@@ -16,7 +16,7 @@ const Input = ({change, disabled, placeholder, value}) => {
 
     useEffect(() => {
 
-        if(!disabled) {
+        if(!disabled && type === 'min') {
             input.current?.focus();
         }
 

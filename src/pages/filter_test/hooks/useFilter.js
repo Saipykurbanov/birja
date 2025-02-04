@@ -57,51 +57,39 @@ export default function useFilter() {
 
     const addNewItem = (param, value) => {
 
+        let list = [...filters]
+
         if(param == 1) {
-            return setFilters(prev => ([...prev, {logic: value}]))
+            list.push({logic: value})
         }
         
         if(param == 2) {
-            setFilters(prev => {
-                let list = [...prev]
-                if(list.length === 0) {
-                    let el = {logic: '', [value]: ''}
-                    list.push(el)
-                    return list
-                }
+            if(list.length === 0) {
+                list.push({logic: '', [value]: ''})
+            } else {
                 let el = { ...list.at(-1) }
                 el[value] = ''
                 list[list.length - 1] = el
-                return list
-            })
-            return
+            }
         }
 
         if(param == 3) {
             setListOpen(false)
             setFocus(false)
             
-            setFilters(prev => {
-                let list = [...prev]
-                let el = { ...list.at(-1) }
-                let field = Object.keys(el)[1]
-                
-                if(dateList.includes(field) || rangeList.includes(field)) {
-                    if(value === 'By default') {
-                        el[field] = ''
-                    }
-                    if(value === 'Range') {
-                        el[field] = {min: '', max: ''}
-                    }
-                    el.type = value
-                    list[list.length - 1] = el
-                    return list
+            let el = { ...list.at(-1) }
+            let field = Object.keys(el)[1]
+            
+            if(dateList.includes(field) || rangeList.includes(field)) {
+                if(value === 'By default') {
+                    el[field] = ''
                 }
-
+                if(value === 'Range') {
+                    el[field] = {min: '', max: ''}
+                }
+                el.type = value
                 el[field] = value
                 list[list.length - 1] = el
-                return list
-            })
         }
     }
 
