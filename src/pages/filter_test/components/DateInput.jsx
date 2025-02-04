@@ -1,13 +1,19 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
-const DateInput = ({change, lastInputRef, disabled, value}) => {
+const DateInput = ({change, disabled, value, type}) => {
 
-    const ref = useRef()
+    const date = useRef()
+
+    useEffect(() => {
+        if(!disabled && type === 'min') {
+            date.current?.focus();
+        }
+    }, [disabled])
 
     return (
         <div style={{marginRight: '5px', display: 'flex'}}>
             <input
-                ref={lastInputRef || ref}
+                ref={date}
                 placeholder={'__.__._____'}
                 style={{width: '80px'}}
                 type="text"

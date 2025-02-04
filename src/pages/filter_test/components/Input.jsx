@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-const Input = ({lastInputRef, change, disabled, placeholder, value}) => {
+const Input = ({change, disabled, placeholder, value}) => {
 
     const spanRef = useRef(null);
+    const input = useRef(null)
     const [inputWidth, setInputWidth] = useState(1);
 
     useEffect(() => {
@@ -12,6 +13,14 @@ const Input = ({lastInputRef, change, disabled, placeholder, value}) => {
         }
 
     }, [value]);
+
+    useEffect(() => {
+
+        if(!disabled) {
+            input.current?.focus();
+        }
+
+    }, [disabled])
 
     return (
         <div style={{ display: "flex", position: "relative" }}>
@@ -23,7 +32,7 @@ const Input = ({lastInputRef, change, disabled, placeholder, value}) => {
                 {value || " "} 
             </span>
             <input 
-                ref={lastInputRef}
+                ref={input}
                 placeholder={placeholder}
                 type="text"
                 value={value}
@@ -31,6 +40,7 @@ const Input = ({lastInputRef, change, disabled, placeholder, value}) => {
                 style={{ width: inputWidth, minWidth: "10px" }}
                 disabled={disabled}
                 onClick={(e) => e.stopPropagation()}
+                
             />
         </div>
     );

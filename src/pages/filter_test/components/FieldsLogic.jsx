@@ -5,7 +5,7 @@ import DateInput from './DateInput';
 const FieldsLogic = ({hook, el, i, field, disabled}) => {
 
     if(hook.inputList.includes(field)) {
-        return <><Input disabled={disabled} lastInputRef={hook.lastInputRef} change={(e) => hook.change(i, field, e.target.value)} value={el[field]}/><div className='close_head'>;</div></>
+        return <><Input disabled={disabled} change={(e) => hook.change(i, field, e.target.value)} value={el[field]}/><div className='close_head'>;</div></>
     }
 
     if(hook.dateList.includes(field)) {
@@ -15,7 +15,6 @@ const FieldsLogic = ({hook, el, i, field, disabled}) => {
                 <DateInput 
                     disabled={disabled}
                     change={(e) => hook.changeDate(i, e)}
-                    lastInputRef={hook.lastInputRef}
                     value={el[field]}
                 /><div className='close_head'>;</div>
             </>
@@ -26,14 +25,13 @@ const FieldsLogic = ({hook, el, i, field, disabled}) => {
                 <DateInput 
                     disabled={disabled}
                     change={(e) => hook.changeDateRange(i, e, 'min')}
-                    lastInputRef={hook.lastInputRef}
                     value={el[field].min}
+                    type={'min'}
                 />
                 <span>-</span>
                 <DateInput 
                     disabled={disabled}
                     change={(e) => hook.changeDateRange(i, e, 'max')}
-                    lastInputRef={false}
                     value={el[field].max}
                 /><div className='close_head'>;</div>
             </div>
@@ -43,14 +41,15 @@ const FieldsLogic = ({hook, el, i, field, disabled}) => {
 
     if(hook.rangeList.includes(field)) {
         if(el.type === 'By default') {
-            return <><Input disabled={disabled} lastInputRef={hook.lastInputRef} change={(e) => hook.change(i, field, e.target.value)} value={el[field]}/><div className='close_head'>;</div></>
+            return <><Input disabled={disabled} change={(e) => hook.change(i, field, e.target.value)} value={el[field]}/><div className='close_head'>;</div></>
         }
 
         if(el.type === 'Range') {
             return <div className="range">
-                <Input placeholder={'__'} disabled={disabled} lastInputRef={hook.lastInputRef} change={(e) => hook.changeRange(i, field, e.target.value, 'min')} value={el[field].min}/>
+                <Input placeholder={'__'} disabled={disabled} change={(e) => hook.changeRange(i, field, e.target.value, 'min')} value={el[field].min}/>
                 <span>-</span>
-                <Input placeholder={'__'} disabled={disabled} change={(e) => hook.changeRange(i, field, e.target.value, 'max')} value={el[field].max}/><div className='close_head'>;</div>
+                <Input placeholder={'__'} disabled={disabled} change={(e) => hook.changeRange(i, field, e.target.value, 'max')} value={el[field].max}/>
+                <div className='close_head'>;</div>
             </div>
         }
     }

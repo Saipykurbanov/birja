@@ -6,7 +6,6 @@ export default function useFilter() {
 
     const [focus, setFocus] = useState(false)
     const [listOpen, setListOpen] = useState(false)
-    const lastInputRef = useRef(null);
 
     const [filters, setFilters] = useState([])
 
@@ -27,9 +26,6 @@ export default function useFilter() {
     const inputList = ['Name', 'Parametr1']
     const rangeList = ['Parametr2', 'Lots']
     const dateList = ['Date', 'createdAt', 'updatedAt']
-
-
-
 
     const handleFocus = (e) => {
         e.stopPropagation()
@@ -89,7 +85,7 @@ export default function useFilter() {
                 let list = [...prev]
                 let el = { ...list.at(-1) }
                 let field = Object.keys(el)[1]
-
+                
                 if(dateList.includes(field) || rangeList.includes(field)) {
                     if(value === 'By default') {
                         el[field] = ''
@@ -188,15 +184,6 @@ export default function useFilter() {
         return () => window.removeEventListener('click', handleBlur)
     }, [])
 
-    useEffect(() => {
-        let param = getParam()
-
-        if (lastInputRef.current && param === 3) {
-            lastInputRef.current.focus();
-        }
-
-    }, [filters])
-
     const convertData = () => {
         return filters.map((item, index) => {
             let field = Object.keys(item)[1]
@@ -249,7 +236,6 @@ export default function useFilter() {
         inputList,
         listOpen,
         filters,
-        lastInputRef,
         rangeList,
         dateList,
         list,
