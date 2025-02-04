@@ -81,6 +81,7 @@
             input {
                 font-size: 16px;
                 color: var(--link);
+                text-align: center;
             }
 
             .range {
@@ -101,7 +102,7 @@
         align-self: flex-start;
         position: relative;
         max-width: 204px;
-        min-width: 10px;
+        min-width: 204px;
         flex: 1;
         .list {
             position: absolute;
@@ -139,6 +140,30 @@
             &::-webkit-scrollbar-thumb {
                 background-color: var(--grey);
                 cursor: default;
+            }
+        }
+    }
+
+    .del_filter {
+        position: relative;
+        button {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            opacity: 0;
+            width: 20px;
+            height: 20px;
+            border: 1px solid var(--black);
+            transition: 0.3s;
+            transform: translateY(-50%);
+            cursor: default;
+            background-color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            &:hover {
+                opacity: 1;
             }
         }
     }

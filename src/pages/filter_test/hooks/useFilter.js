@@ -9,7 +9,7 @@ export default function useFilter() {
 
     const [filters, setFilters] = useState([])
 
-    const operators = ['AND', 'OR', 'NOT']
+    const operators = ['AND', 'OR', 'NOT', 'Apply filter']
     const parametrs = ['Categories', 'Name', 'Parametr1', 'Parametr2', 'Parametr3', 'Date', 'Lots']
     const values = {
         'Categories': ['Cat1', 'Cat2', 'Cat3', 'Cat4'],
@@ -37,59 +37,70 @@ export default function useFilter() {
 
     const getParam = () => {
         let param = 1;
-        let el = filters.at(-1)
+        const lastFilter = filters.at(-1);
 
-        if(filters.length === 0) {
-            return param = 2
+        if (!lastFilter) {
+            return param = 2;
         }
 
-        if(el) {
-            if(!Object.keys(el)[1]) {
-                param = 2
-            }
-            if(el[Object.keys(el)[1]] === '') {
-                param = 3
-            }
+        const key = Object.keys(lastFilter)[1];
+
+        if (!key) {
+            param = 2;
+        } else if (lastFilter[key] === '') {
+            param = 3;
         }
 
-        return param
+        return param;
     }
 
     const addNewItem = (param, value) => {
 
-        let list = [...filters]
-
         if(param == 1) {
-            list.push({logic: value})
+            return setFilters(prev => ([...prev, {logic: value}]))
         }
         
         if(param == 2) {
-            if(list.length === 0) {
-                list.push({logic: '', [value]: ''})
-            } else {
+            setFilters(prev => {
+                let list = [...prev]
+                if(list.length === 0) {
+                    let el = {logic: '', [value]: ''}
+                    list.push(el)
+                    return list
+                }
                 let el = { ...list.at(-1) }
                 el[value] = ''
                 list[list.length - 1] = el
-            }
+                return list
+            })
+            return
         }
 
         if(param == 3) {
-            setListOpen(false)
-            setFocus(false)
+            // setListOpen(false)
+            // setFocus(false)
             
-            let el = { ...list.at(-1) }
-            let field = Object.keys(el)[1]
-            
-            if(dateList.includes(field) || rangeList.includes(field)) {
-                if(value === 'By default') {
-                    el[field] = ''
+            setFilters(prev => {
+                let list = [...prev]
+                let el = { ...list.at(-1) }
+                let field = Object.keys(el)[1]
+                
+                if(dateList.includes(field) || rangeList.includes(field)) {
+                    if(value === 'By default') {
+                        el[field] = ''
+                    }
+                    if(value === 'Range') {
+                        el[field] = {min: '', max: ''}
+                    }
+                    el.type = value
+                    list[list.length - 1] = el
+                    return list
                 }
-                if(value === 'Range') {
-                    el[field] = {min: '', max: ''}
-                }
-                el.type = value
+
                 el[field] = value
                 list[list.length - 1] = el
+                return list
+            })
         }
     }
 
@@ -208,15 +219,24 @@ export default function useFilter() {
         });
     }
     
-    
-    
-    
     const getList = async () => {
 
         console.log(convertData())
+
+        setListOpen(false)
+        setFocus(false)
         
         let req = await Api.asyncPost('', convertData())
 
+    }
+
+    const delFilter = (e) => {
+        e.stopPropagation()
+        setFilters(prev => {
+            let list = [...prev]
+            list.pop()
+            return list
+        })
     }
 
     return {
@@ -238,5 +258,6 @@ export default function useFilter() {
         changeDateRange,
         getList,
         changeRange,
+        delFilter
     }
 }

@@ -11,7 +11,7 @@ const DateInput = ({change, disabled, value, type}) => {
     }, [disabled])
 
     return (
-        <div style={{marginRight: '5px', display: 'flex'}}>
+        <div style={{display: 'flex'}}>
             <input
                 ref={date}
                 placeholder={'__.__._____'}

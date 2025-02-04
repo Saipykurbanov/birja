@@ -10,34 +10,34 @@ const Filter = () => {
     const f = useFilter()
 
     return (
-        <>
-            <div className={`filter_field ${f.focus || f.filters?.length > 0 ? 'focus' : ''}`} onClick={f.handleFocus}>
-                <label htmlFor="" >Filter</label>
-                <div className="placeholder">Select the parameter</div>
+        <div className={`filter_field ${f.focus || f.filters?.length > 0 ? 'focus' : ''}`} onClick={f.handleFocus}>
+            <label htmlFor="" >Filter</label>
+            <div className="placeholder">Select the parameter</div>
 
-                <div className="filters">
-                    {f.filters?.length 
-                    ? f.filters.map((el, i) => (
-                        <FilterItem 
-                            field={Object.keys(el)[1]}
-                            el={el}
-                            hook={f}
-                            i={i} 
-                            key={i}
-                            disabled={i === f.filters.length - 1 ? false : true}
-                        />
-                    ))
-                    :null}
-                </div>
-
-                <div className="list_block">
-                    <List open={f.listOpen} param={f.getParam()} callback={f.addNewItem} last={f.filters?.length ? Object.keys(f.filters.at(-1))[1] : ''} list={f.list}/>
-                </div>
-
-                <img src="/icons/filter_black.svg" alt="" />
+            <div className="filters">
+                {f.filters?.length 
+                ? f.filters.map((el, i) => (
+                    <FilterItem 
+                        field={Object.keys(el)[1]}
+                        el={el}
+                        hook={f}
+                        i={i} 
+                        key={i}
+                        disabled={i === f.filters.length - 1 ? false : true}
+                    />
+                ))
+                :null}
             </div>
-            <button onClick={f.getList}>CLICK</button>
-        </>
+
+            {f.filters?.length > 0 
+            ?<div className="del_filter">
+                <button onClick={f.delFilter}><img src="/icons/cross.svg" alt="" /></button>
+            </div> :null}
+            
+            <List getList={f.getList} open={f.listOpen} param={f.getParam()} callback={f.addNewItem} last={f.filters?.length ? Object.keys(f.filters.at(-1))[1] : ''} list={f.list}/>
+
+            <img src="/icons/filter_black.svg" alt="" />
+        </div>
     );
 };
 

@@ -49,7 +49,7 @@ const FieldsLogic = ({hook, el, i, field, disabled}) => {
             return <div className="range">
                 <Input type={'min'} placeholder={'__'} disabled={disabled} change={(e) => hook.changeRange(i, field, e.target.value, 'min')} value={el[field].min}/>
                 <span>-</span>
-                <Input type={'min'} placeholder={'__'} disabled={disabled} change={(e) => hook.changeRange(i, field, e.target.value, 'max')} value={el[field].max}/>
+                <Input placeholder={'__'} disabled={disabled} change={(e) => hook.changeRange(i, field, e.target.value, 'max')} value={el[field].max}/>
                 <div className='close_head'>;</div>
             </div>
         }

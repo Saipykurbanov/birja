@@ -1,11 +1,11 @@
 import React from 'react';
 
-const List = ({open, param, callback, last, list}) => {
+const List = ({open, param, callback, last, list, getList}) => {
 
     if(!open) return null
 
     return (
-        <>
+        <div className="list_block">
             {param == 3 
                 ?list[3]?.[last]?.length
                     ?<div className="list">
@@ -17,12 +17,12 @@ const List = ({open, param, callback, last, list}) => {
                 :list[param]?.length 
                     ?<div className="list">
                         {list[param].map((el, i) => (
-                            <p key={i} onClick={() => callback(param, el)}>{el}</p>
+                            <p key={i} onClick={el === 'Apply filter' ? getList : () => callback(param, el)}>{el}</p>
                         ))}
                     </div>
                 :null
             }
-        </>
+        </div>
     );  
 };
 
