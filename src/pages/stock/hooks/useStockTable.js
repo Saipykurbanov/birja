@@ -65,6 +65,34 @@ export default function useStockTable () {
         setIsShow(data)
     })
 
+    Store.useListener('filtered_table', (data) => {
+        console.log(data)
+        const obj = data.map((el) => {
+            return {
+                id: el.stockNumber,
+                stock: el.stockNumber,
+                qr: el.idPhoto,
+                media: el.photos,
+                salesChanel: el.saleChannel,
+                lot: el.lotNumber,
+                category: el.category,
+                region: el.region,
+                cityMint: el.cityMint,
+                authority: el.authority,
+                metal: el.metal,
+                nominal: el.nominal,
+                description: el.description,
+                location: el.location,
+                date: el.createdAt,
+                status: el.statusId,
+            }
+        })
+
+        setIntermediateStore(obj)
+        setList(obj.slice(0, pagination.perPage))
+        pagination.changePageStart()
+    })
+
     // Закрытие активных меню в ячейках таблицы при клике вне их
     const closeCellMenus = () => {
         const findActive = document.querySelectorAll('.cell_menu')

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import Api from "../../../utils/Api";
 import { dateList, inputList, operators, parametrs, rangeList } from "../allLists";
 import Notice from "../../../components/notice/Notice";
+import Store from "../../../utils/Store";
 
 
 export default function useFilter() {
@@ -249,39 +250,15 @@ export default function useFilter() {
 
         setListOpen(false)
         setFocus(false)
-        
-        try {
-            let token = localStorage.getItem('accessToken')
-            let res = await fetch(`${Api.url}api/coins`, {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    "Content-Type": "application/json;charset=utf-8",
-                },
-                body: JSON.stringify(convertData())
-            })
 
-    
-            if(res.status === 200) {
-                res = await res.json()
-                console.log(res)
-                return  // вставить состояние для списка таблицы
-            }
-    
-            if(res.status === 401) {
-                // return Api.logout()
-                return 'error'
-            }
+        let res = await Api.asyncPost('api/coins', convertData())
 
-            Notice.Send({type: 'error', text: 'Error'})
-            
-            return 'error'
-            
-        } catch(e) {
-            Notice.Send({type: 'error', text: 'Error'})
-            return 'error'
+        if(res !== 'error') {
+            Store.setListener('filtered_table', res)
+            return  
         }
 
+        Notice.Send({type: 'error', text: 'Error'})
     }
 
     return {
