@@ -11,11 +11,23 @@ export default function useFilter() {
     const [filters, setFilters] = useState([])
 
     const values = {
-        'Categories': ['Cat1', 'Cat2', 'Cat3', 'Cat4'],
-        'Parametr2': ['By default', 'Range'],
-        'Parametr3': ['Val1', 'Val2', 'Val3'],
-        'Date': ['By default', 'Range'],
-        'Lots': ['By default', 'Range']
+        'salecСannel': [],
+        'category': [],
+        'region': [],
+        'cityMint': [],
+        'authority': [],
+        'metal': [],
+        'nominal': [],
+        'condition': [],
+        'rarity': [],
+        'provenance': [],
+        'sold': [],
+        'location': [],
+        'inWork': [],
+        'statusLd': [],
+        'userChanged': [],
+        'consigner': [],
+        'dynastyAndSo': []
     }
 
     const [list, setList] = useState({
@@ -45,6 +57,8 @@ export default function useFilter() {
         if (!key) {
             param = 2;
         } else if (inputList.includes(key)) {
+            param = 1
+        } else if(lastFilter.type) {
             param = 1
         } else if (lastFilter[key] === '') {
             param = 3;
@@ -236,6 +250,10 @@ export default function useFilter() {
         })
     }
 
+    const clearAllFilter = () => {
+        setFilters([])
+    }
+
     return {
         focus,
         listOpen,
@@ -252,6 +270,7 @@ export default function useFilter() {
         changeDateRange,
         getList,
         changeRange,
-        delFilter
+        delFilter,
+        clearAllFilter
     }
 }
