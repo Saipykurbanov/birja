@@ -138,8 +138,6 @@ export default function useStockTable () {
                 return setError(true) // Устанавливаем ошибку, если данные не загрузились
             }
 
-            console.log(init)
-
             // Мапируем данные API в нужный формат
             const obj = init.map((el) => {
                 return {
