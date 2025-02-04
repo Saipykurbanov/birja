@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import Api from "../../../utils/Api";
 import { dateList, inputList, operators, parametrs, rangeList } from "../allLists";
+import Notice from "../../../components/notice/Notice";
 
 
 export default function useFilter() {
@@ -246,12 +247,39 @@ export default function useFilter() {
     
     const getList = async () => {
 
-        console.log(convertData())
-
         setListOpen(false)
         setFocus(false)
         
-        let req = await Api.asyncPost('', convertData())
+        try {
+            let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibG9naW4iOiJ1c2VyMSIsInJvbGVzIjpbInVzZXIiXSwicGVybWlzc2lvbnMiOltdLCJzYWxlQ2hhbm5lbCI6W10sImlhdCI6MTczODU5MzE5MCwiZXhwIjoxNzM4NjM2MzkwfQ.0FPqnFHwBIUIxjcGySZIoqhGlcoZuppTgsgqWU5iTVk'
+    
+            let res = await fetch(`http://188.120.229.3:8083/api/coins`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    "Content-Type": "application/json;charset=utf-8",
+                },
+                body: JSON.stringify(convertData())
+            })
+
+    
+            if(res.status === 200) {
+                res = await res.json()
+                return console.log(res) // вставить состояние для списка таблицы
+            }
+    
+            if(res.status === 401) {
+                return Api.logout()
+            }
+
+            Notice.Send({type: 'error', text: 'Error'})
+            
+            return 'error'
+            
+        } catch(e) {
+            Notice.Send({type: 'error', text: 'Error'})
+            return 'error'
+        }
 
     }
 
