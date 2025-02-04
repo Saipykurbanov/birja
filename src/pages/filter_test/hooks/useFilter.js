@@ -251,7 +251,7 @@ export default function useFilter() {
         setListOpen(false)
         setFocus(false)
 
-        let res = await Api.asyncPost('api/coins', convertData())
+        let res = await Api.asyncPost('api/coins', {filters: convertData()})
 
         if(res !== 'error') {
             Store.setListener('filtered_table', res)
