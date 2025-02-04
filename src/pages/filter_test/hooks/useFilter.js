@@ -222,7 +222,7 @@ export default function useFilter() {
             }
             
             if (index === 0) {
-                const { logic, ...rest } = item;
+                const { logic, type, ...rest } = item;
                 return rest;
             }
     
@@ -251,7 +251,7 @@ export default function useFilter() {
         setListOpen(false)
         setFocus(false)
 
-        let res = await Api.asyncPost('api/coins', {filters: convertData()})
+        let res = await Api.asyncPost('api/coins', {filter: convertData()})
 
         if(res !== 'error') {
             Store.setListener('filtered_table', res)
