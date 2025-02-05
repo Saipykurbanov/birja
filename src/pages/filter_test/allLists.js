@@ -4,4 +4,5 @@ export const parametrs = ['stockNumber', 'saleChannel', 'lotNumber', 'category',
 export const inputList = ['description', 'title', 'shortDescription', 'info', 'salesAccount', 'consigment', 'hsCode', 'reference1', 'reference2', 'reference3', 'reference4', 'reference5',  'craw', 'idPhoto', 'origin']
 export const rangeList = ['stockNumber', 'lotNumber', 'year', 'diametrMM', 'height', 'weightGr', 'salePrice', 'price']
 export const dateList = ['createdAt', 'updatedAt']
-export const range = ['By default', 'Range']
+export const range = ['By default', 'Range', '> X', '< X']
+export const dateRange = ['By default', 'Range']

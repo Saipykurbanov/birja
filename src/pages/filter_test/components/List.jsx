@@ -1,11 +1,21 @@
 import React from 'react';
-import { dateList, range, rangeList } from '../allLists';
+import { dateList, dateRange, range, rangeList } from '../allLists';
 
 const List = ({open, param, callback, last, list, getList}) => {
 
     if(!open) return null
 
-    if((param == 3 && (rangeList.includes(last) || dateList.includes(last)))) {
+    if((param == 3 && dateList.includes(last))) {
+        return (
+            <div className="list_block">
+                <div className="list">
+                    {dateRange.map((el, i) => (
+                        <p key={i} onClick={() => callback(3, el)}>{el}</p>
+                    ))}
+                </div>
+            </div>
+        )
+    } else if((param == 3 && rangeList.includes(last))) {
         return (
             <div className="list_block">
                 <div className="list">
@@ -15,7 +25,7 @@ const List = ({open, param, callback, last, list, getList}) => {
                 </div>
             </div>
         )
-    } else if (param == 3) {
+    }  else if (param == 3) {
         return (
             <div className="list_block">
                 {list[3]?.[last]?.length
