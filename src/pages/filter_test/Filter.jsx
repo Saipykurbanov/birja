@@ -36,7 +36,11 @@ const Filter = () => {
             
             <List getList={f.getList} open={f.listOpen} param={f.getParam()} callback={f.addNewItem} last={f.filters?.length ? Object.keys(f.filters.at(-1))[1] : ''} list={f.list}/>
 
-            <img src="/icons/filter_black.svg" alt="" />
+            <div className="nav_block">
+                <img src="/icons/filter_black.svg" alt="" />
+                <button onClick={f.clearAllFilter}><img src="/icons/trash.svg" alt="" /></button>
+            </div>
+
         </div>
     );
 };

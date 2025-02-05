@@ -37,10 +37,16 @@
         z-index: 1;
     }
 
-    img {
-        transition: 0.3s;
-        opacity: 0.5;
+    
+    .nav_block {
         margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        img {
+            transition: 0.3s;
+            opacity: 0.5;
+        }
     }
 
     .filters {

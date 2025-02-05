@@ -109,13 +109,33 @@ export default function useFilter() {
                 let el = { ...list.at(-1) }
                 let field = Object.keys(el)[1]
                 
-                if(dateList.includes(field) || rangeList.includes(field)) {
+                if(dateList.includes(field)) {
                     if(value === 'By default') {
                         el[field] = ''
                     }
                     if(value === 'Range') {
                         el[field] = {min: '', max: ''}
                     }
+                    el.type = value
+                    list[list.length - 1] = el
+                    return list
+                }
+                
+                if(rangeList.includes(field)) {
+
+                    if(value === 'By default') {
+                        el[field] = ''
+                    }
+                    if(value === 'Range') {
+                        el[field] = {min: '', max: ''}
+                    }
+                    if(value === '> X') {
+                        el[field] = {max: ''}
+                    }
+                    if(value === '< X') {
+                        el[field] = {min: ''}
+                    }
+
                     el.type = value
                     list[list.length - 1] = el
                     return list
@@ -244,14 +264,19 @@ export default function useFilter() {
         })
     }
     
-    const clearAllFilter = () => {
+    const clearAllFilter = (e) => {
+        e.stopPropagation()
         setFilters([])
+        setFocus(false)
+        setListOpen(false)
     }
     
     const getList = async () => {
 
         setListOpen(false)
         setFocus(false)
+
+        console.log(convertData())
 
         let res = await Api.asyncPost('api/coins', {filter: convertData()})
 

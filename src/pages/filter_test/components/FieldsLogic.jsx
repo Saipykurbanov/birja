@@ -54,6 +54,14 @@ const FieldsLogic = ({hook, el, i, field, disabled}) => {
                 <div className='close_head'>;</div>
             </div>
         }
+
+        if(el.type === '> X') {
+            return <>{'<'}<Input type={'min'} placeholder={'__'} disabled={disabled} change={(e) => hook.changeRange(i, field, e.target.value, 'max')} value={el[field].max}/><div className='close_head'>;</div></>
+        }
+
+        if(el.type === '< X') {
+            return <>{'>'}<Input type={'min'} placeholder={'__'} disabled={disabled} change={(e) => hook.changeRange(i, field, e.target.value, 'min')} value={el[field].min}/><div className='close_head'>;</div></>
+        }
     }
 
     return <div className="txt value">{el[field]};</div>
