@@ -46,7 +46,7 @@ export default function useFilter() {
 
         const delFilterKey = (e) => {
             e.stopPropagation()
-            if(e.key === 'Backspace' && focus) {
+            if(e.key === 'Delete' && focus) {
                 delFilter(e)
             }
         }

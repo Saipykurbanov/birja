@@ -22,6 +22,17 @@ const Input = ({change, disabled, placeholder, value, type}) => {
 
     }, [disabled])
 
+    const keyDown = (e) => {
+        // Если будет по кнопке Backspace
+        if(e.key === 'Backspace') {
+            if(type !== 'min') {
+                return e.stopPropagation()
+            } else if(value !== '') {
+                e.stopPropagation()
+            }
+        }
+    }
+
     return (
         <div style={{ display: "flex", position: "relative" }}>
             <span ref={spanRef} style={{ 
@@ -40,7 +51,7 @@ const Input = ({change, disabled, placeholder, value, type}) => {
                 style={{ width: inputWidth, minWidth: "10px" }}
                 disabled={disabled}
                 onClick={(e) => e.stopPropagation()}
-                onKeyDown={(e) => e.stopPropagation()}
+                onKeyDown={keyDown}
             />
         </div>
     );
