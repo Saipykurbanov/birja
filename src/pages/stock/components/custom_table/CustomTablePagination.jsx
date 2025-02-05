@@ -9,7 +9,7 @@ const CustomTablePagination = ({props}) => {
 
     return (
         <div className='custom_table_pagination'>
-            <div className="page">{props.currentPage} of {props.maxPage}</div>
+            <div className="page">{props.currentPage} of {props.maxPage || 1}</div>
 
             <Button callback={() => props.changePageStart()} mode={'small'}>
                 <ArrowLeftBig />

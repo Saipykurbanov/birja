@@ -1,0 +1,204 @@
+@charset "UTF-8";
+/*-------------Миксины----------------*/
+.filter_field {
+  position: relative;
+  margin-top: 10px;
+  width: 100%;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  border: 1px solid var(--grey);
+  transition: 0.3s;
+  cursor: text;
+}
+.filter_field label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: var(--grey);
+  background-color: var(--white);
+  padding: 2px;
+  font-size: 16px;
+  transition: 0.3s;
+  transition-delay: 0.2s;
+}
+.filter_field .placeholder {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: 0.3s;
+  transition-delay: 0s;
+  z-index: 1;
+}
+.filter_field .nav_block {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.filter_field .nav_block img {
+  transition: 0.3s;
+  opacity: 0.5;
+}
+.filter_field .filters {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  background-color: transparent;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  overflow: auto;
+}
+.filter_field .filters::-webkit-scrollbar {
+  height: 3px;
+}
+.filter_field .filters::-webkit-scrollbar-thumb {
+  background-color: var(--grey);
+  cursor: default;
+}
+.filter_field .filters .filter_item {
+  display: flex;
+  align-items: center;
+}
+.filter_field .filters .filter_item .txt {
+  font-size: 16px;
+  text-transform: capitalize;
+  margin-right: 5px;
+  white-space: nowrap;
+}
+.filter_field .filters .filter_item .parametr {
+  color: var(--red2);
+}
+.filter_field .filters .filter_item .logic {
+  color: var(--red3);
+}
+.filter_field .filters .filter_item .value {
+  color: var(--link);
+}
+.filter_field .filters .filter_item input {
+  font-size: 16px;
+  color: var(--link);
+  text-align: center;
+}
+.filter_field .filters .filter_item .range {
+  display: flex;
+  align-items: center;
+}
+.filter_field .filters .filter_item .range span {
+  margin: 0 5px;
+}
+.filter_field .filters .filter_item .close_head {
+  margin-right: 5px;
+}
+.filter_field .list_block {
+  align-self: flex-start;
+  position: relative;
+  max-width: 204px;
+  min-width: 204px;
+  flex: 1;
+}
+@media screen and (max-width: 991px) {
+  .filter_field .list_block {
+    min-width: 10px;
+  }
+}
+.filter_field .list_block .list {
+  position: absolute;
+  right: -10px;
+  top: 0;
+  min-width: 204px;
+  min-height: 33px;
+  max-height: 185px;
+  overflow: auto;
+  border: 1px solid var(--black);
+  opacity: 0;
+  animation: Open 0.4s forwards;
+  background-color: var(--white);
+  z-index: 20;
+  margin-right: 10px;
+  cursor: pointer;
+}
+@media screen and (max-width: 991px) {
+  .filter_field .list_block .list {
+    top: 30px;
+  }
+}
+.filter_field .list_block .list p {
+  width: 100%;
+  height: 31px;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  font-size: 16px;
+}
+.filter_field .list_block .list p:hover {
+  background-color: var(--black);
+  color: var(--white);
+}
+.filter_field .list_block .list::-webkit-scrollbar {
+  width: 2px;
+}
+.filter_field .list_block .list::-webkit-scrollbar-thumb {
+  background-color: var(--grey);
+  cursor: default;
+}
+.filter_field .del_filter {
+  position: relative;
+}
+.filter_field .del_filter button {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  opacity: 0;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--black);
+  transition: 0.3s;
+  transition-delay: 0.3s;
+  transform: translateY(-50%);
+  cursor: default;
+  background-color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.filter_field .del_filter button:hover {
+  opacity: 1;
+  transition-delay: 0s;
+}
+.filter_field:hover label {
+  font-size: 10px;
+  top: 0px;
+  transform: translateY(-50%);
+  transition-delay: 0s;
+}
+.filter_field:hover .placeholder {
+  transition-delay: 0.1s;
+  opacity: 1;
+}
+.filter_field:hover img {
+  opacity: 1;
+  cursor: default;
+}
+.filter_field.focus {
+  border: 1px solid var(--black);
+}
+.filter_field.focus label {
+  font-size: 10px;
+  top: 0px;
+  transform: translateY(-50%);
+}
+.filter_field.focus .placeholder {
+  transition-delay: 0s;
+  opacity: 0;
+}
+.filter_field.focus img {
+  opacity: 1;
+}/*# sourceMappingURL=filter.css.map */

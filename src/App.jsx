@@ -11,6 +11,8 @@ import Prefences from './components/prefences/Prefences';
 import FilterPanel from './pages/stock/components/filter_panel/FilterPanel';
 import Loading from './components/loading/Loading';
 import Notice from './components/notice/Notice';
+import Filter from './pages/filter_test/Filter';
+import FilterComponent from './pages/filter_test/Filter2';
 
 
 function App() {

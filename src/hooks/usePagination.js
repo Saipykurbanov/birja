@@ -110,5 +110,6 @@ export default function usePagination(store, callback) {
         changePageStart, // Переключение на первую страницу.
         changePageEnd, // Переключение на последнюю страницу.
         changePerPage, // Функция для изменения количества элементов на странице.
+        setCurrentPage
     };
 }

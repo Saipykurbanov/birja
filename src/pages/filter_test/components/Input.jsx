@@ -1,0 +1,60 @@
+import React, { useEffect, useRef, useState } from 'react';
+
+const Input = ({change, disabled, placeholder, value, type}) => {
+
+    const spanRef = useRef(null);
+    const input = useRef(null)
+    const [inputWidth, setInputWidth] = useState(1);
+
+    useEffect(() => {
+
+        if (spanRef.current) {
+            setInputWidth(spanRef.current.offsetWidth + 5);
+        }
+
+    }, [value]);
+
+    useEffect(() => {
+
+        if(!disabled && type === 'min') {
+            input.current?.focus();
+        }
+
+    }, [disabled])
+
+    const keyDown = (e) => {
+        // Если будет по кнопке Backspace
+        if(e.key === 'Backspace') {
+            if(type !== 'min') {
+                return e.stopPropagation()
+            } else if(value !== '') {
+                e.stopPropagation()
+            }
+        }
+    }
+
+    return (
+        <div style={{ display: "flex", position: "relative" }}>
+            <span ref={spanRef} style={{ 
+                position: "absolute", 
+                visibility: "hidden", 
+                whiteSpace: "pre"
+            }}>
+                {value || " "} 
+            </span>
+            <input 
+                ref={input}
+                placeholder={placeholder}
+                type="text"
+                value={value}
+                onChange={change}
+                style={{ width: inputWidth, minWidth: "10px" }}
+                disabled={disabled}
+                onClick={(e) => e.stopPropagation()}
+                onKeyDown={keyDown}
+            />
+        </div>
+    );
+};
+
+export default Input;

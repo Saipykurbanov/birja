@@ -4,6 +4,7 @@ const Api = {}
 
 Api.mainUrl = 'http://185.127.225.49:'
 Api.url = 'http://185.127.225.49:8083/'
+// Api.url = 'http://188.120.229.3:8083/'
 Api.url2 = 'http://185.127.225.49:8084/'
 Api.port3 = '8085/'
 

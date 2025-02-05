@@ -5,6 +5,7 @@ import FilterBtns from './components/FilterBtns';
 import Table from './components/Table';
 import TimeLine from './components/timeline/TimeLine';
 import CustomTable from './components/custom_table/CustomTable';
+import Filter from '../filter_test/Filter';
 
 
 const Stock = () => {
@@ -17,13 +18,15 @@ const Stock = () => {
                 callback={''}
                 value={''}
             />
-            <CustomInput 
+            {/* <CustomInput 
                 label={'Setting Filter'}
                 icon={'/icons/filter.svg'}
                 placeholder={'Enter parameter'}
                 callback={''}
                 value={''}
-            />
+            /> */}
+            
+            <Filter /> {/* Новый фильтр */}
             
             <FilterBtns />
 
