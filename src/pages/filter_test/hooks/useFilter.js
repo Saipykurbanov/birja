@@ -44,10 +44,21 @@ export default function useFilter() {
             setListOpen(false)
         }
 
-        window.addEventListener('click', handleBlur)
+        const delFilterKey = (e) => {
+            e.stopPropagation()
+            if(e.key === 'Backspace' && focus) {
+                delFilter(e)
+            }
+        }
 
-        return () => window.removeEventListener('click', handleBlur)
-    }, [])
+        window.addEventListener('click', handleBlur)
+        window.addEventListener('keydown', delFilterKey)
+
+        return () => {
+            window.removeEventListener('click', handleBlur)
+            window.removeEventListener('keydown', delFilterKey)
+        }
+    }, [focus])
 
     const handleFocus = (e) => {
         e.stopPropagation()
@@ -252,8 +263,7 @@ export default function useFilter() {
         });
     }
     
-    const delFilter = (e) => {
-        e.stopPropagation()
+    const delFilter = () => {
         setFilters(prev => {
             let list = [...prev]
             list.pop()
@@ -269,14 +279,13 @@ export default function useFilter() {
         setFilters([])
         setFocus(false)
         setListOpen(false)
+        Store.setListener('clear_all_filters')
     }
     
     const getList = async () => {
 
         setListOpen(false)
         setFocus(false)
-
-        console.log(convertData())
 
         let res = await Api.asyncPost('api/coins', {filter: convertData()})
 

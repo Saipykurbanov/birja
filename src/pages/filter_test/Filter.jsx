@@ -29,10 +29,10 @@ const Filter = () => {
                 :null}
             </div>
 
-            {f.filters?.length > 0 
+            {/* {f.filters?.length > 0 
             ?<div className="del_filter">
                 <button onClick={f.delFilter}><img src="/icons/cross.svg" alt="" /></button>
-            </div> :null}
+            </div> :null} */}
             
             <List getList={f.getList} open={f.listOpen} param={f.getParam()} callback={f.addNewItem} last={f.filters?.length ? Object.keys(f.filters.at(-1))[1] : ''} list={f.list}/>
 

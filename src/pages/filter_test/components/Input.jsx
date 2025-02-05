@@ -40,6 +40,7 @@ const Input = ({change, disabled, placeholder, value, type}) => {
                 style={{ width: inputWidth, minWidth: "10px" }}
                 disabled={disabled}
                 onClick={(e) => e.stopPropagation()}
+                onKeyDown={(e) => e.stopPropagation()}
             />
         </div>
     );
